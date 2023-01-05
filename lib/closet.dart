@@ -28,10 +28,10 @@ class MyCloset extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
             Closet(),
-            Text('코디')
+            Cody(),
           ],
         ),
         bottomNavigationBar: const BottomBar(),
@@ -107,14 +107,86 @@ var closetWidgets = [Text('예시1'), Text('예시2'), Text('예시3'), Text('�
 // 이제 옷장 보여지는 Custom Widget으로 추가 예정
 
 
-class Cody extends StatelessWidget {
-  const Cody({super.key});
+class Cody extends StatefulWidget {
+  Cody({super.key});
+
+  @override
+  State<Cody> createState() => _CodyState();
+}
+
+class _CodyState extends State<Cody> {
+  var dropdownlist = ['전체', '날짜', '계절', '날씨'];
+  String selected_dropdown = "전체"; // 전체가 default
+ // Default는 '전체'
+  changeDropdown (String? newValue) {
+    setState(() {
+      selected_dropdown = newValue!;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 20,),
+          Row(
+            children: [
+              SizedBox(
+                height: 100,
+                width: 120,
+                child: Dropdown(changeDropdown: changeDropdown, selected_dropdown: selected_dropdown),
+              ),
+              Text('공간차지실험'),
+            ],
+          ),
+        ]
+        );
+  }
+}
+
+class Dropdown extends StatelessWidget {
+  Dropdown({Key? key, this.changeDropdown, this.selected_dropdown}) : super(key: key);
+  // var dropdownlist = ['전체', '날짜', '계절', '날씨'];
+  final changeDropdown;
+  final selected_dropdown;
+  var dropdownitems = [
+    DropdownMenuItem(child: Text('전체'), value: "전체",),
+    DropdownMenuItem(child: Text('날짜'), value: "날짜",),
+    DropdownMenuItem(child: Text('계절'), value: "계절",),
+    DropdownMenuItem(child: Text('날씨'), value: "날씨",)
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return DropdownButtonFormField(
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2)
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2),
+        ),
+        filled: false
+      ),
+      dropdownColor: Colors.white,
+      value: selected_dropdown,
+      onChanged: (newValue) {
+        changeDropdown(newValue);
+      },
+      items: dropdownitems,
+    );
   }
 }
+
+// DropdownButton(
+//       value: selectedMenu,
+//       items: dropdownitems,
+//       borderRadius: BorderRadius.horizontal(),
+//       onChanged: (String? newValue) {
+//         setState(() {
+//           selectedMenu = newValue!;
+//         });
+//       }
+//     )
 
 // BottomNavigator 부분
 
