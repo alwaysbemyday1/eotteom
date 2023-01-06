@@ -33,31 +33,102 @@ class MyApp extends StatelessWidget {
             case 0:
               return CupertinoTabView(
                 builder: (context) {
-                  return const Center(child: Text('모두의 룩'));
+                  return CupertinoPageScaffold(
+                    navigationBar: CupertinoNavigationBar(
+                        trailing: SizedBox(
+                          width: 50,
+                          child: CupertinoButton(
+                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                            child: Icon(CupertinoIcons.settings),
+                            onPressed: (){},
+                          ),
+                        )
+                    ),
+                    child: Center(
+                        child: Text('모두의 룩')
+                    ),
+                  );
                 },
               );
             case 1:
               return CupertinoTabView(
                 builder: (context) {
-                  return const Center(child: Text('옷장 분석'));
+                  return CupertinoPageScaffold(
+                    navigationBar: CupertinoNavigationBar(
+                        trailing: SizedBox(
+                          width: 50,
+                          child: CupertinoButton(
+                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                            child: Icon(CupertinoIcons.settings),
+                            onPressed: (){},
+                          ),
+                        )
+                    ),
+                    child: Center(
+                        child: Text('옷장 분석')
+                    ),
+                  );
                 },
               );
             case 2:
               return CupertinoTabView(
                 builder: (context) {
-                  return const Home();
+                  return CupertinoPageScaffold(
+                    navigationBar: CupertinoNavigationBar(
+                        trailing: SizedBox(
+                          width: 50,
+                          child: CupertinoButton(
+                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                            child: Icon(CupertinoIcons.settings),
+                            onPressed: (){},
+                          ),
+                        )
+                    ),
+                    child: Center(
+                        child: Home()
+                    ),
+                  );
                 },
               );
             case 3:
               return CupertinoTabView(
                 builder: (context) {
-                  return const Center(child: Text('나의 옷장'));
+                  return CupertinoPageScaffold(
+                    navigationBar: CupertinoNavigationBar(
+                        trailing: SizedBox(
+                          width: 50,
+                          child: CupertinoButton(
+                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                            child: Icon(CupertinoIcons.settings),
+                            onPressed: (){},
+                          ),
+                        )
+                    ),
+                    child: Center(
+                        child: Center(child: Text('나의 옷장'))
+                    ),
+                  );
                 },
+
               );
             case 4:
               return CupertinoTabView(
                 builder: (context) {
-                  return const Center(child: Text('옷 추가'));
+                  return CupertinoPageScaffold(
+                    navigationBar: CupertinoNavigationBar(
+                        trailing: SizedBox(
+                          width: 50,
+                          child: CupertinoButton(
+                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                            child: Icon(CupertinoIcons.settings),
+                            onPressed: (){},
+                          ),
+                        )
+                    ),
+                    child: Center(
+                        child: Center(child: Text('옷 추가'))
+                    ),
+                  );
                 },
               );
           }
