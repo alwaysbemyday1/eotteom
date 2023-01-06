@@ -8,7 +8,7 @@ class MyCodi extends StatelessWidget {
     return Container(
       width: 350,
       height : 300,
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,26 +32,30 @@ class MyCodi extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding:EdgeInsets.all(2.5),
-                  child:Image.asset('assets/codi1.png', width:180, height:180),
+                  width: 200, height: 200,
+                  padding:EdgeInsets.fromLTRB(0, 0, 2.5, 0),
+                  child:Image.asset('assets/codi1.png'),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding:EdgeInsets.all(2.5),
-                      child:Image.asset('assets/codi2.png', width:130, height:120),
+                      width: 130, height : 130,
+                      padding:EdgeInsets.fromLTRB(2.5, 0, 0, 2.5),
+                      child:Image.asset('assets/codi2.png'),
                     ),
                     Row(
                       children: [
                         Container(
-                          padding:EdgeInsets.all(2.5),
-                          child:Image.asset('assets/codi1.png', width:60, height:60),
+                          width: 65, height : 70,
+                          padding:EdgeInsets.fromLTRB(2.5, 2.5, 2.5, 0),
+                          child:Image.asset('assets/codi1.png'),
                         ),
                         Container(
-                          padding:EdgeInsets.all(2.5),
-                          child:Image.asset('assets/codi4.png', width:60, height:60),
+                          width: 65, height : 70,
+                          padding:EdgeInsets.fromLTRB(2.5, 2.5, 0, 0),
+                          child:Image.asset('assets/codi4.png'),
                         ),
                       ],
                     )
