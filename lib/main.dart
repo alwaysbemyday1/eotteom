@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'home/home.dart';
 import 'mycloset.dart';
 import "package:flutter/cupertino.dart";
 import "style/style.dart";
@@ -14,7 +16,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
@@ -86,7 +87,7 @@ class MyApp extends StatelessWidget {
                         )
                     ),
                     child: Center(
-                        child: Text('홈페이지화면')
+                        child: Home()
                     ),
                   );
                 },
