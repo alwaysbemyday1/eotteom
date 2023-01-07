@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'myCodi.dart';
 import 'otherCodi.dart';
 import 'randomCodi.dart';
+import 'weatherCodi.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
             Container(
               height: 100,
             ),
-            Text('weatherCodi()'),
+            WeatherCodi(),
             MyCodi(),
             OtherCodi(),
             RandomCodi(),

@@ -1,81 +1,60 @@
 import 'package:flutter/cupertino.dart';
 
-class RandomCodi extends StatelessWidget {
-  const RandomCodi({Key? key}) : super(key: key);
+class WeatherCodi extends StatelessWidget {
+  const WeatherCodi({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height : 320,
+      height : 300,
       padding: EdgeInsets.all(10),
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 0, 0, 2.5),
-                    child:Text('내 옷장 속 랜덤 코디'),
-                  ),
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    child:Text('기록보기', style: TextStyle(fontSize: 10, color: Color.fromRGBO(128,128,128, 1)),),
-                  ),
-                ]
+            Container(
+              child: Text('대구 섭씨 5도(오전 09:00 기준), 최고:14도, 최저:0도', style: TextStyle(fontSize: 13),),
             ),
             Container(
-              padding:EdgeInsets.fromLTRB(0, 2.5, 0, 5),
-              child: Text('내 옷들 중에서 무작위로 조합해드려요', style: TextStyle(fontSize: 13),),
-              alignment: Alignment.centerLeft,
-            ),
-            Container (
-              width: 330, height: 130,
-              color: CupertinoColors.systemGrey,
+              child: Text('오늘은 얇은 옷을 여러겹 껴입으세요!'),
             ),
             Container(
-                child: Column(
+              child: Text('셔츠, 면 티, 긴 바지, 조끼 등을 추천해요.'),
+            ),
+            Container(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   children: [
-                    SizedBox(
-                      height: 50, width: 330,
-                      child: CupertinoButton(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                child: Icon(CupertinoIcons.repeat, size: 20,),
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                  child:SizedBox(
-                                    height: 40,
-                                      child: Text('다시 돌리기', style: TextStyle(fontSize: 14)))
-                              )
-                            ],
-                          ), onPressed: (){}
-                      ),
+                    Container(
+                      padding:EdgeInsets.all(2.5),
+                      child:Image.asset('assets/codi1.png', width:130, height:130),
                     ),
-                    SizedBox(
-                      height: 50, width: 330,
-                      child: CupertinoButton(
-
-                        color: CupertinoColors.black,
-                        borderRadius: BorderRadius.circular(40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('이 코디 저장하기', style: TextStyle(fontSize: 14))
-                            ],
-                          ), onPressed: (){}
-                      ),
-                    )
+                    Container(
+                      padding:EdgeInsets.all(2.5),
+                      child:Image.asset('assets/codi2.png', width:130, height:130),
+                    ),
+                    Container(
+                      padding:EdgeInsets.all(2.5),
+                      child:Image.asset('assets/codi3.png', width:130, height:130),
+                    ),
+                    Container(
+                      padding:EdgeInsets.all(2.5),
+                      child:Image.asset('assets/codi4.png', width:130, height:130),
+                    ),
+                    Container(
+                      padding:EdgeInsets.all(2.5),
+                      child:Image.asset('assets/codi5.png', width:130, height:130),
+                    ),
                   ],
-                )
+                ),
+              ),
             ),
+            Container(
+                alignment: Alignment.centerRight,
+                child: Text('내 옷장에 있는 옷 더보기', style: TextStyle(fontSize: 10, color: Color.fromRGBO(128,128,128, 1)),)
+            )
           ]
       ),
     );
