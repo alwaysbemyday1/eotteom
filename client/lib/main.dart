@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
                         )
                     ),
                     child: Center(
-                        child: Home()
+                        child: Home(phoneHeight: phoneHeight, phoneWidth:phoneWidth)
                     ),
                   );
                 },

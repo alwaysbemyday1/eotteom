@@ -4,14 +4,11 @@ import 'otherCodi.dart';
 import 'randomCodi.dart';
 import 'weatherCodi.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key, this.phoneHeight, this.phoneWidth});
+  final phoneHeight;
+  final phoneWidth;
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,7 +21,7 @@ class _HomeState extends State<Home> {
               height: 100,
             ),
             WeatherCodi(),
-            MyCodi(),
+            MyCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
             OtherCodi(),
             RandomCodi(),
             Container(

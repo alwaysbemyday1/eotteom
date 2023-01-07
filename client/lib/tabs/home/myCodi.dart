@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
 class MyCodi extends StatelessWidget {
-  const MyCodi({super.key});
+  const MyCodi({super.key, this.phoneHeight, this.phoneWidth});
+  final phoneHeight;
+  final phoneWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
+      width: (phoneWidth-24)-8,
       height : 280,
       padding: EdgeInsets.all(10),
       child: Column(
