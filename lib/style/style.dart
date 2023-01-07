@@ -6,7 +6,8 @@ const homeTheme =  CupertinoThemeData(
   textTheme: CupertinoTextThemeData(
     primaryColor: Colors.black,
     textStyle: TextStyle(
-      fontFamily: "NotoSans"
+      fontFamily: "NotoSans",
+      color: Colors.black
     )
     
   ),
