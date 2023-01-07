@@ -44,7 +44,7 @@ app.*.map.json
 /android/app/release
 
 
-assets/
+
 .vscode/
-pubspec.*
+
 # pubspec 이거 막아야 좀 충돌 안날 거 같음. 깃 할때
