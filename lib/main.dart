@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home/home.dart';
-import 'style/style.dart';
+import 'mycloset.dart';
+import "package:flutter/cupertino.dart";
+import "style/style.dart";
+
 
 void main() {
   runApp( const CupertinoApp(
@@ -93,18 +96,8 @@ class MyApp extends StatelessWidget {
               return CupertinoTabView(
                 builder: (context) {
                   return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        trailing: SizedBox(
-                          width: 50,
-                          child: CupertinoButton(
-                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
-                            onPressed: (){},
-                          ),
-                        )
-                    ),
-                    child: Center(
-                        child: Center(child: Text('나의 옷장'))
+                    child: MaterialApp(
+                      home: MyCloset(),
                     ),
                   );
                 },
