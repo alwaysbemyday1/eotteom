@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home/home.dart';
-import 'mycloset.dart';
-import "package:flutter/cupertino.dart";
+import 'tabs/home/home.dart';
+import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
 
 
