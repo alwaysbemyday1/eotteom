@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Closet_ui/closet_appbar.dart';
-import 'Closet/closet.dart';
-import "Cody/cody.dart";
+import 'closet_appbar.dart';
+import 'closet/closet.dart';
+import 'Cody/cody.dart';
 
 class MyCloset extends StatelessWidget {
   const MyCloset({super.key});
