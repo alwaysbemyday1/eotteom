@@ -7,7 +7,7 @@ class OtherCodi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height : 300,
+      height : 190,
       padding: EdgeInsets.all(10),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
