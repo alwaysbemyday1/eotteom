@@ -17,6 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final phoneHeight = MediaQuery.of(context).size.height;
+    final phoneWidth = MediaQuery.of(context).size.width;
+    print(phoneHeight);
+    print(phoneWidth);
     return CupertinoTabScaffold(
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
