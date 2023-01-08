@@ -13,21 +13,24 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child:Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 100,
-            ),
-            WeatherCodi(),
-            MyCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
-            OtherCodi(),
-            RandomCodi(),
-            Container(
-              height: 50,
-            ),
-          ],
+        child:Container(
+          width: (phoneWidth-24)-8,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 100,
+              ),
+              WeatherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
+              MyCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
+              OtherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
+              RandomCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
+              Container(
+                height: 50,
+              ),
+            ],
+          ),
         ));
   }
 }

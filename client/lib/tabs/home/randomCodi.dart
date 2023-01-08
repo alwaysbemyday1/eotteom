@@ -1,76 +1,69 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class RandomCodi extends StatelessWidget {
-  const RandomCodi({Key? key}) : super(key: key);
+  const RandomCodi({Key? key, this.phoneHeight, this.phoneWidth}) : super(key: key);
+  final phoneHeight;
+  final phoneWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      height : 320,
-      padding: EdgeInsets.all(10),
+      width: (phoneWidth-24)-8,
+      height : (18 + 14) * 1.3 + (13 + 17 + 8) + ((phoneWidth-24)-8) / 2 + 44 * 2 + 5 ,
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 0, 0, 2.5),
-                    child:Text('내 옷장 속 랜덤 코디'),
-                  ),
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    child:Text('기록보기', style: TextStyle(fontSize: 10, color: Color.fromRGBO(128,128,128, 1)),),
-                  ),
+                  Text('내 옷장 속 랜덤 코디', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                  Text('기록보기', style: TextStyle(fontSize: 14)),
                 ]
             ),
             Container(
-              padding:EdgeInsets.fromLTRB(0, 2.5, 0, 5),
-              child: Text('내 옷들 중에서 무작위로 조합해드려요', style: TextStyle(fontSize: 13),),
-              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
+              child: Text('내 옷들 중에서 무작위로 조합해드려요', style: TextStyle(fontSize: 14),),
             ),
             Container (
-              width: 330, height: 130,
+              width: (phoneWidth-24)-8, height: ((phoneWidth-24)-8) / 2,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 17),
               color: CupertinoColors.systemGrey,
             ),
             Container(
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 50, width: 330,
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                      width:(phoneWidth-24)-8,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        border: Border.all(color:CupertinoColors.black, width:1),
+                        borderRadius: BorderRadius.circular(22),
+                      ),
                       child: CupertinoButton(
+                          padding: EdgeInsets.all(0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                child: Icon(CupertinoIcons.repeat, size: 20,),
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                  child:SizedBox(
-                                    height: 40,
-                                      child: Text('다시 돌리기', style: TextStyle(fontSize: 14)))
-                              )
+                              Icon(CupertinoIcons.repeat, size: 17),
+                              Text('다시 돌리기', style: TextStyle(fontSize: 14))
                             ],
                           ), onPressed: (){}
                       ),
                     ),
                     SizedBox(
-                      height: 50, width: 330,
+                      width:(phoneWidth-24)-8,
+                      height: 44,
                       child: CupertinoButton(
-
-                        color: CupertinoColors.black,
-                        borderRadius: BorderRadius.circular(40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('이 코디 저장하기', style: TextStyle(fontSize: 14))
-                            ],
-                          ), onPressed: (){}
+                          padding: EdgeInsets.all(0),
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(22),
+                          child:Text('이 코디 저장하기', style: TextStyle(fontSize: 14)),
+                          onPressed: (){}
                       ),
                     )
                   ],

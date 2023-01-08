@@ -4,7 +4,6 @@ import 'tabs/home/home.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
 
-
 void main() {
   runApp( const CupertinoApp(
     home: MyApp(),
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final phoneHeight = MediaQuery.of(context).size.height;
     final phoneWidth = MediaQuery.of(context).size.width;
-    print(phoneHeight);
-    print(phoneWidth);
+
     return CupertinoTabScaffold(
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
@@ -80,11 +78,12 @@ class MyApp extends StatelessWidget {
                 builder: (context) {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
+                        border: Border(bottom: BorderSide(color:Colors.transparent)),
                         trailing: SizedBox(
                           width: 50,
                           child: CupertinoButton(
                             padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
+                            child: Icon(Icons.settings),
                             onPressed: (){},
                           ),
                         )
