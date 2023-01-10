@@ -6,9 +6,10 @@ import 'package:provider/provider.dart';
 import 'tabs/home/home.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
-
+import "tabs/closet/closetprovider.dart";
 
 void main() {
+
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (c) => Position())
@@ -141,3 +142,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

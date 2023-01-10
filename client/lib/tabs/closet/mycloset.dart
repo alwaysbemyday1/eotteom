@@ -1,29 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'closet_appbar.dart';
 import 'closet/closet.dart';
 import 'Cody/cody.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyCloset extends StatelessWidget {
   const MyCloset({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return ChangeNotifierProvider(
+      create: (context) => FilterState(),
+      child: MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('ko')
+      ],
+      locale: Locale('ko'),
+      home: DefaultTabController(
       length: 2, // 옷장, 코디
       child: Scaffold(
         appBar: appbar, // 상단 TabBar 부분
         body: TabBarView(
           children: [
             Closet(),
-            Cody(),
+            Cody()
           ],
         ),
-        
-        // bottomNavigationBar: const BottomBar(),
       ),
+    ),
+  ),
     );
+}
+}
+
+class FilterState extends ChangeNotifier {
+  bool datecheck = true;
+  bool temperaturecheck = true;
+  int nowyear = DateTime.now().year.toInt();
+  var select_date;
+  var hightemperature;
+  var lowtemperature;
+
+  changeDatecheck () {
+    datecheck = !datecheck;
+    notifyListeners();
+  }
+
+  changeTemperaturecheck () {
+    temperaturecheck = !temperaturecheck;
+    notifyListeners();
+  }
+
+  addYear () {
+    nowyear++;
+    notifyListeners();
+  }
+
+  minusYear() {
+    nowyear--;
+    notifyListeners();
+  }
+
+  selectDate (value) {
+    select_date = value;
+    notifyListeners();
+    print(select_date);
+  }
+
+  setTemperature(value) {
+      hightemperature = value.end.toInt();
+      lowtemperature = value.start.toInt();
+      notifyListeners();
   }
 }
+
+
+// context.watch<FilterState>().temperatures.start.toInt()
 
 
 // class Cody extends StatefulWidget {
