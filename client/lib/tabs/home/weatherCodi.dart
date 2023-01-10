@@ -24,7 +24,11 @@ class _WeatherCodiState extends State<WeatherCodi> {
 
   getDateTime() {
     dt = DateTime.now();
-    print(dt);
+  }
+
+  getGeolocatorPermission() async {
+    await Permission.location.request();
+     setState( (){} );  // 허용을 먼저 하지 않으면 먼저 화면 구성이 돼버려서 중간에 동기화 될 수 있게
   }
 
   Future getWeather() async {
@@ -54,7 +58,7 @@ class _WeatherCodiState extends State<WeatherCodi> {
   @override
   void initState() {
     super.initState();
-    getWeather();
+    getGeolocatorPermission();
     getDateTime();
   }
 
@@ -71,7 +75,7 @@ class _WeatherCodiState extends State<WeatherCodi> {
             Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 9),
                 child: FutureBuilder(
-                    future:getWeather(),
+                    future: getWeather(),
                     builder: (context, snapshot) {
                       if(snapshot.hasData == false) {
                         return CupertinoActivityIndicator();

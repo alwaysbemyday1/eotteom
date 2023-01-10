@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'myCodi.dart';
 import 'otherCodi.dart';
 import 'randomCodi.dart';
