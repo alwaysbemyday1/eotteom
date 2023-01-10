@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'tabs/home/home.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
-
+import "tabs/closet/closetprovider.dart";
 
 void main() {
-  runApp( const CupertinoApp(
+  runApp(
+    const CupertinoApp(
     home: MyApp(),
     theme: homeTheme,
   ));
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final phoneHeight = MediaQuery.of(context).size.height;
-    final phoneWidth = MediaQuery.of(context).size.width;
+    final phoneHeight = MediaQuery.of(context).size.height.toDouble();
+    final phoneWidth = MediaQuery.of(context).size.width.toDouble();
     print(phoneHeight);
     print(phoneWidth);
     return CupertinoTabScaffold(
@@ -132,3 +133,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
