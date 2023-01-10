@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import "dart:io";
 
 import 'package:permission_handler/permission_handler.dart';
 
@@ -22,6 +23,15 @@ class _WeatherCodiState extends State<WeatherCodi> {
 
   final myKey = '448747d0f2affed088d9e676844b0d2d';
 
+  var status_position;
+// ***태규 수정 시작
+  getWeatherPermission() async {
+    var _permission = await Permission.location.request();
+    setState(() {
+      status_position = _permission;
+    });
+  }
+// ***태규 수정 끝
   getDateTime() {
     dt = DateTime.now();
     print(dt);
@@ -54,8 +64,9 @@ class _WeatherCodiState extends State<WeatherCodi> {
   @override
   void initState() {
     super.initState();
-    getWeather();
+    // ** 유저 권한에 대해 권한 얻는 함수 따로 분리했습니다..
     getDateTime();
+    getWeatherPermission();
   }
 
   @override
