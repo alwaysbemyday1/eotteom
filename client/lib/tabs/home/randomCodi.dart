@@ -17,7 +17,9 @@ class _RandomCodiState extends State<RandomCodi> {
   @override
   void initState() {
     super.initState();
-    context.read<Position>().getRand(widget.phoneWidth);
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      context.read<Position>().getRand(widget.phoneWidth);
+    });
   }
 
   @override
@@ -154,10 +156,10 @@ class _RandomCodiState extends State<RandomCodi> {
 }
 
 class Position extends ChangeNotifier {
-  var topX, topY;
-  var bottomX, bottomY;
-  var shoesX, shoesY;
-  var accessoryX, accessoryY;
+  var topX = 0.0, topY = 0.0;
+  var bottomX= 0.0, bottomY= 0.0;
+  var shoesX= 0.0, shoesY= 0.0;
+  var accessoryX= 0.0, accessoryY= 0.0;
 
   getRand(phoneWidth) {
     topX = (Random().nextInt((((phoneWidth-24)-8)*0.05).toInt())).toDouble();
