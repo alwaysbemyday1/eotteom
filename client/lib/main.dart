@@ -1,16 +1,25 @@
+import 'package:eotteom/tabs/home/randomCodi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'tabs/home/home.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
 import "tabs/closet/closetprovider.dart";
 
 void main() {
-  runApp(
-    const CupertinoApp(
-    home: MyApp(),
-    theme: homeTheme,
-  ));
+
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c) => Position())
+      ],
+      child :
+      const CupertinoApp(
+            home: MyApp(),
+            theme: homeTheme,
+          ))
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,10 +27,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final phoneHeight = MediaQuery.of(context).size.height.toDouble();
-    final phoneWidth = MediaQuery.of(context).size.width.toDouble();
-    print(phoneHeight);
-    print(phoneWidth);
+    final phoneHeight = MediaQuery.of(context).size.height;
+    final phoneWidth = MediaQuery.of(context).size.width;
+
     return CupertinoTabScaffold(
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
@@ -81,11 +89,12 @@ class MyApp extends StatelessWidget {
                 builder: (context) {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
+                        border: Border(bottom: BorderSide(color:Colors.transparent)),
                         trailing: SizedBox(
                           width: 50,
                           child: CupertinoButton(
                             padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
+                            child: Icon(Icons.settings),
                             onPressed: (){},
                           ),
                         )

@@ -37,6 +37,9 @@ dependencies:
   syncfusion_flutter_core: ^20.4.42
   flutter_localizations:
     sdk: flutter
+  http: ^0.13.4
+  geolocator: ^5.3.2+2  # for get current location
+  permission_handler: ^8.3.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,7 +63,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/
+    - assets/images/codies/
+    - assets/images/clothes/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -8,56 +8,63 @@ class MyCodi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (phoneWidth-24)-8,
-      height : 280,
-      padding: EdgeInsets.all(10),
+      width: (phoneWidth - 24) - 8,
+      height : 12 + 18 * 1.3 + (phoneWidth - 24) * 0.6, // 사기간격 + lineheight + 사진 크기
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child:Text('최근 나의 코디'),
-                  ),
-                  Container(
-                    padding:EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child:Text('더보기', style: TextStyle(fontSize: 10, color: Color.fromRGBO(128,128,128, 1)),),
-                  ),
-                ]
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:[
+                    Text('최근 나의 코디', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                    SizedBox(
+                      height:14*1.3,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.all(0),
+                          child: Text('더보기', style: TextStyle(fontSize: 14, color: CupertinoColors.black)),
+                          onPressed: (){}
+                      ),
+                    )
+                  ]
+              ),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 200, height: 200,
-                  padding:EdgeInsets.fromLTRB(0, 0, 2.5, 0),
-                  child:Image.asset('assets/codi1.png'),
+                  width: (phoneWidth-24)*0.6-8,
+                  height: (phoneWidth-24)*0.6-8,
+                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                  child:Image.asset('assets/images/codies/codi6.png', fit: BoxFit.fill,),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 130, height : 130,
-                      padding:EdgeInsets.fromLTRB(2.5, 0, 0, 2.5),
-                      child:Image.asset('assets/codi2.png'),
+                      width: (phoneWidth-24)*0.4-8,
+                      height : (phoneWidth-24)*0.4-8,
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                      child:Image.asset('assets/images/codies/codi2.png'),
                     ),
                     Row(
                       children: [
                         Container(
-                          width: 65, height : 70,
-                          padding:EdgeInsets.fromLTRB(2.5, 2.5, 2.5, 0),
-                          child:Image.asset('assets/codi1.png'),
+                          width: (phoneWidth-24)*0.2-8,
+                          height : (phoneWidth-24)*0.2-8,
+                          margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          child:Image.asset('assets/images/codies/codi3.png'),
                         ),
                         Container(
-                          width: 65, height : 70,
-                          padding:EdgeInsets.fromLTRB(2.5, 2.5, 0, 0),
-                          child:Image.asset('assets/codi4.png'),
+                          width: (phoneWidth-24)*0.2-8,
+                          height : (phoneWidth-24)*0.2-8,
+                          child:Image.asset('assets/images/codies/codi4.png'),
                         ),
                       ],
                     )
