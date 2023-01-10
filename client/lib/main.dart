@@ -1,14 +1,24 @@
+import 'package:eotteom/tabs/home/randomCodi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'tabs/home/home.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
 
+
 void main() {
-  runApp( const CupertinoApp(
-    home: MyApp(),
-    theme: homeTheme,
-  ));
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c) => Position())
+      ],
+      child :
+      const CupertinoApp(
+            home: MyApp(),
+            theme: homeTheme,
+          ))
+  );
 }
 
 class MyApp extends StatelessWidget {

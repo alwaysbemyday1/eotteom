@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'myCodi.dart';
 import 'otherCodi.dart';
 import 'randomCodi.dart';
@@ -25,7 +26,8 @@ class Home extends StatelessWidget {
               WeatherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
               MyCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
               OtherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
-              RandomCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
+              RandomCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth)
+              ,
               Container(
                 height: 50,
               ),
