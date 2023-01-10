@@ -22,7 +22,14 @@ class OtherCodi extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:[
                     Text('다른 사람들의 코디', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-                    Text('더보기', style: TextStyle(fontSize: 14)),
+                    SizedBox(
+                      height:14*1.3,
+                      child: CupertinoButton(
+                          padding: EdgeInsets.all(0),
+                          child: Text('더보기', style: TextStyle(fontSize: 14, color: CupertinoColors.black)),
+                          onPressed: (){}
+                      ),
+                    )
                   ]
               ),
             ),
@@ -36,31 +43,31 @@ class OtherCodi extends StatelessWidget {
                       width:(phoneWidth-24) * 0.4 -8,
                       height:((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child:Image.asset('assets/codi1.png', fit: BoxFit.fill),
+                      child:Image.asset('assets/images/codies/codi1.png', fit: BoxFit.fill),
                     ),
                     Container(
                       width:(phoneWidth-24) * 0.4 -8,
                       height:((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child:Image.asset('assets/codi2.png', fit: BoxFit.fill),
+                      child:Image.asset('assets/images/codies/codi2.png', fit: BoxFit.fill),
                     ),
                     Container(
                       width:(phoneWidth-24) * 0.4 -8,
                       height:((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child:Image.asset('assets/codi3.png', fit: BoxFit.fill),
+                      child:Image.asset('assets/images/codies/codi3.png', fit: BoxFit.fill),
                     ),
                     Container(
                       width:(phoneWidth-24) * 0.4 -8,
                       height:((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child:Image.asset('assets/codi4.png', fit: BoxFit.fill),
+                      child:Image.asset('assets/images/codies/codi4.png', fit: BoxFit.fill),
                     ),
                     Container(
                       width:(phoneWidth-24) * 0.4 -8,
                       height:((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child:Image.asset('assets/codi5.png', fit: BoxFit.fill),
+                      child:Image.asset('assets/images/codies/codi5.png', fit: BoxFit.fill),
                     ),
                   ],
                 ),
