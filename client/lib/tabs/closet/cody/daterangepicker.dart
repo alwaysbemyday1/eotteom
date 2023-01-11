@@ -15,7 +15,10 @@ class _MonthRangePickState extends State<MonthRangePick> {
   
   @override
   Widget build(BuildContext context) {
-    return AbsorbPointer(
+    return Opacity(
+      opacity: (context.watch<FilterState>().datecheck) ? 1.0 : 0.3,
+      alwaysIncludeSemantics: true,
+      child: AbsorbPointer(
       absorbing: !(context.watch<FilterState>().datecheck),
       child: Container(
         child: SfDateRangePicker(
@@ -41,6 +44,7 @@ class _MonthRangePickState extends State<MonthRangePick> {
             todayTextStyle: TextStyle(color: Colors.black),
           ),
         ),
+    ),
     ),
     );    
   }
