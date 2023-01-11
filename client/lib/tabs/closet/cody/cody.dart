@@ -110,7 +110,7 @@ class _CodyState extends State<Cody> {
                                   CheckboxWeather(),
                                   IconButton(icon: Icon(Icons.refresh), onPressed: () {
                                     setState(() {
-                                      context.read<FilterState>().selectDate([]);
+                                      context.read<FilterState>().resetFilter();
                                     });
                                   },)
                                 ],

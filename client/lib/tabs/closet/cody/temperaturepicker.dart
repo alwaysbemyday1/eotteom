@@ -43,14 +43,13 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
             interval: 20,
             minorTicksPerInterval: 4,
             showTicks: true,
-            values: _values,
+            values: context.watch<FilterState>().temperatures,
             activeColor: Colors.black,
             inactiveColor: Colors.grey,
             onChanged: (SfRangeValues newValues) {
               setState(() {
-                _values = newValues;
+                context.read<FilterState>().setTemperature(newValues);
               });
-              context.read<FilterState>().setTemperature(_values);
             },
           ),
           )
