@@ -22,6 +22,15 @@ class _WeatherCodiState extends State<WeatherCodi> {
 
   final myKey = '448747d0f2affed088d9e676844b0d2d';
 
+  var status_position;
+// ***태규 수정 시작
+  getWeatherPermission() async {
+    var _permission = await Permission.location.request();
+    setState(() {
+      status_position = _permission;
+    });
+  }
+// ***태규 수정 끝
   getDateTime() {
     dt = DateTime.now();
   }
