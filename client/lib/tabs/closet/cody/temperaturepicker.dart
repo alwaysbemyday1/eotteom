@@ -20,7 +20,10 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
   @override
   Widget build(BuildContext context) {
     
-    return AbsorbPointer(
+    return Opacity(
+      opacity: (context.watch<FilterState>().temperaturecheck) ? 1.0 : 0.3,
+      alwaysIncludeSemantics: true,
+      child: AbsorbPointer(
       absorbing: !(context.watch<FilterState>().temperaturecheck),
       child: Column(
       children: [
@@ -54,9 +57,11 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
         ),
       ],
     ),
-    );
+    ),
+      );
   }
 }
+
 
 
 
