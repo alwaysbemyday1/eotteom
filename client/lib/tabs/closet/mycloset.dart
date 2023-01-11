@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'closet_appbar.dart';
 import 'closet/closet.dart';
 import 'Cody/cody.dart';
@@ -46,6 +47,7 @@ class FilterState extends ChangeNotifier {
   var select_date;
   var hightemperature;
   var lowtemperature;
+  var temperatures = SfRangeValues(0.0, 15.0);
 
   changeDatecheck () {
     datecheck = !datecheck;
@@ -70,13 +72,21 @@ class FilterState extends ChangeNotifier {
   selectDate (value) {
     select_date = value;
     notifyListeners();
-    print(select_date);
   }
 
   setTemperature(value) {
-      hightemperature = value.end.toInt();
-      lowtemperature = value.start.toInt();
-      notifyListeners();
+    temperatures = value;
+    hightemperature = value.end.toInt();
+    lowtemperature = value.start.toInt();
+    notifyListeners();
+  }
+
+  resetFilter() {
+    select_date.clear();
+    temperatures = SfRangeValues(0.0, 15.0);
+    hightemperature = temperatures.end.toInt();
+    lowtemperature = temperatures.start.toInt();
+    notifyListeners();
   }
 }
 
