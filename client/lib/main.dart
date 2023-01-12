@@ -22,10 +22,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final phoneHeight = MediaQuery.of(context).size.height;
-    final phoneWidth = MediaQuery.of(context).size.width;
-
+    //final phoneHeight = MediaQuery.of(context).size.height;
+    //final phoneWidth = MediaQuery.of(context).size.width;
+    final phoneWidth =
+        MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
+    final phoneHeight =
+        MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height;
     return CupertinoTabScaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
           items: const <BottomNavigationBarItem>[
