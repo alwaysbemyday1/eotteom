@@ -21,18 +21,8 @@ class _WeatherOutfitState extends State<WeatherOutfit> {
   var weather;
   var dt;
 
-  final myKey = '448747d0f2affed088d9e676844b0d2d';
+  final myKey = '448747d0f2affed088d9e676844b0d2d'; // TODO gitignore my api key
 
-  var status_position;
-// ***태규 수정 시작
-  getWeatherPermission() async {
-    var _permission = await Permission.location.request();
-    setState(() {
-      status_position = _permission;
-    });
-  }
-
-// ***태규 수정 끝
   getDateTime() {
     dt = DateTime.now();
   }
