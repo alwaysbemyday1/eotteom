@@ -4,7 +4,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'closet_appbar.dart';
 import 'closet/closet.dart';
-import 'Cody/cody.dart';
+import 'outfit/outfit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyCloset extends StatelessWidget {
