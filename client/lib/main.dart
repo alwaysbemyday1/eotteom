@@ -1,4 +1,4 @@
-import 'package:eotteom/tabs/home/randomCodi.dart';
+import 'package:eotteom/tabs/home/randomOutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,17 +9,12 @@ import "style/style.dart";
 import "tabs/closet/closetprovider.dart";
 
 void main() {
-
   runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (c) => Position())
-      ],
-      child :
-      const CupertinoApp(
-            home: MyApp(),
-            theme: homeTheme,
-          ))
-  );
+      providers: [ChangeNotifierProvider(create: (c) => Position())],
+      child: const CupertinoApp(
+        home: MyApp(),
+        theme: homeTheme,
+      )));
 }
 
 class MyApp extends StatelessWidget {
@@ -34,11 +29,21 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.abc), label: '모두의 룩',),
-            BottomNavigationBarItem(icon: Icon(Icons.bar_chart_outlined), label: '옷장 분석'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.abc),
+              label: '모두의 룩',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bar_chart_outlined), label: '옷장 분석'),
             BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: '나의 옷장',),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.person_add), label: '옷 추가',),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '나의 옷장',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person_add),
+              label: '옷 추가',
+            ),
           ],
         ),
         controller: CupertinoTabController(initialIndex: 2),
@@ -50,17 +55,14 @@ class MyApp extends StatelessWidget {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
                         trailing: SizedBox(
-                          width: 50,
-                          child: CupertinoButton(
-                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
-                            onPressed: (){},
-                          ),
-                        )
-                    ),
-                    child: Center(
-                        child: Text('모두의 룩')
-                    ),
+                      width: 50,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                        child: Icon(CupertinoIcons.settings),
+                        onPressed: () {},
+                      ),
+                    )),
+                    child: Center(child: Text('모두의 룩')),
                   );
                 },
               );
@@ -70,17 +72,14 @@ class MyApp extends StatelessWidget {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
                         trailing: SizedBox(
-                          width: 50,
-                          child: CupertinoButton(
-                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
-                            onPressed: (){},
-                          ),
-                        )
-                    ),
-                    child: Center(
-                        child: Text('옷장 분석')
-                    ),
+                      width: 50,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                        child: Icon(CupertinoIcons.settings),
+                        onPressed: () {},
+                      ),
+                    )),
+                    child: Center(child: Text('옷장 분석')),
                   );
                 },
               );
@@ -89,19 +88,19 @@ class MyApp extends StatelessWidget {
                 builder: (context) {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
-                        border: Border(bottom: BorderSide(color:Colors.transparent)),
+                        border: Border(
+                            bottom: BorderSide(color: Colors.transparent)),
                         trailing: SizedBox(
                           width: 50,
                           child: CupertinoButton(
                             padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
                             child: Icon(Icons.settings),
-                            onPressed: (){},
+                            onPressed: () {},
                           ),
-                        )
-                    ),
+                        )),
                     child: Center(
-                        child: Home(phoneHeight: phoneHeight, phoneWidth:phoneWidth)
-                    ),
+                        child: Home(
+                            phoneHeight: phoneHeight, phoneWidth: phoneWidth)),
                   );
                 },
               );
@@ -114,7 +113,6 @@ class MyApp extends StatelessWidget {
                     ),
                   );
                 },
-
               );
             case 4:
               return CupertinoTabView(
@@ -122,24 +120,19 @@ class MyApp extends StatelessWidget {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
                         trailing: SizedBox(
-                          width: 50,
-                          child: CupertinoButton(
-                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(CupertinoIcons.settings),
-                            onPressed: (){},
-                          ),
-                        )
-                    ),
-                    child: Center(
-                        child: Center(child: Text('옷 추가'))
-                    ),
+                      width: 50,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
+                        child: Icon(CupertinoIcons.settings),
+                        onPressed: () {},
+                      ),
+                    )),
+                    child: Center(child: Center(child: Text('옷 추가'))),
                   );
                 },
               );
           }
-          return const Text('null');  // 고쳐야함
-        }
-    );
+          return const Text('null'); // 고쳐야함
+        });
   }
 }
-

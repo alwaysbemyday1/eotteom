@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'myCodi.dart';
-import 'otherCodi.dart';
-import 'randomCodi.dart';
-import 'weatherCodi.dart';
+import 'myOutfit.dart';
+import 'otherOutfit.dart';
+import 'randomOutfit.dart';
+import 'weatherOutfit.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key, this.phoneHeight, this.phoneWidth});
@@ -13,8 +13,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child:Container(
-          width: (phoneWidth-24)-8,
+        child: Container(
+          width: (phoneWidth - 24) - 8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -22,11 +22,10 @@ class Home extends StatelessWidget {
               Container(
                 height: 100,
               ),
-              WeatherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
-              MyCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
-              OtherCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth),
-              RandomCodi(phoneHeight:phoneHeight, phoneWidth:phoneWidth)
-              ,
+              WeatherOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
+              MyOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
+              OtherOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
+              RandomOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
               Container(
                 height: 50,
               ),
@@ -35,11 +34,3 @@ class Home extends StatelessWidget {
         ));
   }
 }
-
-
-
-
-
-
-
-
