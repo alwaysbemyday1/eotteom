@@ -1,4 +1,5 @@
-import 'package:eotteom/tabs/closet/cody/checkbox.dart';
+import 'package:eotteom/login.dart';
+import 'package:eotteom/tabs/closet/outfit/checkbox.dart';
 import 'package:eotteom/tabs/closet/mycloset.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
@@ -72,7 +73,13 @@ class _CodyState extends State<Cody> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [Text('유저이름들어감'), TextButton(
+          children: [TextButton(child: Text('유저이름 들어갈자리'),
+            onPressed: (){
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LoginPage())
+              );
+            },
+          ), TextButton(
             style: buttonStyle,
             child: Text('필터', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),), 
             onPressed: () {

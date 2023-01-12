@@ -40,6 +40,9 @@ dependencies:
   http: ^0.13.4
   geolocator: ^5.3.2+2  # for get current location
   permission_handler: ^8.3.0
+  email_validator: '^2.1.16'
+  sign_button: ^2.0.2
+  flutter_signin_button: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -65,6 +68,7 @@ flutter:
   assets:
     - assets/images/codies/
     - assets/images/clothes/
+    - assets/images/login/loginbutton/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
