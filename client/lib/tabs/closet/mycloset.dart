@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'closet_appbar.dart';
 import 'closet/closet.dart';

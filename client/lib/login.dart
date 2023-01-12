@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:email_validator/email_validator.dart';
-import 'package:sign_button/sign_button.dart' as sign_button;
-import 'package:flutter_signin_button/flutter_signin_button.dart'; // 커스텀 버튼에 대해 해당 라이브러리 사용 예정
+// import 'package:sign_button/sign_button.dart' as sign_button;
+// import 'package:flutter_signin_button/flutter_signin_button.dart'; // 커스텀 버튼에 대해 해당 라이브러리 사용 예정
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -15,9 +16,9 @@ class _LoginPageState extends State<LoginPage> {
   final _fontStyle = TextStyle(fontFamily: "NotoSans", fontWeight: FontWeight.w700, fontSize: 30);
   final emailController = TextEditingController();
 
-  var appleButton = sign_button.ButtonType.appleDark;
-  var googleButton = sign_button.ButtonType.googleDark;
-  var facebookButton = sign_button.ButtonType.facebook;
+  // var appleButton = sign_button.ButtonType.appleDark;
+  // var googleButton = sign_button.ButtonType.googleDark;
+  // var facebookButton = sign_button.ButtonType.facebook;
   bool emailOkay = false;
 
   bool _emailCheck() {
@@ -33,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final buttonwidth = MediaQuery.of(context).size.width-32;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -46,7 +48,8 @@ class _LoginPageState extends State<LoginPage> {
             },
           ),
         ),
-        body: SizedBox(
+        body: SingleChildScrollView(
+          child: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,12 +109,20 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            sign_button.SignInButton(buttonType: appleButton, onPressed: () {}, width: 210,), // 202 안하면 버튼 안맞음
-            sign_button.SignInButton(buttonType: googleButton, onPressed: () {}, width: 210,),
-            sign_button.SignInButton(buttonType: facebookButton, onPressed: () {}, width: 210,),
+            SizedBox(height: 20,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.appleBlack, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12,),
+            SizedBox(height: 12,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.facebook, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12,),
+            SizedBox(height: 12,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.google, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12,),
+            SizedBox(height: 12,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 50, text: "Sign In with Kakao", imagePath: "assets/images/login/loginbutton/kakaologin.png", backgroundColor: Color(0xffFEE500), textColor: Colors.black,),
+            SizedBox(height: 12,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 50, text: "Sign In with Naver", imagePath: "assets/images/login/loginbutton/kakaologin.png", backgroundColor: Color(0xff03C75A), textColor: Colors.white,)
           ],
         ),
-      )
+      ),
+        )
       ),
     );
   }
