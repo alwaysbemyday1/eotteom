@@ -5,16 +5,17 @@ import 'dart:convert';
 
 import 'package:permission_handler/permission_handler.dart';
 
-class WeatherCodi extends StatefulWidget {
-  WeatherCodi({Key? key, this.phoneHeight, this.phoneWidth}) : super(key: key);
+class WeatherOutfit extends StatefulWidget {
+  WeatherOutfit({Key? key, this.phoneHeight, this.phoneWidth})
+      : super(key: key);
   final phoneHeight;
   final phoneWidth;
 
   @override
-  State<WeatherCodi> createState() => _WeatherCodiState();
+  State<WeatherOutfit> createState() => _WeatherOutfitState();
 }
 
-class _WeatherCodiState extends State<WeatherCodi> {
+class _WeatherOutfitState extends State<WeatherOutfit> {
   var latitude = 0.0;
   var longitude = 0.0;
   var weather;
@@ -30,6 +31,7 @@ class _WeatherCodiState extends State<WeatherCodi> {
       status_position = _permission;
     });
   }
+
 // ***태규 수정 끝
   getDateTime() {
     dt = DateTime.now();
@@ -37,7 +39,7 @@ class _WeatherCodiState extends State<WeatherCodi> {
 
   getGeolocatorPermission() async {
     await Permission.location.request();
-     setState( (){} );  // 허용을 먼저 하지 않으면 먼저 화면 구성이 돼버려서 중간에 동기화 될 수 있게
+    setState(() {}); // 허용을 먼저 하지 않으면 먼저 화면 구성이 돼버려서 중간에 동기화 될 수 있게
   }
 
   Future getWeather() async {
@@ -75,8 +77,12 @@ class _WeatherCodiState extends State<WeatherCodi> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 0, 0, 21),
-      width: (widget.phoneWidth-24)-8,
-      height: 9 + 5 + 13 + (12 + 22 * 2 + 14 + 14 ) * 1.3 + 30,  // 사이간격 + lineheight + 소수점
+      width: (widget.phoneWidth - 24) - 8,
+      height: 9 +
+          5 +
+          13 +
+          (12 + 22 * 2 + 14 + 14) * 1.3 +
+          30, // 사이간격 + lineheight + 소수점
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -86,48 +92,65 @@ class _WeatherCodiState extends State<WeatherCodi> {
                 child: FutureBuilder(
                     future: getWeather(),
                     builder: (context, snapshot) {
-                      if(snapshot.hasData == false) {
+                      if (snapshot.hasData == false) {
                         return CupertinoActivityIndicator();
                       } else {
                         return Row(
                           children: [
-                            Text('${weather['name']}' , style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
-                            Image.network('http://openweathermap.org/img/wn/${weather['weather'][0]['icon']}@2x.png', width:12, height: 12,),
-                            Text('${weather['main']['temp'].round()}°C' , style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
-                            Text(dt.hour >= 12 ? ' 오후 ' : ' 오전 ', style: TextStyle(fontSize: 12)),
-                            Text(dt.hour >= 12 ? '(${dt.hour - 12} ' : '(${dt.hour}', style: TextStyle(fontSize: 12)),
-                            Text(':${dt.minute} 기준) 최고:${weather['main']['temp_max'].round()}°C 최저:${weather['main']['temp_min'].round()}°C', style: TextStyle(fontSize: 12)),
+                            Text('${weather['name']}',
+                                style: TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.w700)),
+                            Image.network(
+                              'http://openweathermap.org/img/wn/${weather['weather'][0]['icon']}@2x.png',
+                              width: 12,
+                              height: 12,
+                            ),
+                            Text('${weather['main']['temp'].round()}°C',
+                                style: TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.w700)),
+                            Text(dt.hour >= 12 ? ' 오후 ' : ' 오전 ',
+                                style: TextStyle(fontSize: 12)),
+                            Text(
+                                dt.hour >= 12
+                                    ? '(${dt.hour - 12} '
+                                    : '(${dt.hour}',
+                                style: TextStyle(fontSize: 12)),
+                            Text(
+                                ':${dt.minute} 기준) 최고:${weather['main']['temp_max'].round()}°C 최저:${weather['main']['temp_min'].round()}°C',
+                                style: TextStyle(fontSize: 12)),
                           ],
                         );
                       }
-                    }
-                )
-            ),
+                    })),
             Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('오늘은', style: TextStyle(fontSize:22)),
-                    Text('얇은 옷을 여러겹 껴입으세요!', style: TextStyle(fontSize:22, fontWeight: FontWeight.w700),),
+                    Text('오늘은', style: TextStyle(fontSize: 22)),
+                    Text(
+                      '얇은 옷을 여러겹 껴입으세요!',
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    ),
                   ],
-                )
-            ),
+                )),
             Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
-              child: Text('셔츠, 면 티, 긴 바지, 조끼 등을 추천해요.', style: TextStyle(fontSize:14)),
+              child: Text('셔츠, 면 티, 긴 바지, 조끼 등을 추천해요.',
+                  style: TextStyle(fontSize: 14)),
             ),
             Container(
               height: 14 * 1.3,
               alignment: Alignment.centerRight,
               child: CupertinoButton(
                   padding: EdgeInsets.all(0),
-                  child: Text('내 옷장에 있는 옷 보기', style: TextStyle(fontSize: 14, color: CupertinoColors.black)),
-                  onPressed: (){}
-              ),
+                  child: Text('내 옷장에 있는 옷 보기',
+                      style: TextStyle(
+                          fontSize: 14, color: CupertinoColors.black)),
+                  onPressed: () {}),
             )
-          ]
-      ),
+          ]),
     );
   }
 }
