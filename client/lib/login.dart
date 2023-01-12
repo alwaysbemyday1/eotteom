@@ -116,9 +116,9 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 12,),
             SocialLoginButton(buttonType: SocialLoginButtonType.google, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12,),
             SizedBox(height: 12,),
-            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 50, text: "Sign In with Kakao", imagePath: "assets/images/login/loginbutton/kakaologin.png", backgroundColor: Color(0xffFEE500), textColor: Colors.black,),
+            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 45, text: "Sign In with Kakao", imagePath: "assets/images/login/loginbutton/icon_signup_kakao.png", backgroundColor: Color(0xffFEE500), textColor: Colors.black),
             SizedBox(height: 12,),
-            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 50, text: "Sign In with Naver", imagePath: "assets/images/login/loginbutton/kakaologin.png", backgroundColor: Color(0xff03C75A), textColor: Colors.white,)
+            SocialLoginButton(buttonType: SocialLoginButtonType.generalLogin, onPressed: () {}, width: buttonwidth, fontSize: 20, borderRadius: 12, imageWidth: 45, text: "Sign In with Naver", imagePath: "assets/images/login/loginbutton/icon_signup_naver.png", backgroundColor: Color(0xff03C75A), textColor: Colors.white)
           ],
         ),
       ),
