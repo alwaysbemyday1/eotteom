@@ -133,7 +133,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                   height: 44,
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.black, width: 1),
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: CupertinoButton(
                       padding: EdgeInsets.all(0),
@@ -156,7 +156,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                   child: CupertinoButton(
                       padding: EdgeInsets.all(0),
                       color: Colors.black,
-                      borderRadius: BorderRadius.circular(22),
+                      borderRadius: BorderRadius.circular(5),
                       child: Text('이 코디 저장하기', style: TextStyle(fontSize: 14)),
                       onPressed: () {}),
                 )

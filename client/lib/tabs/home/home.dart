@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
               OtherOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
               RandomOutfit(phoneHeight: phoneHeight, phoneWidth: phoneWidth),
               Container(
-                height: 50,
+                height: 100,
               ),
             ],
           ),
