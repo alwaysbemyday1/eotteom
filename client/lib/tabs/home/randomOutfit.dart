@@ -85,7 +85,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                               context.watch<Position>().topY,
                               0,
                               0),
-                          child: Image.asset('assets/images/clothes/상의.png',
+                          child: Image.asset('assets/images/clothes/top.png',
                               height: ((widget.phoneWidth - 24) - 8) / 3,
                               width: ((widget.phoneWidth - 24) - 8) / 3)),
                       Container(
@@ -94,7 +94,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                               context.watch<Position>().bottomY,
                               0,
                               0),
-                          child: Image.asset('assets/images/clothes/하의.png',
+                          child: Image.asset('assets/images/clothes/bottom.png',
                               height: ((widget.phoneWidth - 24) - 8) / 2.5,
                               width: ((widget.phoneWidth - 24) - 8) / 5)),
                       Column(
@@ -106,7 +106,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                                   0,
                                   0),
                               child: Image.asset(
-                                  'assets/images/clothes/목도리.png',
+                                  'assets/images/clothes/muffler.png',
                                   height: ((widget.phoneWidth - 24) - 8) / 5,
                                   width: ((widget.phoneWidth - 24) - 8) / 5)),
                           Container(
@@ -115,7 +115,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                                   context.watch<Position>().shoesY,
                                   0,
                                   0),
-                              child: Image.asset('assets/images/clothes/신발.png',
+                              child: Image.asset(
+                                  'assets/images/clothes/shoes.png',
                                   height: ((widget.phoneWidth - 24) - 8) / 5,
                                   width: ((widget.phoneWidth - 24) - 8) / 5)),
                         ],
@@ -193,5 +194,3 @@ class Position extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-// 다시돌리기 버턴 : state로 옷 위치 조정
