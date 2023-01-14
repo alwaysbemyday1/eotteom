@@ -9,7 +9,7 @@ const homeTheme =  CupertinoThemeData(
       fontFamily: "NotoSans",
       color: Colors.black,
       fontWeight: FontWeight.w400,
-      height: 1.3
+      height: 1.2
     )
     
   ),

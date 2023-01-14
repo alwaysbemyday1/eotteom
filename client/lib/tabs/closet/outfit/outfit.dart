@@ -1,11 +1,10 @@
-import 'package:eotteom/login.dart';
+import 'package:eotteom/signin.dart';
 import 'package:eotteom/tabs/closet/outfit/checkbox.dart';
 import 'package:eotteom/tabs/closet/mycloset.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
 import "temperaturepicker.dart";
 import "package:provider/provider.dart";
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class Cody extends StatefulWidget {
   Cody({super.key});
@@ -76,7 +75,7 @@ class _CodyState extends State<Cody> {
           children: [TextButton(child: Text('유저이름 들어갈자리'),
             onPressed: (){
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => LoginPage())
+                context, MaterialPageRoute(builder: (context) => SigninPage())
               );
             },
           ), TextButton(
