@@ -12,10 +12,32 @@ void main() {
   runApp(MultiProvider(
       providers: [ChangeNotifierProvider(create: (c) => Position())],
       child: const CupertinoApp(
-        home: MyApp(),
+        home: Eotteom(),
         theme: homeTheme,
       )));
 }
+
+class Eotteom extends StatefulWidget {
+  const Eotteom({super.key});
+
+  @override
+  State<Eotteom> createState() => _EotteomState();
+}
+
+class _EotteomState extends State<Eotteom> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextButton(
+              child: Text('화면으로'),
+              onPressed: () {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => MyApp()));
+              },
+      ),
+    );
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
