@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'outfits',
     'clothes',
     'rest_framework',
-    ''
 ]
 
 MIDDLEWARE = [
