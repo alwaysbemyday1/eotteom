@@ -32,6 +32,7 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle loginButtonStyle = ElevatedButton.styleFrom(
+      elevation: 0.0,
       textStyle: const TextStyle(color: Colors.black, fontSize: 16),
       backgroundColor: Colors.white,
       side: const BorderSide(color: Colors.black),
@@ -39,6 +40,7 @@ class _SigninPageState extends State<SigninPage> {
     );
 
     final ButtonStyle registerButtonStyle = ElevatedButton.styleFrom(
+      elevation: 0.0,
       textStyle: const TextStyle(color: Colors.white, fontSize: 16),
       backgroundColor: Colors.black,
       side: const BorderSide(color: Colors.black),
