@@ -16,6 +16,7 @@ class MyCloset extends StatelessWidget {
       child: MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
