@@ -17,10 +17,19 @@ class _LoginPageState extends State<LoginPage> {
   bool emailOkay = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool passwordOkay = false;
   
   void _emailCheck() {
     setState(() {
       emailOkay = EmailValidator.validate(_emailController.text);
+    });
+  }
+
+  void _passwordCheck() {
+    setState(() {
+      if (_passwordController.text.length > 0) {
+        passwordOkay = true;
+      }
     });
   }
 
@@ -31,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement initState
     super.initState();
     _emailController.addListener(_emailCheck);
+    _passwordController.addListener(_passwordCheck);
   }
   @override
   Widget build(BuildContext context) {
@@ -111,7 +121,9 @@ class _LoginPageState extends State<LoginPage> {
                   hintStyle: TextStyle(color: Colors.grey)),
                   controller: _passwordController,
                   onChanged: (text) {
-                    setState(() {});
+                    setState(() {
+
+                    });
                   },
                 ),
             ),
@@ -125,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(color: Colors.white, fontSize: 16),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                          backgroundColor: emailOkay ? Colors.black : Color(0xffCACACA)
+                          backgroundColor: (emailOkay) && (passwordOkay) ? Colors.black : Color(0xffCACACA)
                         ),
                         onPressed: () {
                           if (emailOkay == true) {
