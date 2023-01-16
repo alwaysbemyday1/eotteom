@@ -20,26 +20,22 @@ class _MonthRangePickState extends State<MonthRangePick> {
         absorbing: !(context.watch<FilterState>().datecheck),
         child: SfDateRangePicker(
           headerStyle: DateRangePickerHeaderStyle(
-            textAlign: TextAlign.center,
-            textStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff131313)
-            )
-          ),
-
+              textAlign: TextAlign.center,
+              textStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
           onSelectionChanged: _onSelectionChanged,
           selectionMode: DateRangePickerSelectionMode.multiple,
           view: DateRangePickerView.year,
           showNavigationArrow: true,
           allowViewNavigation: false,
-          startRangeSelectionColor: const Color(0xff131313),
-          endRangeSelectionColor: const Color(0xff131313),
+          startRangeSelectionColor: Colors.black,
+          endRangeSelectionColor: Colors.black,
           rangeSelectionColor: Colors.grey,
-          todayHighlightColor: const Color(0xff131313),
-          selectionColor: const Color(0xff131313),
+          todayHighlightColor: Colors.black,
+          selectionColor: Colors.black,
           yearCellStyle: DateRangePickerYearCellStyle(
-            textStyle: TextStyle(color: const Color(0xff131313)),
-            todayTextStyle: TextStyle(color: const Color(0xff131313)),
+            textStyle: TextStyle(color: Colors.black),
+            todayTextStyle: TextStyle(color: Colors.black),
           ),
         ),
       ),
