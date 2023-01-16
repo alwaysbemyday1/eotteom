@@ -1,3 +1,4 @@
+import 'package:eotteom/signin.dart';
 import 'package:eotteom/tabs/home/randomOutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,15 +30,15 @@ class _EotteomState extends State<Eotteom> {
   Widget build(BuildContext context) {
     return Container(
       child: TextButton(
-              child: Text('화면으로'),
-              onPressed: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => MyApp()));
-              },
+        child: Text('화면으로'),
+        onPressed: () {
+          Navigator.push(
+              context, CupertinoPageRoute(builder: (context) => SigninPage()));
+        },
       ),
     );
   }
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

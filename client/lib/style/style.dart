@@ -23,5 +23,5 @@ var headLineTextTheme = TextStyle(
     fontSize: 22,
     fontFamily: "NotoSans",
     color: Colors.black,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
     height: 1.3);
