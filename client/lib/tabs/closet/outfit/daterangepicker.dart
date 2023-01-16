@@ -3,6 +3,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
+
 class MonthRangePick extends StatefulWidget {
   const MonthRangePick({super.key});
 
@@ -11,20 +12,25 @@ class MonthRangePick extends StatefulWidget {
 }
 
 class _MonthRangePickState extends State<MonthRangePick> {
+  
   @override
   Widget build(BuildContext context) {
     return Opacity(
       opacity: (context.watch<FilterState>().datecheck) ? 1.0 : 0.3,
       alwaysIncludeSemantics: true,
       child: AbsorbPointer(
-        absorbing: !(context.watch<FilterState>().datecheck),
+      absorbing: !(context.watch<FilterState>().datecheck),
+      child: Container(
         child: SfDateRangePicker(
           headerStyle: DateRangePickerHeaderStyle(
-              textAlign: TextAlign.center,
-              textStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+            textAlign: TextAlign.center,
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black
+            )
+          ),
           onSelectionChanged: _onSelectionChanged,
-          selectionMode: DateRangePickerSelectionMode.multiple,
+          selectionMode: DateRangePickerSelectionMode.multiRange,
           view: DateRangePickerView.year,
           showNavigationArrow: true,
           allowViewNavigation: false,
@@ -38,17 +44,16 @@ class _MonthRangePickState extends State<MonthRangePick> {
             todayTextStyle: TextStyle(color: Colors.black),
           ),
         ),
-      ),
-    );
+    ),
+    ),
+    );    
+  }
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs dateRangePickerSelectionChangedArgs) {
+    // print(dateRangePickerSelectionChangedArgs.value);
+    context.read<FilterState>().selectDate(dateRangePickerSelectionChangedArgs.value);
   }
 
-  void _onSelectionChanged(
-      DateRangePickerSelectionChangedArgs dateRangePickerSelectionChangedArgs) {
-    print(dateRangePickerSelectionChangedArgs.value);
-    context
-        .read<FilterState>()
-        .selectDate(dateRangePickerSelectionChangedArgs.value);
-  }
+  
 }
 
 // https://help.syncfusion.com/flutter/daterangepicker/callbacks 조작법 참고
