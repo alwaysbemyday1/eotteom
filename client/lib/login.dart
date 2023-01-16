@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          color: Colors.black,
+          color: const Color(0xff131313),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true,
                   fillColor: const Color(0xffF3F3F3),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black)),
+                    borderSide: BorderSide(color: const Color(0xff131313))),
                   hintText: '이메일 주소를 입력해 주세요',
                   hintStyle: TextStyle(color: Colors.grey)),
                   controller: _emailController,
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true,
                   fillColor: const Color(0xffF3F3F3),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black)),
+                    borderSide: BorderSide(color: const Color(0xff131313))),
                   hintText: '비밀번호를 입력해주세요',
                   hintStyle: TextStyle(color: Colors.grey)),
                   controller: _passwordController,
@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(color: Colors.white, fontSize: 16),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                          backgroundColor: (emailOkay) && (passwordOkay) ? Colors.black : Color(0xffCACACA)
+                          backgroundColor: (emailOkay) && (passwordOkay) ? const Color(0xff131313) : Color(0xffCACACA)
                         ),
                         onPressed: () {
                           if (emailOkay == true) {

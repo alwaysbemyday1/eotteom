@@ -31,7 +31,7 @@ class _CodyState extends State<Cody> {
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
-          side: BorderSide(color: Colors.black)
+          side: BorderSide(color: const Color(0xff131313))
         )
       )
     );
@@ -40,10 +40,10 @@ class _CodyState extends State<Cody> {
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
-          side: BorderSide(color: Colors.black)
+          side: BorderSide(color: const Color(0xff131313))
         )
       ),
-      backgroundColor: MaterialStateProperty.all(Colors.black)
+      backgroundColor: MaterialStateProperty.all(const Color(0xff131313))
     );
 
     bool dateCheck = true;
@@ -80,7 +80,7 @@ class _CodyState extends State<Cody> {
             },
           ), TextButton(
             style: buttonStyle,
-            child: Text('필터', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),), 
+            child: Text('필터', style: TextStyle(color: const Color(0xff131313), fontWeight: FontWeight.bold),), 
             onPressed: () {
               showModalBottomSheet(
                 shape: RoundedRectangleBorder(

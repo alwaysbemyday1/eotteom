@@ -33,7 +33,7 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
         Container(
             child: SfRangeSliderTheme(
             data: SfRangeSliderThemeData(
-              activeTickColor: Colors.black,
+              activeTickColor: const Color(0xff131313),
               inactiveTickColor: Colors.grey,
             ),
             child: SfRangeSlider(
@@ -44,7 +44,7 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
             minorTicksPerInterval: 4,
             showTicks: true,
             values: context.watch<FilterState>().temperatures,
-            activeColor: Colors.black,
+            activeColor: const Color(0xff131313),
             inactiveColor: Colors.grey,
             onChanged: (SfRangeValues newValues) {
               setState(() {

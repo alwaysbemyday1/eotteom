@@ -26,7 +26,7 @@ class _MonthRangePickState extends State<MonthRangePick> {
             textAlign: TextAlign.center,
             textStyle: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.black
+              color: const Color(0xff131313)
             )
           ),
           onSelectionChanged: _onSelectionChanged,
@@ -34,14 +34,14 @@ class _MonthRangePickState extends State<MonthRangePick> {
           view: DateRangePickerView.year,
           showNavigationArrow: true,
           allowViewNavigation: false,
-          startRangeSelectionColor: Colors.black,
-          endRangeSelectionColor: Colors.black,
+          startRangeSelectionColor: const Color(0xff131313),
+          endRangeSelectionColor: const Color(0xff131313),
           rangeSelectionColor: Colors.grey,
-          todayHighlightColor: Colors.black,
-          selectionColor: Colors.black,
+          todayHighlightColor: const Color(0xff131313),
+          selectionColor: const Color(0xff131313),
           yearCellStyle: DateRangePickerYearCellStyle(
-            textStyle: TextStyle(color: Colors.black),
-            todayTextStyle: TextStyle(color: Colors.black),
+            textStyle: TextStyle(color: const Color(0xff131313)),
+            todayTextStyle: TextStyle(color: const Color(0xff131313)),
           ),
         ),
     ),

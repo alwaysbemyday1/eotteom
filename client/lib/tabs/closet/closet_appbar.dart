@@ -5,13 +5,13 @@ var appbar = AppBar(
           title: const Text('나의 옷장',
             style: TextStyle(fontFamily: "NotoSans",
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: const Color(0xff131313),
             fontSize: 20.0,
             ),
           ),
           bottom: const TabBar(
             indicatorColor: Colors.grey,
-            labelColor: Colors.black,
+            labelColor: const Color(0xff131313),
             labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             tabs: [
               Tab(text: '옷장'),

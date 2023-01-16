@@ -32,16 +32,16 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle loginButtonStyle = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(color: Colors.black, fontSize: 16),
+      textStyle: const TextStyle(color: const Color(0xff131313), fontSize: 16),
       backgroundColor: Colors.white,
-      side: const BorderSide(color: Colors.black),
+      side: const BorderSide(color: const Color(0xff131313)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))
     );
 
     final ButtonStyle registerButtonStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(color: Colors.white, fontSize: 16),
-      backgroundColor: Colors.black,
-      side: const BorderSide(color: Colors.black),
+      backgroundColor: const Color(0xff131313),
+      side: const BorderSide(color: const Color(0xff131313)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))
     );
     // final buttonwidth = MediaQuery.of(context).size.width - 32;
@@ -77,11 +77,11 @@ class _SigninPageState extends State<SigninPage> {
                             ), // 1/8
                             const Text(
                               "나의 옷장을 만들기 위해서는",
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+                              style: TextStyle(color: const Color(0xff131313), fontWeight: FontWeight.w500),
                             ),
                             const Text(
                               "로그인이 필요해요",
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+                              style: TextStyle(color: const Color(0xff131313), fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
@@ -120,8 +120,8 @@ class _SigninPageState extends State<SigninPage> {
                       child: RichText(
                         text: const TextSpan(
                           children: [
-                            TextSpan(text: '이미 계정이 있다면? ', style: TextStyle(color: Colors.black)),
-                            TextSpan(text: "로그인", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black))
+                            TextSpan(text: '이미 계정이 있다면? ', style: TextStyle(color: const Color(0xff131313))),
+                            TextSpan(text: "로그인", style: TextStyle(fontWeight: FontWeight.bold, color: const Color(0xff131313)))
                           ]
                         ),
                       )
