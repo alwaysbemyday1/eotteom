@@ -1,8 +1,12 @@
 import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+
+import 'email.dart';
 
 class TOS extends StatefulWidget {
   const TOS({super.key});
@@ -12,7 +16,6 @@ class TOS extends StatefulWidget {
 }
 
 class _TOSState extends State<TOS> {
-  var page = 1;
   var allCheck = false;
   var serviceCheck = false;
   var personalCheck = false;
@@ -25,12 +28,14 @@ class _TOSState extends State<TOS> {
                 backgroundColor: CupertinoColors.white,
                 padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                 border: null,
-                leading: IconButton(
-                  icon: Icon(CupertinoIcons.chevron_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    this.page -= 1;
-                  },
+                leading: Material(
+                  child: IconButton(
+                    icon: Icon(CupertinoIcons.chevron_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      context.read<SignInPage>().pageDown();
+                    },
+                  ),
                 )),
             child: Container(
                 margin: EdgeInsets.fromLTRB(24, 35, 24, 0),
@@ -166,23 +171,27 @@ class _TOSState extends State<TOS> {
                                 Icon(CupertinoIcons.forward)
                               ],
                             )),
+                        //SizedBox(height: 100.h - (348) - (116)),
                         SizedBox(
-                            height:
-                                100.h - (326.5 + 15) - (99 + 12 * 1.3) - 80),
+                            height: 100.h -
+                                508 -
+                                MediaQuery.of(context).viewInsets.bottom),
                         Column(
                           children: [
                             Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
                                 alignment: Alignment.centerRight,
                                 child: Text(
-                                  '${page}/4',
+                                  '${context.watch<SignInPage>().page}/4',
                                   style: TextStyle(fontSize: 12),
                                 )),
                             Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
                                 child: SizedBox(
                                   width: double.infinity,
-                                  child: CupertinoProgressBar(value: page / 4),
+                                  child: CupertinoProgressBar(
+                                      value:
+                                          context.watch<SignInPage>().page / 4),
                                 )),
                           ],
                         ),
@@ -197,7 +206,13 @@ class _TOSState extends State<TOS> {
                                     child: Text('다음',
                                         style: TextStyle(
                                             fontSize: 16, color: Colors.white)),
-                                    onPressed: () {}),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => Email()));
+                                      context.read<SignInPage>().pageUp();
+                                    }),
                               )
                             : Container(
                                 padding: EdgeInsets.fromLTRB(0, 3, 0, 0),

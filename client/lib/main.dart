@@ -1,17 +1,19 @@
 import 'package:eotteom/signin.dart';
-import 'package:eotteom/tabs/home/randomOutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'tabs/home/home.dart';
+import 'provider.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
-import "tabs/closet/closetprovider.dart";
 
 void main() {
   runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (c) => Position())],
+      providers: [
+        ChangeNotifierProvider(create: (c) => SignInPage()),
+        ChangeNotifierProvider(create: (c) => Position()),
+      ],
       child: const CupertinoApp(
         home: Eotteom(),
         theme: homeTheme,
