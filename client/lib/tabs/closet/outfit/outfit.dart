@@ -27,15 +27,23 @@ class _CodyState extends State<Cody> {
   @override
   Widget build(BuildContext context) {
     var buttonStyle = ButtonStyle(
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-            side: BorderSide(color: Colors.black))));
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+          side: BorderSide(color: const Color(0xff131313))
+        )
+      )
+    );
 
     var searchbuttonStyle = ButtonStyle(
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-            side: BorderSide(color: Colors.black))),
-        backgroundColor: MaterialStateProperty.all(Colors.black));
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+          side: BorderSide(color: const Color(0xff131313))
+        )
+      ),
+      backgroundColor: MaterialStateProperty.all(const Color(0xff131313))
+    );
 
     bool dateCheck = true;
     bool temperatureCheck = true;
@@ -54,7 +62,6 @@ class _CodyState extends State<Cody> {
         print(temperatureCheck);
       });
     }
-
     return Sizer(
       builder: (context, orientation, deviceType) {
         return Column(children: [
@@ -70,7 +77,8 @@ class _CodyState extends State<Cody> {
                 child: Text(
                   '필터',
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Color(0xff131313), fontWeight: FontWeight.bold),
+
                 ),
                 onPressed: () {
                   showModalBottomSheet(

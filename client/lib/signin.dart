@@ -35,18 +35,18 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle loginButtonStyle = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(color: Colors.black, fontSize: 16),
-        backgroundColor: Colors.white,
-        side: const BorderSide(color: Colors.black),
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+      textStyle: const TextStyle(color: const Color(0xff131313), fontSize: 16),
+      backgroundColor: Colors.white,
+      side: const BorderSide(color: const Color(0xff131313)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))
+    );
 
     final ButtonStyle registerButtonStyle = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(color: Colors.white, fontSize: 16),
-        backgroundColor: Colors.black,
-        side: const BorderSide(color: Colors.black),
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+      textStyle: const TextStyle(color: Colors.white, fontSize: 16),
+      backgroundColor: const Color(0xff131313),
+      side: const BorderSide(color: const Color(0xff131313)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))
+    );
     // final buttonwidth = MediaQuery.of(context).size.width - 32;
     return Sizer(
       builder: (BuildContext context, Orientation orientation,
@@ -157,13 +157,16 @@ class _SigninPageState extends State<SigninPage> {
                               '또는 다른 계정으로 간편 로그인',
                               style: TextStyle(color: Colors.grey),
                             ),
-                            Expanded(
-                              child: Container(
-                                child: Divider(
-                                  thickness: 1.0,
-                                ),
-                                margin: EdgeInsets.only(left: 20, right: 10),
-                              ),
+                            const SizedBox(
+                              height: 16
+                            ), // 1/8
+                            const Text(
+                              "나의 옷장을 만들기 위해서는",
+                              style: TextStyle(color: const Color(0xff131313), fontWeight: FontWeight.w500),
+                            ),
+                            const Text(
+                              "로그인이 필요해요",
+                              style: TextStyle(color: const Color(0xff131313), fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
@@ -172,6 +175,76 @@ class _SigninPageState extends State<SigninPage> {
                         height: 20,
                       ),
                     ],
+                    mainAxisAlignment: MainAxisAlignment.start,
+                  ),
+                  SizedBox(
+                    height: 12.5.h,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: 100.w-32,
+                    child: ElevatedButton(
+                      style: registerButtonStyle,
+                      onPressed: () {
+                        // 회원가입 페이지
+                      }, 
+                      child: const Text("회원가입")
+                    ),
+                  ), // 1/8
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: 100.w-32,
+                    child: ElevatedButton(
+                      style: loginButtonStyle,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage())
+                        );
+                      }, 
+                      child: RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(text: '이미 계정이 있다면? ', style: TextStyle(color: const Color(0xff131313))),
+                            TextSpan(text: "로그인", style: TextStyle(fontWeight: FontWeight.bold, color: const Color(0xff131313)))
+                          ]
+                        ),
+                      )
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            child: Divider(
+                              thickness: 1.0,
+                            ),
+                            margin: EdgeInsets.only(left: 10, right: 20),
+                          ),
+                        ),
+                        Text(
+                          '또는 다른 계정으로 간편 로그인',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: Divider(
+                              thickness: 1.0,
+                            ),
+                            margin: EdgeInsets.only(left: 20, right: 10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                 ),
               )),

@@ -12,7 +12,7 @@ class CheckboxWeather extends StatelessWidget {
         Checkbox(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          activeColor: Colors.black,
+          activeColor: Color(0xff131313),
           value: context.watch<FilterState>().datecheck,
           onChanged: (value) {
             context.read<FilterState>().changeDatecheck();
@@ -37,7 +37,7 @@ class CheckboxTemperature extends StatelessWidget {
         Checkbox(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          activeColor: Colors.black,
+          activeColor: Color(0xff131313),
           value: context.watch<FilterState>().temperaturecheck,
           onChanged: (value) {
             context.read<FilterState>().changeTemperaturecheck();
