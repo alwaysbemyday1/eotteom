@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
+import 'gender.dart';
+
 class Password extends StatefulWidget {
   const Password({super.key});
 
@@ -16,7 +18,7 @@ class Password extends StatefulWidget {
 }
 
 class _PasswordState extends State<Password> {
-  final TextEditingController controller = TextEditingController();
+  // final TextEditingController controller = TextEditingController();
   var flagValidatePassword = true;
 
   @override
@@ -44,7 +46,7 @@ class _PasswordState extends State<Password> {
                     ),
                   )),
               child: Container(
-                  margin: EdgeInsets.fromLTRB(24, 35, 24, 0),
+                  margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -160,7 +162,7 @@ class _PasswordState extends State<Password> {
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => Password()));
+                                            builder: (context) => Gender()));
                                     context.read<SignInPage>().pageUp();
                                   }),
                             )

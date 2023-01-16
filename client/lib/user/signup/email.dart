@@ -50,7 +50,7 @@ class _EmailState extends State<Email> {
                     ),
                   )),
               child: Container(
-                  margin: EdgeInsets.fromLTRB(24, 35, 24, 0),
+                  margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
