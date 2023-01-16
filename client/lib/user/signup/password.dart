@@ -1,29 +1,23 @@
 import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:eotteom/style/style.dart';
-import 'package:eotteom/user/signup/password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eotteom/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
-class Email extends StatefulWidget {
-  const Email({super.key});
+class Password extends StatefulWidget {
+  const Password({super.key});
 
   @override
-  State<Email> createState() => _EmailState();
+  State<Password> createState() => _PasswordState();
 }
 
-class _EmailState extends State<Email> {
-  var inputEmail;
-  var flagValidateEmail = false;
-
-  validateEmail() {
-    setState(() {
-      flagValidateEmail = EmailValidator.validate(inputEmail);
-    });
-  }
+class _PasswordState extends State<Password> {
+  final TextEditingController controller = TextEditingController();
+  var flagValidatePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +63,10 @@ class _EmailState extends State<Email> {
                                       height: 1.3)),
                               RichText(
                                   text: TextSpan(children: [
-                                TextSpan(text: '이메일', style: headLineTextTheme),
                                 TextSpan(
-                                  text: '을 입력해 주세요',
+                                    text: '비밀번호', style: headLineTextTheme),
+                                TextSpan(
+                                  text: '를 입력해 주세요',
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontFamily: "NotoSans",
@@ -86,32 +81,47 @@ class _EmailState extends State<Email> {
                           height: 44,
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
                           child: TextField(
+                              //controller: controller,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: '이메일 입력해주세요',
+                                  hintText: '8~20자리의 비밀번호를 입력해주세요',
                                   hintStyle: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xff9b9b9b),
-                                      fontFamily: "NotoSans",
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.3),
+                                      fontSize: 14, color: Color(0xff9b9b9b)),
                                   filled: true,
                                   fillColor: Color(0xffF3F3F3)),
                               autofocus: true,
-                              onChanged: (text) {
-                                inputEmail = text;
-                                validateEmail();
-                              })),
-                      flagValidateEmail == true
-                          ? Container(
-                              height: 20,
-                              margin: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Text(
-                                '사용가능한 이메일이에요',
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xff2A7D42)),
-                              ))
-                          : Container(height: 20),
+                              onChanged: (text) {})),
+                      Container(
+                          height: 20,
+                          margin: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(
+                            '영문 소문자, 숫자, 특수문자 중 2개 이상 포함',
+                            style: TextStyle(
+                                fontSize: 12, color: Color(0xff131313)),
+                          )),
+                      // FlutterPwValidator(
+                      //   controller: controller,
+                      //   minLength: 8,
+                      //   numericCharCount: 1,
+                      //   specialCharCount: 1,
+                      //   width: 400,
+                      //   height: 150,
+                      //   onSuccess: () {
+                      //     setState(() {
+                      //       success = true;
+                      //     });
+                      //     print("MATCHED");
+                      //     ScaffoldMessenger.of(context).showSnackBar(
+                      //         const SnackBar(
+                      //             content: Text("Password is matched")));
+                      //   },
+                      //   onFail: () {
+                      //     setState(() {
+                      //       success = false;
+                      //     });
+                      //     print("NOT MATCHED");
+                      //   },
+                      // ),
                       SizedBox(
                           height: 100.h -
                               389 -
@@ -135,7 +145,7 @@ class _EmailState extends State<Email> {
                               )),
                         ],
                       ),
-                      flagValidateEmail == true
+                      flagValidatePassword == true
                           ? Container(
                               width: 100.w - 32,
                               height: 54,
