@@ -32,16 +32,100 @@ class _ClosetState extends State<Closet> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(child: Text(categories[0], style: TextStyle(color: categoryPressed[0] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(0);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[0] ? const Color(0xff131313) : Colors.white)),),
-            TextButton(child: Text(categories[1], style: TextStyle(color: categoryPressed[1] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(1);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[1] ? const Color(0xff131313) : Colors.white)),),
-            TextButton(child: Text(categories[2], style: TextStyle(color: categoryPressed[2] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(2);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[2] ? const Color(0xff131313) : Colors.white)),),
-            TextButton(child: Text(categories[3], style: TextStyle(color: categoryPressed[3] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(3);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[3] ? const Color(0xff131313) : Colors.white)),),
-            TextButton(child: Text(categories[4], style: TextStyle(color: categoryPressed[4] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(4);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[4] ? const Color(0xff131313) : Colors.white)),),
-            TextButton(child: Text(categories[5], style: TextStyle(color: categoryPressed[4] ? Colors.white : const Color(0xff131313)),), onPressed: () {changePressed(4);}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(categoryPressed[5] ? const Color(0xff131313) : Colors.white)),),
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton(
+                child: Text(
+                  categories[0],
+                  style: TextStyle(
+                      color: categoryPressed[0] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(0);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[0] ? Colors.black : Colors.white)),
+              ),
+              TextButton(
+                child: Text(
+                  categories[1],
+                  style: TextStyle(
+                      color: categoryPressed[1] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(1);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[1] ? Colors.black : Colors.white)),
+              ),
+              TextButton(
+                child: Text(
+                  categories[2],
+                  style: TextStyle(
+                      color: categoryPressed[2] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(2);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[2] ? Colors.black : Colors.white)),
+              ),
+              TextButton(
+                child: Text(
+                  categories[3],
+                  style: TextStyle(
+                      color: categoryPressed[3] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(3);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[3] ? Colors.black : Colors.white)),
+              ),
+              TextButton(
+                child: Text(
+                  categories[4],
+                  style: TextStyle(
+                      color: categoryPressed[4] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(4);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[4] ? Colors.black : Colors.white)),
+              ),
+              TextButton(
+                child: Text(
+                  categories[5],
+                  style: TextStyle(
+                      color: categoryPressed[4] ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14),
+                ),
+                onPressed: () {
+                  changePressed(4);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        categoryPressed[5] ? Colors.black : Colors.white)),
+              ),
+            ],
+          ),
         ),
         closetWidgets[closetState]
       ],
