@@ -10,18 +10,22 @@ class CheckboxWeather extends StatelessWidget {
     return Row(
       children: [
         Checkbox(
-          activeColor: const Color(0xff131313),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          activeColor: Color(0xff131313),
           value: context.watch<FilterState>().datecheck,
           onChanged: (value) {
             context.read<FilterState>().changeDatecheck();
           },
         ),
-        Text('날짜')
+        Text(
+          '날짜',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+        )
       ],
     );
   }
 }
-
 
 class CheckboxTemperature extends StatelessWidget {
   const CheckboxTemperature({super.key});
@@ -31,13 +35,15 @@ class CheckboxTemperature extends StatelessWidget {
     return Row(
       children: [
         Checkbox(
-          activeColor: const Color(0xff131313),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          activeColor: Color(0xff131313),
           value: context.watch<FilterState>().temperaturecheck,
           onChanged: (value) {
             context.read<FilterState>().changeTemperaturecheck();
           },
         ),
-        Text('기온')
+        Text('기온', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
       ],
     );
   }

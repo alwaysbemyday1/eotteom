@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Closet extends StatefulWidget {
   const Closet({super.key});
 
@@ -13,7 +12,7 @@ class _ClosetState extends State<Closet> {
   var categories = ['상의', '하의', '아우터', '신발', '악세사리', '원피스'];
   int closetState = 0;
 
-  changePressed (int index) {
+  changePressed(int index) {
     setState(() {
       for (int i = 0; i < categoryPressed.length; i++) {
         if (i == index) {
@@ -25,6 +24,7 @@ class _ClosetState extends State<Closet> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,5 +49,12 @@ class _ClosetState extends State<Closet> {
   }
 }
 
-var closetWidgets = [Text('예시1'), Text('예시2'), Text('예시3'), Text('예시4'), Text('예시5'), Text('예시6')];
+var closetWidgets = [
+  Text('예시1'),
+  Text('예시2'),
+  Text('예시3'),
+  Text('예시4'),
+  Text('예시5'),
+  Text('예시6')
+];
 // 이제 옷장 보여지는 Custom Widget으로 추가 예정
