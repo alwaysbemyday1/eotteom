@@ -46,21 +46,6 @@ class _GenderState extends State<Gender> {
                     },
                   ),
                 ),
-                trailing: Container(
-                    margin: EdgeInsets.fromLTRB(0, 0, 14, 0),
-                    child: CupertinoButton(
-                      padding: EdgeInsets.all(0),
-                      child: Text(
-                        '넘어가기',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: "NotoSans",
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400,
-                            height: 1.3),
-                      ),
-                      onPressed: () {},
-                    )),
               ),
               child: Container(
                   margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
@@ -247,7 +232,6 @@ class _GenderState extends State<Gender> {
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) => Complete()));
-                                    context.read<SignInPage>().pageUp();
                                   }),
                             )
                           : Container(

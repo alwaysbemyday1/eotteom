@@ -1,12 +1,8 @@
-import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
-import 'package:email_validator/email_validator.dart';
-import 'package:eotteom/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eotteom/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import '../../tabs/home/home.dart';
 
@@ -90,8 +86,9 @@ class _CompleteState extends State<Complete> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => Home()));
-                              context.read<SignInPage>().pageUp();
+                                      builder: (context) => Home(
+                                          phoneHeight: 100.h,
+                                          phoneWidth: 100.w)));
                             }),
                       ),
                       SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
