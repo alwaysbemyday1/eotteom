@@ -1,4 +1,6 @@
 import 'package:eotteom/signin.dart';
+import 'package:eotteom/tabs/home/randomOutfit.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,15 +32,8 @@ class Eotteom extends StatefulWidget {
 class _EotteomState extends State<Eotteom> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextButton(
-        child: Text('화면으로'),
-        onPressed: () {
-          Navigator.push(
-              context, CupertinoPageRoute(builder: (context) => SigninPage()));
-        },
-      ),
-    );
+    return SigninPage(); // 초기 로그인 페이지로 연결되고, 로그인 페이지에서 메인으로 연결됨.
+
   }
 }
 
@@ -47,8 +42,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final phoneHeight = MediaQuery.of(context).size.height;
-    //final phoneWidth = MediaQuery.of(context).size.width;
     final phoneWidth =
         MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
     final phoneHeight =

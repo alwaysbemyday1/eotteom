@@ -14,29 +14,25 @@ class MyCloset extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => FilterState(),
       child: MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('ko')
-      ],
-      locale: Locale('ko'),
-      home: DefaultTabController(
-      length: 2, // 옷장, 코디
-      child: Scaffold(
-        appBar: appbar, // 상단 TabBar 부분
-        body: TabBarView(
-          children: [
-            Closet(),
-            Cody()
-          ],
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [const Locale('ko')],
+        locale: Locale('ko'),
+        home: DefaultTabController(
+          length: 2, // 옷장, 코디
+          child: Scaffold(
+            appBar: appbar, // 상단 TabBar 부분
+            body: TabBarView(
+              children: [Closet(), Cody()],
+            ),
+          ),
         ),
       ),
-    ),
-  ),
     );
-}
+  }
 }
 
 class FilterState extends ChangeNotifier {
@@ -48,17 +44,17 @@ class FilterState extends ChangeNotifier {
   var lowtemperature;
   var temperatures = SfRangeValues(0.0, 15.0);
 
-  changeDatecheck () {
+  changeDatecheck() {
     datecheck = !datecheck;
     notifyListeners();
   }
 
-  changeTemperaturecheck () {
+  changeTemperaturecheck() {
     temperaturecheck = !temperaturecheck;
     notifyListeners();
   }
 
-  addYear () {
+  addYear() {
     nowyear++;
     notifyListeners();
   }
@@ -68,7 +64,7 @@ class FilterState extends ChangeNotifier {
     notifyListeners();
   }
 
-  selectDate (value) {
+  selectDate(value) {
     select_date = value;
     notifyListeners();
   }
