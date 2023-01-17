@@ -1,12 +1,12 @@
 import 'package:eotteom/provider.dart';
-import 'package:eotteom/style/style.dart';
+import 'package:eotteom/style.dart';
 import 'package:eotteom/user/signup/tos.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:email_validator/email_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import "login.dart";
+import 'login.dart';
 
 class SigninPage extends StatefulWidget {
   SigninPage({super.key});

@@ -1,6 +1,6 @@
 import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
 import 'package:eotteom/provider.dart';
-import 'package:eotteom/style/style.dart';
+import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

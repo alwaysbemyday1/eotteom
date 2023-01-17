@@ -113,7 +113,7 @@ class _ClosetState extends State<Closet> {
                 child: Text(
                   categories[5],
                   style: TextStyle(
-                      color: categoryPressed[4] ? Colors.white : Colors.black,
+                      color: categoryPressed[5] ? Colors.white : Colors.black,
                       fontWeight: FontWeight.w400,
                       fontSize: 14),
                 ),

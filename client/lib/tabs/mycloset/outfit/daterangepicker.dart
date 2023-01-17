@@ -1,4 +1,4 @@
-import 'package:eotteom/tabs/closet/mycloset.dart';
+import 'package:eotteom/tabs/mycloset/mycloset.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
