@@ -86,9 +86,11 @@ class _CompleteState extends State<Complete> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => Home(
-                                          phoneHeight: 100.h,
-                                          phoneWidth: 100.w)));
+                                      builder: (context) => Material(
+                                            child: Home(
+                                                phoneHeight: 100.h,
+                                                phoneWidth: 100.w),
+                                          )));
                             }),
                       ),
                       SizedBox(height: MediaQuery.of(context).viewInsets.bottom)

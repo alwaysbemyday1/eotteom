@@ -11,13 +11,13 @@ class OtherOutfit extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 18 * 1.3 + 13 + (((phoneWidth - 24) * 0.4 - 8) * 4 / 3) + 2,
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
+      margin: EdgeInsets.fromLTRB(16, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+              margin: EdgeInsets.fromLTRB(0, 0, 16, 12),
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
