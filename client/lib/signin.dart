@@ -1,5 +1,10 @@
+import 'package:eotteom/provider.dart';
+import 'package:eotteom/style/style.dart';
+import 'package:eotteom/user/signup/tos.dart';
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:email_validator/email_validator.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import "login.dart";
 
@@ -107,7 +112,11 @@ class _SigninPageState extends State<SigninPage> {
                         child: ElevatedButton(
                             style: registerButtonStyle,
                             onPressed: () {
-                              // 회원가입 페이지
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) => TOS()));
+                              context.read<SignInPage>().pageUp();
                             },
                             child: const Text("회원가입")),
                       ), // 1/8

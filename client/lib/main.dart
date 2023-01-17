@@ -1,16 +1,21 @@
 import 'package:eotteom/signin.dart';
 import 'package:eotteom/tabs/home/randomOutfit.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'tabs/home/home.dart';
+import 'provider.dart';
 import 'tabs/closet/mycloset.dart';
 import "style/style.dart";
 
 void main() {
   runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (c) => Position())],
+      providers: [
+        ChangeNotifierProvider(create: (c) => SignInPage()),
+        ChangeNotifierProvider(create: (c) => Position()),
+      ],
       child: const CupertinoApp(
         home: Eotteom(),
         theme: homeTheme,
@@ -28,9 +33,9 @@ class _EotteomState extends State<Eotteom> {
   @override
   Widget build(BuildContext context) {
     return SigninPage(); // 초기 로그인 페이지로 연결되고, 로그인 페이지에서 메인으로 연결됨.
+
   }
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

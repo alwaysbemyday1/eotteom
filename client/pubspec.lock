@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  cupertino_progress_bar:
+    dependency: "direct main"
+    description:
+      name: cupertino_progress_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   email_validator:
     dependency: "direct main"
     description:
@@ -88,6 +95,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_pw_validator:
+    dependency: "direct main"
+    description:
+      name: flutter_pw_validator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   flutter_signin_button:
     dependency: "direct main"
     description:
