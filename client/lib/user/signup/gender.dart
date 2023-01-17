@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
+import 'complete.dart';
+
 class Gender extends StatefulWidget {
   const Gender({super.key});
 
@@ -244,7 +246,7 @@ class _GenderState extends State<Gender> {
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => Gender()));
+                                            builder: (context) => Complete()));
                                     context.read<SignInPage>().pageUp();
                                   }),
                             )
