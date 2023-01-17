@@ -1,5 +1,5 @@
-import 'package:eotteom/tabs/closet/outfit/checkbox.dart';
-import 'package:eotteom/tabs/closet/mycloset.dart';
+import 'package:eotteom/tabs/mycloset/outfit/checkbox.dart';
+import 'package:eotteom/tabs/mycloset/mycloset.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
 import "temperaturepicker.dart";

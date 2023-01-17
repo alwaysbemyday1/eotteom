@@ -1,4 +1,4 @@
-import 'package:eotteom/signin.dart';
+import 'package:eotteom/user/signin.dart';
 import 'package:eotteom/tabs/home/randomOutfit.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 import 'tabs/home/home.dart';
 import 'provider.dart';
-import 'tabs/closet/mycloset.dart';
-import "style/style.dart";
+import 'tabs/mycloset/mycloset.dart';
+import 'style.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -33,7 +33,6 @@ class _EotteomState extends State<Eotteom> {
   @override
   Widget build(BuildContext context) {
     return SigninPage(); // 초기 로그인 페이지로 연결되고, 로그인 페이지에서 메인으로 연결됨.
-
   }
 }
 

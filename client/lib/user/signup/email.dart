@@ -1,6 +1,6 @@
 import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:eotteom/style/style.dart';
+import 'package:eotteom/style.dart';
 import 'package:eotteom/user/signup/password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

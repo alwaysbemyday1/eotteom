@@ -1,3 +1,4 @@
+import 'package:eotteom/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eotteom/provider.dart';
@@ -86,11 +87,7 @@ class _CompleteState extends State<Complete> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => Material(
-                                            child: Home(
-                                                phoneHeight: 100.h,
-                                                phoneWidth: 100.w),
-                                          )));
+                                      builder: (context) => MyApp()));
                             }),
                       ),
                       SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
