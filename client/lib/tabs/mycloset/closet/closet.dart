@@ -1,3 +1,4 @@
+import 'package:eotteom/tabs/mycloset/closet/top.dart';
 import 'package:flutter/material.dart';
 
 class Closet extends StatefulWidget {
@@ -134,7 +135,7 @@ class _ClosetState extends State<Closet> {
 }
 
 var closetWidgets = [
-  Text('예시1'),
+  Top(),
   Text('예시2'),
   Text('예시3'),
   Text('예시4'),
