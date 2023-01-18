@@ -122,9 +122,7 @@ class MyApp extends StatelessWidget {
                             onPressed: () {},
                           ),
                         )),
-                    child: Center(
-                        child: Home(
-                            phoneHeight: phoneHeight, phoneWidth: phoneWidth)),
+                    child: Center(child: Home()),
                   );
                 },
               );

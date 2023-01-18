@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sizer/sizer.dart';
 
 class OtherOutfit extends StatelessWidget {
-  const OtherOutfit({Key? key, this.phoneHeight, this.phoneWidth})
-      : super(key: key);
-  final phoneHeight;
-  final phoneWidth;
+  const OtherOutfit({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 18 * 1.3 + 13 + (((phoneWidth - 24) * 0.4 - 8) * 4 / 3) + 2,
+      height: 18 * 1.3 + 13 + (((100.w - 24) * 0.4 - 8) * 4 / 3) + 2,
       margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,40 +37,40 @@ class OtherOutfit extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
-                height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                 child: Row(
                   children: [
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi1.png',
                           fit: BoxFit.fill),
                     ),
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi2.png',
                           fit: BoxFit.fill),
                     ),
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi3.png',
                           fit: BoxFit.fill),
                     ),
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi4.png',
                           fit: BoxFit.fill),
                     ),
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: ((phoneWidth - 24) * 0.4 - 8) / 3 * 4,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
                       margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi5.png',
                           fit: BoxFit.fill),
