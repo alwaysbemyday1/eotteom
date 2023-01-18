@@ -1,3 +1,4 @@
+import 'package:eotteom/tabs/add/addoutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -159,7 +160,12 @@ class _RandomOutfitState extends State<RandomOutfit> {
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5),
                       child: Text('이 코디 저장하기', style: TextStyle(fontSize: 14)),
-                      onPressed: () {}),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => AddOutfit()));
+                      }),
                 )
               ],
             )),

@@ -41,10 +41,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // sizer 변경 후 삭제 ------
     final phoneWidth =
         MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
     final phoneHeight =
         MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height;
+    // sizer 변경 후 삭제 ------
+
     return CupertinoTabScaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
