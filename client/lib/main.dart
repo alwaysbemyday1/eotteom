@@ -1,3 +1,4 @@
+import 'package:eotteom/tabs/closetanalysis/analysis.dart';
 import 'package:eotteom/user/signin.dart';
 import 'package:eotteom/tabs/home/randomOutfit.dart';
 
@@ -94,17 +95,10 @@ class MyApp extends StatelessWidget {
               return CupertinoTabView(
                 builder: (context) {
                   return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        trailing: SizedBox(
-                      width: 50,
-                      child: CupertinoButton(
-                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                        child: Icon(CupertinoIcons.settings),
-                        onPressed: () {},
-                      ),
-                    )),
-                    child: Center(child: Text('옷장 분석')),
-                  );
+                    child: MaterialApp(
+                      home: Analysis(),
+                    ),
+                    );
                 },
               );
             case 2:
