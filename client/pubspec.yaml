@@ -48,6 +48,9 @@ dependencies:
   cupertino_progress_bar: ^0.2.0
   flutter_pw_validator: ^1.5.0
   pie_chart: ^5.3.2
+  image_picker: ^0.8.6
+  image_cropper: ^3.0.1
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

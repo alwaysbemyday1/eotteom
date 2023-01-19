@@ -1,14 +1,13 @@
+import 'package:eotteom/tabs/add/addoutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../provider.dart';
 
 class RandomOutfit extends StatefulWidget {
-  const RandomOutfit({Key? key, this.phoneHeight, this.phoneWidth})
-      : super(key: key);
-  final phoneHeight;
-  final phoneWidth;
+  const RandomOutfit({Key? key}) : super(key: key);
 
   @override
   State<RandomOutfit> createState() => _RandomOutfitState();
@@ -19,19 +18,16 @@ class _RandomOutfitState extends State<RandomOutfit> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<Position>().getRand(widget.phoneWidth);
+      context.read<Position>().getRand(100.w);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (widget.phoneWidth - 24) - 8,
-      height: (18 + 14) * 1.3 +
-          (13 + 17 + 8) +
-          ((widget.phoneWidth - 24) - 8) / 2 +
-          44 * 2 +
-          5,
+      width: (100.w - 24) - 8,
+      height:
+          (18 + 14) * 1.3 + (13 + 17 + 8) + ((100.w - 24) - 8) / 2 + 44 * 2 + 5,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,8 +57,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
               ),
             ),
             Container(
-                width: (widget.phoneWidth - 24) - 8,
-                height: ((widget.phoneWidth - 24) - 8) / 2,
+                width: (100.w - 24) - 8,
+                height: ((100.w - 24) - 8) / 2,
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 17),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3),
@@ -74,8 +70,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                       )
                     ]),
                 child: Container(
-                  width: (widget.phoneWidth - 24) - 8,
-                  height: ((widget.phoneWidth - 24) - 8) / 2,
+                  width: (100.w - 24) - 8,
+                  height: ((100.w - 24) - 8) / 2,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -87,8 +83,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                               0,
                               0),
                           child: Image.asset('assets/images/clothes/top.png',
-                              height: ((widget.phoneWidth - 24) - 8) / 3,
-                              width: ((widget.phoneWidth - 24) - 8) / 3)),
+                              height: ((100.w - 24) - 8) / 3,
+                              width: ((100.w - 24) - 8) / 3)),
                       Container(
                           margin: EdgeInsets.fromLTRB(
                               context.watch<Position>().bottomX,
@@ -96,8 +92,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                               0,
                               0),
                           child: Image.asset('assets/images/clothes/bottom.png',
-                              height: ((widget.phoneWidth - 24) - 8) / 2.5,
-                              width: ((widget.phoneWidth - 24) - 8) / 5)),
+                              height: ((100.w - 24) - 8) / 2.5,
+                              width: ((100.w - 24) - 8) / 5)),
                       Column(
                         children: [
                           Container(
@@ -108,8 +104,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                                   0),
                               child: Image.asset(
                                   'assets/images/clothes/muffler.png',
-                                  height: ((widget.phoneWidth - 24) - 8) / 5,
-                                  width: ((widget.phoneWidth - 24) - 8) / 5)),
+                                  height: ((100.w - 24) - 8) / 5,
+                                  width: ((100.w - 24) - 8) / 5)),
                           Container(
                               margin: EdgeInsets.fromLTRB(
                                   context.watch<Position>().shoesX,
@@ -118,8 +114,8 @@ class _RandomOutfitState extends State<RandomOutfit> {
                                   0),
                               child: Image.asset(
                                   'assets/images/clothes/shoes.png',
-                                  height: ((widget.phoneWidth - 24) - 8) / 5,
-                                  width: ((widget.phoneWidth - 24) - 8) / 5)),
+                                  height: ((100.w - 24) - 8) / 5,
+                                  width: ((100.w - 24) - 8) / 5)),
                         ],
                       ),
                     ],
@@ -130,7 +126,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
               children: [
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                  width: (widget.phoneWidth - 24) - 8,
+                  width: (100.w - 24) - 8,
                   height: 44,
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.black, width: 1),
@@ -148,18 +144,23 @@ class _RandomOutfitState extends State<RandomOutfit> {
                         ],
                       ),
                       onPressed: () {
-                        context.read<Position>().getRand(widget.phoneWidth);
+                        context.read<Position>().getRand(100.w);
                       }),
                 ),
                 SizedBox(
-                  width: (widget.phoneWidth - 24) - 8,
+                  width: (100.w - 24) - 8,
                   height: 44,
                   child: CupertinoButton(
                       padding: EdgeInsets.all(0),
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5),
                       child: Text('이 코디 저장하기', style: TextStyle(fontSize: 14)),
-                      onPressed: () {}),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => AddOutfit()));
+                      }),
                 )
               ],
             )),
