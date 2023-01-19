@@ -21,7 +21,7 @@ class Clothes(models.Model):
     SIZE_CHOICES = (('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'))
 
 
-    clothes_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     major_category = models.CharField(max_length=255, choices=MAJOR_CATEGORY_CHOICES)
