@@ -4,12 +4,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sizer/sizer.dart';
 
 class WeatherOutfit extends StatefulWidget {
-  WeatherOutfit({Key? key, this.phoneHeight, this.phoneWidth})
-      : super(key: key);
-  final phoneHeight;
-  final phoneWidth;
+  WeatherOutfit({Key? key}) : super(key: key);
 
   @override
   State<WeatherOutfit> createState() => _WeatherOutfitState();
@@ -67,7 +65,7 @@ class _WeatherOutfitState extends State<WeatherOutfit> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 0, 0, 21),
-      width: (widget.phoneWidth - 24) - 8,
+      width: (100.w - 24) - 8,
       height: 9 +
           5 +
           13 +

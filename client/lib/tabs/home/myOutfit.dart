@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sizer/sizer.dart';
 
 class MyOutfit extends StatelessWidget {
-  const MyOutfit({super.key, this.phoneHeight, this.phoneWidth});
-  final phoneHeight;
-  final phoneWidth;
+  const MyOutfit({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (phoneWidth - 24) - 8,
-      height:
-          12 + 18 * 1.3 + (phoneWidth - 24) * 0.6, // 사기간격 + lineheight + 사진 크기
+      width: (100.w - 24) - 8,
+      height: 12 + 18 * 1.3 + (100.w - 24) * 0.6, // 사기간격 + lineheight + 사진 크기
       margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,8 +39,8 @@ class MyOutfit extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: (phoneWidth - 24) * 0.6 - 8,
-                  height: (phoneWidth - 24) * 0.6 - 8,
+                  width: (100.w - 24) * 0.6 - 8,
+                  height: (100.w - 24) * 0.6 - 8,
                   margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                   child: Image.asset(
                     'assets/images/codies/codi6.png',
@@ -54,22 +52,22 @@ class MyOutfit extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: (phoneWidth - 24) * 0.4 - 8,
-                      height: (phoneWidth - 24) * 0.4 - 8,
+                      width: (100.w - 24) * 0.4 - 8,
+                      height: (100.w - 24) * 0.4 - 8,
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
                       child: Image.asset('assets/images/codies/codi2.png'),
                     ),
                     Row(
                       children: [
                         Container(
-                          width: (phoneWidth - 24) * 0.2 - 8,
-                          height: (phoneWidth - 24) * 0.2 - 8,
+                          width: (100.w - 24) * 0.2 - 8,
+                          height: (100.w - 24) * 0.2 - 8,
                           margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                           child: Image.asset('assets/images/codies/codi3.png'),
                         ),
                         Container(
-                          width: (phoneWidth - 24) * 0.2 - 8,
-                          height: (phoneWidth - 24) * 0.2 - 8,
+                          width: (100.w - 24) * 0.2 - 8,
+                          height: (100.w - 24) * 0.2 - 8,
                           child: Image.asset('assets/images/codies/codi4.png'),
                         ),
                       ],

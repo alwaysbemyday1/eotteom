@@ -30,28 +30,13 @@ class _CompleteState extends State<Complete> {
       child: Material(
           child: CupertinoPageScaffold(
               resizeToAvoidBottomInset: false,
-              navigationBar: CupertinoNavigationBar(
-                backgroundColor: CupertinoColors.white,
-                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                border: null,
-                leading: Material(
-                  child: IconButton(
-                    icon: Icon(CupertinoIcons.chevron_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      context.read<SignInPage>().pageDown();
-                    },
-                  ),
-                ),
-              ),
               child: Container(
-                  margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
+                  margin: EdgeInsets.fromLTRB(16, 142, 16, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 58,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
                         child: Text("회원가입이 완료되었어요!",
                             style: TextStyle(
                                 fontSize: 22,
@@ -61,8 +46,7 @@ class _CompleteState extends State<Complete> {
                                 height: 1.3)),
                       ),
                       Container(
-                          height: 20,
-                          margin: EdgeInsets.fromLTRB(8, 0, 0, 14),
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 14),
                           child: Text(
                             '이제 나의 옷장을 만들어볼까요?',
                             style: TextStyle(
@@ -70,7 +54,7 @@ class _CompleteState extends State<Complete> {
                           )),
                       SizedBox(
                           height: 100.h -
-                              529 -
+                              261 -
                               22 -
                               MediaQuery.of(context).viewInsets.bottom),
                       Container(
