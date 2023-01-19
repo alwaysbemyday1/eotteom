@@ -15,6 +15,7 @@ class OtherOutfit extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              width: (100.w - 24) - 8,
               margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +44,7 @@ class OtherOutfit extends StatelessWidget {
                     Container(
                       width: (100.w - 24) * 0.4 - 8,
                       height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                      margin: EdgeInsets.fromLTRB(16, 0, 8, 0),
                       child: Image.asset('assets/images/codies/codi1.png',
                           fit: BoxFit.fill),
                     ),
