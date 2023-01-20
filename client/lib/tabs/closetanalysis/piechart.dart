@@ -39,16 +39,29 @@ class Pie extends StatelessWidget {
                 showLegends: false,
               ),
               chartValuesOptions: const ChartValuesOptions(
-                showChartValues: true,
+                showChartValues: false,
                 showChartValueBackground: false,
                 showChartValuesOutside: false,
-                showChartValuesInPercentage: true
+                showChartValuesInPercentage: false
               ),
             ),
+            SizedBox(height: 44,),
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Row(children: [
-                Text('gd')
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: colorList[0]),),
+                Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('니트', style: TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w400, height: 0.9),), Text('99', style: TextStyle(fontFamily: "Inter", fontSize: 18, fontWeight: FontWeight.w700),)],),
+                Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: colorList[1]),),
+                Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('셔츠', style: TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w400, height: 0.9),), Text('58', style: TextStyle(fontFamily: "Inter", fontSize: 18, fontWeight: FontWeight.w700),)],),
+                Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: colorList[2]),),
+                Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('맨투맨', style: TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w400, height: 0.9),), Text('44', style: TextStyle(fontFamily: "Inter", fontSize: 18, fontWeight: FontWeight.w700),)],),
+                Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: colorList[3]),),
+                Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('반팔', style: TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w400, height: 0.9),), Text('24', style: TextStyle(fontFamily: "Inter", fontSize: 18, fontWeight: FontWeight.w700),)],),
+                Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: colorList[4]),),
+                Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('후드티', style: TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w400, height: 0.9),), Text('14', style: TextStyle(fontFamily: "Inter", fontSize: 18, fontWeight: FontWeight.w700),)],)
               ],),
             )
           ],

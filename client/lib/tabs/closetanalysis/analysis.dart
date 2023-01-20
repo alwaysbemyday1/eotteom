@@ -13,6 +13,8 @@ class Analysis extends StatefulWidget {
 class _AnalysisState extends State<Analysis> {
   var selected_dropdown = "전체";
 
+  var analysisScroll = ScrollController();
+
   changeDropdown(String value) {
     setState(() {
       selected_dropdown = value;
@@ -31,6 +33,7 @@ class _AnalysisState extends State<Analysis> {
               elevation: 0.0,
             ),
             body: SingleChildScrollView(
+              controller: analysisScroll,
                 child: Container(
               color: Colors.white,
               child: Column(
