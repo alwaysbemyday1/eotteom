@@ -36,7 +36,7 @@ class Pie extends StatelessWidget {
               legendOptions: const LegendOptions(
                 showLegendsInRow: true,
                 legendPosition: LegendPosition.bottom,
-                showLegends: true,
+                showLegends: false,
               ),
               chartValuesOptions: const ChartValuesOptions(
                 showChartValues: true,
