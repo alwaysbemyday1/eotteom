@@ -10,7 +10,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
           width: 100.w,
@@ -31,5 +33,7 @@ class Home extends StatelessWidget {
             ],
           ),
         ));
+      },
+    );
   }
 }
