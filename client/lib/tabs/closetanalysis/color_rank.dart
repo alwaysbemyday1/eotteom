@@ -223,7 +223,13 @@ class ColorRank extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("4", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, fontFamily: "NotoSans"),),
+                      Text(
+                        "4",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: "NotoSans"),
+                      ),
                       SizedBox(
                         width: 23,
                       ),
@@ -234,17 +240,89 @@ class ColorRank extends StatelessWidget {
                             color: Colors.blue,
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      SizedBox(width: 24,),
-                      Text('파랑', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, fontFamily: "NotoSans"),),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      Text(
+                        '파랑',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: "NotoSans"),
+                      ),
                       Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(right: 13),
                         child: Align(
-                          child: Text('21', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, fontFamily: "NotoSans", color: Color(0xff777777)),),
+                          child: Text(
+                            '21',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                fontFamily: "NotoSans",
+                                color: Color(0xff777777)),
+                          ),
                           alignment: Alignment.centerRight,
                         ),
-                      )
-                      
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 32, right: 24),
+                child: Container(
+                  color: Color(0xffF9F9F9),
+                  width: 100.w - 56,
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "5",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: "NotoSans"),
+                      ),
+                      SizedBox(
+                        width: 23,
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5.0)),
+                      ),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      Text(
+                        '빨강',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: "NotoSans"),
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 13),
+                        child: Align(
+                          child: Text(
+                            '20',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                fontFamily: "NotoSans",
+                                color: Color(0xff777777)),
+                          ),
+                          alignment: Alignment.centerRight,
+                        ),
+                      ),
                     ],
                   ),
                 ),
