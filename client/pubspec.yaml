@@ -50,6 +50,7 @@ dependencies:
   pie_chart: ^5.3.2
   image_picker: ^0.8.6
   image_cropper: ^3.0.1
+  string_to_hex: ^0.2.2
 
 
   # The following adds the Cupertino Icons font to your application.
