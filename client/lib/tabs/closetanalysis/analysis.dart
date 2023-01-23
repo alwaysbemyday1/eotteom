@@ -1,7 +1,6 @@
 import 'package:eotteom/tabs/closetanalysis/piechart.dart';
 import 'package:flutter/material.dart';
 import "package:sizer/sizer.dart";
-import "dropdown.dart";
 import "color_rank.dart";
 
 class Analysis extends StatefulWidget {
@@ -154,14 +153,14 @@ class _AnalysisState extends State<Analysis> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '키',
+                                                    '옷장에서 가장 많은 핏',
                                                     style: TextStyle(
                                                         fontFamily: "Inter",
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         fontSize: 14.0),
                                                   ),
-                                                  Text('176cm',
+                                                  Text('레귤러핏',
                                                       style: TextStyle(
                                                           fontFamily: "Inter",
                                                           fontWeight:
@@ -169,27 +168,6 @@ class _AnalysisState extends State<Analysis> {
                                                           fontSize: 18))
                                                 ],
                                               ),
-                                              SizedBox(width: 34),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text('몸무게',
-                                                      style: TextStyle(
-                                                          fontFamily: "Inter",
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          fontSize: 14.0)),
-                                                  Text(
-                                                    '72kg',
-                                                    style: TextStyle(
-                                                        fontFamily: "Inter",
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontSize: 18),
-                                                  )
-                                                ],
-                                              )
                                             ],
                                           ),
                                         ],
