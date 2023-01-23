@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:string_to_hex/string_to_hex.dart';
+
 
 class ColorRank extends StatelessWidget {
   ColorRank({super.key});
