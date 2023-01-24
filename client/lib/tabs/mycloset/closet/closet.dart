@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'enrollclothes/enroll.dart';
 
 class Closet extends StatefulWidget {
   const Closet({super.key});
@@ -127,7 +130,13 @@ class _ClosetState extends State<Closet> {
             ],
           ),
         ),
-        closetWidgets[closetState]
+        closetWidgets[closetState],
+        FloatingActionButton(
+            onPressed: () {
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => EnrollClothes()));
+            },
+            child: Text('옷 추가'))
       ],
     );
   }
