@@ -1,8 +1,8 @@
-from .models import Outfits
+from .models import Outfit
 
 from rest_framework import serializers
 
-class OutfitsSerializer(serializers.ModelSerializer):
+class OutfitSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Outfits
+        model = Outfit
         fields = '__all__'
