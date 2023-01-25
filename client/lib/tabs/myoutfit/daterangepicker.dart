@@ -1,4 +1,4 @@
-import 'package:eotteom/tabs/mycloset/mycloset.dart';
+import "package:eotteom/tabs/myoutfit/myoutfit.dart";
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
@@ -14,10 +14,10 @@ class _MonthRangePickState extends State<MonthRangePick> {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: (context.watch<FilterState>().datecheck) ? 1.0 : 0.3,
+      opacity: (context.watch<FilterProvider>().datecheck) ? 1.0 : 0.3,
       alwaysIncludeSemantics: true,
       child: AbsorbPointer(
-        absorbing: !(context.watch<FilterState>().datecheck),
+        absorbing: !(context.watch<FilterProvider>().datecheck),
         child: SfDateRangePicker(
           headerStyle: DateRangePickerHeaderStyle(
               textAlign: TextAlign.center,
@@ -46,7 +46,7 @@ class _MonthRangePickState extends State<MonthRangePick> {
       DateRangePickerSelectionChangedArgs dateRangePickerSelectionChangedArgs) {
     print(dateRangePickerSelectionChangedArgs.value);
     context
-        .read<FilterState>()
+        .read<FilterProvider>()
         .selectDate(dateRangePickerSelectionChangedArgs.value);
   }
 }

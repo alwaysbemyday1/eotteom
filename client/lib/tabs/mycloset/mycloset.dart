@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'closet/closet_appbar.dart';
 import 'closet/closet.dart';
-import 'outfit/outfit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyCloset extends StatelessWidget {
@@ -21,14 +20,9 @@ class MyCloset extends StatelessWidget {
         ],
         supportedLocales: [const Locale('ko')],
         locale: Locale('ko'),
-        home: DefaultTabController(
-          length: 2, // 옷장, 코디
-          child: Scaffold(
-            appBar: appbar, // 상단 TabBar 부분
-            body: TabBarView(
-              children: [Closet(), Cody()],
-            ),
-          ),
+        home: Scaffold(
+          appBar: appbar,
+          body: Closet(),
         ),
       ),
     );

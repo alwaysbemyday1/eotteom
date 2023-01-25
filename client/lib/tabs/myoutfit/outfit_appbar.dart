@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-var appbar = AppBar(
+var appbarOutfit = AppBar(
   elevation: 0.0,
   backgroundColor: Colors.white,
   title: const Text(
-    '나의 옷장',
+    '나의 코디',
     style: TextStyle(
       fontFamily: "NotoSans",
       fontWeight: FontWeight.w700,
