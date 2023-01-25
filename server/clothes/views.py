@@ -14,11 +14,15 @@ class ClothesViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path=r'(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
-        queryset = self.get_queryset()   
-        result_queryset = queryset.filter(user=user_id)
+        params = request.query_params
+        queryset = self.get_queryset().filter(user=user_id).order_by('-created_at')
 
-        serializer = ClothesSerializer(result_queryset, context=self.get_serializer_context(), many=True)
+        if 'major' in params:
+            queryset = queryset.filter(major_category=params['major']).order_by('-created_at')
+        
+        serializer = ClothesSerializer(queryset, context=self.get_serializer_context(), many=True)
         data = {
             "results" : serializer.data
         }
         return Response(data)
+
