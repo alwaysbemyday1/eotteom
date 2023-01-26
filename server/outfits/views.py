@@ -10,7 +10,7 @@ class OutfitViewSet(ModelViewSet):
     queryset = Outfit.objects.all()
     serializer_class = OutfitSerializer
 
-    @action(detail=False, methods=['get'], url_path=r'(?P<user_id>[^/.]+)')
+    @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
     def user_Outfit(self, request, user_id):
         queryset = self.get_queryset()   
         result_queryset = queryset.filter(user=user_id)

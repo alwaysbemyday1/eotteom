@@ -23,7 +23,7 @@ class ClothesViewSet(ModelViewSet):
         serializer = ClothesRetrieveSerializer(instance, context=self.get_serializer_context())
         return Response(serializer.data)
 
-    @action(detail=False, methods=['get'], url_path=r'(?P<user_id>[^/.]+)')
+    @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
         params = request.query_params
         queryset = self.get_queryset().filter(user=user_id).order_by('-created_at')
