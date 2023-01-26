@@ -20,7 +20,7 @@ class SelectCategory extends StatelessWidget {
       height: 35,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: categoryPress.length,
+          itemCount: smallCategory.length,
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.only(left: 8, right: 8),
