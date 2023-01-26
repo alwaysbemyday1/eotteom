@@ -54,17 +54,25 @@ class OutfitProvider extends ChangeNotifier {
     }
   }
 
+  whichCategory (int firstindex, int secondindex) {
+    var sublist = totalMap[categories[firstindex]];
+    if (sublist != null) {
+      String subcategory = sublist[secondindex];
+      return subcategory;
+    }
+  }
+
   selectFirstIndex(int index) {
     setTrue(categoryPress, index);
     firstindex = index;
-    print(firstindex);
+    print(categories[firstindex]);
     notifyListeners();
   }
 
   selectSecondIndex(int index) {
     setTrue(boolCallback(categories[firstindex]), index);
     secondindex = index;
-    print(secondindex);
+    print(whichCategory(firstindex, secondindex));
     notifyListeners();
   }
 
