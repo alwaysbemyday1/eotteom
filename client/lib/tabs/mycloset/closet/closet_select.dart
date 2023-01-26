@@ -1,4 +1,3 @@
-import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:eotteom/tabs/mycloset/mycloset.dart";
