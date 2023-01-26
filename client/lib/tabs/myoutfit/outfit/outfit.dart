@@ -1,4 +1,4 @@
-import "package:eotteom/tabs/myoutfit/checkbox.dart";
+import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
 import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
