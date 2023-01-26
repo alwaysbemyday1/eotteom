@@ -4,27 +4,31 @@ import uuid
 
 from core.models import User
 
+class MajorCategory(models.Model):
+    id = models.AutoField(primary_key=True)
+    name_en = models.CharField(max_length=25)
+    name_ko = models.CharField(max_length=25)
+    
+    def __str__(self):
+        return f"{self.name_en} / {self.name_ko}"
+
+class MinorCategory(models.Model):
+    id = models.AutoField(primary_key=True)
+    major_category = models.ForeignKey(MajorCategory, on_delete=models.CASCADE)
+    name_en = models.CharField(max_length=25)
+    name_ko = models.CharField(max_length=25)
+    
+    def __str__(self):
+        return f"({self.major_category.name_ko}) {self.name_en} / {self.name_ko}"
+
 class Clothes(models.Model):
-    MAJOR_TOP = 'top'
-    MAJOR_BOTTOMS = 'bottoms'
-    MAJOR_SHOES = 'shoes'
-    MAJOR_OTHERS = 'others'
-    MAJOR_ACCESSROY = 'accessory'
-    MAJOR_CATEGORY_CHOICES = (
-        (MAJOR_TOP, '상의'),
-        (MAJOR_BOTTOMS, '하의'),
-        (MAJOR_SHOES, '신발'),
-        (MAJOR_ACCESSROY, '액세서리'),
-        (MAJOR_OTHERS, '기타'),
-    )
-
     SIZE_CHOICES = (('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'))
-
 
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    major_category = models.CharField(max_length=255, choices=MAJOR_CATEGORY_CHOICES)
+    major_category = models.ForeignKey(MajorCategory, on_delete=models.PROTECT)
+    minor_category = models.ForeignKey(MinorCategory, on_delete=models.PROTECT)
     brand = models.CharField(max_length=255, blank=True)
     color = models.CharField(max_length=255, blank=True)
     size = models.CharField(max_length=255, choices=SIZE_CHOICES, blank=True)
