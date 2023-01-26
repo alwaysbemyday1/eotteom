@@ -6,7 +6,6 @@ import 'package:eotteom/user/signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'tabs/home/home.dart';
 import 'provider.dart';
 import 'tabs/mycloset/mycloset.dart';
@@ -17,6 +16,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (c) => SignInPage()),
         ChangeNotifierProvider(create: (c) => Position()),
+        ChangeNotifierProvider(create: (c) => EnrollClothes())
       ],
       child: const CupertinoApp(
         home: Eotteom(),
@@ -43,13 +43,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // // sizer 변경 후 삭제 ------
-    // final phoneWidth =
-    //     MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
-    // final phoneHeight =
-    //     MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height;
-    // // sizer 변경 후 삭제 ------
-
     return CupertinoTabScaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,

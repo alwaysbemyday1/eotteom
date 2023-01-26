@@ -25,3 +25,17 @@ var headLineTextTheme = TextStyle(
     color: Colors.black,
     fontWeight: FontWeight.w700,
     height: 1.3);
+
+var enrollTitleTheme = TextStyle(
+    fontSize: 18,
+    fontFamily: "NotoSans",
+    color: Colors.black,
+    fontWeight: FontWeight.w700,
+    height: 1.3);
+
+var enrollTitleTheme2 = TextStyle(
+    fontSize: 16,
+    fontFamily: "NotoSans",
+    color: Colors.black,
+    fontWeight: FontWeight.w700,
+    height: 1.3);
