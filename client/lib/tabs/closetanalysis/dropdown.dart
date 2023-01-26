@@ -2,27 +2,21 @@ import 'package:flutter/material.dart';
 
 class Dropdown extends StatelessWidget {
   Dropdown({Key? key, this.changeDropdown, this.selected_dropdown}) : super(key: key);
-  // var dropdownlist = ['전체', '날짜', '계절', '날씨'];
   final changeDropdown;
   final selected_dropdown;
   var dropdownitems = [
     DropdownMenuItem(child: Text('전체'), value: "전체",),
-    DropdownMenuItem(child: Text('날짜'), value: "날짜",),
-    DropdownMenuItem(child: Text('계절'), value: "계절",),
-    DropdownMenuItem(child: Text('날씨'), value: "날씨",)
+    DropdownMenuItem(child: Text('상의'), value: "상의",),
+    DropdownMenuItem(child: Text('하의'), value: "하의",),
+    DropdownMenuItem(child: Text('악세사리'), value: "악세사리",)
   ];
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
       decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black, width: 2)
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black, width: 2),
-        ),
-        filled: false
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none
       ),
       dropdownColor: Colors.white,
       value: selected_dropdown,
@@ -30,6 +24,8 @@ class Dropdown extends StatelessWidget {
         changeDropdown(newValue);
       },
       items: dropdownitems,
+      isExpanded: true,
+      isDense: true,
     );
   }
 }

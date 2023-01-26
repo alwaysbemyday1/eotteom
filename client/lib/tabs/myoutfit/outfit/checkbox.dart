@@ -1,6 +1,6 @@
-import 'package:eotteom/tabs/mycloset/mycloset.dart';
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:eotteom/tabs/myoutfit/myoutfit.dart";
 
 class CheckboxWeather extends StatelessWidget {
   const CheckboxWeather({super.key});
@@ -13,9 +13,9 @@ class CheckboxWeather extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           activeColor: Colors.black,
-          value: context.watch<FilterState>().datecheck,
+          value: context.watch<FilterProvider>().datecheck,
           onChanged: (value) {
-            context.read<FilterState>().changeDatecheck();
+            context.read<FilterProvider>().changeDatecheck();
           },
         ),
         Text(
@@ -38,9 +38,9 @@ class CheckboxTemperature extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           activeColor: Colors.black,
-          value: context.watch<FilterState>().temperaturecheck,
+          value: context.watch<FilterProvider>().temperaturecheck,
           onChanged: (value) {
-            context.read<FilterState>().changeTemperaturecheck();
+            context.read<FilterProvider>().changeTemperaturecheck();
           },
         ),
         Text('기온', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))

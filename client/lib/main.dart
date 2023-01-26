@@ -1,4 +1,8 @@
+import 'package:eotteom/tabs/closetanalysis/analysis.dart';
+import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
+
 import 'package:eotteom/user/signin.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,18 +50,18 @@ class MyApp extends StatelessWidget {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.abc),
-              label: '모두의 룩',
+              label: '옷장분석',
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart_outlined), label: '옷장 분석'),
+                icon: Icon(Icons.bar_chart_outlined), label: '옷장'),
             BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: '나의 옷장',
+              label: '코디',
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person_add),
-              label: '옷 추가',
+              label: '프로필',
             ),
           ],
         ),
@@ -68,33 +72,19 @@ class MyApp extends StatelessWidget {
               return CupertinoTabView(
                 builder: (context) {
                   return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        trailing: SizedBox(
-                      width: 50,
-                      child: CupertinoButton(
-                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                        child: Icon(CupertinoIcons.settings),
-                        onPressed: () {},
-                      ),
-                    )),
-                    child: Center(child: Text('모두의 룩')),
+                    child: MaterialApp(
+                      home: Analysis(),
+                    ),
                   );
-                },
+                }
               );
             case 1:
               return CupertinoTabView(
                 builder: (context) {
                   return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        trailing: SizedBox(
-                      width: 50,
-                      child: CupertinoButton(
-                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                        child: Icon(CupertinoIcons.settings),
-                        onPressed: () {},
-                      ),
-                    )),
-                    child: Center(child: Text('옷장 분석')),
+                    child: MaterialApp(
+                      home: MyCloset(),
+                    ),
                   );
                 },
               );
@@ -122,7 +112,7 @@ class MyApp extends StatelessWidget {
                 builder: (context) {
                   return CupertinoPageScaffold(
                     child: MaterialApp(
-                      home: MyCloset(),
+                      home: Outfit(),
                     ),
                   );
                 },
@@ -140,7 +130,7 @@ class MyApp extends StatelessWidget {
                         onPressed: () {},
                       ),
                     )),
-                    child: Center(child: Center(child: Text('옷 추가'))),
+                    child: Center(child: Center(child: Text('프로필 들어갈 페이지'))),
                   );
                 },
               );
