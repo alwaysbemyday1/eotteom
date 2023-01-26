@@ -6,12 +6,22 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Clothes
-from .serializers import ClothesSerializer
+from .serializers import ClothesSerializer, ClothesRetrieveSerializer
 
 # Create your views here.
 class ClothesViewSet(ModelViewSet):
     queryset = Clothes.objects.all()
     serializer_class = ClothesSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = ClothesRetrieveSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = ClothesRetrieveSerializer(instance, context=self.get_serializer_context())
+        return Response(serializer.data)
 
     @action(detail=False, methods=['get'], url_path=r'(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
