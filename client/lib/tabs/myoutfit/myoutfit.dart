@@ -1,5 +1,5 @@
-import "package:eotteom/tabs/myoutfit/outfit.dart";
-import 'package:eotteom/tabs/myoutfit/outfit_appbar.dart';
+import "package:eotteom/tabs/myoutfit/outfit/outfit.dart";
+import 'package:eotteom/tabs/myoutfit/outfit/outfit_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
@@ -22,6 +22,7 @@ class Outfit extends StatelessWidget {
         supportedLocales: [const Locale('ko')],
         locale: Locale('ko'),
         home: Scaffold(
+          backgroundColor: Colors.white,
           appBar: appbarOutfit,
           body: Cody(),
         ),
