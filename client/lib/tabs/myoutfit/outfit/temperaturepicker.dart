@@ -1,9 +1,8 @@
-import 'package:eotteom/tabs/mycloset/mycloset.dart';
 import "package:flutter/material.dart";
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import "package:syncfusion_flutter_core/theme.dart";
 import "package:provider/provider.dart";
-import "checkbox.dart";
+import "package:eotteom/tabs/myoutfit/myoutfit.dart";
 
 class TemperaturePicker extends StatefulWidget {
   const TemperaturePicker({super.key});
@@ -20,14 +19,14 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: (context.watch<FilterState>().temperaturecheck) ? 1.0 : 0.3,
+      opacity: (context.watch<FilterProvider>().temperaturecheck) ? 1.0 : 0.3,
       alwaysIncludeSemantics: true,
       child: AbsorbPointer(
-        absorbing: !(context.watch<FilterState>().temperaturecheck),
+        absorbing: !(context.watch<FilterProvider>().temperaturecheck),
         child: Column(
           children: [
             Text(
-              '${context.watch<FilterState>().lowtemperature == null ? 0.toString() : context.watch<FilterState>().lowtemperature.toString()}도 ~ ${context.watch<FilterState>().hightemperature == null ? 15.toString() : context.watch<FilterState>().hightemperature.toString()}도',
+              '${context.watch<FilterProvider>().lowtemperature == null ? 0.toString() : context.watch<FilterProvider>().lowtemperature.toString()}도 ~ ${context.watch<FilterProvider>().hightemperature == null ? 15.toString() : context.watch<FilterProvider>().hightemperature.toString()}도',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Container(
@@ -43,12 +42,12 @@ class _TemperaturePickerState extends State<TemperaturePicker> {
                 interval: 20,
                 minorTicksPerInterval: 4,
                 showTicks: true,
-                values: context.watch<FilterState>().temperatures,
+                values: context.watch<FilterProvider>().temperatures,
                 activeColor: Colors.black,
                 inactiveColor: Colors.grey,
                 onChanged: (SfRangeValues newValues) {
                   setState(() {
-                    context.read<FilterState>().setTemperature(newValues);
+                    context.read<FilterProvider>().setTemperature(newValues);
                   });
                 },
               ),

@@ -1,9 +1,10 @@
+from django.db.models import Count
+
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import User
 from .models import Clothes
 from .serializers import ClothesSerializer
 
@@ -14,11 +15,32 @@ class ClothesViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path=r'(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
-        queryset = self.get_queryset()   
-        result_queryset = queryset.filter(user=user_id)
+        params = request.query_params
+        queryset = self.get_queryset().filter(user=user_id).order_by('-created_at')
 
-        serializer = ClothesSerializer(result_queryset, context=self.get_serializer_context(), many=True)
+        if 'major' in params:
+            queryset = queryset.filter(major_category=params['major']).order_by('-created_at')
+        
+        serializer = ClothesSerializer(queryset, context=self.get_serializer_context(), many=True)
         data = {
             "results" : serializer.data
         }
         return Response(data)
+
+    @action(detail=False, methods=['get'], url_path=r'stats/(?P<user_id>[^/.]+)')
+    def user_clothes_stats(self, request, user_id):
+        queryset = self.get_queryset().filter(user=user_id)
+        
+        total_count = queryset.count()
+        category_count = list(queryset.values('major_category').annotate(count=Count('major_category')))
+        color_count = list(queryset.values('color').annotate(count=Count('color')))
+        brand_count = list(queryset.values('brand').annotate(count=Count('brand')))
+
+        data = {
+            "total_count" : total_count,
+            "category_count" : category_count,
+            "color_count" : color_count,
+            "brand_count" : brand_count,
+        }
+        return Response(data)
+
