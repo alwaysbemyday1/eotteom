@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:eotteom/tabs/mycloset/closet/closet_select.dart';
 import 'package:eotteom/tabs/mycloset/mycloset.dart';
@@ -33,7 +32,7 @@ class _ClosetState extends State<Closet> {
                     child: Text(
                       categories[index],
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w700,
                           color: Color(0xff151515),
                           decoration: categoryPressed[index]
                               ? TextDecoration.underline
@@ -49,32 +48,20 @@ class _ClosetState extends State<Closet> {
                 );
               }),
         ),
-        FloatingActionButton(
-            onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => EnrollClothes()));
-            },
-            child: Text('옷 추가'))
-        SelectCategory()
+        SelectCategory(),
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Align(
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => EnrollClothes()));
+              },
+              child: Text('옷 추가')),
+              alignment: Alignment.centerRight,
+          ),
+        ),
       ],
     );
   }
 }
-// 이제 옷장 보여지는 Custom Widget으로 추가 예정
-
-
-// TextButton(
-//                 child: Text(
-//                   categories[0],
-//                   style: TextStyle(
-//                       color: categoryPressed[0] ? Colors.white : Colors.black,
-//                       fontWeight: FontWeight.w400,
-//                       fontSize: 14),
-//                 ),
-//                 onPressed: () {
-//                   changePressed(0);
-//                 },
-//                 style: ButtonStyle(
-//                     backgroundColor: MaterialStateProperty.all(
-//                         categoryPressed[0] ? Colors.black : Colors.white)),
-//               )
