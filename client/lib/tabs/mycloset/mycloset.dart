@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'closet/closet_appbar.dart';
 import 'closet/closet.dart';
+import "package:eotteom/provider.dart";
 
 class MyCloset extends StatelessWidget {
   const MyCloset({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => OutfitProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ((context) => OutfitProvider())),
+        ChangeNotifierProvider(create: ((context) => EnrollClothes()))
+      ],
       child: MaterialApp(
         home: Scaffold(
           appBar: appbar,
@@ -54,7 +58,7 @@ class OutfitProvider extends ChangeNotifier {
     }
   }
 
-  whichCategory (int firstindex, int secondindex) {
+  whichCategory(int firstindex, int secondindex) {
     var sublist = totalMap[categories[firstindex]];
     if (sublist != null) {
       String subcategory = sublist[secondindex];
