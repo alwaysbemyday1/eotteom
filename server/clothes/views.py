@@ -5,12 +5,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from .models import Clothes
+from .models import Clothes, MajorCategory
 from .serializers import ClothesSerializer, ClothesRetrieveSerializer
 
 # Create your views here.
 class ClothesViewSet(ModelViewSet):
     queryset = Clothes.objects.all()
+    category_queryset = MajorCategory.objects.all()
     serializer_class = ClothesSerializer
 
     def list(self, request, *args, **kwargs):
@@ -42,9 +43,13 @@ class ClothesViewSet(ModelViewSet):
         queryset = self.get_queryset().filter(user=user_id)
         
         total_count = queryset.count()
-        category_count = list(queryset.values('major_category').annotate(count=Count('major_category')))
-        color_count = list(queryset.values('color').annotate(count=Count('color')))
-        brand_count = list(queryset.values('brand').annotate(count=Count('brand')))
+        category_count = [] 
+        category_value = queryset.values('major_category').annotate(count=Count('major_category'))
+        for i in category_value:
+            new_category_value = {'major_category': self.category_queryset.filter(id=1).values('name_en').get()['name_en'], 'count':i['count']}
+            category_count.append(new_category_value)
+        color_count = queryset.values('color').annotate(count=Count('color'))
+        brand_count = queryset.values('brand').annotate(count=Count('brand'))
 
         data = {
             "total_count" : total_count,

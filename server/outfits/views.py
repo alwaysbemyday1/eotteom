@@ -11,7 +11,7 @@ class OutfitViewSet(ModelViewSet):
     serializer_class = OutfitSerializer
 
     @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
-    def user_Outfit(self, request, user_id):
+    def user_outfit(self, request, user_id):
         queryset = self.get_queryset()   
         result_queryset = queryset.filter(user=user_id)
 
