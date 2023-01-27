@@ -193,6 +193,21 @@ class AnalysisProvider extends ChangeNotifier {
 
   int categoryState = 0;
 
+  Map<String, Color> palette = {
+    "빨강" : const Color(0xffD33030),
+    "주황" : const Color(0xffF38535),
+    "노랑" : const Color(0xffEAEE19),
+    "초록" : const Color(0xff6AE431),
+    "하늘" : const Color(0xff73BCFF),
+    "파랑" : const Color(0xff3372EC),
+    "보라" : const Color(0xff9C33DC),
+    "갈색" : const Color(0xffA16464),
+    "하얀색" : const Color(0xffFFFFFF),
+    "그레이" : const Color(0xff949494),
+    "검정" : const Color(0xff151515),
+    "아이보리" : const Color(0xffFCF6EE)
+  };
+
   changePressed(int index) {
     for (int i = 0; i < categoryPressed.length; i++) {
       if (i == index) {
@@ -214,6 +229,14 @@ class AnalysisProvider extends ChangeNotifier {
     "신발": 24,
     "아우터": 14
   };
+
+  List colordataexample = [
+    ["검정", 24],
+    ["빨강", 20],
+    ["파랑", 21],
+    ["그레이", 23],
+    ["아이보리", 22]
+  ];
 
   Map consumerInformation = {"average": 50000, "mostpick": "레귤러핏"};
 

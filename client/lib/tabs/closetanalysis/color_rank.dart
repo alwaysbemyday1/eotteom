@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import "package:provider/provider.dart";
+import "package:eotteom/tabs/closetanalysis/analysis.dart";
 
 
 class ColorRank extends StatelessWidget {
@@ -7,13 +9,6 @@ class ColorRank extends StatelessWidget {
 
   var phoneWidth = 100.w - 32; // 양 옆 16pixel 뺌
 
-  List dataexample = [
-    ["검정", 24, "131313"],
-    ["빨강", 20, "D33030"],
-    ["파랑", 21, "3372EC"],
-    ["그레이", 23, "BEBEBE"],
-    ["아이보리", 22, "ECE6CC"]
-  ];
 
   _sortList(List data) {
     data.sort((b, a) => a[1].compareTo(b[1]));
@@ -27,7 +22,7 @@ class ColorRank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List colorlist = _sortList(dataexample);
+    List colorlist = _sortList(context.watch<AnalysisProvider>().colordataexample);
     List top =
         (colorlist.length > 2) ? colorlist.sublist(0, 3) : colorlist.sublist(0);
     List other = (colorlist.length > 3) ? colorlist.sublist(3) : [];
@@ -40,14 +35,14 @@ class ColorRank extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
-                text: const TextSpan(children: [
+                text: TextSpan(children: [
                   TextSpan(
-                      text: '상의 ',
-                      style: TextStyle(
+                      text: context.read<AnalysisProvider>().categories[context.read<AnalysisProvider>().categoryState],
+                      style: const TextStyle(
                           color: Color(0xff131313),
                           fontWeight: FontWeight.w700,
                           fontSize: 16)),
-                  TextSpan(
+                  const TextSpan(
                       text: "중에서 가장 많은 색깔은",
                       style: TextStyle(color: Colors.black))
                 ]),
@@ -57,10 +52,10 @@ class ColorRank extends StatelessWidget {
                 child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: top.length,
+                    itemCount: top.length, // 상위 3개 부분
                     itemBuilder: ((context, index) {
                       return Text("${top[index][0]} / ",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: "NotoSans",
                               fontWeight: FontWeight.w700,
                               fontSize: 24,
@@ -83,7 +78,7 @@ class ColorRank extends StatelessWidget {
                           width: (phoneWidth - 16) / 3,
                           height: (phoneWidth - 16) / 3,
                           decoration: BoxDecoration(
-                            color: _colorFromHex(top[index][2]),
+                            color: context.read<AnalysisProvider>().palette[top[index][0]],
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Column(
@@ -98,7 +93,7 @@ class ColorRank extends StatelessWidget {
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 22,
-                                      fontFamily: "Inter"),
+                                      fontFamily: "NotoSans"),
                                 ),
                               ),
                               SizedBox(
@@ -116,7 +111,7 @@ class ColorRank extends StatelessWidget {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
                                           fontSize: 22,
-                                          fontFamily: "Inter"),
+                                          fontFamily: "NotoSans"),
                                     ),
                                   ),
                                 ),
@@ -129,7 +124,7 @@ class ColorRank extends StatelessWidget {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
                                           fontSize: 22,
-                                          fontFamily: "Inter")),
+                                          fontFamily: "NotoSans")),
                                   alignment: Alignment.centerRight,
                                 ),
                               )
@@ -151,7 +146,7 @@ class ColorRank extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(left: 32, right: 24, bottom: 16),
                     child: Container(
-                      color: (index % 2 == 0) ? Colors.white : Color(0xffF9F9F9),
+                      color: (index % 2 == 0) ? Colors.white : const Color(0xffF9F9F9),
                       width: 100.w - 56,
                       height: 40,
                       child: Row(
@@ -171,7 +166,7 @@ class ColorRank extends StatelessWidget {
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
-                                color: _colorFromHex(other[index][2]),
+                                color: context.read<AnalysisProvider>().palette[other[index][0]],
                                 borderRadius: BorderRadius.circular(5.0)),
                           ),
                           SizedBox(
