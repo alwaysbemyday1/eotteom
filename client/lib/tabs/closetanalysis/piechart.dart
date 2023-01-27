@@ -3,42 +3,41 @@ import 'package:pie_chart/pie_chart.dart';
 import "package:sizer/sizer.dart";
 import "package:provider/provider.dart";
 import "package:eotteom/tabs/closetanalysis/analysis.dart";
-import "package:eotteom/tabs/closetanalysis/analysis.dart";
 
 class Pie extends StatelessWidget {
   Pie({super.key});
 
 
 
-  _preprocessPie(List data) {
-    // Pie Chart에 쓸 수 있는 Map 형태로 데이터가 나옴.
-    data.sort((b, a) => a[1].compareTo(b[1]));
-    Map<String, double> result = {for (var v in data) v[0]: v[1].toDouble()};
-    return result;
-  }
+  // _preprocessPie(List data) {
+  //   // Pie Chart에 쓸 수 있는 Map 형태로 데이터가 나옴.
+  //   data.sort((b, a) => a[1].compareTo(b[1]));
+  //   Map<String, double> result = {for (var v in data) v[0]: v[1].toDouble()};
+  //   return result;
+  // }
 
-  _sortList(List data) {
-    data.sort((b, a) => a[1].compareTo(b[1]));
-    return data;
-  }
+  // _sortList(List data) {
+  //   data.sort((b, a) => a[1].compareTo(b[1]));
+  //   return data;
+  // }
 
-  _clothCount(List data) {
-    List clothCount = [];
-    for (var v in data) {
-      clothCount.add(v[1]);
-    }
-    clothCount.sort((b, a) => a.compareTo(b));
-    return clothCount;
-  }
+  // _clothCount(List data) {
+  //   List clothCount = [];
+  //   for (var v in data) {
+  //     clothCount.add(v[1]);
+  //   }
+  //   clothCount.sort((b, a) => a.compareTo(b));
+  //   return clothCount;
+  // }
 
-  _totalSum(List data) {
-    // 옷 개수 총합 구하는 함수
-    num totalSum = 0;
-    for (var v in data) {
-      totalSum += v[1];
-    }
-    return totalSum;
-  }
+  // _totalSum(List data) {
+  //   // 옷 개수 총합 구하는 함수
+  //   num totalSum = 0;
+  //   for (var v in data) {
+  //     totalSum += v[1];
+  //   }
+  //   return totalSum;
+  // }
 
 
   final colorList = [
@@ -54,6 +53,10 @@ class Pie extends StatelessWidget {
   Widget build(BuildContext context) {
     String maxCategory = context.watch<AnalysisProvider>().maxCategory(context.read<AnalysisProvider>().dataexample);
     List<String> datakeys = context.read<AnalysisProvider>().dataexample.keys.toList();
+
+    List<int> counts = [];
+
+    context.read<AnalysisProvider>().dataexample.forEach((_, v) => counts.add(v.toInt()));
 
     List<String> categories = context.read<AnalysisProvider>().categories;
     List<String> percentage = context.watch<AnalysisProvider>().percentage(context.read<AnalysisProvider>().dataexample, context.watch<AnalysisProvider>().totalSum(context.read<AnalysisProvider>().dataexample));
@@ -208,7 +211,7 @@ class Pie extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8, right: 16),
                         child: Container(
                           color: (index % 2 == 0)
-                              ? Colors.white
+                              ? Color(0xffFFFFFF)
                               : Color(0xffF9F9F9),
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -234,6 +237,14 @@ class Pie extends StatelessWidget {
                                       fontFamily: "NotoSans",
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
+                                ),
+                                Text(" (${counts[index]}개)",
+                                  style: const TextStyle(
+                                    color: Color(0xff9B9B9B),
+                                    fontFamily: "NotoSans",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400
+                                  ),
                                 ),
                                 Expanded(child: SizedBox()),
                                 Padding(
