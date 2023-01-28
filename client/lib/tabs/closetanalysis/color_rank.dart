@@ -54,7 +54,7 @@ class ColorRank extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: top.length, // 상위 3개 부분
                     itemBuilder: ((context, index) {
-                      return Text("${top[index][0]} / ",
+                      return Text("#${top[index][0]} ",
                           style: const TextStyle(
                               fontFamily: "NotoSans",
                               fontWeight: FontWeight.w700,

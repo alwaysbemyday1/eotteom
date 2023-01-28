@@ -48,3 +48,26 @@ class CheckboxTemperature extends StatelessWidget {
     );
   }
 }
+
+
+class CheckboxLabel extends StatelessWidget {
+  const CheckboxLabel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          activeColor: Colors.black,
+          value: context.watch<FilterProvider>().labelcheck,
+          onChanged: (value) {
+            context.read<FilterProvider>().changeLabelCheck();
+          },
+        ),
+        Text('코디', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+      ],
+    );
+  }
+}

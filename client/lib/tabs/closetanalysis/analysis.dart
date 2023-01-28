@@ -29,9 +29,7 @@ class _AnalysisState extends State<Analysis> {
       create: ((context) => AnalysisProvider()),
       child: Sizer(
         builder: (context, orientation, deviceType) {
-          final phoneWidth = 100.w - 32;
-          return MaterialApp(
-            home: Scaffold(
+          return Scaffold(
               appBar: AppBar(
                 backgroundColor: const Color(0xff131313),
                 elevation: 0.0,
@@ -179,8 +177,7 @@ class _AnalysisState extends State<Analysis> {
                       ],
                     ),
                   )),
-            ),
-          );
+            );
         },
       ),
     );

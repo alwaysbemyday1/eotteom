@@ -34,12 +34,16 @@ class Outfit extends StatelessWidget {
 class FilterProvider extends ChangeNotifier {
   bool datecheck = true;
   bool temperaturecheck = true;
+  bool labelcheck = true;
   int nowyear = DateTime.now().year.toInt();
   var select_date;
   var hightemperature;
   var lowtemperature;
   var temperatures = SfRangeValues(0.0, 15.0);
 
+  List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
+  List<bool> outfitLabelSelect = [true, true, true];
+  
   changeDatecheck() {
     datecheck = !datecheck;
     notifyListeners();
@@ -47,6 +51,16 @@ class FilterProvider extends ChangeNotifier {
 
   changeTemperaturecheck() {
     temperaturecheck = !temperaturecheck;
+    notifyListeners();
+  }
+
+  changeLabelCheck() {
+    labelcheck = !labelcheck;
+    notifyListeners();
+  }
+
+  changeoutfitLabelSelect(int index) {
+    outfitLabelSelect[index] = !outfitLabelSelect[index];
     notifyListeners();
   }
 
