@@ -33,7 +33,7 @@ class _PictureState extends State<Picture> {
                     color: Color(0xfff3f3f3),
                     borderRadius: BorderRadius.circular(5)),
                 child: context.watch<EnrollClothes>().resultImage == null
-                    ? Text('no image selected!', style: headLineTextTheme)
+                    ? Text('사진을 선택해주세요', style: basicTextTheme2)
                     : Image.file(context.watch<EnrollClothes>().resultImage!,
                         height: 200, width: 200, fit: BoxFit.fill)),
           )

@@ -99,8 +99,29 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  var brand;
+  String brand = "";
+  changeBrand(String newBrand) {
+    brand = newBrand;
+  }
 
-  var fit = 100;
-  var sizeList = ['슬림핏', '레귤러핏', '오버핏'];
+  String priceStr = '';
+  int price = 0;
+  changePrice(newPrice) {
+    priceStr = newPrice;
+    notifyListeners();
+  }
+
+  String fit = '';
+  List<String> fitList = ['슬림핏', '레귤러핏', '오버핏'];
+  changeFit(newFit) {
+    fit = newFit;
+    notifyListeners();
+  }
+
+  String size = '';
+  var sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  changeSize(newSize) {
+    size = newSize;
+    notifyListeners();
+  }
 }

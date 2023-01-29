@@ -15,8 +15,6 @@ import 'clothescolor.dart';
 import 'size.dart';
 import 'price.dart';
 
-import 'package:eotteom/provider.dart';
-
 class EnrollClothes extends StatefulWidget {
   const EnrollClothes({super.key});
 

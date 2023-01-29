@@ -19,6 +19,13 @@ var basicTextTheme = TextStyle(
     fontWeight: FontWeight.w400,
     height: 1.3);
 
+var basicTextTheme2 = TextStyle(
+    fontSize: 16,
+    fontFamily: "NotoSans",
+    color: Colors.black,
+    fontWeight: FontWeight.w400,
+    height: 1.3);
+
 var headLineTextTheme = TextStyle(
     fontSize: 22,
     fontFamily: "NotoSans",

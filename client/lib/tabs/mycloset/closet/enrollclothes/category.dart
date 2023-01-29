@@ -91,7 +91,6 @@ class _PopupMenuState extends State<PopupMenu> {
     List<PopupMenuEntry<String>> childs = [];
     childs.add(PopupMenuItem<String>(
       // 뭐 선택 됐는지
-      //padding: EdgeInsets.only(left: 15),
       height: 42,
       value: widget.flag == true
           ? context.read<EnrollClothes>().bigCategory
