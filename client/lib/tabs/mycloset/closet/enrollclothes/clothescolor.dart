@@ -91,8 +91,8 @@ class _ClothesColorState extends State<ClothesColor> {
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                 Container(
                     margin: EdgeInsets.only(right: 16),
-                    height: 60,
-                    width: 60,
+                    height: (100.w - 32 - 45) / 6 * 1.2,
+                    width: (100.w - 32 - 45) / 6 * 1.2,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: color != 100
@@ -108,7 +108,7 @@ class _ClothesColorState extends State<ClothesColor> {
                 Container(
                     alignment: Alignment.centerLeft,
                     height: 44,
-                    width: 100.w - 48 - 60,
+                    width: 100.w - 48 - (100.w - 32 - 45) / 6 * 1.2,
                     padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
