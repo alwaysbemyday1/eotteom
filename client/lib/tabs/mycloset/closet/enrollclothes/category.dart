@@ -30,6 +30,7 @@ class Catetory extends StatelessWidget {
               ]),
             ),
             Container(
+              width: 100.w - 32,
               child: Row(children: [
                 Container(
                     alignment: Alignment.center,
@@ -104,16 +105,19 @@ class _PopupMenuState extends State<PopupMenu> {
                   : context.read<EnrollClothes>().smallCategory,
               style: basicTextTheme)),
     ));
-    childs.add(PopupMenuItem<String>(
-        // divider
-        height: 7,
-        child: Divider(
-          indent: 0,
-          endIndent: 0,
-          height: 0,
-          color: Color(0xffF8F8F8),
-          thickness: 7,
-        )));
+    childs.add(PopupMenuDivider(height: 0));
+    childs.add(PopupMenuDivider(height: 0));
+    childs.add(PopupMenuDivider(height: 0));
+    // childs.add(PopupMenuItem<String>(
+    //     // divider
+    //     height: 7,
+    //     child: Divider(
+    //       indent: 0,
+    //       endIndent: 0,
+    //       height: 0,
+    //       color: Color(0xffF8F8F8),
+    //       thickness: 7,
+    //     )));
     for (int i = 0; i < (widget.categoryList).length; i++) {
       // 선택할 수 있는 리스트
       if ((widget.flag == true

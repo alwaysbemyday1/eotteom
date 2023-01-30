@@ -46,22 +46,6 @@ class _PictureState extends State<Picture> {
                             child: (Text('촬영')))
                       ],
                     ));
-                    return AlertDialog(actions: [
-                      TextButton(
-                          onPressed: () {
-                            context
-                                .read<EnrollClothes>()
-                                .pickImage(ImageSource.gallery);
-                          },
-                          child: (Text('앨범'))),
-                      TextButton(
-                          onPressed: () {
-                            context
-                                .read<EnrollClothes>()
-                                .pickImage(ImageSource.camera);
-                          },
-                          child: (Text('촬영')))
-                    ]);
                   });
             },
             child: Container(
