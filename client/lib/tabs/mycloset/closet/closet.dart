@@ -54,8 +54,7 @@ class _ClosetState extends State<Closet> {
           child: Align(
             child: FloatingActionButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
+                  Navigator.of(context, rootNavigator: true).push(
                       CupertinoPageRoute(
                           builder: (context) => EnrollClothes()));
                 },

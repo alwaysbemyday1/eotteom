@@ -60,7 +60,6 @@ class EnrollClothes extends ChangeNotifier {
 
       img = await cropImage(imageFile: img);
       resultImage = img;
-      print(resultImage);
       notifyListeners();
     } on PlatformException catch (e) {
       print(e);
@@ -144,7 +143,6 @@ class EnrollOutfit extends ChangeNotifier {
 
       img = await cropImage(imageFile: img);
       resultImage = img;
-      print(resultImage);
       notifyListeners();
     } on PlatformException catch (e) {
       print(e);

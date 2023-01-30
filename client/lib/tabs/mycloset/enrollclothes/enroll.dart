@@ -49,35 +49,44 @@ class _EnrollClothesState extends State<EnrollClothes> {
                   ),
                   middle: Text('옷 등록', style: enrollTitleTheme),
                 ),
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
-                                child: Text('옷 기본정보', style: enrollTitleTheme)),
-                            Picture(),
-                            Catetory(),
-                            Container(
-                              height: 8,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 26),
-                              color: Color(0xffF8F8F8),
-                            ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
-                                child: Text('옷 세부정보', style: enrollTitleTheme)),
-                            ClothesColor(),
-                            Price(),
-                            Brand(),
-                            Size(),
-                            Fit(),
-                            EnrollButton(),
-                            Container(height: 100)
-                          ]),
-                    )))));
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: 100.h - 103 - 90,
+                      child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
+                                      child: Text('옷 기본정보',
+                                          style: enrollTitleTheme)),
+                                  Picture(),
+                                  Catetory(),
+                                  Container(
+                                    height: 8,
+                                    width: double.infinity,
+                                    margin: EdgeInsets.only(bottom: 26),
+                                    color: Color(0xffF8F8F8),
+                                  ),
+                                  Container(
+                                      margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
+                                      child: Text('옷 세부정보',
+                                          style: enrollTitleTheme)),
+                                  ClothesColor(),
+                                  Price(),
+                                  Brand(),
+                                  Size(),
+                                  Fit(),
+                                ]),
+                          )),
+                    ),
+                    EnrollButton(),
+                  ],
+                ))));
   }
 }

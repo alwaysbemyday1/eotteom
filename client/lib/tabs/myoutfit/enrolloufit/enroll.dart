@@ -2,6 +2,7 @@ import 'package:eotteom/style.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'enrollbutton.dart';
 import 'picture.dart';
@@ -40,17 +41,22 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                   ),
                   middle: Text('아웃핏 등록', style: enrollTitleTheme),
                 ),
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Picture(),
-                            EnrollButton(),
-                            Container(height: 100)
-                          ]),
-                    )))));
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                          height: 100.h - 103 - 90,
+                          child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Container(
+                                  margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Picture(),
+                                      ])))),
+                      EnrollButton()
+                    ]))));
   }
 }

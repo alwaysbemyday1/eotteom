@@ -22,6 +22,10 @@ class _PictureState extends State<Picture> {
               margin: EdgeInsets.only(bottom: 13),
               child: Text('사진', style: enrollTitleTheme)),
           TextButton(
+            clipBehavior: Clip.hardEdge,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             onPressed: () {
               //context.read<EnrollClothes>().pickImage(ImageSource.gallery);
               showDialog(

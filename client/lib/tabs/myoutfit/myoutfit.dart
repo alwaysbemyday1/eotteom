@@ -27,7 +27,7 @@ class Outfit extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
               child: Text('코디 등록하기'),
               onPressed: () {
-                Navigator.push(context,
+                Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(builder: (context) => EnrollOutfit()));
               }),
           backgroundColor: Colors.white,
