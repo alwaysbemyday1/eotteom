@@ -1,10 +1,10 @@
+import 'package:eotteom/tabs/home/myOutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../provider.dart';
-import '../../mycloset.dart';
+import '../../../provider.dart';
 
 class EnrollButton extends StatefulWidget {
   const EnrollButton({super.key});
@@ -30,7 +30,7 @@ class _EnrollButtonState extends State<EnrollButton> {
                     style: TextStyle(fontSize: 16, color: Colors.white)),
                 onPressed: () {
                   Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => MyCloset()));
+                      CupertinoPageRoute(builder: (context) => MyOutfit()));
                 }),
           )
         : Container(

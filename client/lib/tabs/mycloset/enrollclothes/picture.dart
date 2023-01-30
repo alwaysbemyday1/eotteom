@@ -23,15 +23,17 @@ class _PictureState extends State<Picture> {
               child: Text('사진', style: enrollTitleTheme)),
           TextButton(
             onPressed: () {
+              //context.read<EnrollClothes>().pickImage(ImageSource.gallery);
               showDialog(
                   context: context,
                   barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
-                  builder: (BuildContext context) {
+                  builder: (BuildContext ctx) {
                     return Dialog(
                         child: Row(
                       children: [
                         TextButton(
                             onPressed: () {
+                              Navigator.pop(ctx);
                               context
                                   .read<EnrollClothes>()
                                   .pickImage(ImageSource.gallery);
@@ -57,7 +59,7 @@ class _PictureState extends State<Picture> {
                     borderRadius: BorderRadius.circular(5)),
                 child: context.watch<EnrollClothes>().resultImage == null
                     ? Text('사진을 선택해주세요', style: basicTextTheme2)
-                    : Image.file(context.watch<EnrollClothes>().resultImage!,
+                    : Image.file(context.read<EnrollClothes>().resultImage!,
                         height: 200, width: 200, fit: BoxFit.fill)),
           )
         ]));

@@ -6,6 +6,8 @@ import "package:syncfusion_flutter_sliders/sliders.dart";
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'enrolloufit/enroll.dart';
+
 class Outfit extends StatelessWidget {
   const Outfit({super.key});
 
@@ -22,6 +24,12 @@ class Outfit extends StatelessWidget {
         supportedLocales: [const Locale('ko')],
         locale: Locale('ko'),
         home: Scaffold(
+          floatingActionButton: FloatingActionButton(
+              child: Text('코디 등록하기'),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EnrollOutfit()));
+              }),
           backgroundColor: Colors.white,
           appBar: appbarOutfit,
           body: Cody(),
@@ -43,7 +51,7 @@ class FilterProvider extends ChangeNotifier {
 
   List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
   List<bool> outfitLabelSelect = [true, true, true];
-  
+
   changeDatecheck() {
     datecheck = !datecheck;
     notifyListeners();

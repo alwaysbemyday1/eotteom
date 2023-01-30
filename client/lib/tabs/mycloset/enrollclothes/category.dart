@@ -106,8 +106,6 @@ class _PopupMenuState extends State<PopupMenu> {
               style: basicTextTheme)),
     ));
     childs.add(PopupMenuDivider(height: 0));
-    childs.add(PopupMenuDivider(height: 0));
-    childs.add(PopupMenuDivider(height: 0));
     // childs.add(PopupMenuItem<String>(
     //     // divider
     //     height: 7,

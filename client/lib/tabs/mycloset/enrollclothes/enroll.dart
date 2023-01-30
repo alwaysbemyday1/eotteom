@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../mycloset.dart';
+import '../mycloset.dart';
 import 'brand.dart';
 import 'category.dart';
 import 'enrollbutton.dart';
