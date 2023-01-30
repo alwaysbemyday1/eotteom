@@ -1,6 +1,7 @@
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -20,10 +21,48 @@ class _PictureState extends State<Picture> {
           Container(
               margin: EdgeInsets.only(bottom: 13),
               child: Text('사진', style: enrollTitleTheme)),
-          CupertinoButton(
-            padding: EdgeInsets.all(0),
+          TextButton(
             onPressed: () {
-              context.read<EnrollClothes>().pickImage(ImageSource.gallery);
+              showDialog(
+                  context: context,
+                  barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                  builder: (BuildContext context) {
+                    return Dialog(
+                        child: Row(
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              context
+                                  .read<EnrollClothes>()
+                                  .pickImage(ImageSource.gallery);
+                            },
+                            child: (Text('앨범'))),
+                        TextButton(
+                            onPressed: () {
+                              context
+                                  .read<EnrollClothes>()
+                                  .pickImage(ImageSource.camera);
+                            },
+                            child: (Text('촬영')))
+                      ],
+                    ));
+                    return AlertDialog(actions: [
+                      TextButton(
+                          onPressed: () {
+                            context
+                                .read<EnrollClothes>()
+                                .pickImage(ImageSource.gallery);
+                          },
+                          child: (Text('앨범'))),
+                      TextButton(
+                          onPressed: () {
+                            context
+                                .read<EnrollClothes>()
+                                .pickImage(ImageSource.camera);
+                          },
+                          child: (Text('촬영')))
+                    ]);
+                  });
             },
             child: Container(
                 alignment: Alignment.center,
