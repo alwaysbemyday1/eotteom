@@ -78,35 +78,50 @@ class EnrollClothes extends ChangeNotifier {
   }
 
 // Category
-  var bigCategory = 100;
-  var smallCategory = 100;
-  List<String> bigCategoryList = [
-    "상의",
-    "하의",
-    "악세서리",
-    "신발",
-  ];
+  var bigCategory = '선택해주세요';
+  var smallCategory = '선택해주세요';
 
-  var smallCategoryList = [
-    ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
-    ["청바지", "면바지", "체육복", "조거", "레깅스"],
-    ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
-    ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
-  ];
+  var categoryList = {
+    "상의": ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
+    "하의": ["청바지", "면바지", "체육복", "조거", "레깅스"],
+    "악세서리": ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
+    "신발": ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
+  };
 
-  changeNumBigCategory(int newBigCategory) {
+  changeNumBigCategory(String newBigCategory) {
     bigCategory = newBigCategory;
-    smallCategory = 100;
+    smallCategory = '선택해주세요';
     notifyListeners();
   }
 
-  changeNumSmallCategory(int newSmallCategory) {
+  changeNumSmallCategory(String newSmallCategory) {
     smallCategory = newSmallCategory;
     notifyListeners();
   }
 
-  var brand;
+  String brand = "";
+  changeBrand(String newBrand) {
+    brand = newBrand;
+  }
 
-  var fit = 100;
-  var sizeList = ['슬림핏', '레귤러핏', '오버핏'];
+  String priceStr = '';
+  int price = 0;
+  changePrice(newPrice) {
+    priceStr = newPrice;
+    notifyListeners();
+  }
+
+  String fit = '';
+  List<String> fitList = ['슬림핏', '레귤러핏', '오버핏'];
+  changeFit(newFit) {
+    fit = newFit;
+    notifyListeners();
+  }
+
+  String size = '';
+  var sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  changeSize(newSize) {
+    size = newSize;
+    notifyListeners();
+  }
 }

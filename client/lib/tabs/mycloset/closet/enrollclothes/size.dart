@@ -1,7 +1,9 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 class Size extends StatefulWidget {
   Size({super.key});
@@ -11,8 +13,6 @@ class Size extends StatefulWidget {
 }
 
 class _SizeState extends State<Size> {
-  var size = 100;
-  var sizeList = ['XS', 'S', 'M', 'L', 'XL', '+'];
   List<Widget> getList() {
     List<Widget> childs = [];
     for (int i = 0; i < 6; i++) {
@@ -24,21 +24,27 @@ class _SizeState extends State<Size> {
             height: (100.w - 32 - 45) / 6,
             width: (100.w - 32 - 45) / 6,
             decoration: BoxDecoration(
-                color: size != i ? Color(0xffFFFFFF) : Color(0xff131313),
+                color: context.watch<EnrollClothes>().size !=
+                        context.watch<EnrollClothes>().sizeList[i]
+                    ? Color(0xffFFFFFF)
+                    : Color(0xff131313),
                 border: Border.all(width: 1, color: Color(0xffCACACA)),
                 borderRadius: BorderRadius.circular(5)),
-            child: Text(sizeList[i],
+            child: Text(context.watch<EnrollClothes>().sizeList[i],
                 style: TextStyle(
                     fontSize: 16,
                     fontFamily: "NotoSans",
-                    color: size != i ? Color(0xff9B9B9B) : Colors.white,
+                    color: context.watch<EnrollClothes>().size !=
+                            context.watch<EnrollClothes>().sizeList[i]
+                        ? Color(0xff9B9B9B)
+                        : Colors.white,
                     fontWeight: FontWeight.w400,
                     height: 1.3)),
           ),
           onPressed: () {
-            setState(() {
-              size = i;
-            });
+            context
+                .read<EnrollClothes>()
+                .changeSize(context.read<EnrollClothes>().sizeList[i]);
           }));
     }
 

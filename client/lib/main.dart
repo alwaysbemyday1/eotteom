@@ -69,15 +69,13 @@ class MyApp extends StatelessWidget {
         tabBuilder: (context, index) {
           switch (index) {
             case 0:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(
-                    child: MaterialApp(
-                      home: Analysis(),
-                    ),
-                  );
-                }
-              );
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(
+                  child: MaterialApp(
+                    home: Analysis(),
+                  ),
+                );
+              });
             case 1:
               return CupertinoTabView(
                 builder: (context) {

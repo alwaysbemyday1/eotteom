@@ -15,7 +15,7 @@ class Fit extends StatefulWidget {
 class _FitState extends State<Fit> {
   List<Widget> getList() {
     List<Widget> childs = [];
-    for (int i = 0; i < context.watch<EnrollClothes>().sizeList.length; i++) {
+    for (int i = 0; i < context.watch<EnrollClothes>().fitList.length; i++) {
       childs.add(CupertinoButton(
           padding: EdgeInsets.all(0),
           child: Container(
@@ -24,23 +24,27 @@ class _FitState extends State<Fit> {
             height: (100.w - 32 - 45) / 6,
             width: (100.w - 32 - 18) / 3,
             decoration: BoxDecoration(
-                color: context.read<EnrollClothes>().fit != i
+                color: context.watch<EnrollClothes>().fit !=
+                        context.watch<EnrollClothes>().fitList[i]
                     ? Color(0xffFFFFFF)
                     : Color(0xff131313),
                 border: Border.all(width: 1, color: Color(0xffCACACA)),
                 borderRadius: BorderRadius.circular(5)),
-            child: Text(context.watch<EnrollClothes>().sizeList[i],
+            child: Text(context.watch<EnrollClothes>().fitList[i],
                 style: TextStyle(
                     fontSize: 16,
                     fontFamily: "NotoSans",
-                    color: context.read<EnrollClothes>().fit != i
+                    color: context.watch<EnrollClothes>().fit !=
+                            context.watch<EnrollClothes>().fitList[i]
                         ? Color(0xff9B9B9B)
                         : Colors.white,
                     fontWeight: FontWeight.w400,
                     height: 1.3)),
           ),
           onPressed: () {
-            context.read<EnrollClothes>().fit = i;
+            context
+                .read<EnrollClothes>()
+                .changeFit(context.read<EnrollClothes>().fitList[i]);
           }));
     }
 

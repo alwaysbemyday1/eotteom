@@ -1,7 +1,8 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class Price extends StatelessWidget {
   Price({super.key});
