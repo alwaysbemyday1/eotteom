@@ -16,7 +16,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (c) => SignInPage()),
         ChangeNotifierProvider(create: (c) => Position()),
-        ChangeNotifierProvider(create: (c) => EnrollClothes())
+        ChangeNotifierProvider(create: (c) => EnrollClothes()),
+        ChangeNotifierProvider(create: (c) => EnrollOutfit())
       ],
       child: const CupertinoApp(
         home: Eotteom(),

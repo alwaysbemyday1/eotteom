@@ -100,11 +100,13 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Brand
   String brand = "";
   changeBrand(String newBrand) {
     brand = newBrand;
   }
 
+  // Price
   String priceStr = '';
   int price = 0;
   changePrice(newPrice) {
@@ -112,6 +114,7 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Fit
   String fit = '';
   List<String> fitList = ['슬림핏', '레귤러핏', '오버핏'];
   changeFit(newFit) {
@@ -119,10 +122,43 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Size
   String size = '';
   var sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   changeSize(newSize) {
     size = newSize;
     notifyListeners();
+  }
+}
+
+class EnrollOutfit extends ChangeNotifier {
+  // Picture
+  File? resultImage;
+
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+
+      if (image == null) return;
+      File? img = File(image.path);
+
+      img = await cropImage(imageFile: img);
+      resultImage = img;
+      print(resultImage);
+      notifyListeners();
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+  Future<File?> cropImage({required File imageFile}) async {
+    CroppedFile? croppedImage =
+        await ImageCropper().cropImage(sourcePath: imageFile.path);
+
+    if (croppedImage == null) {
+      return null;
+    } else {
+      return File(croppedImage.path);
+    }
   }
 }

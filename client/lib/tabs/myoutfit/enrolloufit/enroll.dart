@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'enrollbutton.dart';
+import 'picture.dart';
 
 class EnrollOutfit extends StatefulWidget {
   const EnrollOutfit({super.key});
@@ -37,7 +38,7 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                       },
                     ),
                   ),
-                  middle: Text('옷 등록', style: enrollTitleTheme),
+                  middle: Text('아웃핏 등록', style: enrollTitleTheme),
                 ),
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
@@ -46,9 +47,7 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                                margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
-                                child: Text('옷 기본정보', style: enrollTitleTheme)),
+                            Picture(),
                             EnrollButton(),
                             Container(height: 100)
                           ]),
