@@ -93,6 +93,7 @@ class FilterProvider extends ChangeNotifier {
     temperatures = SfRangeValues(0.0, 15.0);
     hightemperature = temperatures.end.toInt();
     lowtemperature = temperatures.start.toInt();
+    outfitLabelSelect = [true, true, true];
     notifyListeners();
   }
 
