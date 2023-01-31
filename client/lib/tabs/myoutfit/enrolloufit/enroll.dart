@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import 'enrollbutton.dart';
+import 'name.dart';
 import 'picture.dart';
 
 class EnrollOutfit extends StatefulWidget {
@@ -53,9 +54,7 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                                   child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: [
-                                        Picture(),
-                                      ])))),
+                                      children: [Picture(), Name()])))),
                       EnrollButton(ctx: context)
                     ]))));
   }

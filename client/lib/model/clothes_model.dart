@@ -31,7 +31,7 @@ class Clothes {
       fit: json['fit'],
       price: json['price'],
       size: json['size'],
-      picutre: json['picutre'],
+      // picutre: json['picutre'],
     );
   }
 

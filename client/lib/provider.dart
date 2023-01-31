@@ -103,6 +103,7 @@ class EnrollClothes extends ChangeNotifier {
   String brand = "";
   changeBrand(String newBrand) {
     brand = newBrand;
+    notifyListeners();
   }
 
   // Price
@@ -158,5 +159,12 @@ class EnrollOutfit extends ChangeNotifier {
     } else {
       return File(croppedImage.path);
     }
+  }
+
+  // Name
+  String name = "";
+  changeName(String newName) {
+    name = newName;
+    notifyListeners();
   }
 }
