@@ -11,7 +11,8 @@ import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'gender.dart';
 
 class Password extends StatefulWidget {
-  const Password({super.key});
+  Password({super.key, this.user});
+  var user;
 
   @override
   State<Password> createState() => _PasswordState();
@@ -20,6 +21,7 @@ class Password extends StatefulWidget {
 class _PasswordState extends State<Password> {
   // final TextEditingController controller = TextEditingController();
   var flagValidatePassword = true;
+  var inputPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +94,9 @@ class _PasswordState extends State<Password> {
                                   filled: true,
                                   fillColor: Color(0xffF3F3F3)),
                               autofocus: true,
-                              onChanged: (text) {})),
+                              onChanged: (text) {
+                                inputPassword = text;
+                              })),
                       Container(
                           height: 20,
                           margin: EdgeInsets.fromLTRB(8, 0, 0, 0),
@@ -159,10 +163,12 @@ class _PasswordState extends State<Password> {
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.white)),
                                   onPressed: () {
+                                    widget.user['password'] = inputPassword;
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => Gender()));
+                                            builder: (context) =>
+                                                Gender(user: widget.user)));
                                     context.read<SignInPage>().pageUp();
                                   }),
                             )

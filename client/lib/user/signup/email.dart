@@ -8,6 +8,8 @@ import 'package:eotteom/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../model/user_model.dart';
+
 class Email extends StatefulWidget {
   const Email({super.key});
 
@@ -18,6 +20,7 @@ class Email extends StatefulWidget {
 class _EmailState extends State<Email> {
   var inputEmail;
   var flagValidateEmail = false;
+  var user = {};
 
   validateEmail() {
     setState(() {
@@ -147,10 +150,12 @@ class _EmailState extends State<Email> {
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.white)),
                                   onPressed: () {
+                                    user['email'] = inputEmail;
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => Password()));
+                                            builder: (context) =>
+                                                Password(user: user)));
                                     context.read<SignInPage>().pageUp();
                                   }),
                             )

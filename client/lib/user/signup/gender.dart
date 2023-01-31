@@ -11,14 +11,15 @@ import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'complete.dart';
 
 class Gender extends StatefulWidget {
-  const Gender({super.key});
+  Gender({super.key, this.user});
+  var user;
 
   @override
   State<Gender> createState() => _GenderState();
 }
 
 class _GenderState extends State<Gender> {
-  var gender = null; // true(남성), false(여성)
+  int gender = -1; // true(남성), false(여성)
   var manCheck = false;
   var womanCheck = false;
 
@@ -102,7 +103,7 @@ class _GenderState extends State<Gender> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: manCheck == true
+                                            color: gender == 1
                                                 ? Color(0xff131313)
                                                 : Colors.white),
                                         child: Column(
@@ -124,7 +125,7 @@ class _GenderState extends State<Gender> {
                                                   style: TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "NotoSans",
-                                                      color: manCheck == false
+                                                      color: gender != 1
                                                           ? Color(0xff131313)
                                                           : Colors.white,
                                                       fontWeight:
@@ -135,9 +136,7 @@ class _GenderState extends State<Gender> {
                                         )),
                                     onPressed: () {
                                       setState(() {
-                                        gender = true;
-                                        manCheck = true;
-                                        womanCheck = false;
+                                        gender = 1;
                                       });
                                     }),
                               ),
@@ -151,7 +150,7 @@ class _GenderState extends State<Gender> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: womanCheck == true
+                                            color: gender == 0
                                                 ? Color(0xff131313)
                                                 : Colors.white),
                                         child: Column(
@@ -173,7 +172,7 @@ class _GenderState extends State<Gender> {
                                                   style: TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "NotoSans",
-                                                      color: womanCheck == false
+                                                      color: gender != 0
                                                           ? Color(0xff131313)
                                                           : Colors.white,
                                                       fontWeight:
@@ -184,9 +183,7 @@ class _GenderState extends State<Gender> {
                                         )),
                                     onPressed: () {
                                       setState(() {
-                                        gender = false;
-                                        manCheck = false;
-                                        womanCheck = true;
+                                        gender = 0;
                                       });
                                     }),
                               ),
@@ -228,10 +225,12 @@ class _GenderState extends State<Gender> {
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.white)),
                                   onPressed: () {
+                                    widget.user['gender'] = gender.toString();
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => Complete()));
+                                            builder: (context) =>
+                                                Complete(user: widget.user)));
                                   }),
                             )
                           : Container(
