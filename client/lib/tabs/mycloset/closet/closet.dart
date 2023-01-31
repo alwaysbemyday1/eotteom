@@ -53,11 +53,12 @@ class _ClosetState extends State<Closet> {
           padding: const EdgeInsets.only(right: 16),
           child: Align(
             child: FloatingActionButton(
+              backgroundColor: Color(0xff151515),
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).push(
                       CupertinoPageRoute(builder: (ctx) => EnrollClothes()));
                 },
-                child: Text('옷 추가')),
+                child: Icon(Icons.add)),
             alignment: Alignment.centerRight,
           ),
         ),
