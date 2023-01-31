@@ -40,6 +40,8 @@ class Outfit extends StatelessWidget {
 }
 
 class FilterProvider extends ChangeNotifier {
+  List<String> dropdownlist = ["전체", "좋아요만"];
+  String selectedDropdown = "전체";
   bool datecheck = true;
   bool temperaturecheck = true;
   bool labelcheck = true;
@@ -101,4 +103,10 @@ class FilterProvider extends ChangeNotifier {
     lowtemperature = temperatures.start.toInt();
     notifyListeners();
   }
+  changeSelectedDropdown(value) {
+    selectedDropdown = value;
+    print(selectedDropdown);
+    notifyListeners();
+  }
 }
+
