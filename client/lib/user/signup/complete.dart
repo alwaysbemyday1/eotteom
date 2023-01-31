@@ -1,23 +1,27 @@
 import 'package:eotteom/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:eotteom/provider.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../tabs/home/home.dart';
+import 'package:http/http.dart' as http;
 
 class Complete extends StatefulWidget {
-  const Complete({super.key});
+  Complete({super.key, this.user});
+  var user;
 
   @override
   State<Complete> createState() => _CompleteState();
 }
 
 class _CompleteState extends State<Complete> {
-  var gender = null; // true(남성), false(여성)
-  var manCheck = false;
-  var womanCheck = false;
+  _postRequest() async {
+    String url = 'http://127.0.0.1:8000/api/users/';
+
+    http.Response response = await http.post(Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: widget.user);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +72,7 @@ class _CompleteState extends State<Complete> {
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white)),
                             onPressed: () {
+                              _postRequest();
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
