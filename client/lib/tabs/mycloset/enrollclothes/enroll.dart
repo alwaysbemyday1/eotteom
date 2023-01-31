@@ -16,7 +16,8 @@ import 'size.dart';
 import 'price.dart';
 
 class EnrollClothes extends StatefulWidget {
-  const EnrollClothes({super.key});
+  EnrollClothes({super.key, this.rootContext});
+  var rootContext;
 
   @override
   State<EnrollClothes> createState() => _EnrollClothesState();
@@ -85,7 +86,7 @@ class _EnrollClothesState extends State<EnrollClothes> {
                                 ]),
                           )),
                     ),
-                    EnrollButton(),
+                    EnrollButton(ctx: context),
                   ],
                 ))));
   }

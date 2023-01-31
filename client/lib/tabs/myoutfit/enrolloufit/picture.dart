@@ -39,14 +39,14 @@ class Picture extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pop(ctx);
                                 context
-                                    .read<EnrollClothes>()
+                                    .read<EnrollOutfit>()
                                     .pickImage(ImageSource.gallery);
                               },
                               child: (Text('앨범'))),
                           TextButton(
                               onPressed: () {
                                 context
-                                    .read<EnrollClothes>()
+                                    .read<EnrollOutfit>()
                                     .pickImage(ImageSource.camera);
                               },
                               child: (Text('촬영')))
@@ -62,7 +62,7 @@ class Picture extends StatelessWidget {
                       color: Color(0xfff3f3f3),
                       borderRadius: BorderRadius.circular(5)),
                   child: context.watch<EnrollOutfit>().resultImage == null
-                      ? Text('아웃필을 선택해주세요', style: basicTextTheme2)
+                      ? Text('아웃핏을 선택해주세요', style: basicTextTheme2)
                       : Image.file(context.read<EnrollOutfit>().resultImage!,
                           height: (100.w - 32) / 5 * 3 / 3 * 4,
                           width: (100.w - 32) / 5 * 3,

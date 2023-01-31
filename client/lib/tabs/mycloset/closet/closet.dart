@@ -7,7 +7,7 @@ import "package:provider/provider.dart";
 import '../enrollclothes/enroll.dart';
 
 class Closet extends StatefulWidget {
-  const Closet({super.key});
+  Closet({super.key});
 
   @override
   State<Closet> createState() => _ClosetState();
@@ -55,8 +55,7 @@ class _ClosetState extends State<Closet> {
             child: FloatingActionButton(
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).push(
-                      CupertinoPageRoute(
-                          builder: (context) => EnrollClothes()));
+                      CupertinoPageRoute(builder: (ctx) => EnrollClothes()));
                 },
                 child: Text('옷 추가')),
             alignment: Alignment.centerRight,

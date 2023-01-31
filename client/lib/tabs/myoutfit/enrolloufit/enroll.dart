@@ -56,7 +56,7 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                                       children: [
                                         Picture(),
                                       ])))),
-                      EnrollButton()
+                      EnrollButton(ctx: context)
                     ]))));
   }
 }

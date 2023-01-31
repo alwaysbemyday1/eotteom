@@ -7,8 +7,8 @@ import '../../../provider.dart';
 import '../mycloset.dart';
 
 class EnrollButton extends StatelessWidget {
-  const EnrollButton({super.key});
-
+  EnrollButton({super.key, this.ctx});
+  var ctx;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,8 +31,7 @@ class EnrollButton extends StatelessWidget {
                     child: Text('등록',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (context) => MyCloset()));
+                      Navigator.pop(ctx);
                     }),
               )
             : Container(
