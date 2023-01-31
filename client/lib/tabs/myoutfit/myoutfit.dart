@@ -24,12 +24,17 @@ class Outfit extends StatelessWidget {
         supportedLocales: [const Locale('ko')],
         locale: Locale('ko'),
         home: Scaffold(
-          floatingActionButton: FloatingActionButton(
-              child: Text('코디 등록하기'),
-              onPressed: () {
-                Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(builder: (context) => EnrollOutfit()));
-              }),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 40),
+            child: FloatingActionButton(
+              backgroundColor: Color(0xff151515),
+                child: Icon(Icons.add),
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute(builder: (context) => EnrollOutfit()));
+                }),
+          ),
           backgroundColor: Colors.white,
           appBar: appbarOutfit,
           body: Cody(),
@@ -42,6 +47,7 @@ class Outfit extends StatelessWidget {
 class FilterProvider extends ChangeNotifier {
   List<String> dropdownlist = ["전체", "좋아요만"];
   String selectedDropdown = "전체";
+  bool seasoncheck = true;
   bool datecheck = true;
   bool temperaturecheck = true;
   bool labelcheck = true;
@@ -53,6 +59,9 @@ class FilterProvider extends ChangeNotifier {
 
   List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
   List<bool> outfitLabelSelect = [true, true, true];
+
+  List<String> seasonLabel = ["봄", "여름", "가을", "겨울"];
+  List<bool> seasonLabelSelect = [true, true, true, true];
 
   changeDatecheck() {
     datecheck = !datecheck;
@@ -71,6 +80,11 @@ class FilterProvider extends ChangeNotifier {
 
   changeoutfitLabelSelect(int index) {
     outfitLabelSelect[index] = !outfitLabelSelect[index];
+    notifyListeners();
+  }
+
+  changeseasonLabelSelect(int index) {
+    seasonLabelSelect[index] = !seasonLabelSelect[index];
     notifyListeners();
   }
 
