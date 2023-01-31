@@ -106,8 +106,6 @@ class _PopupMenuState extends State<PopupMenu> {
               style: basicTextTheme)),
     ));
     childs.add(PopupMenuDivider(height: 0));
-    childs.add(PopupMenuDivider(height: 0));
-    childs.add(PopupMenuDivider(height: 0));
     // childs.add(PopupMenuItem<String>(
     //     // divider
     //     height: 7,
@@ -161,18 +159,14 @@ class _PopupMenuState extends State<PopupMenu> {
                   style: basicTextTheme)),
           onSelected: (String category) {
             if (widget.flag == true) {
-              if (category !=
-                  (widget.flag == true
-                      ? context.read<EnrollClothes>().bigCategory
-                      : context.read<EnrollClothes>().smallCategory)) {
+              if (category != context.read<EnrollClothes>().bigCategory) {
                 context.read<EnrollClothes>().changeNumBigCategory(category);
               }
             } else {
-              context.read<EnrollClothes>().changeNumSmallCategory(category);
+              if (category != context.read<EnrollClothes>().smallCategory) {
+                context.read<EnrollClothes>().changeNumSmallCategory(category);
+              }
             }
-            widget.flag == true
-                ? context.read<EnrollClothes>().bigCategory
-                : context.read<EnrollClothes>().smallCategory = category;
           },
           itemBuilder: (BuildContext context) => getList()),
     );

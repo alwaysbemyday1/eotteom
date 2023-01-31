@@ -4,10 +4,10 @@ import 'package:eotteom/tabs/mycloset/mycloset.dart';
 import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
 
-import 'enrollclothes/enroll.dart';
+import '../enrollclothes/enroll.dart';
 
 class Closet extends StatefulWidget {
-  const Closet({super.key});
+  Closet({super.key});
 
   @override
   State<Closet> createState() => _ClosetState();
@@ -53,12 +53,12 @@ class _ClosetState extends State<Closet> {
           padding: const EdgeInsets.only(right: 16),
           child: Align(
             child: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => EnrollClothes()));
-              },
-              child: Text('옷 추가')),
-              alignment: Alignment.centerRight,
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).push(
+                      CupertinoPageRoute(builder: (ctx) => EnrollClothes()));
+                },
+                child: Text('옷 추가')),
+            alignment: Alignment.centerRight,
           ),
         ),
       ],

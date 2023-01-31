@@ -13,26 +13,26 @@ class Home extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          width: 100.w,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 100,
+            scrollDirection: Axis.vertical,
+            child: Container(
+              width: 100.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                  ),
+                  //WeatherOutfit(),
+                  MyOutfit(),
+                  OtherOutfit(),
+                  RandomOutfit(),
+                  Container(
+                    height: 100,
+                  ),
+                ],
               ),
-              WeatherOutfit(),
-              MyOutfit(),
-              OtherOutfit(),
-              RandomOutfit(),
-              Container(
-                height: 100,
-              ),
-            ],
-          ),
-        ));
+            ));
       },
     );
   }
