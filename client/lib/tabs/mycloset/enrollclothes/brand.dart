@@ -45,7 +45,6 @@ class Brand extends StatelessWidget {
               onFocusChange: (hasFocus) {
                 if (hasFocus == false) {
                   context.read<EnrollClothes>().changeBrand(inputBrand);
-                  print(context.read<EnrollClothes>().brand);
                 }
               },
             ),

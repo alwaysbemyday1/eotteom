@@ -22,31 +22,34 @@ class Name extends StatelessWidget {
                 style: enrollTitleTheme2,
               )),
           Container(
-            height: 44,
-            width: 100.w - 32,
-            margin: EdgeInsets.only(right: 16),
-            child: TextField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: '브랜드명을 입력해주세요',
-                  hintStyle: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff9b9b9b),
-                      fontFamily: "NotoSans",
-                      fontWeight: FontWeight.w400,
-                      height: 1.3),
-                  filled: true,
-                  fillColor: Color(0xffF3F3F3)),
-              onChanged: (text) {
-                inputName = text;
-              },
-              onEditingComplete: () {
-                context.read<EnrollOutfit>().changeName(inputName);
-                print(context.read<EnrollOutfit>());
-              },
-            ),
-          )
+              height: 44,
+              width: 100.w - 32,
+              margin: EdgeInsets.only(right: 16),
+              child: Focus(
+                child: TextField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: '브랜드명을 입력해주세요',
+                      hintStyle: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff9b9b9b),
+                          fontFamily: "NotoSans",
+                          fontWeight: FontWeight.w400,
+                          height: 1.3),
+                      filled: true,
+                      fillColor: Color(0xffF3F3F3)),
+                  onChanged: (text) {
+                    inputName = text;
+                  },
+                ),
+                onFocusChange: (hasFocus) {
+                  if (hasFocus == false) {
+                    context.read<EnrollOutfit>().changeName(inputName);
+                    print(context.read<EnrollOutfit>().name);
+                  }
+                },
+              ))
         ]));
   }
 }
