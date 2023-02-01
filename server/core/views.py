@@ -39,6 +39,35 @@ class UserViewSet(ModelViewSet):
             return res
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['POST'], detail=False)
+    def login(self, request):
+        user = authenticate(
+            email=request.data.get("email"), password=request.data.get("password")
+        )   
+        if user is not None:
+            serializer = UserSerializer(user)
+            token = TokenObtainPairSerializer.get_token(user)
+            refresh_token = str(token)
+            access_token = str(token.access_token)
+            res = Response(
+                {
+                    "user": serializer.data,
+                    "message": "login success",
+                    "token": {
+                        "access": access_token,
+                        "refresh": refresh_token,
+                    },
+                },
+                status=status.HTTP_200_OK,
+            )
+            return res
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+    def get_permissions(self):
+        if self.action == 'login' or self.action == 'create':
+            return [AllowAny(), ]
+        return super(UserViewSet, self).get_permissions()
 
 @api_view(['GET'])
 def HomeView(request):
