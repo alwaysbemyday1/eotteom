@@ -1,5 +1,6 @@
 import 'package:eotteom/tabs/closetanalysis/analysis.dart';
 import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
+import 'package:eotteom/tabs/profile/Profile.dart';
 
 import 'package:eotteom/user/signin.dart';
 
@@ -120,16 +121,9 @@ class MyApp extends StatelessWidget {
               return CupertinoTabView(
                 builder: (context) {
                   return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        trailing: SizedBox(
-                      width: 50,
-                      child: CupertinoButton(
-                        padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                        child: Icon(CupertinoIcons.settings),
-                        onPressed: () {},
-                      ),
-                    )),
-                    child: Center(child: Center(child: Text('프로필 들어갈 페이지'))),
+                    child: MaterialApp(
+                      home: Profile(),
+                    ),
                   );
                 },
               );
