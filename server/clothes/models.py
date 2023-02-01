@@ -27,6 +27,7 @@ class Clothes(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+    image = models.ImageField(null=True)
     major_category = models.ForeignKey(MajorCategory, on_delete=models.PROTECT)
     minor_category = models.ForeignKey(MinorCategory, on_delete=models.PROTECT)
     brand = models.CharField(max_length=255, blank=True)
