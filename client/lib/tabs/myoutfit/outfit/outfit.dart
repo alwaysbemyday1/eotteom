@@ -4,7 +4,6 @@ import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
-import "temperaturepicker.dart";
 import "package:provider/provider.dart";
 import "package:sizer/sizer.dart";
 import "package:eotteom/tabs/myoutfit/outfit/outfitlabel.dart";

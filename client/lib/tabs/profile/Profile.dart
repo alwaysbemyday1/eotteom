@@ -1,8 +1,6 @@
 import 'package:eotteom/tabs/profile/Profileimage.dart';
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
   Profile({super.key});
@@ -12,10 +10,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final TextStyle _fontStyle = const TextStyle(
+        fontFamily: "NotoSans", fontWeight: FontWeight.w700, fontSize: 18.0);
   @override
   Widget build(BuildContext context) {
-    TextStyle _fontStyle = TextStyle(
-        fontFamily: "NotoSans", fontWeight: FontWeight.w700, fontSize: 18.0);
     return Sizer(builder: ((context, orientation, deviceType) {
       return Scaffold(
         appBar: AppBar(
@@ -38,11 +36,7 @@ class _ProfileState extends State<Profile> {
               SizedBox(
                 height: 56,
               ),
-              Container(
-                color: Color(0xffD9D9D9),
-                width: 25.w,
-                height: 25.w,
-              ),
+              ProfileImage(),
               SizedBox(
                 height: 8,
               ),
@@ -59,7 +53,9 @@ class _ProfileState extends State<Profile> {
                   )
                 ],
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -70,14 +66,18 @@ class _ProfileState extends State<Profile> {
                         '성별 Male',
                         style: _fontStyle,
                       ),
-                      SizedBox(height: 17,),
+                      SizedBox(
+                        height: 17,
+                      ),
                       Text(
                         '키 176',
                         style: _fontStyle,
                       )
                     ],
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(
+                    width: 10.w,
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -85,7 +85,9 @@ class _ProfileState extends State<Profile> {
                         '나이 27',
                         style: _fontStyle,
                       ),
-                      SizedBox(height: 17,),
+                      SizedBox(
+                        height: 17,
+                      ),
                       Text(
                         '몸무게 72kg',
                         style: _fontStyle,
@@ -93,11 +95,51 @@ class _ProfileState extends State<Profile> {
                     ],
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 74,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 16, right: 16),
+                child: Divider(
+                  color: Color(0xff151515),
+                  thickness: 1,
+                ),
               )
             ],
           ),
         ),
       );
     }));
+  }
+
+  _showBottomSheet() {
+    return showModalBottomSheet(
+        context: context,
+        builder: ((context) {
+          return SizedBox(
+            height: 40.h,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 5.h),
+                  child: Text("프로필 사진 변경하기", style: _fontStyle,),
+                ),
+                SizedBox(height: 10.w,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt), iconSize: 20.w,),
+                    IconButton(
+                      iconSize: 20.w,
+                      onPressed: () {},
+                      icon: Icon(Icons.photo_album),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        }));
   }
 }

@@ -1,59 +1,125 @@
-import 'dart:io';
-import 'package:eotteom/style.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
+import "package:flutter/material.dart";
+import "package:sizer/sizer.dart";
+import "dart:io";
+import "package:flutter/foundation.dart";
+import "package:image_picker/image_picker.dart";
 
-class AddProfileImage extends StatefulWidget {
-  const AddProfileImage({super.key});
+class ProfileImage extends StatefulWidget {
+  const ProfileImage({super.key});
 
   @override
-  State<AddProfileImage> createState() => _AddProfileImageState();
+  State<ProfileImage> createState() => _ProfileImageState();
 }
 
-class _AddProfileImageState extends State<AddProfileImage> {
-  File? _image1;
+class _ProfileImageState extends State<ProfileImage> {
+  XFile? _pickedFile;
 
-  Future pickImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(source: source);
-
-      if (image == null) return;
-      File? img1 = File(image.path);
-      img1 = await cropImage(imageFile: img1);
-      setState(() {
-        _image1 = img1;
-      });
-    } on PlatformException catch (e) {
-      print(e);
-    }
-  }
-
-  Future<File?> cropImage({required File imageFile}) async {
-    CroppedFile? croppedImage =
-        await ImageCropper().cropImage(sourcePath: imageFile.path);
-
-    if (croppedImage == null) {
-      return null;
-    } else {
-      return File(croppedImage.path);
-    }
-  }
-
+  final TextStyle _fontStyle = const TextStyle(
+      fontFamily: "NotoSans", fontWeight: FontWeight.w700, fontSize: 18.0);
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: FutureBuilder(
-            future: pickImage(ImageSource.gallery),
-            builder: (context, snapshot) {
-              return Column(children: [
-                _image1 == null
-                    ? Text('no image selected!', style: headLineTextTheme)
-                    : Container(
-                        child: Image.file(_image1!), width: 100, height: 100),
-              ]);
-            }));
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        if (_pickedFile == null) {
+          return InkWell(
+            child: Container(
+              color: Color(0xffD9D9D9),
+              width: 25.w,
+              height: 25.w,
+            ),
+            onTap: () {
+              _showBottomSheet();
+            },
+          );
+        }
+
+        else {
+          return InkWell(
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: FileImage(File(_pickedFile!.path)),
+                  fit: BoxFit.cover
+                )
+              ),
+              width: 25.w,
+              height: 25.w,
+            ),
+            onTap: () {
+              _showBottomSheet();
+            },
+          );
+        }
+      },
+    );
+  }
+
+  _showBottomSheet() {
+    return showModalBottomSheet(
+        context: context,
+        builder: ((context) {
+          return SizedBox(
+            height: 40.h,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 5.h),
+                  child: Text(
+                    "프로필 사진 변경하기",
+                    style: _fontStyle,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.w,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () => _getCameraImage(),
+                      icon: const Icon(Icons.camera_alt),
+                      iconSize: 20.w,
+                    ),
+                    IconButton(
+                      iconSize: 20.w,
+                      onPressed: () => _getPhotoLibraryImage(),
+                      icon: const Icon(Icons.photo_album),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        }));
+  }
+
+  _getCameraImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _pickedFile = pickedFile;
+      });
+      Navigator.pop(context);
+    } else {
+      if (kDebugMode) {
+        print('이미지 선택안함');
+      }
+    }
+  }
+
+  _getPhotoLibraryImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _pickedFile = pickedFile;
+      });
+      Navigator.pop(context);
+    } else {
+      if (kDebugMode) {
+        print('이미지 선택안함');
+      }
+    }
   }
 }
