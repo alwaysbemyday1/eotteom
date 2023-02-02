@@ -175,4 +175,12 @@ class EnrollOutfit extends ChangeNotifier {
     season = newSeason;
     notifyListeners();
   }
+
+  // Category
+  String category = '';
+  var categoryList = ['댄디룩', '미니멀룩', '스트릿룩', '캐주얼룩', '스포츠룩'];
+  changeCategory(String newCategory) {
+    category = newCategory;
+    notifyListeners();
+  }
 }

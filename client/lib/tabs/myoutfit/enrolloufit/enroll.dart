@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
 
+import 'codi_category.dart';
 import 'codi_date.dart';
 import 'enrollbutton.dart';
 import 'name.dart';
@@ -48,12 +49,13 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                   child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Container(
-                          width: 100.w - 32,
+                          width: 100.w,
                           margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Picture(),
+                                Category(),
                                 Container(
                                   margin: EdgeInsets.fromLTRB(16, 0, 3, 32),
                                   child: Row(
