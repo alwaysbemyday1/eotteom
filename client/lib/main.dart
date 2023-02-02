@@ -20,6 +20,11 @@ void main() {
         ChangeNotifierProvider(create: (c) => EnrollOutfit())
       ],
       child: const CupertinoApp(
+        localizationsDelegates: [
+          DefaultMaterialLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate,
+          DefaultWidgetsLocalizations.delegate,
+        ],
         home: Eotteom(),
         theme: homeTheme,
       )));

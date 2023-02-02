@@ -123,7 +123,6 @@ class _PopupMenuState extends State<PopupMenu> {
               : context.read<EnrollClothes>().smallCategory) !=
           widget.categoryList[i]) {
         childs.add(PopupMenuItem<String>(
-          mouseCursor: MaterialStateMouseCursor.clickable,
           value: widget.categoryList[i],
           height: 44,
           child: Container(

@@ -162,9 +162,17 @@ class EnrollOutfit extends ChangeNotifier {
   }
 
   // Name
-  String name = "";
+  String name = '';
   changeName(String newName) {
     name = newName;
+    notifyListeners();
+  }
+
+  // Name
+  String season = '봄';
+  var seasonList = ['봄', '여름', '가을', '겨울'];
+  changeSeason(String newSeason) {
+    season = newSeason;
     notifyListeners();
   }
 }

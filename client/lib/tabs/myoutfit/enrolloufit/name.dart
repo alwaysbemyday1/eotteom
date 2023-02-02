@@ -9,6 +9,9 @@ class Name extends StatelessWidget {
   Name({super.key});
 
   var inputName;
+  getName() {
+    return inputName;
+  }
 
   @override
   Widget build(BuildContext context) {
