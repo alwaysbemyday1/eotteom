@@ -1,6 +1,8 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 class ClothesColor extends StatefulWidget {
   const ClothesColor({super.key});
@@ -99,6 +101,7 @@ class _ClothesColorState extends State<ClothesColor> {
             setState(() {
               color = i;
               line = 0;
+              context.read<EnrollClothes>().color = colorList[color];
             });
           }));
       if (colorList.length == (i + 1)) {

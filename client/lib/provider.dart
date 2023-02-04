@@ -100,6 +100,13 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Color
+  String color = "";
+  changeColor(String newColor) {
+    color = newColor;
+    notifyListeners();
+  }
+
   // Brand
   String brand = "";
   changeBrand(String newBrand) {
