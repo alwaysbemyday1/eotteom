@@ -55,7 +55,10 @@ class _EnrollClothesState extends State<EnrollClothes> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: 100.h - 103 - 90,
+                      height: 100.h -
+                          103 -
+                          90 -
+                          MediaQuery.of(context).viewInsets.bottom,
                       child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Container(
@@ -88,7 +91,10 @@ class _EnrollClothesState extends State<EnrollClothes> {
                                 ]),
                           )),
                     ),
-                    Expanded(child: EnrollButton(ctx: context)),
+                    Container(
+                        margin: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: EnrollButton(ctx: context)),
                   ],
                 ))));
   }
