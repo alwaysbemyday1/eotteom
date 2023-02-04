@@ -130,6 +130,13 @@ class EnrollClothes extends ChangeNotifier {
     size = newSize;
     notifyListeners();
   }
+
+  // Brand
+  String memo = "";
+  changeMemo(String newMemo) {
+    memo = newMemo;
+    notifyListeners();
+  }
 }
 
 class EnrollOutfit extends ChangeNotifier {

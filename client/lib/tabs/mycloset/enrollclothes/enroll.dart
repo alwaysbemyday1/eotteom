@@ -10,6 +10,7 @@ import 'brand.dart';
 import 'category.dart';
 import 'enrollbutton.dart';
 import 'fit.dart';
+import 'memo.dart';
 import 'picture.dart';
 import 'clothescolor.dart';
 import 'size.dart';
@@ -83,10 +84,11 @@ class _EnrollClothesState extends State<EnrollClothes> {
                                   Brand(),
                                   Size(),
                                   Fit(),
+                                  Memo()
                                 ]),
                           )),
                     ),
-                    EnrollButton(ctx: context),
+                    Expanded(child: EnrollButton(ctx: context)),
                   ],
                 ))));
   }
