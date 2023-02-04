@@ -27,8 +27,13 @@ class _SizeState extends State<Size> {
                 color: context.watch<EnrollClothes>().size !=
                         context.watch<EnrollClothes>().sizeList[i]
                     ? Color(0xffFFFFFF)
-                    : Color(0xff131313),
-                border: Border.all(width: 1, color: Color(0xffCACACA)),
+                    : Color(0xffD9D9D9),
+                border: Border.all(
+                    width: 1,
+                    color: context.watch<EnrollClothes>().size !=
+                            context.watch<EnrollClothes>().sizeList[i]
+                        ? Color(0xffCACACA)
+                        : Color(0xff131313)),
                 borderRadius: BorderRadius.circular(5)),
             child: Text(context.watch<EnrollClothes>().sizeList[i],
                 style: TextStyle(
@@ -37,7 +42,7 @@ class _SizeState extends State<Size> {
                     color: context.watch<EnrollClothes>().size !=
                             context.watch<EnrollClothes>().sizeList[i]
                         ? Color(0xff9B9B9B)
-                        : Colors.white,
+                        : Color(0xff131313),
                     fontWeight: FontWeight.w400,
                     height: 1.3)),
           ),
