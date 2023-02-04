@@ -94,7 +94,7 @@ class _EnrollClothesState extends State<EnrollClothes> {
                     Container(
                         margin: EdgeInsets.only(
                             bottom: MediaQuery.of(context).viewInsets.bottom),
-                        child: EnrollButton(ctx: context)),
+                        child: EnrollButton(ctx: context))
                   ],
                 ))));
   }
