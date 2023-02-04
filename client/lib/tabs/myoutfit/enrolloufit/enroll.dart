@@ -54,6 +54,7 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(height: 10),
                                 Picture(),
                                 Category(),
                                 Container(
