@@ -1,6 +1,8 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import AllowAny
+
 
 from .serializers import OutfitSerializer
 from .models import Outfit
@@ -9,6 +11,7 @@ from .models import Outfit
 class OutfitViewSet(ModelViewSet):
     queryset = Outfit.objects.all()
     serializer_class = OutfitSerializer
+    permission_classes = [AllowAny]
 
     @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
     def user_outfit(self, request, user_id):
