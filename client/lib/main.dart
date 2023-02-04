@@ -1,7 +1,7 @@
 import 'package:eotteom/tabs/closetanalysis/analysis.dart';
 import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
 import 'package:eotteom/tabs/profile/Profile.dart';
-
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:eotteom/user/signin.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -21,6 +21,11 @@ void main() {
         ChangeNotifierProvider(create: (c) => EnrollOutfit())
       ],
       child: const CupertinoApp(
+        localizationsDelegates: [
+          DefaultMaterialLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate,
+          DefaultWidgetsLocalizations.delegate,
+        ],
         home: Eotteom(),
         theme: homeTheme,
       )));
@@ -49,20 +54,22 @@ class MyApp extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         tabBar: CupertinoTabBar(
+          height: 55,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.abc),
+              icon: Icon(FlutterRemix.pie_chart_2_fill, size: 24),
               label: '옷장분석',
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart_outlined), label: '옷장'),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
+                icon: Icon(FlutterRemix.t_shirt_2_fill, size: 24), label: '옷장'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+                icon: Icon(FlutterRemix.home_4_fill, size: 24), label: '홈'),
+            BottomNavigationBarItem(
+              icon: Icon(FlutterRemix.shirt_fill, size: 24),
               label: '코디',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person_add),
+              icon: Icon(FlutterRemix.settings_5_fill, size: 24),
               label: '프로필',
             ),
           ],

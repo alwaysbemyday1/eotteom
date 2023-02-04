@@ -118,10 +118,10 @@ class FilterProvider extends ChangeNotifier {
     outfitLabelSelect = [true, true, true];
     notifyListeners();
   }
+
   changeSelectedDropdown(value) {
     selectedDropdown = value;
     print(selectedDropdown);
     notifyListeners();
   }
 }
-

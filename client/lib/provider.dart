@@ -103,6 +103,7 @@ class EnrollClothes extends ChangeNotifier {
   String brand = "";
   changeBrand(String newBrand) {
     brand = newBrand;
+    notifyListeners();
   }
 
   // Price
@@ -158,5 +159,28 @@ class EnrollOutfit extends ChangeNotifier {
     } else {
       return File(croppedImage.path);
     }
+  }
+
+  // Name
+  String name = '';
+  changeName(String newName) {
+    name = newName;
+    notifyListeners();
+  }
+
+  // Name
+  String season = '봄';
+  var seasonList = ['봄', '여름', '가을', '겨울'];
+  changeSeason(String newSeason) {
+    season = newSeason;
+    notifyListeners();
+  }
+
+  // Category
+  String category = '';
+  var categoryList = ['댄디룩', '미니멀룩', '스트릿룩', '캐주얼룩', '스포츠룩'];
+  changeCategory(String newCategory) {
+    category = newCategory;
+    notifyListeners();
   }
 }

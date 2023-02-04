@@ -61,8 +61,7 @@ class _CodyState extends State<Cody> {
       builder: (context, orientation, deviceType) {
         return SizedBox(
           height: 200.h,
-          child: Column(
-            children: [
+          child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -96,7 +95,8 @@ class _CodyState extends State<Cody> {
                                           child: SingleChildScrollView(
                                             controller: scrollController,
                                             child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
@@ -108,7 +108,8 @@ class _CodyState extends State<Cody> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              left: 30, top: 27),
+                                                              left: 30,
+                                                              top: 27),
                                                       child: Text(
                                                         '필터',
                                                         style: TextStyle(
@@ -120,12 +121,14 @@ class _CodyState extends State<Cody> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              right: 32, top: 32),
+                                                              right: 32,
+                                                              top: 32),
                                                       child: IconButton(
                                                         icon: Icon(Icons.close,
                                                             size: 16),
                                                         onPressed: () {
-                                                          Navigator.pop(context);
+                                                          Navigator.pop(
+                                                              context);
                                                         },
                                                       ),
                                                     ),
@@ -139,8 +142,9 @@ class _CodyState extends State<Cody> {
                                                   color: Color(0xffCACACA),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 20, right: 20),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20, right: 20),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -148,7 +152,8 @@ class _CodyState extends State<Cody> {
                                                     children: [
                                                       CheckboxLabel(),
                                                       IconButton(
-                                                        icon: Icon(Icons.refresh),
+                                                        icon:
+                                                            Icon(Icons.refresh),
                                                         onPressed: () {
                                                           setState(() {
                                                             context
@@ -162,23 +167,27 @@ class _CodyState extends State<Cody> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(left: 24, right: 24),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 24, right: 24),
                                                   child: Align(
                                                     child: OutfitLabel(),
                                                     alignment: Alignment.center,
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 24, right: 24),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 24, right: 24),
                                                   child: Divider(
                                                     thickness: 1,
                                                     color: Color(0xffCACACA),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 20, right: 20),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20, right: 20),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -189,21 +198,24 @@ class _CodyState extends State<Cody> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 20, right: 20),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20, right: 20),
                                                   child: MonthRangePick(),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 24, right: 24),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 24, right: 24),
                                                   child: Divider(
                                                     thickness: 1,
                                                     color: Color(0xffCACACA),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 20),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20),
                                                   child: CheckboxTemperature(),
                                                 ),
                                                 // Padding(
@@ -212,15 +224,18 @@ class _CodyState extends State<Cody> {
                                                 //   child: TemperaturePicker(),
                                                 // ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(left: 24, right: 24),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 24, right: 24),
                                                   child: Align(
                                                     child: SeasonLabel(),
                                                     alignment: Alignment.center,
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      right: 24, top: 38),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 24, top: 38),
                                                   child: Align(
                                                     alignment:
                                                         Alignment.centerRight,
@@ -228,14 +243,13 @@ class _CodyState extends State<Cody> {
                                                       style: TextButton.styleFrom(
                                                           backgroundColor:
                                                               Colors.black,
-                                                          fixedSize:
-                                                              const Size(156, 44),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              22))),
+                                                          fixedSize: const Size(
+                                                              156, 44),
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          22))),
                                                       onPressed: () {},
 
                                                       /// django 서버로 조건에 맞게 데이터 전송하는 비동기함수 구현 예정
@@ -245,7 +259,8 @@ class _CodyState extends State<Cody> {
                                                             color: Colors.white,
                                                             fontSize: 14,
                                                             fontWeight:
-                                                                FontWeight.w400),
+                                                                FontWeight
+                                                                    .w400),
                                                       ),
                                                     ),
                                                   ),
