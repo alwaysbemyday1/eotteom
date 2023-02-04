@@ -1,9 +1,9 @@
 import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
 import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
+import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
-import "temperaturepicker.dart";
 import "package:provider/provider.dart";
 import "package:sizer/sizer.dart";
 import "package:eotteom/tabs/myoutfit/outfit/outfitlabel.dart";
@@ -218,11 +218,19 @@ class _CodyState extends State<Cody> {
                                                           left: 20),
                                                   child: CheckboxTemperature(),
                                                 ),
+                                                // Padding(
+                                                //   padding: const EdgeInsets.only(
+                                                //       left: 20, right: 20),
+                                                //   child: TemperaturePicker(),
+                                                // ),
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          left: 20, right: 20),
-                                                  child: TemperaturePicker(),
+                                                          left: 24, right: 24),
+                                                  child: Align(
+                                                    child: SeasonLabel(),
+                                                    alignment: Alignment.center,
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding:

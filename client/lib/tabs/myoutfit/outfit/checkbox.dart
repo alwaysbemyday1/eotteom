@@ -43,12 +43,11 @@ class CheckboxTemperature extends StatelessWidget {
             context.read<FilterProvider>().changeTemperaturecheck();
           },
         ),
-        Text('기온', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+        Text('계절', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
       ],
     );
   }
 }
-
 
 class CheckboxLabel extends StatelessWidget {
   const CheckboxLabel({super.key});

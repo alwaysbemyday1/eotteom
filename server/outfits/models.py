@@ -8,8 +8,9 @@ from clothes.models import Clothes
 class Outfit(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
-    clothes = models.ManyToManyField(Clothes, blank=True)
     name = models.CharField(max_length=255)
+    image = models.ImageField(null=True)
+    clothes = models.ManyToManyField(Clothes, blank=True)
     style = models.CharField(max_length=255, blank=True)
     date = models.DateTimeField(default=timezone.now)
     temperature = models.IntegerField(blank=True, null=True)
