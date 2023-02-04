@@ -24,11 +24,13 @@ class _FitState extends State<Fit> {
             height: (100.w - 32 - 45) / 6,
             width: (100.w - 32 - 18) / 3,
             decoration: BoxDecoration(
-                color: context.watch<EnrollClothes>().fit !=
-                        context.watch<EnrollClothes>().fitList[i]
-                    ? Color(0xffFFFFFF)
-                    : Color(0xff131313),
-                border: Border.all(width: 1, color: Color(0xffCACACA)),
+                color: Color(0xffFFFFFF),
+                border: Border.all(
+                    width: 1,
+                    color: context.watch<EnrollClothes>().fit !=
+                            context.watch<EnrollClothes>().fitList[i]
+                        ? Color(0xffCACACA)
+                        : Color(0xff131313)),
                 borderRadius: BorderRadius.circular(5)),
             child: Text(context.watch<EnrollClothes>().fitList[i],
                 style: TextStyle(
@@ -37,7 +39,7 @@ class _FitState extends State<Fit> {
                     color: context.watch<EnrollClothes>().fit !=
                             context.watch<EnrollClothes>().fitList[i]
                         ? Color(0xff9B9B9B)
-                        : Colors.white,
+                        : Color(0xff131313),
                     fontWeight: FontWeight.w400,
                     height: 1.3)),
           ),

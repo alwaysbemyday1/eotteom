@@ -99,23 +99,20 @@ class _PopupMenuState extends State<PopupMenu> {
       child: Container(
           width: (100.w - 32 - 41) / 2,
           alignment: Alignment.centerLeft,
-          child: Text(
-              widget.flag == true
-                  ? context.read<EnrollClothes>().bigCategory
-                  : context.read<EnrollClothes>().smallCategory,
-              style: basicTextTheme)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                  widget.flag == true
+                      ? context.read<EnrollClothes>().bigCategory
+                      : context.read<EnrollClothes>().smallCategory,
+                  style: basicTextTheme),
+              Icon(Icons.check, size: 20)
+            ],
+          )),
     ));
     childs.add(PopupMenuDivider(height: 0));
-    // childs.add(PopupMenuItem<String>(
-    //     // divider
-    //     height: 7,
-    //     child: Divider(
-    //       indent: 0,
-    //       endIndent: 0,
-    //       height: 0,
-    //       color: Color(0xffF8F8F8),
-    //       thickness: 7,
-    //     )));
+
     for (int i = 0; i < (widget.categoryList).length; i++) {
       // 선택할 수 있는 리스트
       if ((widget.flag == true
@@ -145,17 +142,26 @@ class _PopupMenuState extends State<PopupMenu> {
           shape: RoundedRectangleBorder(
               side: BorderSide(color: Color(0xffD9D9D9), width: 1),
               borderRadius: BorderRadius.circular(5)),
-          offset: Offset(0, -20),
+          offset: Offset(0, -18),
           constraints: BoxConstraints(
               maxWidth: (100.w - 32 - 41) / 2, minWidth: (100.w - 32 - 41) / 2),
           child: Container(
               width: (100.w - 32 - 41) / 2,
               padding: EdgeInsets.only(left: 15),
-              child: Text(
-                  widget.flag == true
-                      ? context.read<EnrollClothes>().bigCategory
-                      : context.read<EnrollClothes>().smallCategory,
-                  style: basicTextTheme)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                      widget.flag == true
+                          ? context.read<EnrollClothes>().bigCategory
+                          : context.read<EnrollClothes>().smallCategory,
+                      style: basicTextTheme),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: Icon(Icons.keyboard_arrow_down, size: 20),
+                  )
+                ],
+              )),
           onSelected: (String category) {
             if (widget.flag == true) {
               if (category != context.read<EnrollClothes>().bigCategory) {

@@ -67,8 +67,9 @@ class EnrollClothes extends ChangeNotifier {
   }
 
   Future<File?> cropImage({required File imageFile}) async {
-    CroppedFile? croppedImage =
-        await ImageCropper().cropImage(sourcePath: imageFile.path);
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: imageFile.path,
+        aspectRatio: CropAspectRatio(ratioX: 4, ratioY: 5));
 
     if (croppedImage == null) {
       return null;
@@ -127,6 +128,13 @@ class EnrollClothes extends ChangeNotifier {
   var sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   changeSize(newSize) {
     size = newSize;
+    notifyListeners();
+  }
+
+  // Brand
+  String memo = "";
+  changeMemo(String newMemo) {
+    memo = newMemo;
     notifyListeners();
   }
 }

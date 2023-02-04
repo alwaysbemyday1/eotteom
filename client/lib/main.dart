@@ -134,8 +134,9 @@ class MyApp extends StatelessWidget {
                   );
                 },
               );
+            default:
+              return const Text('null');
           }
-          return const Text('null'); // 고쳐야함
         });
   }
 }

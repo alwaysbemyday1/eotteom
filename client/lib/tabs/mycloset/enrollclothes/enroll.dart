@@ -10,6 +10,7 @@ import 'brand.dart';
 import 'category.dart';
 import 'enrollbutton.dart';
 import 'fit.dart';
+import 'memo.dart';
 import 'picture.dart';
 import 'clothescolor.dart';
 import 'size.dart';
@@ -54,7 +55,10 @@ class _EnrollClothesState extends State<EnrollClothes> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: 100.h - 103 - 90,
+                      height: 100.h -
+                          103 -
+                          90 -
+                          MediaQuery.of(context).viewInsets.bottom,
                       child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Container(
@@ -83,10 +87,14 @@ class _EnrollClothesState extends State<EnrollClothes> {
                                   Brand(),
                                   Size(),
                                   Fit(),
+                                  Memo()
                                 ]),
                           )),
                     ),
-                    EnrollButton(ctx: context),
+                    Container(
+                        margin: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: EnrollButton(ctx: context))
                   ],
                 ))));
   }
