@@ -1,9 +1,13 @@
-from rest_framework.serializers import ModelSerializer
+import base64
+
+from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import User
 
-class UserSerializer(ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    image_memory = serializers.SerializerMethodField()
+
     class Meta:
         model = User
         fields = '__all__'
@@ -18,3 +22,9 @@ class UserSerializer(ModelSerializer):
         user.save()
         return user
 
+    def get_image_memory(request, user : User):
+        if user.image != None and user.image != '':
+            with open(f'media/{user.image.name}', mode='rb') as loadedfile:
+                return base64.b64encode(loadedfile.read())
+        else:
+            return

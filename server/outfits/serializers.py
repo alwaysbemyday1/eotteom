@@ -8,8 +8,11 @@ class OutfitSerializer(serializers.ModelSerializer):
     image_memory = serializers.SerializerMethodField()
     class Meta:
         model = Outfit
-        fields = ('id', 'user', 'name', 'image', 'clothes', 'style', 'date', 'season', 'likes', 'created_at', 'is_public', 'is_delete', 'image_memory')
+        fields = '__all__'
 
-    def get_image_memory(request, outfit : Outfit):
-        with open(outfit.image.name, mode='rb') as loadedfile:
-            return base64.b64encode(loadedfile.read())
+    def get_image_memory(self, outfit : Outfit):
+        if outfit.image != None and outfit.image != '':
+            with open(f'media/{outfit.image.name}', mode='rb') as loadedfile:
+                return base64.b64encode(loadedfile.read())
+        else:
+            return
