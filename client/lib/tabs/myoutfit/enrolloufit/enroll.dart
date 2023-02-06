@@ -22,6 +22,7 @@ class EnrollOutfit extends StatefulWidget {
 class _EnrollOutfitState extends State<EnrollOutfit> {
   @override
   Widget build(BuildContext context) {
+    print(100.h - 103 - 90 - MediaQuery.of(context).viewInsets.bottom);
     return CupertinoPageScaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
@@ -65,6 +66,9 @@ class _EnrollOutfitState extends State<EnrollOutfit> {
                                   child: Row(
                                     children: [CodiDate(), Season()],
                                   ),
+                                ),
+                                Divider(
+                                  thickness: 8,
                                 ),
                               ])))),
               Container(

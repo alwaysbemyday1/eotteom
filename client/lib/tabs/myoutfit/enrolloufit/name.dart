@@ -33,7 +33,7 @@ class Name extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: '브랜드명을 입력해주세요',
+                      hintText: '기타 메모사항을 입력하세요',
                       hintStyle: TextStyle(
                           fontSize: 14,
                           color: Color(0xff9b9b9b),

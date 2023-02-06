@@ -1,6 +1,7 @@
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -27,30 +28,76 @@ class Picture extends StatelessWidget {
                 padding: EdgeInsets.zero,
               ),
               onPressed: () {
-                //context.read<EnrollClothes>().pickImage(ImageSource.gallery);
                 showDialog(
                     context: context,
                     barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                     builder: (BuildContext ctx) {
                       return Dialog(
-                          child: Row(
-                        children: [
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pop(ctx);
-                                context
-                                    .read<EnrollOutfit>()
-                                    .pickImage(ImageSource.gallery);
-                              },
-                              child: (Text('앨범'))),
-                          TextButton(
-                              onPressed: () {
-                                context
-                                    .read<EnrollOutfit>()
-                                    .pickImage(ImageSource.camera);
-                              },
-                              child: (Text('촬영')))
-                        ],
+                          child: Container(
+                        height: 108,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 53.5,
+                              width: 100.w - 16,
+                              child: MaterialButton(
+                                  padding: EdgeInsets.all(0),
+                                  onPressed: () {
+                                    Navigator.pop(ctx);
+                                    context
+                                        .read<EnrollOutfit>()
+                                        .pickImage(ImageSource.camera);
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 22, right: 18),
+                                          child: Icon(FlutterRemix.camera_fill,
+                                              size: 20)),
+                                      (Text(
+                                        '카메라 촬영하기',
+                                        style: basicTextTheme2,
+                                      )),
+                                    ],
+                                  )),
+                            ),
+                            Divider(
+                              thickness: 1,
+                              height: 0,
+                            ),
+                            SizedBox(
+                              height: 53.5,
+                              width: 100.w - 16,
+                              child: MaterialButton(
+                                  padding: EdgeInsets.all(0),
+                                  onPressed: () {
+                                    Navigator.pop(ctx);
+                                    context
+                                        .read<EnrollOutfit>()
+                                        .pickImage(ImageSource.gallery);
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 22, right: 18),
+                                        child: Icon(FlutterRemix.gallery_fill,
+                                            size: 20),
+                                      ),
+                                      (Text('사진 선택하기', style: basicTextTheme2)),
+                                    ],
+                                  )),
+                            )
+                          ],
+                        ),
                       ));
                     });
               },
