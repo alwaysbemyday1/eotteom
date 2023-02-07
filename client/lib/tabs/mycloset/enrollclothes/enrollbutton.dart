@@ -47,26 +47,40 @@ class EnrollButton extends StatelessWidget {
                     child: Text('등록',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
-                      try {
+                      if (context.read<EnrollClothes>().memo != '') {
                         clothes['name'] = context
                             .read<EnrollClothes>()
                             .memo; // name, memo 통일 되면 수정
+                      }
+                      if (context.read<EnrollClothes>().brand != '') {
                         clothes['brand'] = context.read<EnrollClothes>().brand;
-                        //clothes['fit'] = context.read<EnrollClothes>().fit;
+                      }
+                      // if (context.read<EnrollClothes>().fit != '') {
+                      //   clothes['fit'] = context.read<EnrollClothes>().fit;
+                      // }
+                      if (context.read<EnrollClothes>().size != '') {
                         clothes['size'] = context.read<EnrollClothes>().size;
+                      }
+                      if (context.read<EnrollClothes>().priceStr != '' &&
+                          context.read<EnrollClothes>().priceStr != null) {
                         clothes['price'] =
                             context.read<EnrollClothes>().priceStr;
-                        clothes['color'] = context.read<EnrollClothes>().color;
-                        clothes['major_category'] = "1"; // 정해지면 수정
-                        clothes['minor_category'] = "1"; // 정해지면 수정
-                        // Image 필드 추가
-                        _postRequest();
-                        print(clothes);
-                        print("---------");
-                        Navigator.pop(ctx);
-                      } on Exception catch (e) {
-                        print(e);
                       }
+                      if (context.read<EnrollClothes>().color != '') {
+                        clothes['color'] = context.read<EnrollClothes>().color;
+                      }
+                      if (context.read<EnrollClothes>().brand != '' &&
+                          context.read<EnrollClothes>().brand != null) {
+                        clothes['brand'] = context.read<EnrollClothes>().brand;
+                      }
+
+                      clothes['major_category'] = "1"; // 정해지면 수정
+                      clothes['minor_category'] = "1"; // 정해지면 수정
+                      // Image 필드 추가
+
+                      _postRequest();
+                      print(clothes);
+                      Navigator.pop(ctx);
                     }),
               )
             : Container(

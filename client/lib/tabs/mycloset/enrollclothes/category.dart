@@ -2,6 +2,7 @@ import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -34,7 +35,7 @@ class Catetory extends StatelessWidget {
               child: Row(children: [
                 Container(
                     alignment: Alignment.center,
-                    width: (100.w - 32 - 41) / 2,
+                    width: (100.w - 32 - 46) / 2,
                     height: 44,
                     margin: EdgeInsets.only(right: 11),
                     decoration: BoxDecoration(
@@ -50,13 +51,13 @@ class Catetory extends StatelessWidget {
                     )),
                 Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.only(right: 12),
+                    margin: EdgeInsets.only(right: 11),
                     child: Icon(
-                      CupertinoIcons.right_chevron,
-                      size: 18,
+                      FlutterRemix.arrow_drop_right_line,
+                      size: 24,
                     )),
                 Container(
-                    width: (100.w - 32 - 41) / 2,
+                    width: (100.w - 32 - 46) / 2,
                     alignment: Alignment.center,
                     height: 44,
                     decoration: BoxDecoration(
@@ -97,7 +98,7 @@ class _PopupMenuState extends State<PopupMenu> {
           ? context.read<EnrollClothes>().bigCategory
           : context.read<EnrollClothes>().smallCategory,
       child: Container(
-          width: (100.w - 32 - 41) / 2,
+          width: (100.w - 32 - 46) / 2,
           alignment: Alignment.centerLeft,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +124,7 @@ class _PopupMenuState extends State<PopupMenu> {
           value: widget.categoryList[i],
           height: 44,
           child: Container(
-              width: (100.w - 32 - 41) / 2,
+              width: (100.w - 32 - 46) / 2,
               alignment: Alignment.centerLeft,
               child: Text(widget.categoryList[i], style: basicTextTheme)),
         ));
@@ -144,9 +145,9 @@ class _PopupMenuState extends State<PopupMenu> {
               borderRadius: BorderRadius.circular(5)),
           offset: Offset(0, -18),
           constraints: BoxConstraints(
-              maxWidth: (100.w - 32 - 41) / 2, minWidth: (100.w - 32 - 41) / 2),
+              maxWidth: (100.w - 32 - 46) / 2, minWidth: (100.w - 32 - 46) / 2),
           child: Container(
-              width: (100.w - 32 - 41) / 2,
+              width: (100.w - 32 - 46) / 2,
               padding: EdgeInsets.only(left: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

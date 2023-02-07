@@ -102,14 +102,14 @@ class EnrollClothes extends ChangeNotifier {
   }
 
   // Color
-  String color = "";
+  String color = '';
   changeColor(String newColor) {
     color = newColor;
     notifyListeners();
   }
 
   // Brand
-  String brand = "";
+  String brand = '';
   changeBrand(String newBrand) {
     brand = newBrand;
     notifyListeners();
@@ -117,10 +117,12 @@ class EnrollClothes extends ChangeNotifier {
 
   // Price
   String priceStr = '';
-  int price = 0;
   changePrice(newPrice) {
-    priceStr = newPrice.replaceAll(RegExp('[^0-9]'), '');
-
+    print('-----------');
+    print(newPrice);
+    if (newPrice != '' && newPrice != null) {
+      priceStr = newPrice.replaceAll(RegExp('[^0-9]'), '');
+    }
     notifyListeners();
   }
 
