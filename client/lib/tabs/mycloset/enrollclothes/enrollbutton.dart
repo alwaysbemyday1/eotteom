@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
@@ -46,20 +47,26 @@ class EnrollButton extends StatelessWidget {
                     child: Text('등록',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
-                      clothes['name'] = context
-                          .read<EnrollClothes>()
-                          .memo; // name, memo 통일 되면 수정
-                      clothes['brand'] = context.read<EnrollClothes>().brand;
-                      //clothes['fit'] = context.read<EnrollClothes>().fit;
-                      clothes['size'] = context.read<EnrollClothes>().size;
-                      clothes['price'] = context.read<EnrollClothes>().priceStr;
-                      clothes['color'] = context.read<EnrollClothes>().color;
-                      clothes['major_category'] = "1"; // 정해지면 수정
-                      clothes['minor_category'] = "1"; // 정해지면 수정
-                      // Image 필드 추가
-                      _postRequest();
-
-                      Navigator.pop(ctx);
+                      try {
+                        clothes['name'] = context
+                            .read<EnrollClothes>()
+                            .memo; // name, memo 통일 되면 수정
+                        clothes['brand'] = context.read<EnrollClothes>().brand;
+                        //clothes['fit'] = context.read<EnrollClothes>().fit;
+                        clothes['size'] = context.read<EnrollClothes>().size;
+                        clothes['price'] =
+                            context.read<EnrollClothes>().priceStr;
+                        clothes['color'] = context.read<EnrollClothes>().color;
+                        clothes['major_category'] = "1"; // 정해지면 수정
+                        clothes['minor_category'] = "1"; // 정해지면 수정
+                        // Image 필드 추가
+                        _postRequest();
+                        print(clothes);
+                        print("---------");
+                        Navigator.pop(ctx);
+                      } on Exception catch (e) {
+                        print(e);
+                      }
                     }),
               )
             : Container(

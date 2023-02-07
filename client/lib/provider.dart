@@ -118,7 +118,8 @@ class EnrollClothes extends ChangeNotifier {
   String priceStr = '';
   int price = 0;
   changePrice(newPrice) {
-    priceStr = newPrice;
+    priceStr = newPrice.replaceAll(RegExp('[^0-9]'), '');
+
     notifyListeners();
   }
 
@@ -138,9 +139,9 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Brand
-  String memo = "";
-  changeMemo(String newMemo) {
+  // Memo
+  String memo = '';
+  changeMemo(newMemo) {
     memo = newMemo;
     notifyListeners();
   }
@@ -183,7 +184,7 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Name
+  // Season
   String season = '봄';
   var seasonList = ['봄', '여름', '가을', '겨울'];
   changeSeason(String newSeason) {

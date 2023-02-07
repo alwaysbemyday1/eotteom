@@ -12,14 +12,14 @@ import 'enrollbutton.dart';
 import 'name.dart';
 import 'picture.dart';
 
-class EnrollOutfit extends StatefulWidget {
-  const EnrollOutfit({super.key});
+class OutfitEnroll extends StatefulWidget {
+  const OutfitEnroll({super.key});
 
   @override
-  State<EnrollOutfit> createState() => _EnrollOutfitState();
+  State<OutfitEnroll> createState() => _OutfitEnrollState();
 }
 
-class _EnrollOutfitState extends State<EnrollOutfit> {
+class _OutfitEnrollState extends State<OutfitEnroll> {
   @override
   Widget build(BuildContext context) {
     print(100.h - 103 - 90 - MediaQuery.of(context).viewInsets.bottom);

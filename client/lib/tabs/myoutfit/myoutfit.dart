@@ -28,11 +28,11 @@ class Outfit extends StatelessWidget {
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 40),
             child: FloatingActionButton(
-              backgroundColor: Color(0xff151515),
+                backgroundColor: Color(0xff151515),
                 child: Icon(Icons.add),
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).push(
-                      MaterialPageRoute(builder: (context) => EnrollOutfit()));
+                      MaterialPageRoute(builder: (context) => OutfitEnroll()));
                 }),
           ),
           backgroundColor: Colors.white,

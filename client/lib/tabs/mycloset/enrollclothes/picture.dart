@@ -80,7 +80,7 @@ class _PictureState extends State<Picture> {
                                 onPressed: () {
                                   Navigator.pop(ctx);
                                   context
-                                      .read<EnrollOutfit>()
+                                      .read<EnrollClothes>()
                                       .pickImage(ImageSource.gallery);
                                 },
                                 child: Row(
