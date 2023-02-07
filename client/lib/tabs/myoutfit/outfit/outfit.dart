@@ -39,24 +39,6 @@ class _CodyState extends State<Cody> {
             side: BorderSide(color: Colors.black))),
         backgroundColor: MaterialStateProperty.all(Colors.black));
 
-    bool dateCheck = true;
-    bool temperatureCheck = true;
-    int selectyear = 2023;
-
-    changeDate(value) {
-      setState(() {
-        dateCheck = value;
-        print(dateCheck);
-      });
-    }
-
-    changeTemperature(value) {
-      setState(() {
-        temperatureCheck = value;
-        print(temperatureCheck);
-      });
-    }
-
     return Sizer(
       builder: (context, orientation, deviceType) {
         return SizedBox(
