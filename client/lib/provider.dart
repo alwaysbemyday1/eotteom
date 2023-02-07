@@ -72,7 +72,7 @@ class EnrollClothes extends ChangeNotifier {
   Future<File?> cropImage({required File imageFile}) async {
     CroppedFile? croppedImage = await ImageCropper().cropImage(
         sourcePath: imageFile.path,
-        aspectRatio: CropAspectRatio(ratioX: 4, ratioY: 5));
+        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
 
     if (croppedImage == null) {
       return null;
@@ -207,8 +207,9 @@ class EnrollOutfit extends ChangeNotifier {
   }
 
   Future<File?> cropImage({required File imageFile}) async {
-    CroppedFile? croppedImage =
-        await ImageCropper().cropImage(sourcePath: imageFile.path);
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: imageFile.path,
+        aspectRatio: CropAspectRatio(ratioX: 4, ratioY: 5));
 
     if (croppedImage == null) {
       return null;
