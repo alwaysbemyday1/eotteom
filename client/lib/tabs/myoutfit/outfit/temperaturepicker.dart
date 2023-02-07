@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import "package:syncfusion_flutter_core/theme.dart";
 import "package:provider/provider.dart";
-import "package:eotteom/tabs/myoutfit/myoutfit.dart";
+import "package:eotteom/provider.dart";
 
 class TemperaturePicker extends StatefulWidget {
   const TemperaturePicker({super.key});
