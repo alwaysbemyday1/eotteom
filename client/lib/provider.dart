@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import "package:syncfusion_flutter_sliders/sliders.dart";
 
 class SignInPage extends ChangeNotifier {
   var page = 0;
@@ -198,5 +199,160 @@ class EnrollOutfit extends ChangeNotifier {
   changeCategory(String newCategory) {
     category = newCategory;
     notifyListeners();
+  }
+}
+
+class FilterProvider extends ChangeNotifier {
+  List<String> dropdownlist = ["전체", "좋아요만"];
+  String selectedDropdown = "전체";
+  bool seasoncheck = true;
+  bool datecheck = true;
+  bool temperaturecheck = true;
+  bool labelcheck = true;
+  int nowyear = DateTime.now().year.toInt();
+  var select_date;
+  var hightemperature;
+  var lowtemperature;
+  var temperatures = SfRangeValues(0.0, 15.0);
+
+  List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
+  List<bool> outfitLabelSelect = [true, true, true];
+
+  List<String> seasonLabel = ["봄", "여름", "가을", "겨울"];
+  List<bool> seasonLabelSelect = [true, true, true, true];
+
+  changeDatecheck() {
+    datecheck = !datecheck;
+    notifyListeners();
+  }
+
+  changeTemperaturecheck() {
+    temperaturecheck = !temperaturecheck;
+    notifyListeners();
+  }
+
+  changeLabelCheck() {
+    labelcheck = !labelcheck;
+    notifyListeners();
+  }
+
+  changeoutfitLabelSelect(int index) {
+    outfitLabelSelect[index] = !outfitLabelSelect[index];
+    notifyListeners();
+  }
+
+  changeseasonLabelSelect(int index) {
+    seasonLabelSelect[index] = !seasonLabelSelect[index];
+    notifyListeners();
+  }
+
+  addYear() {
+    nowyear++;
+    notifyListeners();
+  }
+
+  minusYear() {
+    nowyear--;
+    notifyListeners();
+  }
+
+  selectDate(value) {
+    select_date = value;
+    notifyListeners();
+  }
+
+  setTemperature(value) {
+    temperatures = value;
+    hightemperature = value.end.toInt();
+    lowtemperature = value.start.toInt();
+    notifyListeners();
+  }
+
+  resetFilter() {
+    select_date.clear();
+    temperatures = SfRangeValues(0.0, 15.0);
+    hightemperature = temperatures.end.toInt();
+    lowtemperature = temperatures.start.toInt();
+    outfitLabelSelect = [true, true, true];
+    notifyListeners();
+  }
+
+  changeSelectedDropdown(value) {
+    selectedDropdown = value;
+    print(selectedDropdown);
+    notifyListeners();
+  }
+}
+
+class OutfitProvider extends ChangeNotifier {
+  Map<String, List<String>> totalMap = {
+    "상의": ["니트", "멘투멘", "후디", "셔츠", "티셔츠", "슈트상의", "트레이닝복"],
+    "하의": ["팬츠", "데님팬츠", "트레이닝룩", "슬랙스"],
+    "아우터": ["코트", "트랜치코트", "자켓", "패딩", "블레이저"],
+    "신발": ["스니커즈", "구두", "부츠", "슬리퍼", "샌들", "캔버스"],
+    "악세사리": ["비니", "머플러", "벨트", "넥타이", "캡", "주얼리"],
+    "원피스": ["원피스"]
+  };
+
+  List<String> categories = ["상의", "하의", "아우터", "신발", "악세사리", "원피스"];
+
+  int firstindex = 0;
+  int secondindex = 0;
+
+  List<bool> categoryPress = [true, false, false, false, false, false];
+
+  List<bool> topPress = [true, false, false, false, false, false, false];
+  List<bool> bottomPress = [true, false, false, false];
+  List<bool> outerPress = [true, false, false, false, false];
+  List<bool> shoePress = [true, false, false, false, false];
+  List<bool> accessoryPress = [true, false, false, false, false, false];
+  List<bool> onepiecePress = [true];
+
+  setTrue(List<bool> press, int index) {
+    for (int i = 0; i < press.length; i++) {
+      if (i == index) {
+        press[i] = true;
+      } else {
+        press[i] = false;
+      }
+    }
+  }
+
+  whichCategory(int firstindex, int secondindex) {
+    var sublist = totalMap[categories[firstindex]];
+    if (sublist != null) {
+      String subcategory = sublist[secondindex];
+      return subcategory;
+    }
+  }
+
+  selectFirstIndex(int index) {
+    setTrue(categoryPress, index);
+    firstindex = index;
+    print(categories[firstindex]);
+    notifyListeners();
+  }
+
+  selectSecondIndex(int index) {
+    setTrue(boolCallback(categories[firstindex]), index);
+    secondindex = index;
+    print(whichCategory(firstindex, secondindex));
+    notifyListeners();
+  }
+
+  boolCallback(String category) {
+    if (category == "상의") {
+      return topPress;
+    } else if (category == "하의") {
+      return bottomPress;
+    } else if (category == "아우터") {
+      return outerPress;
+    } else if (category == "신발") {
+      return shoePress;
+    } else if (category == "악세사리") {
+      return accessoryPress;
+    } else if (category == "원피스") {
+      return onepiecePress;
+    }
   }
 }

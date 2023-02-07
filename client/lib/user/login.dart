@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:eotteom/main.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:email_validator/email_validator.dart';
+import 'package:http/http.dart';
 import "package:sizer/sizer.dart";
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import "package:eotteom/model/user_model.dart";
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -33,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool visible = true;
+  String userId = "";
 
   @override
   void initState() {
@@ -41,6 +47,33 @@ class _LoginPageState extends State<LoginPage> {
     _emailController.addListener(_emailCheck);
     _passwordController.addListener(_passwordCheck);
   }
+
+  void login(String email, password) async {
+  try {
+    Response response = await post(
+      Uri.parse("http://127.0.0.1:8000/api/users/login/"),
+      body: {
+        'email' : email,
+        'password' : password
+      }
+    );
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      User userInfo = User.fromJson(data);
+      setState(() {
+        userId = userInfo.userId;
+      });
+      print(userId);
+      print('Login Successfully');
+      
+    } else {
+      throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
+    }
+  } catch(e) {
+    print(e.toString());
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         onPressed: () {
                           if (emailOkay == true) {
+                            login(_emailController.text, _passwordController.text);
                             Navigator.push(context, CupertinoPageRoute(builder: (context) => MyApp()));
                           }
                         }, 

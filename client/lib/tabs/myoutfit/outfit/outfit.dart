@@ -1,5 +1,5 @@
 import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
-import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
+import "package:eotteom/provider.dart";
 import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:flutter/material.dart';

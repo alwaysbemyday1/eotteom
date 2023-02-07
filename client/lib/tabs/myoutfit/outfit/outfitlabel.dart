@@ -1,6 +1,6 @@
 import "package:provider/provider.dart";
 import "package:flutter/material.dart";
-import "package:eotteom/tabs/myoutfit/myoutfit.dart";
+import "package:eotteom/provider.dart";
 
 class OutfitLabel extends StatelessWidget {
   const OutfitLabel({super.key});

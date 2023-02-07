@@ -55,10 +55,11 @@ class _ProfileImageState extends State<ProfileImage> {
   }
 
   _showBottomSheet() {
-    return showModalBottomSheet(
+    return showDialog(
         context: context,
         builder: ((context) {
-          return SizedBox(
+          return AlertDialog(
+            content: SizedBox(
             height: 40.h,
             child: Column(
               children: [
@@ -89,6 +90,7 @@ class _ProfileImageState extends State<ProfileImage> {
                 ),
               ],
             ),
+          ),
           );
         }));
   }

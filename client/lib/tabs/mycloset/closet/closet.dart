@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:eotteom/tabs/mycloset/closet/closet_select.dart';
-import 'package:eotteom/tabs/mycloset/mycloset.dart';
+import "package:eotteom/provider.dart";
 import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
+import "package:eotteom/tabs/mycloset/enrollclothes/enroll.dart";
 
-import '../enrollclothes/enroll.dart';
 
 class Closet extends StatefulWidget {
   Closet({super.key});
@@ -56,7 +56,7 @@ class _ClosetState extends State<Closet> {
               backgroundColor: Color(0xff151515),
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).push(
-                      CupertinoPageRoute(builder: (ctx) => EnrollClothes()));
+                      CupertinoPageRoute(builder: (ctx) => ClothesEnroll()));
                 },
                 child: Icon(Icons.add)),
             alignment: Alignment.centerRight,
