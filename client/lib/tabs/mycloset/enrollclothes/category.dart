@@ -1,6 +1,5 @@
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
