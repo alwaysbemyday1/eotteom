@@ -2,10 +2,8 @@ import 'package:eotteom/style.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../mycloset.dart';
 import 'brand.dart';
 import 'category.dart';
 import 'enrollbutton.dart';
@@ -16,15 +14,15 @@ import 'clothescolor.dart';
 import 'size.dart';
 import 'price.dart';
 
-class EnrollClothes extends StatefulWidget {
-  EnrollClothes({super.key, this.rootContext});
+class ClothesEnroll extends StatefulWidget {
+  ClothesEnroll({super.key, this.rootContext});
   var rootContext;
 
   @override
-  State<EnrollClothes> createState() => _EnrollClothesState();
+  State<ClothesEnroll> createState() => _ClothesEnrollState();
 }
 
-class _EnrollClothesState extends State<EnrollClothes> {
+class _ClothesEnrollState extends State<ClothesEnroll> {
   @override
   Widget build(BuildContext context) {
     return Localizations(
