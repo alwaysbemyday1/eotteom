@@ -3,7 +3,6 @@ import "package:sizer/sizer.dart";
 import "dart:io";
 import "package:flutter/foundation.dart";
 import "package:image_picker/image_picker.dart";
-import "package:flutter_remix/flutter_remix.dart";
 
 class ProfileImage extends StatefulWidget {
   const ProfileImage({super.key});
@@ -29,21 +28,25 @@ class _ProfileImageState extends State<ProfileImage> {
               height: 25.w,
             ),
             onTap: () {
-              _profileChange();
+              _showBottomSheet();
             },
           );
-        } else {
+        }
+
+        else {
           return InkWell(
             child: Container(
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: FileImage(File(_pickedFile!.path)),
-                      fit: BoxFit.cover)),
+                image: DecorationImage(
+                  image: FileImage(File(_pickedFile!.path)),
+                  fit: BoxFit.cover
+                )
+              ),
               width: 25.w,
               height: 25.w,
             ),
             onTap: () {
-              _profileChange();
+              _showBottomSheet();
             },
           );
         }
@@ -51,84 +54,46 @@ class _ProfileImageState extends State<ProfileImage> {
     );
   }
 
-  _profileChange() {
+  _showBottomSheet() {
     return showDialog(
-        barrierDismissible: false,
         context: context,
         builder: ((context) {
           return AlertDialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            content: SizedBox(
+            height: 40.h,
+            child: Column(
               children: [
-                Text('프로필 사진 변경'),
-                IconButton(
-                    onPressed: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                    },
-                    icon: Icon(Icons.close))
+                Padding(
+                  padding: EdgeInsets.only(top: 5.h),
+                  child: Text(
+                    "프로필 사진 변경하기",
+                    style: _fontStyle,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.w,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () => _getCameraImage(),
+                      icon: const Icon(Icons.camera_alt),
+                      iconSize: 20.w,
+                    ),
+                    IconButton(
+                      iconSize: 20.w,
+                      onPressed: () => _getPhotoLibraryImage(),
+                      icon: const Icon(Icons.photo_album),
+                    )
+                  ],
+                ),
               ],
             ),
-            content: Row(
-              children: [Text('프로필 사진을 변경하시겠습니까?')],
-            ),
-            actions: [
-              IconButton(
-                onPressed: () => _getCameraImage(),
-                icon: const Icon(FlutterRemix.camera_fill),
-                iconSize: 20.w,
-              ),
-              IconButton(
-                iconSize: 20.w,
-                onPressed: () => _getPhotoLibraryImage(),
-                icon: const Icon(FlutterRemix.image_2_fill),
-              )
-            ],
+          ),
           );
         }));
   }
-
-  // _showBottomSheet() {
-  //   return showDialog(
-  //       context: context,
-  //       builder: ((context) {
-  //         return AlertDialog(
-  //           content: SizedBox(
-  //           height: 40.h,
-  //           child: Column(
-  //             children: [
-  //               Padding(
-  //                 padding: EdgeInsets.only(top: 5.h),
-  //                 child: Text(
-  //                   "프로필 사진 변경하기",
-  //                   style: _fontStyle,
-  //                 ),
-  //               ),
-  //               SizedBox(
-  //                 height: 10.w,
-  //               ),
-  //               Row(
-  //                 mainAxisAlignment: MainAxisAlignment.center,
-  //                 children: [
-  //                   IconButton(
-  //                     onPressed: () => _getCameraImage(),
-  //                     icon: const Icon(Icons.camera_alt),
-  //                     iconSize: 20.w,
-  //                   ),
-  //                   IconButton(
-  //                     iconSize: 20.w,
-  //                     onPressed: () => _getPhotoLibraryImage(),
-  //                     icon: const Icon(Icons.photo_album),
-  //                   )
-  //                 ],
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         );
-  //       }));
-  // }
 
   _getCameraImage() async {
     final pickedFile =
@@ -137,7 +102,7 @@ class _ProfileImageState extends State<ProfileImage> {
       setState(() {
         _pickedFile = pickedFile;
       });
-      Navigator.of(context, rootNavigator: true).pop();
+      Navigator.pop(context);
     } else {
       if (kDebugMode) {
         print('이미지 선택안함');
@@ -152,7 +117,7 @@ class _ProfileImageState extends State<ProfileImage> {
       setState(() {
         _pickedFile = pickedFile;
       });
-      Navigator.of(context, rootNavigator: true).pop();
+      Navigator.pop(context);
     } else {
       if (kDebugMode) {
         print('이미지 선택안함');
