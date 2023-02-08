@@ -3,6 +3,7 @@ import "package:sizer/sizer.dart";
 import "dart:io";
 import "package:flutter/foundation.dart";
 import "package:image_picker/image_picker.dart";
+import "package:flutter_remix/flutter_remix.dart";
 
 class ProfileImage extends StatefulWidget {
   const ProfileImage({super.key});
@@ -75,13 +76,13 @@ class _ProfileImageState extends State<ProfileImage> {
             actions: [
               IconButton(
                 onPressed: () => _getCameraImage(),
-                icon: const Icon(Icons.camera_alt),
+                icon: const Icon(FlutterRemix.camera_fill),
                 iconSize: 20.w,
               ),
               IconButton(
                 iconSize: 20.w,
                 onPressed: () => _getPhotoLibraryImage(),
-                icon: const Icon(Icons.photo_album),
+                icon: const Icon(FlutterRemix.image_2_fill),
               )
             ],
           );

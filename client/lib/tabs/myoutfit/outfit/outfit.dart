@@ -1,6 +1,7 @@
 import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
 import "package:eotteom/provider.dart";
 import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
+import 'package:eotteom/tabs/myoutfit/outfit/outfit_render.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
@@ -258,7 +259,8 @@ class _CodyState extends State<Cody> {
                   ],
                 ),
               ],
-            )
+            ),
+            OutfitRender()
           ]),
         );
       },

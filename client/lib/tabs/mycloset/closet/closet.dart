@@ -1,4 +1,5 @@
 import 'package:eotteom/tabs/mycloset/closet/closetdropdown.dart';
+import 'package:eotteom/tabs/mycloset/closet/cloth_render.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:eotteom/tabs/mycloset/closet/closet_select.dart';
 import "package:eotteom/provider.dart";
@@ -57,6 +58,7 @@ class _ClosetState extends State<Closet> {
               }),
         ),
         SelectCategory(),
+        ClothRender(),
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: Align(
