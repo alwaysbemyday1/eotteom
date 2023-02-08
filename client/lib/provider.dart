@@ -121,10 +121,9 @@ class EnrollClothes extends ChangeNotifier {
 
   // Price
   String priceStr = '';
-  String price = '';
   changePrice(newPrice) {
     if (newPrice != '' && newPrice != null) {
-      price = newPrice.replaceAll(RegExp('[^0-9]'), '');
+      priceStr = newPrice.replaceAll(RegExp('[^0-9]'), '');
     }
     notifyListeners();
   }
@@ -152,17 +151,6 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  initClothes() {
-    name = '';
-    size = '';
-    fit = '';
-    priceStr = '';
-    brand = '';
-    color = '';
-    bigCategory = '선택해주세요';
-    smallCategory = '선택해주세요';
-  }
-
   postRequest() async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -188,7 +176,7 @@ class EnrollClothes extends ChangeNotifier {
       request.fields['size'] = size;
     }
     if (priceStr != '') {
-      request.fields['price'] = priceStr.replaceAll(RegExp('[^0-9]'), '');
+      request.fields['price'] = priceStr;
     }
     if (color != '') {
       request.fields['color'] = color;
@@ -249,6 +237,13 @@ class EnrollOutfit extends ChangeNotifier {
   var categoryList = ['댄디룩', '미니멀룩', '스트릿룩', '캐주얼룩', '스포츠룩'];
   changeCategory(String newCategory) {
     category = newCategory;
+    notifyListeners();
+  }
+
+  // Open permission
+  bool permission = false;
+  changePermission() {
+    permission = !permission;
     notifyListeners();
   }
 }
@@ -361,7 +356,7 @@ class ClosetProvider extends ChangeNotifier {
 
   List<String> dropdownlistCloset = ["전체", "좋아요만"];
   String selectDropdownCloset = "전체";
-  
+
   changeSelectedDropdownCloset(value) {
     selectDropdownCloset = value;
     notifyListeners();

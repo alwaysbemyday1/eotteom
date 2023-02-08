@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool visible = true;
   String userId = "";
-  String token = '';
+  String userTokenAccess = '';
 
   @override
   void initState() {
@@ -60,10 +60,10 @@ class _LoginPageState extends State<LoginPage> {
         User userInfo = User.fromJson(data);
         setState(() {
           userId = userInfo.userId;
-          token = userInfo.tokenAccess;
+          userTokenAccess = userTokenAccess;
         });
         print(userId);
-        print(token);
+        print(userTokenAccess);
         print('Login Successfully');
       } else {
         throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");

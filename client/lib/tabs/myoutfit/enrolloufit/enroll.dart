@@ -11,6 +11,7 @@ import 'outfit_date.dart';
 import 'outfit_name.dart';
 import 'enrollbutton.dart';
 
+import 'outfit_open_permission.dart';
 import 'picture.dart';
 
 class OutfitEnroll extends StatefulWidget {
@@ -62,13 +63,14 @@ class _OutfitEnrollState extends State<OutfitEnroll> {
                                   SizedBox(height: 10),
                                   Picture(),
                                   Codi_Name(),
-                                  OutfitCategory(),
+                                  Category(),
                                   Container(
                                     margin: EdgeInsets.fromLTRB(16, 0, 3, 32),
                                     child: Row(
                                       children: [CodiDate(), Season()],
                                     ),
                                   ),
+                                  OutfitOpenPermission(),
                                   Divider(
                                     thickness: 8,
                                   ),

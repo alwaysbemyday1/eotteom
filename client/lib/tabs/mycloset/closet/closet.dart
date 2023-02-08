@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
 import "package:eotteom/tabs/mycloset/enrollclothes/enroll.dart";
 
-
 class Closet extends StatefulWidget {
   Closet({super.key});
 
@@ -58,12 +57,12 @@ class _ClosetState extends State<Closet> {
               }),
         ),
         SelectCategory(),
-        ClothRender(),
+        //ClothRender(),
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: Align(
             child: FloatingActionButton(
-              backgroundColor: Color(0xff151515),
+                backgroundColor: Color(0xff151515),
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).push(
                       CupertinoPageRoute(builder: (ctx) => ClothesEnroll()));

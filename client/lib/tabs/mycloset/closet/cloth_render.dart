@@ -25,16 +25,16 @@ class _ClothRenderState extends State<ClothRender> {
                   children: [
                     InkWell(
                       child: Container(
-                      width: (100.w - 48) / 3,
-                      height: (100.w - 48) / 3,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/example/cloth1.jpg"),
-                              fit: BoxFit.fill)),
-                    ),
-                    onTap: () {},
+                        width: (100.w - 48) / 3,
+                        height: (100.w - 48) / 3,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/example/cloth1.jpg"),
+                                fit: BoxFit.fill)),
+                      ),
+                      onTap: () {},
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 7, right: 7),
@@ -43,7 +43,9 @@ class _ClothRenderState extends State<ClothRender> {
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
-                          icon: liked[index] ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
+                          icon: liked[index]
+                              ? Icon(Icons.favorite)
+                              : Icon(Icons.favorite_border),
                           color: Color(0xffFFFFFF),
                           onPressed: () {
                             setState(() {
