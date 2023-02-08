@@ -62,7 +62,7 @@ class _OutfitEnrollState extends State<OutfitEnroll> {
                                   SizedBox(height: 10),
                                   Picture(),
                                   Codi_Name(),
-                                  OutfitCategory(),
+                                  Category(),
                                   Container(
                                     margin: EdgeInsets.fromLTRB(16, 0, 3, 32),
                                     child: Row(
