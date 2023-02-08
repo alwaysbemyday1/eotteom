@@ -50,7 +50,6 @@ class _CodiDateState extends State<CodiDate> {
   Widget build(BuildContext context) {
     return Container(
         width: (100.w - 32 - 40) / 3 * 2 + 24,
-        margin: EdgeInsets.only(right: 8),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
               margin: EdgeInsets.only(bottom: 13),
@@ -59,14 +58,16 @@ class _CodiDateState extends State<CodiDate> {
                 style: enrollTitleTheme2,
               )),
           Container(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               width: (100.w - 32 - 40) / 3 * 2 + 24,
               height: 44,
               decoration: BoxDecoration(
                   border: Border.all(color: Color(0xffD9D9D9), width: 1),
                   borderRadius: BorderRadius.circular(5)),
               child: TextButton(
+                style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 child: Container(
+                  width: (100.w - 32 - 40) / 3 * 2 + 24,
                   padding: EdgeInsets.only(left: 16.5),
                   alignment: Alignment.centerLeft,
                   child: Text(

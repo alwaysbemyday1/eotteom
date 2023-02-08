@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:eotteom/provider.dart';
@@ -13,7 +14,7 @@ class Season extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: Container(
-          width: (100.w - 32 - 40) / 3 + 21,
+          width: (100.w - 32 - 40) / 3 + 1,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
@@ -24,9 +25,8 @@ class Season extends StatelessWidget {
                 )),
             Container(
                 alignment: Alignment.center,
-                width: (100.w - 32 - 40) / 3 + 21,
+                width: (100.w - 32 - 40) / 3 + 1,
                 height: 44,
-                margin: EdgeInsets.only(right: 11),
                 decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffD9D9D9), width: 1),
                     borderRadius: BorderRadius.circular(5)),
@@ -51,10 +51,15 @@ class _PopupMenuState extends State<PopupMenu> {
       height: 42,
       value: context.read<EnrollOutfit>().season,
       child: Container(
-          width: (100.w - 32 - 40) / 3 + 16,
+          width: (100.w - 32 - 40) / 3 + 1,
           alignment: Alignment.centerLeft,
-          child:
-              Text(context.read<EnrollOutfit>().season, style: basicTextTheme)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(context.read<EnrollOutfit>().season, style: basicTextTheme),
+              Icon(FlutterRemix.check_fill, size: 17)
+            ],
+          )),
     ));
     childs.add(PopupMenuDivider(height: 0));
 
@@ -66,7 +71,7 @@ class _PopupMenuState extends State<PopupMenu> {
           value: context.read<EnrollOutfit>().seasonList[i],
           height: 44,
           child: Container(
-              width: (100.w - 32 - 40) / 3 + 16,
+              width: (100.w - 32 - 40) / 3 + 1,
               alignment: Alignment.centerLeft,
               child: Text(context.read<EnrollOutfit>().seasonList[i],
                   style: basicTextTheme)),
@@ -80,7 +85,7 @@ class _PopupMenuState extends State<PopupMenu> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (100.w - 32 - 40) / 3 + 8,
+      width: (100.w - 32 - 40) / 3 + 1,
       child: PopupMenuButton(
           // padding: EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
@@ -88,13 +93,22 @@ class _PopupMenuState extends State<PopupMenu> {
               borderRadius: BorderRadius.circular(5)),
           offset: Offset(0, -20),
           constraints: BoxConstraints(
-              maxWidth: (100.w - 32 - 40) / 3 + 8,
-              minWidth: (100.w - 32 - 40) / 3 + 8),
+              maxWidth: (100.w - 32 - 40) / 3 + 1,
+              minWidth: (100.w - 32 - 40) / 3 + 1),
           child: Container(
-              width: (100.w - 32 - 40) / 3 + 8,
+              width: (100.w - 32 - 40) / 3 + 1,
               padding: EdgeInsets.only(left: 15),
-              child: Text(context.watch<EnrollOutfit>().season,
-                  style: basicTextTheme)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(context.watch<EnrollOutfit>().season,
+                      style: basicTextTheme),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: Icon(FlutterRemix.arrow_down_s_line, size: 20),
+                  )
+                ],
+              )),
           onSelected: (String selected) {
             context.read<EnrollOutfit>().changeSeason(selected);
           },
