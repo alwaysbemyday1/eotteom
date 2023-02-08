@@ -146,9 +146,9 @@ class EnrollClothes extends ChangeNotifier {
   }
 
   // Memo
-  String memo = '';
-  changeMemo(newMemo) {
-    memo = newMemo;
+  String name = '';
+  changeName(newName) {
+    name = newName;
     notifyListeners();
   }
 
@@ -163,8 +163,8 @@ class EnrollClothes extends ChangeNotifier {
       'major_category': '1',
       'minor_category': '1'
     });
-    if (memo != '') {
-      request.fields['name'] = memo;
+    if (name != '') {
+      request.fields['name'] = name;
     }
     if (brand != '') {
       request.fields['brand'] = brand;
