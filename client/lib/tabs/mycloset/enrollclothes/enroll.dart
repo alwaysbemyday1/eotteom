@@ -1,10 +1,8 @@
-import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/mycloset/enrollclothes/clothes_name.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import 'brand.dart';
@@ -27,7 +25,6 @@ class ClothesEnroll extends StatefulWidget {
 class _ClothesEnrollState extends State<ClothesEnroll> {
   @override
   Widget build(BuildContext context) {
-    print(context.read<EnrollClothes>().resultImage);
     return Localizations(
         locale: const Locale('en', 'US'),
         delegates: const <LocalizationsDelegate<dynamic>>[
