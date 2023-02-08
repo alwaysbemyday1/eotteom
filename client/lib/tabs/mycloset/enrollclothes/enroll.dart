@@ -1,4 +1,5 @@
 import 'package:eotteom/style.dart';
+import 'package:eotteom/tabs/mycloset/enrollclothes/clothes_name.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'brand.dart';
 import 'category.dart';
 import 'enrollbutton.dart';
 import 'fit.dart';
-import 'memo.dart';
 import 'picture.dart';
 import 'clothescolor.dart';
 import 'size.dart';
@@ -85,7 +85,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                   Brand(),
                                   Size(),
                                   Fit(),
-                                  Memo()
+                                  ClothesName()
                                 ]),
                           )),
                     ),

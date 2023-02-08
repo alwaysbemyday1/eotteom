@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 import 'package:sizer/sizer.dart';
 
-import 'codi_category.dart';
-import 'codi_date.dart';
-import 'codi_name.dart';
+import 'outfit_category.dart';
+import 'outfit_date.dart';
+import 'outfit_name.dart';
 import 'enrollbutton.dart';
 
 import 'picture.dart';
