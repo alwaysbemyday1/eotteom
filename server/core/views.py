@@ -43,7 +43,7 @@ class UserViewSet(ModelViewSet):
     def login(self, request):
         user = authenticate(
             email=request.data.get("email"), password=request.data.get("password")
-        )   
+        )
         if user is not None:
             serializer = UserSerializer(user)
             token = TokenObtainPairSerializer.get_token(user)
