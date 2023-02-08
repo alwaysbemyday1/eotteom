@@ -1,3 +1,5 @@
+import 'package:eotteom/tabs/mycloset/closet/closetdropdown.dart';
+import 'package:eotteom/tabs/mycloset/closet/cloth_render.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:eotteom/tabs/mycloset/closet/closet_select.dart';
 import "package:eotteom/provider.dart";
@@ -16,15 +18,22 @@ class Closet extends StatefulWidget {
 class _ClosetState extends State<Closet> {
   @override
   Widget build(BuildContext context) {
-    var categories = context.watch<OutfitProvider>().totalMap.keys.toList();
-    var categoryPressed = context.watch<OutfitProvider>().categoryPress;
+    var categories = context.watch<ClosetProvider>().totalMap.keys.toList();
+    var categoryPressed = context.watch<ClosetProvider>().categoryPress;
     return Column(
       children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 18),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: DropDownCloset(),
+          ),
+        ),
         SizedBox(
           height: 40,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: context.read<OutfitProvider>().categories.length,
+              itemCount: context.read<ClosetProvider>().categories.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8),
@@ -42,13 +51,14 @@ class _ClosetState extends State<Closet> {
                           fontFamily: "NotoSans"),
                     ),
                     onPressed: () {
-                      context.read<OutfitProvider>().selectFirstIndex(index);
+                      context.read<ClosetProvider>().selectFirstIndex(index);
                     },
                   ),
                 );
               }),
         ),
         SelectCategory(),
+        ClothRender(),
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: Align(
