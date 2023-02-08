@@ -4,10 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:provider/provider.dart';
 
-class ClothesName extends StatelessWidget {
-  ClothesName({super.key});
+class Codi_Name extends StatelessWidget {
+  Codi_Name({super.key});
 
   var inputName;
+
+  DateTime? date = new DateTime.now();
+
+  getWeekday(int? weekday) {
+    if (weekday == 1) {
+      return '월';
+    } else if (weekday == 2) {
+      return '화';
+    } else if (weekday == 3) {
+      return '수';
+    } else if (weekday == 4) {
+      return '목';
+    } else if (weekday == 5) {
+      return '금';
+    } else if (weekday == 6) {
+      return '토';
+    } else if (weekday == 7) {
+      return '일';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +37,7 @@ class ClothesName extends StatelessWidget {
           Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
               child: Text(
-                '메모',
+                '코디 이름',
                 style: enrollTitleTheme2,
               )),
           Container(
@@ -29,9 +49,11 @@ class ClothesName extends StatelessWidget {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: '나만의 옷 이름을 적어주세요',
+                    hintText: '${date?.year}.${date?.month}.${date?.day}.(' +
+                        getWeekday(date?.weekday.toInt()) +
+                        ') 의 코디',
                     hintStyle: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: Color(0xff9b9b9b),
                         fontFamily: "NotoSans",
                         fontWeight: FontWeight.w400,
@@ -44,7 +66,7 @@ class ClothesName extends StatelessWidget {
               ),
               onFocusChange: (hasFocus) {
                 if (hasFocus == false) {
-                  context.read<EnrollClothes>().changeName(inputName);
+                  context.read<EnrollOutfit>().changeName(inputName);
                 }
               },
             ),

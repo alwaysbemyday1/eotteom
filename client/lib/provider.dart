@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
+import 'package:http/http.dart' as http;
 
 class SignInPage extends ChangeNotifier {
   var page = 0;
@@ -70,7 +72,7 @@ class EnrollClothes extends ChangeNotifier {
   Future<File?> cropImage({required File imageFile}) async {
     CroppedFile? croppedImage = await ImageCropper().cropImage(
         sourcePath: imageFile.path,
-        aspectRatio: CropAspectRatio(ratioX: 4, ratioY: 5));
+        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
 
     if (croppedImage == null) {
       return null;
@@ -102,24 +104,28 @@ class EnrollClothes extends ChangeNotifier {
   }
 
   // Color
-  String color = "";
+  String color = '';
   changeColor(String newColor) {
     color = newColor;
     notifyListeners();
   }
 
   // Brand
-  String brand = "";
+  String brand = '';
   changeBrand(String newBrand) {
-    brand = newBrand;
+    if (newBrand != '' && newBrand != null) {
+      brand = newBrand;
+    }
+
     notifyListeners();
   }
 
   // Price
   String priceStr = '';
-  int price = 0;
   changePrice(newPrice) {
-    priceStr = newPrice;
+    if (newPrice != '' && newPrice != null) {
+      priceStr = newPrice.replaceAll(RegExp('[^0-9]'), '');
+    }
     notifyListeners();
   }
 
@@ -139,11 +145,45 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Brand
-  String memo = "";
-  changeMemo(String newMemo) {
-    memo = newMemo;
+  // Memo
+  String name = '';
+  changeName(newName) {
+    name = newName;
     notifyListeners();
+  }
+
+  postRequest() async {
+    String url = 'http://127.0.0.1:8000/api/clothes/';
+    var request = http.MultipartRequest('POST', Uri.parse(url));
+
+    request.files
+        .add(await http.MultipartFile.fromPath('image', resultImage!.path));
+    request.fields.addAll({
+      'user': '16440a1d-7c3a-46b4-ae2a-0b375e4c6058',
+      'major_category': '1',
+      'minor_category': '1'
+    });
+    if (name != '') {
+      request.fields['name'] = name;
+    }
+    if (brand != '') {
+      request.fields['brand'] = brand;
+    }
+    // fit 생기면 주석 해제
+    // if (fit != '') {
+    //   request.fields['fit'] = fit;
+    // }
+    if (size != '') {
+      request.fields['size'] = size;
+    }
+    if (priceStr != '') {
+      request.fields['price'] = priceStr;
+    }
+    if (color != '') {
+      request.fields['color'] = color;
+    }
+
+    http.StreamedResponse response = await request.send();
   }
 }
 
@@ -167,8 +207,9 @@ class EnrollOutfit extends ChangeNotifier {
   }
 
   Future<File?> cropImage({required File imageFile}) async {
-    CroppedFile? croppedImage =
-        await ImageCropper().cropImage(sourcePath: imageFile.path);
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: imageFile.path,
+        aspectRatio: CropAspectRatio(ratioX: 4, ratioY: 5));
 
     if (croppedImage == null) {
       return null;
@@ -184,7 +225,7 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Name
+  // Season
   String season = '봄';
   var seasonList = ['봄', '여름', '가을', '겨울'];
   changeSeason(String newSeason) {

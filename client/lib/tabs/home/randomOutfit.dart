@@ -1,6 +1,7 @@
 import 'package:eotteom/tabs/add/addoutfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -138,7 +139,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(CupertinoIcons.repeat, size: 17),
+                          Icon(FlutterRemix.refresh_line, size: 17.64),
                           SizedBox(width: 10.8),
                           Text('다시 돌리기', style: TextStyle(fontSize: 14))
                         ],

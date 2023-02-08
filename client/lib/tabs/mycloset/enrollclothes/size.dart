@@ -24,10 +24,7 @@ class _SizeState extends State<Size> {
             height: (100.w - 32 - 45) / 6,
             width: (100.w - 32 - 45) / 6,
             decoration: BoxDecoration(
-                color: context.watch<EnrollClothes>().size !=
-                        context.watch<EnrollClothes>().sizeList[i]
-                    ? Color(0xffFFFFFF)
-                    : Color(0xffD9D9D9),
+                color: Color(0xffFFFFFF),
                 border: Border.all(
                     width: 1,
                     color: context.watch<EnrollClothes>().size !=

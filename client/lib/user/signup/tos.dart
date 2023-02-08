@@ -3,6 +3,7 @@ import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -28,14 +29,12 @@ class _TOSState extends State<TOS> {
                 backgroundColor: CupertinoColors.white,
                 padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                 border: null,
-                leading: Material(
-                  child: IconButton(
-                    icon: Icon(CupertinoIcons.chevron_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      context.read<SignInPage>().pageDown();
-                    },
-                  ),
+                leading: IconButton(
+                  icon: Icon(FlutterRemix.arrow_left_s_line, size: 32),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    context.read<SignInPage>().pageDown();
+                  },
                 )),
             child: Container(
                 margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
@@ -73,10 +72,10 @@ class _TOSState extends State<TOS> {
                                       padding: EdgeInsets.all(0),
                                       icon: Icon(
                                         allCheck == true
-                                            ? CupertinoIcons
-                                                .check_mark_circled_solid
-                                            : CupertinoIcons.circle,
-                                        size: 22,
+                                            ? FlutterRemix.checkbox_circle_fill
+                                            : FlutterRemix
+                                                .checkbox_blank_circle_line,
+                                        size: 24,
                                       ),
                                       onPressed: () {
                                         setState(() {
@@ -109,10 +108,11 @@ class _TOSState extends State<TOS> {
                                           padding: EdgeInsets.all(0),
                                           icon: Icon(
                                             serviceCheck == true
-                                                ? CupertinoIcons
-                                                    .check_mark_circled_solid
-                                                : CupertinoIcons.circle,
-                                            size: 22,
+                                                ? FlutterRemix
+                                                    .checkbox_circle_fill
+                                                : FlutterRemix
+                                                    .checkbox_blank_circle_line,
+                                            size: 24,
                                           ),
                                           onPressed: () {
                                             setState(() {
@@ -147,10 +147,11 @@ class _TOSState extends State<TOS> {
                                           padding: EdgeInsets.all(0),
                                           icon: Icon(
                                             personalCheck == true
-                                                ? CupertinoIcons
-                                                    .check_mark_circled_solid
-                                                : CupertinoIcons.circle,
-                                            size: 22,
+                                                ? FlutterRemix
+                                                    .checkbox_circle_fill
+                                                : FlutterRemix
+                                                    .checkbox_blank_circle_line,
+                                            size: 24,
                                           ),
                                           onPressed: () {
                                             setState(() {

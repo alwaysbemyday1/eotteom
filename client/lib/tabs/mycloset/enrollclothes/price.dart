@@ -45,7 +45,8 @@ class Price extends StatelessWidget {
                             fillColor: Color(0xffF3F3F3)),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly,
-                          ThousandsSeparatorInputFormatter()
+                          ThousandsSeparatorInputFormatter(),
+                          // FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                         ],
                         onChanged: (text) {
                           inputPrice = text;

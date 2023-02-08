@@ -109,7 +109,18 @@ class Picture extends StatelessWidget {
                       color: Color(0xfff3f3f3),
                       borderRadius: BorderRadius.circular(5)),
                   child: context.watch<EnrollOutfit>().resultImage == null
-                      ? Text('아웃핏을 선택해주세요', style: basicTextTheme2)
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                              Container(
+                                  margin: EdgeInsets.only(bottom: 10.5),
+                                  child: Icon(
+                                    FlutterRemix.image_add_fill,
+                                    size: 33,
+                                    color: Color(0xff9B9B9B),
+                                  )),
+                              Text('내 코디를 올려보세요', style: enrollHintTheme),
+                            ])
                       : Image.file(context.read<EnrollOutfit>().resultImage!,
                           height: (100.w - 32) / 5 * 3 / 3 * 4,
                           width: (100.w - 32) / 5 * 3,

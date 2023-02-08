@@ -46,3 +46,10 @@ var enrollTitleTheme2 = TextStyle(
     color: Colors.black,
     fontWeight: FontWeight.w700,
     height: 1.3);
+
+var enrollHintTheme = TextStyle(
+    fontSize: 14,
+    fontFamily: "NotoSans",
+    color: Color(0xff9B9B9B),
+    fontWeight: FontWeight.w400,
+    height: 1.3);
