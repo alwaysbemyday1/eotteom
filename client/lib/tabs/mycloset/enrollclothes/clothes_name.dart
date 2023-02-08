@@ -17,7 +17,7 @@ class ClothesName extends StatelessWidget {
           Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
               child: Text(
-                '메모',
+                '이름',
                 style: enrollTitleTheme2,
               )),
           Container(
