@@ -1,7 +1,6 @@
 import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
 import "package:eotteom/provider.dart";
 import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
-import 'package:eotteom/tabs/myoutfit/outfit/outfit_render.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:flutter/material.dart';
 import "daterangepicker.dart";
@@ -39,6 +38,24 @@ class _CodyState extends State<Cody> {
             borderRadius: BorderRadius.circular(18.0),
             side: BorderSide(color: Colors.black))),
         backgroundColor: MaterialStateProperty.all(Colors.black));
+
+    bool dateCheck = true;
+    bool temperatureCheck = true;
+    int selectyear = 2023;
+
+    changeDate(value) {
+      setState(() {
+        dateCheck = value;
+        print(dateCheck);
+      });
+    }
+
+    changeTemperature(value) {
+      setState(() {
+        temperatureCheck = value;
+        print(temperatureCheck);
+      });
+    }
 
     return Sizer(
       builder: (context, orientation, deviceType) {
@@ -259,8 +276,7 @@ class _CodyState extends State<Cody> {
                   ],
                 ),
               ],
-            ),
-            OutfitRender()
+            )
           ]),
         );
       },
