@@ -1,3 +1,4 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/myoutfit/enrolloufit/season.dart';
 
@@ -5,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 import 'outfit_category.dart';
 import 'outfit_date.dart';
@@ -22,6 +24,12 @@ class OutfitEnroll extends StatefulWidget {
 }
 
 class _OutfitEnrollState extends State<OutfitEnroll> {
+  @override
+  void initState() {
+    context.read<EnrollOutfit>().initEnrollOufit();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(

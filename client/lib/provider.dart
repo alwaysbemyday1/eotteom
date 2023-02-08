@@ -184,6 +184,18 @@ class EnrollClothes extends ChangeNotifier {
 
     http.StreamedResponse response = await request.send();
   }
+
+  initEnrollClothes() {
+    resultImage = null;
+    name = '';
+    size = '';
+    fit = '';
+    priceStr = '';
+    brand = '';
+    color = '';
+    bigCategory = '선택해주세요';
+    smallCategory = '선택해주세요';
+  }
 }
 
 class EnrollOutfit extends ChangeNotifier {
@@ -245,6 +257,14 @@ class EnrollOutfit extends ChangeNotifier {
   changePermission() {
     permission = !permission;
     notifyListeners();
+  }
+
+  initEnrollOufit() {
+    resultImage = null;
+    name = '';
+    season = '봄';
+    category = '';
+    permission = false;
   }
 }
 
