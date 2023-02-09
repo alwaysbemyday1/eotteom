@@ -8,8 +8,6 @@ import 'package:eotteom/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../model/user_model.dart';
-
 class Email extends StatefulWidget {
   const Email({super.key});
 

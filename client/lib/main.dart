@@ -18,7 +18,8 @@ void main() {
         ChangeNotifierProvider(create: (c) => SignInPage()),
         ChangeNotifierProvider(create: (c) => Position()),
         ChangeNotifierProvider(create: (c) => EnrollClothes()),
-        ChangeNotifierProvider(create: (c) => EnrollOutfit())
+        ChangeNotifierProvider(create: (c) => EnrollOutfit()),
+        ChangeNotifierProvider(create: (c) => UserProvider())
       ],
       child: const CupertinoApp(
         localizationsDelegates: [
@@ -50,6 +51,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(context.watch<UserProvider>().email);
+    print(context.read<UserProvider>().userId);
+    print(context.read<UserProvider>().password);
+    print(context.read<UserProvider>().tokenAccess);
+    print(context.read<UserProvider>().tokenRefresh);
+    print(context.read<UserProvider>().gender);
     return CupertinoTabScaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,

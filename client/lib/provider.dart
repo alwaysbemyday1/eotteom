@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'package:http/http.dart' as http;
 
+import 'model/user_model.dart';
+
 class SignInPage extends ChangeNotifier {
   var page = 0;
 
@@ -288,41 +290,25 @@ class EnrollOutfit extends ChangeNotifier {
   }
 }
 
-class User {
-  final String email;
-  final String password;
-  final String gender;
-  final String tokenAccess;
-  final String tokenRefresh;
-  final String userId;
+class UserProvider extends ChangeNotifier {
+  String email = '';
+  String password = '';
+  int gender = -1;
+  String tokenAccess = '';
+  String tokenRefresh = '';
+  String userId = '';
 
-  User(
-      {required this.email,
-      required this.password,
-      required this.gender,
-      required this.tokenAccess,
-      required this.tokenRefresh,
-      required this.userId});
+  setUserFromJson(User user) async {
+    email = user.email;
+    password = user.password;
+    if (user.gender != null) {
+      gender = int.parse(user.gender);
+    }
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-        email: json['email'],
-        password: json['password'],
-        gender: json['gender'],
-        tokenAccess: json['token']['access'],
-        tokenRefresh: json['token']['refresh'],
-        userId: json["user"]["user_id"]);
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "email": email,
-      "password": password,
-      "gender": gender,
-      "token_access": tokenAccess,
-      "token_refresh": tokenRefresh,
-      "userId": userId
-    };
+    tokenAccess = user.tokenAccess;
+    tokenRefresh = user.tokenRefresh;
+    userId = user.userId;
+    notifyListeners();
   }
 }
 
