@@ -51,12 +51,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(context.watch<UserProvider>().email);
-    print(context.read<UserProvider>().userId);
-    print(context.read<UserProvider>().password);
-    print(context.read<UserProvider>().tokenAccess);
-    print(context.read<UserProvider>().tokenRefresh);
-    print(context.read<UserProvider>().gender);
     return CupertinoTabScaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,

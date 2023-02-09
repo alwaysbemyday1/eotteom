@@ -31,8 +31,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Sizer(
-    //   builder: (context, orientation, deviceType) {
     return SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         scrollDirection: Axis.vertical,
@@ -43,7 +41,7 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 100,
+                height: 120,
               ),
               //WeatherOutfit(),
               MyOutfit(),
@@ -88,7 +86,5 @@ class Home extends StatelessWidget {
             ],
           ),
         ));
-    // }
-    // );
   }
 }
