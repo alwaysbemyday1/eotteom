@@ -23,6 +23,7 @@ class MinorCategory(models.Model):
 
 class Clothes(models.Model):
     SIZE_CHOICES = (('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'))
+    FIT_CHOICES = (('S', '슬림핏'), ('R', '레귤러핏'), ('O', '오버핏'))
 
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
@@ -32,6 +33,7 @@ class Clothes(models.Model):
     minor_category = models.ForeignKey(MinorCategory, on_delete=models.PROTECT)
     brand = models.CharField(max_length=255, blank=True)
     color = models.CharField(max_length=255, blank=True)
+    fit = models.CharField(max_length=255, choices=FIT_CHOICES, blank=True)
     size = models.CharField(max_length=255, choices=SIZE_CHOICES, blank=True)
     likes = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=10,decimal_places=2, blank=True, null=True)
