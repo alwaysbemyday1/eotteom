@@ -1,21 +1,54 @@
+import 'dart:convert';
+
+import 'package:eotteom/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
 
-class MyOutfit extends StatelessWidget {
-  const MyOutfit({super.key});
+class MyOutfit extends StatefulWidget {
+  MyOutfit({super.key});
+
+  @override
+  State<MyOutfit> createState() => _MyOutfitState();
+}
+
+class _MyOutfitState extends State<MyOutfit> {
+  List<Container> myOutfitPictureList = [];
+
+  Future getMyOutfitList(BuildContext context) async {
+    http.Response response = await http.get(Uri.parse(
+        'http://127.0.0.1:8000/api/outfits/list/${context.read<UserProvider>().userId}/'));
+    var tmpMyOutfitList = jsonDecode(response.body);
+    var myOutfitList = tmpMyOutfitList['results'];
+    for (int i = 0; i < myOutfitList.length; i++) {
+      myOutfitPictureList.add(Container(
+          width: (100.w - 32 - 40) / 2 + 24,
+          height: ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
+          margin: i == 0 ? EdgeInsets.only(left: 16) : EdgeInsets.zero,
+          child: Image.memory(
+            base64Decode(myOutfitList[i]['image_memory']),
+            fit: BoxFit.fill,
+          )));
+    }
+
+    return myOutfitPictureList;
+  }
 
   @override
   Widget build(BuildContext context) {
+    myOutfitPictureList = [];
     return Container(
-      width: (100.w - 24) - 8,
-      height: 12 + 18 * 1.3 + (100.w - 24) * 0.6, // 사기간격 + lineheight + 사진 크기
+      height: 12 +
+          18 * 1.3 +
+          ((100.w - 32 - 40) / 2 + 24) / 189 * 236, // 사기간격 + lineheight + 사진 크기
       margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+              margin: EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,48 +67,43 @@ class MyOutfit extends StatelessWidget {
                     )
                   ]),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: (100.w - 24) * 0.6 - 8,
-                  height: (100.w - 24) * 0.6 - 8,
-                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                  child: Image.asset(
-                    'assets/images/codies/codi6.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: (100.w - 24) * 0.4 - 8,
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                      child: Image.asset('assets/images/codies/codi2.png'),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: (100.w - 24) * 0.2 - 8,
-                          height: (100.w - 24) * 0.2 - 8,
-                          margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                          child: Image.asset('assets/images/codies/codi3.png'),
-                        ),
-                        Container(
-                          width: (100.w - 24) * 0.2 - 8,
-                          height: (100.w - 24) * 0.2 - 8,
-                          child: Image.asset('assets/images/codies/codi4.png'),
-                        ),
-                      ],
-                    )
-                  ],
-                )
-              ],
-            )
+            Container(
+              height: ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
+              child: FutureBuilder(
+                  future: getMyOutfitList(context),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData == false) {
+                      return CupertinoActivityIndicator();
+                    } else {
+                      return GridView(
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent:
+                                ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
+                            childAspectRatio: 6 / 5,
+                            mainAxisSpacing: 8),
+                        children: snapshot.data,
+                      );
+                    }
+                  }),
+            ),
+            // SingleChildScrollView(
+            //   scrollDirection: Axis.horizontal,
+            //   child: Container(
+            //     height: ((100.w - 32 - 40) / 3 + 24) / 189 * 236,
+            //     child: FutureBuilder(
+            //         future: getMyOutfitList(context),
+            //         builder: (context, snapshot) {
+            //           if (snapshot.hasData == false) {
+            //             return CupertinoActivityIndicator();
+            //           } else {
+            //             return Row(
+            //                 mainAxisAlignment: MainAxisAlignment.start,
+            //                 children: snapshot.data);
+            //           }
+            //         }),
+            //   ),
+            // ),
           ]),
     );
   }

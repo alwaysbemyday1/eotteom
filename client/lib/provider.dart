@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'package:http/http.dart' as http;
 
+import 'model/user_model.dart';
+
 class SignInPage extends ChangeNotifier {
   var page = 0;
 
@@ -184,6 +186,18 @@ class EnrollClothes extends ChangeNotifier {
 
     http.StreamedResponse response = await request.send();
   }
+
+  initEnrollClothes() {
+    resultImage = null;
+    name = '';
+    size = '';
+    fit = '';
+    priceStr = '';
+    brand = '';
+    color = '';
+    bigCategory = '선택해주세요';
+    smallCategory = '선택해주세요';
+  }
 }
 
 class EnrollOutfit extends ChangeNotifier {
@@ -224,8 +238,28 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
+// Date
+  DateTime? date = new DateTime.now();
+  changeDate(DateTime newDate) {
+    date = newDate;
+    notifyListeners();
+  }
+
   // Season
-  String season = '봄';
+  DateTime? tmpDate = new DateTime.now();
+  String season = '';
+  setFirstSeason() {
+    if (tmpDate!.month >= 3 && tmpDate!.month <= 5) {
+      season = '봄';
+    } else if (tmpDate!.month >= 6 && tmpDate!.month <= 8) {
+      season = '여름';
+    } else if (tmpDate!.month >= 9 && tmpDate!.month <= 11) {
+      season = '가을';
+    } else {
+      season = '겨울';
+    }
+  }
+
   var seasonList = ['봄', '여름', '가을', '겨울'];
   changeSeason(String newSeason) {
     season = newSeason;
@@ -237,6 +271,43 @@ class EnrollOutfit extends ChangeNotifier {
   var categoryList = ['댄디룩', '미니멀룩', '스트릿룩', '캐주얼룩', '스포츠룩'];
   changeCategory(String newCategory) {
     category = newCategory;
+    notifyListeners();
+  }
+
+  // Open permission
+  bool permission = false;
+  changePermission() {
+    permission = !permission;
+    notifyListeners();
+  }
+
+  initEnrollOufit() {
+    resultImage = null;
+    name = '';
+    setFirstSeason();
+    category = '';
+    permission = false;
+  }
+}
+
+class UserProvider extends ChangeNotifier {
+  String email = '';
+  String password = '';
+  int gender = -1;
+  String tokenAccess = '';
+  String tokenRefresh = '';
+  String userId = '';
+
+  setUserFromJson(User user) async {
+    email = user.email;
+    password = user.password;
+    if (user.gender != null) {
+      gender = int.parse(user.gender);
+    }
+
+    tokenAccess = user.tokenAccess;
+    tokenRefresh = user.tokenRefresh;
+    userId = user.userId;
     notifyListeners();
   }
 }
@@ -353,6 +424,7 @@ class ClothProvider extends ChangeNotifier {
   List<bool> shoePress = [true, false, false, false, false];
   List<bool> accessoryPress = [true, false, false, false, false, false];
   List<bool> onepiecePress = [true];
+
 
   setTrue(List<bool> press, int index) {
     for (int i = 0; i < press.length; i++) {

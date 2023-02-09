@@ -15,11 +15,42 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   var line = 0;
 
-  List<Widget> getList() {
-    List<Widget> childs = [];
-    for (int i = line * 4; i < (line + 1) * 4; i++) {
-      if (context.read<EnrollOutfit>().categoryList.length == i) {
-        break;
+
+  @override
+  State<PopupMenu> createState() => _PopupMenuState();
+}
+
+class _PopupMenuState extends State<PopupMenu> {
+  List<PopupMenuEntry<String>> getList() {
+    List<PopupMenuEntry<String>> childs = [];
+    childs.add(PopupMenuItem<String>(
+      // 뭐 선택 됐는지
+      height: 42,
+      value: context.read<EnrollOutfit>().category,
+      child: Container(
+          width: 100.w - 32,
+          alignment: Alignment.centerLeft,
+          child: context.read<EnrollOutfit>().category != ''
+              ? Text(context.read<EnrollOutfit>().category,
+                  style: PopUpMenuSelectedTheme)
+              : Text('스타일을 선택해주세요', style: PopUpMenuChildTheme)),
+    ));
+    childs.add(PopupMenuDivider(height: 0));
+
+    for (int i = 0; i < 4; i++) {
+      // 선택할 수 있는 리스트
+      if (context.read<EnrollOutfit>().category !=
+          context.read<EnrollOutfit>().categoryList[i]) {
+        childs.add(PopupMenuItem<String>(
+          value: context.read<EnrollOutfit>().categoryList[i],
+          height: 44,
+          child: Container(
+              width: 100.w - 32,
+              alignment: Alignment.centerLeft,
+              child: Text(context.read<EnrollOutfit>().categoryList[i],
+                  style: PopUpMenuSelectedTheme)),
+        ));
+
       }
       childs.add(CupertinoButton(
           padding: EdgeInsets.all(0),
@@ -68,7 +99,7 @@ class _CategoryState extends State<Category> {
                 .changeCategory(context.read<EnrollOutfit>().categoryList[i]);
           }));
     }
-    line++;
+
     return childs;
   }
 
@@ -76,13 +107,29 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     line = 0;
     return Container(
-        margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
-              child: Text(
-                '코디 카테고리',
-                style: enrollTitleTheme2,
+
+      width: 100.w - 32,
+      child: PopupMenuButton(
+          // padding: EdgeInsets.all(0),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(color: Color(0xffD9D9D9), width: 1),
+              borderRadius: BorderRadius.circular(5)),
+          offset: Offset(0, -20),
+          constraints:
+              BoxConstraints(maxWidth: 100.w - 32, minWidth: 100.w - 32),
+          child: Container(
+              width: 100.w - 32,
+              padding: EdgeInsets.only(left: 16, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  context.watch<EnrollOutfit>().category != ''
+                      ? Text(context.read<EnrollOutfit>().category,
+                          style: PopUpMenuSelectedTheme)
+                      : Text('스타일을 선택해주세요', style: PopUpMenuChildTheme),
+                  Icon(FlutterRemix.arrow_down_s_line, size: 22)
+                ],
+
               )),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

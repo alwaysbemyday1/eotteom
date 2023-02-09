@@ -19,11 +19,20 @@ class Home extends StatelessWidget {
 
   //   return clothesDetail;
   // }
+  // var outfitList;
+  // Future getOutfitList() async {
+  //   http.Response response =
+  //       await http.get(Uri.parse('http://127.0.0.1:8000/api/outfits/'));
+  //   outfitList = jsonDecode(response.body);
+
+
+  //   print(outfitList);
+  //   return outfitList;
+  // }
+
 
   @override
   Widget build(BuildContext context) {
-    // return Sizer(
-    //   builder: (context, orientation, deviceType) {
     return SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         scrollDirection: Axis.vertical,
@@ -34,7 +43,7 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 100,
+                height: 120,
               ),
               //WeatherOutfit(),
               MyOutfit(),
@@ -51,13 +60,35 @@ class Home extends StatelessWidget {
               //                 base64Decode(clothesDetail['image_memory'])));
               //       }
               //     }),
+
+              // FutureBuilder(
+              //     future: getOutfitList(),
+              //     builder: (context, snapshot) {
+              //       if (snapshot.hasData == false) {
+              //         return CupertinoActivityIndicator();
+              //       } else {
+              //         return Row(
+              //           children: [
+              //             Container(
+              //                 width: 200,
+              //                 height: 200,
+              //                 child: Image.memory(
+              //                     base64Decode(outfitList[0]['image_memory']))),
+              //             Container(
+              //                 width: 200,
+              //                 height: 200,
+              //                 child: Image.memory(
+              //                     base64Decode(outfitList[1]['image_memory']))),
+              //           ],
+              //         );
+              //       }
+              //     }),
+
               Container(
                 height: 100,
               ),
             ],
           ),
         ));
-    // }
-    // );
   }
 }

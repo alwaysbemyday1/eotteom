@@ -1,3 +1,4 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/myoutfit/enrolloufit/season.dart';
 
@@ -5,12 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 import 'outfit_category.dart';
 import 'outfit_date.dart';
 import 'outfit_name.dart';
 import 'enrollbutton.dart';
 
+import 'outfit_open_permission.dart';
 import 'picture.dart';
 
 class OutfitEnroll extends StatefulWidget {
@@ -21,6 +24,12 @@ class OutfitEnroll extends StatefulWidget {
 }
 
 class _OutfitEnrollState extends State<OutfitEnroll> {
+  @override
+  void initState() {
+    context.read<EnrollOutfit>().initEnrollOufit();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -64,11 +73,14 @@ class _OutfitEnrollState extends State<OutfitEnroll> {
                                   Codi_Name(),
                                   Category(),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(16, 0, 3, 32),
+                                    margin: EdgeInsets.fromLTRB(16, 0, 16, 32),
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [CodiDate(), Season()],
                                     ),
                                   ),
+                                  OutfitOpenPermission(),
                                   Divider(
                                     thickness: 8,
                                   ),

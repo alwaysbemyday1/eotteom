@@ -107,7 +107,7 @@ class _PopupMenuState extends State<PopupMenu> {
                       ? context.read<EnrollClothes>().bigCategory
                       : context.read<EnrollClothes>().smallCategory,
                   style: basicTextTheme),
-              Icon(Icons.check, size: 20)
+              Icon(FlutterRemix.check_fill, size: 17)
             ],
           )),
     ));
@@ -158,7 +158,7 @@ class _PopupMenuState extends State<PopupMenu> {
                       style: basicTextTheme),
                   Padding(
                     padding: const EdgeInsets.only(right: 12),
-                    child: Icon(Icons.keyboard_arrow_down, size: 20),
+                    child: Icon(FlutterRemix.arrow_down_s_line, size: 20),
                   )
                 ],
               )),

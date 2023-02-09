@@ -18,7 +18,8 @@ void main() {
         ChangeNotifierProvider(create: (c) => SignInPage()),
         ChangeNotifierProvider(create: (c) => Position()),
         ChangeNotifierProvider(create: (c) => EnrollClothes()),
-        ChangeNotifierProvider(create: (c) => EnrollOutfit())
+        ChangeNotifierProvider(create: (c) => EnrollOutfit()),
+        ChangeNotifierProvider(create: (c) => UserProvider())
       ],
       child: const CupertinoApp(
         localizationsDelegates: [
