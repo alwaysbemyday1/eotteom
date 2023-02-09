@@ -7,14 +7,14 @@ class SelectCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var whichcategory = context.watch<ClosetProvider>().totalMap.keys.toList()[
+    var whichcategory = context.watch<ClothProvider>().totalMap.keys.toList()[
         context
-            .watch<ClosetProvider>()
+            .watch<ClothProvider>()
             .firstindex]; // ["상의", "하의", "아우터", "신발", "원피스"] 이중에서 카테고리 선택
     List<String> smallCategory =
-        context.watch<ClosetProvider>().totalMap[whichcategory]!;
+        context.watch<ClothProvider>().totalMap[whichcategory]!;
     List categoryPress =
-        context.read<ClosetProvider>().boolCallback(whichcategory);
+        context.read<ClothProvider>().boolCallback(whichcategory);
     return SizedBox(
       height: 35,
       child: ListView.builder(
@@ -38,7 +38,7 @@ class SelectCategory extends StatelessWidget {
                           : FontWeight.w400),
                 ),
                 onPressed: () {
-                  context.read<ClosetProvider>().selectSecondIndex(index);
+                  context.read<ClothProvider>().selectSecondIndex(index);
                 },
               ),
             );

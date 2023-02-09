@@ -12,10 +12,12 @@ class _ClothRenderState extends State<ClothRender> {
   List<bool> liked = [false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: ((context, orientation, deviceType) {
-      return SizedBox(
+    return Expanded(
+      child: Sizer(builder: ((context, orientation, deviceType) {
+        return SizedBox(
           width: 100.w - 32,
           child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, mainAxisSpacing: 8, crossAxisSpacing: 8),
@@ -58,7 +60,9 @@ class _ClothRenderState extends State<ClothRender> {
                     )
                   ],
                 );
-              })));
-    }));
+              })),
+        );
+      })),
+    );
   }
 }

@@ -13,9 +13,9 @@ class _DropDownClosetState extends State<DropDownCloset> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      value: context.watch<ClosetProvider>().selectDropdownCloset,
+      value: context.watch<FilterProvider>().selectedDropdown,
         style: TextStyle(color: Color(0xff151515)),
-        items: context.watch<ClosetProvider>().dropdownlistCloset.map((String item) {
+        items: context.watch<FilterProvider>().dropdownlistCloset.map((String item) {
           return DropdownMenuItem(
             child: Text(
               '$item',
@@ -27,7 +27,7 @@ class _DropDownClosetState extends State<DropDownCloset> {
         }).toList(),
         onChanged: (value) {
           setState(() {
-            context.read<ClosetProvider>().changeSelectedDropdownCloset(value);
+            context.read<FilterProvider>().changeSelectedDropdownCloset(value);
           });
         });
   }

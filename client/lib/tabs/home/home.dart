@@ -25,9 +25,11 @@ class Home extends StatelessWidget {
   //       await http.get(Uri.parse('http://127.0.0.1:8000/api/outfits/'));
   //   outfitList = jsonDecode(response.body);
 
+
   //   print(outfitList);
   //   return outfitList;
   // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,7 @@ class Home extends StatelessWidget {
               //                 base64Decode(clothesDetail['image_memory'])));
               //       }
               //     }),
+
               // FutureBuilder(
               //     future: getOutfitList(),
               //     builder: (context, snapshot) {
@@ -80,6 +83,7 @@ class Home extends StatelessWidget {
               //         );
               //       }
               //     }),
+
               Container(
                 height: 100,
               ),

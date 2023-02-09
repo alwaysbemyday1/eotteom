@@ -39,8 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool visible = true;
-  String userId = "";
-  String userTokenAccess = '';
+  
 
   @override
   void initState() {
@@ -49,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
     _emailController.addListener(_emailCheck);
     _passwordController.addListener(_passwordCheck);
   }
+
 
   login(String email, password) async {
     try {
@@ -64,14 +64,30 @@ class _LoginPageState extends State<LoginPage> {
         return userInfo;
       } else {
         throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
+
       }
-    } catch (e) {
-      print(e.toString());
+    );
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      User userInfo = User.fromJson(data);
+      setState(() {
+        userId = userInfo.userId;
+      });
+      print(userId);
+      print('Login Successfully');
+      
+    } else {
+      throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
     }
+  } catch(e) {
+    print(e.toString());
   }
+}
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -111,6 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   '로그인을 해주세요!',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
+
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),

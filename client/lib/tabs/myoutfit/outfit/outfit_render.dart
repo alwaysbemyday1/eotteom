@@ -16,13 +16,13 @@ class _OutfitRenderState extends State<OutfitRender> {
       child: Sizer(builder: ((context, orientation, deviceType) {
         return SizedBox(
             width: 100.w - 32,
-            child: GridView.builder(
+
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 5 / 6),
+                    crossAxisCount: 3, mainAxisSpacing: 8, crossAxisSpacing: 8, childAspectRatio: 5/6),
+
                 itemCount: 6,
                 itemBuilder: ((context, index) {
                   return SizedBox(
@@ -30,14 +30,16 @@ class _OutfitRenderState extends State<OutfitRender> {
                       children: [
                         InkWell(
                           child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.0),
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/example/cloth1.jpg"),
-                                    fit: BoxFit.fill)),
-                          ),
-                          onTap: () {},
+
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/example/cloth1.jpg"),
+                                  fit: BoxFit.fill)),
+                        ),
+                        onTap: () {},
+
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 7, right: 7),
@@ -46,9 +48,9 @@ class _OutfitRenderState extends State<OutfitRender> {
                             child: IconButton(
                               padding: EdgeInsets.zero,
                               constraints: BoxConstraints(),
-                              icon: liked[index]
-                                  ? Icon(Icons.favorite)
-                                  : Icon(Icons.favorite_border),
+
+                              icon: liked[index] ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
+
                               color: Color(0xffFFFFFF),
                               onPressed: () {
                                 setState(() {
@@ -62,7 +64,10 @@ class _OutfitRenderState extends State<OutfitRender> {
                       ],
                     ),
                   );
-                })));
+
+                })),
+            );
+
       })),
     );
   }

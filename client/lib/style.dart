@@ -54,6 +54,7 @@ var enrollHintTheme = TextStyle(
     fontWeight: FontWeight.w400,
     height: 1.3);
 
+
 var PopUpMenuChildTheme = TextStyle(
     fontSize: 16,
     fontFamily: "NotoSans",
@@ -67,3 +68,4 @@ var PopUpMenuSelectedTheme = TextStyle(
     color: Color(0xff131313),
     fontWeight: FontWeight.w400,
     height: 1.3);
+

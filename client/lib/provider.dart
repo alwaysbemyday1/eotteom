@@ -315,6 +315,9 @@ class UserProvider extends ChangeNotifier {
 class FilterProvider extends ChangeNotifier {
   List<String> dropdownlist = ["전체", "좋아요만"];
   String selectedDropdown = "전체";
+  List<String> dropdownlistCloset = ["전체", "좋아요만"];
+  String selectedDropdownCloset = "전체";
+
   bool seasoncheck = true;
   bool datecheck = true;
   bool temperaturecheck = true;
@@ -389,12 +392,16 @@ class FilterProvider extends ChangeNotifier {
 
   changeSelectedDropdown(value) {
     selectedDropdown = value;
-    print(selectedDropdown);
+    notifyListeners();
+  }
+
+  changeSelectedDropdownCloset(value) {
+    selectedDropdownCloset = value;
     notifyListeners();
   }
 }
 
-class ClosetProvider extends ChangeNotifier {
+class ClothProvider extends ChangeNotifier {
   Map<String, List<String>> totalMap = {
     "상의": ["니트", "멘투멘", "후디", "셔츠", "티셔츠", "슈트상의", "트레이닝복"],
     "하의": ["팬츠", "데님팬츠", "트레이닝룩", "슬랙스"],
@@ -418,13 +425,6 @@ class ClosetProvider extends ChangeNotifier {
   List<bool> accessoryPress = [true, false, false, false, false, false];
   List<bool> onepiecePress = [true];
 
-  List<String> dropdownlistCloset = ["전체", "좋아요만"];
-  String selectDropdownCloset = "전체";
-
-  changeSelectedDropdownCloset(value) {
-    selectDropdownCloset = value;
-    notifyListeners();
-  }
 
   setTrue(List<bool> press, int index) {
     for (int i = 0; i < press.length; i++) {
