@@ -236,8 +236,28 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
+// Date
+  DateTime? date = new DateTime.now();
+  changeDate(DateTime newDate) {
+    date = newDate;
+    notifyListeners();
+  }
+
   // Season
-  String season = '봄';
+  DateTime? tmpDate = new DateTime.now();
+  String season = '';
+  setFirstSeason() {
+    if (tmpDate!.month >= 3 && tmpDate!.month <= 5) {
+      season = '봄';
+    } else if (tmpDate!.month >= 6 && tmpDate!.month <= 8) {
+      season = '여름';
+    } else if (tmpDate!.month >= 9 && tmpDate!.month <= 11) {
+      season = '가을';
+    } else {
+      season = '겨울';
+    }
+  }
+
   var seasonList = ['봄', '여름', '가을', '겨울'];
   changeSeason(String newSeason) {
     season = newSeason;
@@ -262,7 +282,7 @@ class EnrollOutfit extends ChangeNotifier {
   initEnrollOufit() {
     resultImage = null;
     name = '';
-    season = '봄';
+    setFirstSeason();
     category = '';
     permission = false;
   }
