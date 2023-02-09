@@ -13,7 +13,7 @@ class MyCloset extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => ClosetProvider())),
+        ChangeNotifierProvider(create: ((context) => ClothProvider())),
       ],
       child: MaterialApp(
         home: Scaffold(
