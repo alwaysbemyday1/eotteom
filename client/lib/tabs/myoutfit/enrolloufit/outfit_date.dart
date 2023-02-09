@@ -50,6 +50,7 @@ class _CodiDateState extends State<CodiDate> {
   Widget build(BuildContext context) {
     return Container(
         width: (100.w - 32 - 40) / 3 * 2 + 24,
+        margin: EdgeInsets.only(right: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
               margin: EdgeInsets.only(bottom: 13),
