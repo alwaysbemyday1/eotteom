@@ -425,7 +425,6 @@ class ClothProvider extends ChangeNotifier {
   List<bool> accessoryPress = [true, false, false, false, false, false];
   List<bool> onepiecePress = [true];
 
-
   setTrue(List<bool> press, int index) {
     for (int i = 0; i < press.length; i++) {
       if (i == index) {
