@@ -16,10 +16,6 @@ Including another URLconf
 from allauth.account.views import confirm_email
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,12 +23,3 @@ urlpatterns = [
     path('', include('outfits.urls')),
     path('', include('core.urls')),
 ]
-
-api/dj-rest-auth/password/reset/
-api/dj-rest-auth/password/reset/confirm/
-api/dj-rest-auth/login/
-api/dj-rest-auth/logout/
-api/dj-rest-auth/user/
-api/dj-rest-auth/password/change/
-api/dj-rest-auth/token/verify/
-api/dj-rest-auth/token/refresh/
