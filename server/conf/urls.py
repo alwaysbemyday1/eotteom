@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from allauth.account.views import confirm_email
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import (
@@ -22,12 +23,16 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('clothes.urls')),
     path('', include('outfits.urls')),
     path('', include('core.urls')),
 ]
+
+api/dj-rest-auth/password/reset/
+api/dj-rest-auth/password/reset/confirm/
+api/dj-rest-auth/login/
+api/dj-rest-auth/logout/
+api/dj-rest-auth/user/
+api/dj-rest-auth/password/change/
+api/dj-rest-auth/token/verify/
+api/dj-rest-auth/token/refresh/
