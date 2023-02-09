@@ -39,7 +39,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool visible = true;
-  
 
   @override
   void initState() {
@@ -49,9 +48,10 @@ class _LoginPageState extends State<LoginPage> {
     _passwordController.addListener(_passwordCheck);
   }
 
-
   login(String email, password) async {
+    print('hi');
     try {
+      print('hi2');
       Response response = await post(
           Uri.parse("http://127.0.0.1:8000/api/users/login/"),
           body: {'email': email, 'password': password});
@@ -59,35 +59,20 @@ class _LoginPageState extends State<LoginPage> {
       if (response.statusCode == 200) {
         var data = await jsonDecode(response.body);
         User userInfo = User.fromJson(data);
+        print(data);
 
         print('Login Successfully');
         return userInfo;
       } else {
         throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
-
       }
-    );
-
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      User userInfo = User.fromJson(data);
-      setState(() {
-        userId = userInfo.userId;
-      });
-      print(userId);
-      print('Login Successfully');
-      
-    } else {
-      throw Exception("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
+    } catch (e) {
+      print(e.toString());
     }
-  } catch(e) {
-    print(e.toString());
   }
-}
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -127,7 +112,6 @@ class _LoginPageState extends State<LoginPage> {
                   '로그인을 해주세요!',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
-
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),
@@ -196,9 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                               : Color(0xffCACACA)),
                       onPressed: () async {
                         if (emailOkay == true) {
-                          context.read<UserProvider>().setUserFromJson(
-                              await login(_emailController.text,
-                                  _passwordController.text));
+                          var user = await login(
+                              _emailController.text, _passwordController.text);
+                          context.read<UserProvider>().setUserFromJson(user);
                           Navigator.push(
                               context,
                               CupertinoPageRoute(

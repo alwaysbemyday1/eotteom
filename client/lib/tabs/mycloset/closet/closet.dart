@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
 
 import "package:eotteom/tabs/mycloset/enrollclothes/enroll.dart";
-
-
-
+import 'package:sizer/sizer.dart';
 
 class Closet extends StatefulWidget {
   Closet({super.key});
@@ -20,7 +18,6 @@ class Closet extends StatefulWidget {
 class _ClosetState extends State<Closet> {
   @override
   Widget build(BuildContext context) {
-
     var categories = context.watch<ClothProvider>().totalMap.keys.toList();
     var categoryPressed = context.watch<ClothProvider>().categoryPress;
     return Sizer(
@@ -69,7 +66,6 @@ class _ClosetState extends State<Closet> {
               SelectCategory(),
               ClothRender(),
             ],
-
           ),
         );
       },
