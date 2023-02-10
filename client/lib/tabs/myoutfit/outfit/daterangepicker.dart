@@ -47,7 +47,7 @@ class _MonthRangePickState extends State<MonthRangePick> {
     print(dateRangePickerSelectionChangedArgs.value);
     context
         .read<FilterProvider>()
-        .selectDate(dateRangePickerSelectionChangedArgs.value);
+        .selectDate(dateRangePickerSelectionChangedArgs);
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:eotteom/tabs/mycloset/closet/cloth_info.dart';
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
 
@@ -36,7 +37,12 @@ class _ClothRenderState extends State<ClothRender> {
                                     "assets/images/example/cloth1.jpg"),
                                 fit: BoxFit.fill)),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ClothInfo(),)
+                        );
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 7, right: 7),

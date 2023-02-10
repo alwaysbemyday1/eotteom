@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (emailOkay == true) {
                           var user = await login(
                               _emailController.text, _passwordController.text);
-                          context.read<UserProvider>().setUserFromJson(user);
+                          context.read<UserProvider>().setUserFromJson(user); // Login 함수
                           Navigator.push(
                               context,
                               CupertinoPageRoute(
