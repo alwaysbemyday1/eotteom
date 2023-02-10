@@ -1,7 +1,5 @@
-import base64
-
 from .models import Clothes, MajorCategory, MinorCategory
-
+from eotteom_lib.encode_image import Base64Encoding
 from rest_framework import serializers
 
 class MajorCategorySerializer(serializers.ModelSerializer):
@@ -29,8 +27,4 @@ class ClothesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_image_memory(self, clothes: Clothes):
-        if clothes.image != None and clothes.image != '':
-            with open(f'media/{clothes.image.name}', mode='rb') as loadedfile:
-                return base64.b64encode(loadedfile.read())
-        else:
-            return
+        return Base64Encoding.encoding_image(clothes)

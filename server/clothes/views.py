@@ -14,17 +14,10 @@ class ClothesViewSet(ModelViewSet):
     queryset = Clothes.objects.all()
     majorcategory_queryset = MajorCategory.objects.all()
     minorcategory_queryset = MinorCategory.objects.all()
-    serializer_class = ClothesSerializer
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = ClothesRetrieveSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = ClothesRetrieveSerializer(instance, context=self.get_serializer_context())
-        return Response(serializer.data)
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ClothesRetrieveSerializer
+        return ClothesSerializer
 
     @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
