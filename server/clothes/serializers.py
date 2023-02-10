@@ -19,7 +19,7 @@ class ClothesRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Clothes
-        fields = ('user', 'name', 'major_category', 'minor_category', 'brand', 'color', 'size', 'price')
+        fields = ('user', 'name', 'major_category', 'minor_category', 'brand', 'color', 'size', 'price', 'image', 'image_memory')
 
     def get_image_memory(self, clothes: Clothes):
         return Base64Encoding.encoding_image(clothes)
