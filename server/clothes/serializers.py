@@ -15,10 +15,14 @@ class MinorCategorySerializer(serializers.ModelSerializer):
 class ClothesRetrieveSerializer(serializers.ModelSerializer):
     major_category = MajorCategorySerializer()
     minor_category = MinorCategorySerializer()
+    image_memory = serializers.SerializerMethodField()
 
     class Meta:
         model = Clothes
         fields = ('user', 'name', 'major_category', 'minor_category', 'brand', 'color', 'size', 'price')
+
+    def get_image_memory(self, clothes: Clothes):
+        return Base64Encoding.encoding_image(clothes)
 
 class ClothesSerializer(serializers.ModelSerializer):
     image_memory = serializers.SerializerMethodField()
