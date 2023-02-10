@@ -1,7 +1,5 @@
-import base64
-
 from rest_framework import serializers
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from eotteom_lib.encode_image import Base64Encoding
 
 from .models import User
 
@@ -38,8 +36,4 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_image_memory(request, user : User):
-        if user.image != None and user.image != '':
-            with open(f'media/{user.image.name}', mode='rb') as loadedfile:
-                return base64.b64encode(loadedfile.read())
-        else:
-            return
+        return Base64Encoding.encoding_image(user)
