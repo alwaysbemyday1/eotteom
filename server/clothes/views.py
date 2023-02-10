@@ -33,6 +33,22 @@ class ClothesViewSet(ModelViewSet):
         }
         return Response(data)
 
+    @action(detail=False, methods=['get'], url_path=r'recommendation/random')
+    def random_recommendation(self, request):
+        queryset = self.get_queryset().filter(user=request.user.user_id)
+        result_queryset = []
+
+        for i in range(len(['others', 'outerwear', 'accessory', 'shoes', 'bottoms', 'top'])):
+            major_queryset = queryset.filter(major_category=i).order_by('?').first()
+            if major_queryset != None:
+                result_queryset.append(major_queryset)
+
+        serializer = ClothesSerializer(result_queryset, context=self.get_serializer_context(), many=True)
+        data = {
+            "results" : serializer.data
+        }
+        return Response(data)
+
     @action(detail=False, methods=['get'], url_path=r'stats/(?P<user_id>[^/.]+)')
     def user_clothes_stats(self, request, user_id):
         queryset = self.get_queryset().filter(user=user_id)
