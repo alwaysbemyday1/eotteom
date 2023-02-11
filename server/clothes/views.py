@@ -27,8 +27,10 @@ class ClothesViewSet(ModelViewSet):
         if 'major' in params:
             queryset = queryset.filter(major_category=params['major']).order_by('-created_at')
         
+        count = queryset.count()
         serializer = ClothesSerializer(queryset, context=self.get_serializer_context(), many=True)
         data = {
+            "count" : count,
             "results" : serializer.data
         }
         return Response(data)
