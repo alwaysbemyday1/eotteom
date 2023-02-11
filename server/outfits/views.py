@@ -11,7 +11,6 @@ from .models import Outfit
 class OutfitViewSet(ModelViewSet):
     queryset = Outfit.objects.all()
     serializer_class = OutfitSerializer
-    permission_classes = [AllowAny]
 
     @action(detail=False, methods=['get'], url_path=r'list/others')
     def others_outfit(self, request):
@@ -32,8 +31,10 @@ class OutfitViewSet(ModelViewSet):
         queryset = self.get_queryset()   
         result_queryset = queryset.filter(user=user_id)
 
+        count = result_queryset.count()
         serializer = OutfitSerializer(result_queryset, context=self.get_serializer_context(), many=True)
         data = {
+            "count" : count,
             "results" : serializer.data
         }
         return Response(data)
