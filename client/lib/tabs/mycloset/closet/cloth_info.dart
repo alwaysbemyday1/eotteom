@@ -135,7 +135,7 @@ class ClothInfo extends StatelessWidget {
                   Container(
                     width: 100.w,
                     height: 8,
-                    color: Color(0xff151515),
+                    color: Color(0xffF8F8F8),
                   ),
                   SizedBox(
                     height: 16,
