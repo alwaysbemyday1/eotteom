@@ -204,6 +204,7 @@ class Pie extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 0),
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: percentage.length,
                     itemBuilder: ((context, index) {

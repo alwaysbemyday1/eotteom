@@ -13,6 +13,7 @@ class EnrollButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String userId = context.watch<UserProvider>().userId;
     return Container(
         height: 90,
         width: 100.w,
@@ -33,8 +34,9 @@ class EnrollButton extends StatelessWidget {
                     child: Text('등록',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
-                      context.read<EnrollClothes>().postRequest();
-
+                      context.read<EnrollClothes>().postRequest(
+                          context.read<UserProvider>().userId,
+                          context.read<UserProvider>().tokenAccess);
                       Navigator.pop(ctx);
                     }),
               )

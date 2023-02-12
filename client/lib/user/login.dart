@@ -49,9 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login(String email, password) async {
-    print('hi');
     try {
-      print('hi2');
       Response response = await post(
           Uri.parse("http://127.0.0.1:8000/api/users/login/"),
           body: {'email': email, 'password': password});
@@ -182,7 +180,11 @@ class _LoginPageState extends State<LoginPage> {
                         if (emailOkay == true) {
                           var user = await login(
                               _emailController.text, _passwordController.text);
-                          context.read<UserProvider>().setUserFromJson(user);
+
+                          context
+                              .read<UserProvider>()
+                              .setUserFromJson(user); // Login 함수
+
                           Navigator.push(
                               context,
                               CupertinoPageRoute(

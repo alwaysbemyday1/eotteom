@@ -17,15 +17,20 @@ class _MyOutfitState extends State<MyOutfit> {
   List<Container> myOutfitPictureList = [];
 
   Future getMyOutfitList(BuildContext context) async {
-    http.Response response = await http.get(Uri.parse(
-        'http://127.0.0.1:8000/api/outfits/list/${context.read<UserProvider>().userId}/'));
+    http.Response response = await http.get(
+        Uri.parse(
+            'http://127.0.0.1:8000/api/outfits/list/${context.read<UserProvider>().userId}/'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${context.read<UserProvider>().tokenAccess}',
+        });
     var tmpMyOutfitList = jsonDecode(response.body);
     var myOutfitList = tmpMyOutfitList['results'];
     for (int i = 0; i < myOutfitList.length; i++) {
       myOutfitPictureList.add(Container(
-          width: (100.w - 32 - 40) / 2 + 24,
-          height: ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
-          margin: i == 0 ? EdgeInsets.only(left: 16) : EdgeInsets.zero,
+          width: (100.w - 32 - 40) / 2,
+          height: ((100.w - 32 - 40) / 2) / 5 * 6,
           child: Image.memory(
             base64Decode(myOutfitList[i]['image_memory']),
             fit: BoxFit.fill,
@@ -41,7 +46,7 @@ class _MyOutfitState extends State<MyOutfit> {
     return Container(
       height: 12 +
           18 * 1.3 +
-          ((100.w - 32 - 40) / 2 + 24) / 189 * 236, // 사기간격 + lineheight + 사진 크기
+          ((100.w - 32 - 40) / 2) / 5 * 6, // 사기간격 + lineheight + 사진 크기
       margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,8 +72,8 @@ class _MyOutfitState extends State<MyOutfit> {
                     )
                   ]),
             ),
-            Container(
-              height: ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
+            SizedBox(
+              height: ((100.w - 32 - 40) / 2) / 5 * 6,
               child: FutureBuilder(
                   future: getMyOutfitList(context),
                   builder: (context, snapshot) {
@@ -78,8 +83,7 @@ class _MyOutfitState extends State<MyOutfit> {
                       return GridView(
                         scrollDirection: Axis.horizontal,
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent:
-                                ((100.w - 32 - 40) / 2 + 24) / 189 * 236,
+                            maxCrossAxisExtent: ((100.w - 32 - 40) / 2) / 5 * 6,
                             childAspectRatio: 6 / 5,
                             mainAxisSpacing: 8),
                         children: snapshot.data,
