@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'closet/closet_appbar.dart';
 import 'closet/closet.dart';
@@ -13,8 +14,10 @@ class MyCloset extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => ClothProvider())), // 옷 등록 관련 Provider
-        ChangeNotifierProvider(create: ((context) => FilterProvider())) // 옷장 필터 관련 Provider
+        ChangeNotifierProvider(
+            create: ((context) => ClothProvider())), // 옷 등록 관련 Provider
+        ChangeNotifierProvider(
+            create: ((context) => FilterProvider())) // 옷장 필터 관련 Provider
       ],
       child: MaterialApp(
         home: Scaffold(

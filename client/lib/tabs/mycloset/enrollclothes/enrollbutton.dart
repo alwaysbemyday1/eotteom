@@ -46,7 +46,7 @@ class EnrollButton extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5), color: Colors.grey),
                 alignment: Alignment.center,
-                child: Text('등록',
+                child: Text('저장',
                     style: TextStyle(fontSize: 16, color: Colors.white))));
   }
 }
