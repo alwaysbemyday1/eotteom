@@ -80,24 +80,13 @@ class _MyOutfitState extends State<MyOutfit> {
                     if (snapshot.hasData == false) {
                       return CupertinoActivityIndicator();
                     } else {
-                      return SizedBox(
-                        width: double.infinity,
-                        height: ((100.w - 32 - 40) / 2) / 5 * 6,
-                        child: Row(
-                          children: [
-                            SizedBox(width: 16),
-                            GridView(
-                              scrollDirection: Axis.horizontal,
-                              gridDelegate:
-                                  SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent:
-                                          ((100.w - 32 - 40) / 2) / 5 * 6,
-                                      childAspectRatio: 6 / 5,
-                                      mainAxisSpacing: 8),
-                              children: snapshot.data,
-                            ),
-                          ],
-                        ),
+                      return GridView(
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: ((100.w - 32 - 40) / 2) / 5 * 6,
+                            childAspectRatio: 6 / 5,
+                            mainAxisSpacing: 8),
+                        children: snapshot.data,
                       );
                     }
                   }),

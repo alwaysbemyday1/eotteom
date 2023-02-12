@@ -153,14 +153,15 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  postRequest() async {
+  postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
-
+    request.headers['authorization'] = 'Bearer ${tokenAccess}';
     request.files
         .add(await http.MultipartFile.fromPath('image', resultImage!.path));
     request.fields.addAll({
-      'user': '16440a1d-7c3a-46b4-ae2a-0b375e4c6058',
+      // userId, major_category, minor_category를 등록하는 위젯에서 빌드시 변수를 읽어와서 요청하는 식으로 작성 필요.
+      'user': userId,
       'major_category': '1',
       'minor_category': '1'
     });
@@ -290,6 +291,7 @@ class EnrollOutfit extends ChangeNotifier {
   }
 }
 
+// User 관련 Provider
 class UserProvider extends ChangeNotifier {
   String email = '';
   String password = '';
@@ -324,8 +326,8 @@ class FilterProvider extends ChangeNotifier {
   bool labelcheck = true;
   int nowyear = DateTime.now().year.toInt();
   var select_date;
-  var hightemperature;
-  var lowtemperature;
+  // var hightemperature;
+  // var lowtemperature;
   var temperatures = SfRangeValues(0.0, 15.0);
 
   List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
@@ -374,18 +376,18 @@ class FilterProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  setTemperature(value) {
-    temperatures = value;
-    hightemperature = value.end.toInt();
-    lowtemperature = value.start.toInt();
-    notifyListeners();
-  }
+  // setTemperature(value) {
+  //   temperatures = value;
+  //   hightemperature = value.end.toInt();
+  //   lowtemperature = value.start.toInt();
+  //   notifyListeners();
+  // }
 
   resetFilter() {
     select_date.clear();
     temperatures = SfRangeValues(0.0, 15.0);
-    hightemperature = temperatures.end.toInt();
-    lowtemperature = temperatures.start.toInt();
+    // hightemperature = temperatures.end.toInt();
+    // lowtemperature = temperatures.start.toInt();
     outfitLabelSelect = [true, true, true];
     notifyListeners();
   }
@@ -401,6 +403,7 @@ class FilterProvider extends ChangeNotifier {
   }
 }
 
+// 옷 선택 관련 Provider
 class ClothProvider extends ChangeNotifier {
   Map<String, List<String>> totalMap = {
     "상의": ["니트", "멘투멘", "후디", "셔츠", "티셔츠", "슈트상의", "트레이닝복"],
