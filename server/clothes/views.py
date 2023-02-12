@@ -62,7 +62,7 @@ class ClothesViewSet(ModelViewSet):
         category_count = []
         category_value = queryset.values('major_category').annotate(count=Count('major_category'))
         for i in category_value:
-            new_category_value = {'major_category': self.majorcategory_queryset.filter(id=1).values('name_en').get()['name_en'], 'count':i['count']}
+            new_category_value = {'major_category': self.majorcategory_queryset.filter(id=i['major_category']).values('name_en').get()['name_en'], 'count':i['count']}
             category_count.append(new_category_value)
 
         data = {
