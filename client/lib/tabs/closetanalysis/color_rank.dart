@@ -28,10 +28,9 @@ class _ColorRankState extends State<ColorRank> {
       future: requestGetApi(userId, tokenAccess),
       builder: (context, snapshot) {
         if (snapshot.hasData == false) {
-          return Text('데이터를 추가하세요!');
+          return const SizedBox();
         } else {
           var jsbody = snapshot.data as Map<dynamic, dynamic>;
-          print(jsbody['color_count']);
           List colorCount = _sortList(jsbody['color_count']);
           List top = (colorCount.length > 2)
               ? colorCount.sublist(0, 3)

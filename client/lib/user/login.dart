@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
   login(String email, password) async {
     try {
       Response response = await post(
-          Uri.parse("http://127.0.0.1:8000/api/users/login/"),
+          Uri.parse("http://127.0.0.1:8000/api/dj-rest-auth/login/"),
           body: {'email': email, 'password': password});
 
       if (response.statusCode == 200) {

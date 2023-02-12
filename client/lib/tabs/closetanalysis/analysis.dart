@@ -27,15 +27,6 @@ class _AnalysisState extends State<Analysis> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    String userId = context.read<UserProvider>().userId;
-    String tokenAccess = context.read<UserProvider>().tokenAccess;
-    print(requestGetApi(userId, tokenAccess));
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: ((context) => AnalysisProvider()),

@@ -1,3 +1,4 @@
+import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/closetanalysis/getanalysis.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -81,7 +82,15 @@ class _PieState extends State<Pie> {
                 future: requestGetApi(userId, tokenAccess),
                 builder: (context, snapshot) {
                   if (snapshot.hasData == false) {
-                    return Text("데이터가 없습니다");
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: Center(child: Column(
+                        children: [
+                          Text("옷장에 옷을 추가하여", style: headLineTextTheme,),
+                          Text("나만의 옷장분석을 살펴보세요!", style: headLineTextTheme,)
+                        ],
+                      )),
+                    );
                   } else {
                     var jsbody = snapshot.data as Map<dynamic, dynamic>;
                     List<String> percentage = context
