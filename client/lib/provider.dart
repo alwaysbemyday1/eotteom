@@ -153,10 +153,10 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  postRequest(String userId) async {
+  postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
-
+    request.headers['authorization'] = 'Bearer ${tokenAccess}';
     request.files
         .add(await http.MultipartFile.fromPath('image', resultImage!.path));
     request.fields.addAll({
@@ -402,7 +402,6 @@ class FilterProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
 
 // 옷 선택 관련 Provider
 class ClothProvider extends ChangeNotifier {

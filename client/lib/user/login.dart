@@ -181,7 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                           var user = await login(
                               _emailController.text, _passwordController.text);
 
-                          context.read<UserProvider>().setUserFromJson(user); // Login 함수
+                          context
+                              .read<UserProvider>()
+                              .setUserFromJson(user); // Login 함수
 
                           Navigator.push(
                               context,
