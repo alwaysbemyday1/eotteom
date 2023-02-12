@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
 import "package:eotteom/style.dart";
+import "package:flutter_remix/flutter_remix.dart";
 
 class OutfitInfo extends StatelessWidget {
   const OutfitInfo({super.key});
@@ -18,119 +19,94 @@ class OutfitInfo extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: SizedBox(
-              height: 120.h,
+              height: 170.h,
               width: 100.w,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, left: 16, right: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '상의-니트',
-                          style: basicTextTheme2,
-                        ), // 데이터에 맞게 렌더링 할 것
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Container(
-                          width: 100.w - 32,
-                          height: 100.w - 32,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5.0),
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/example/cloth1.jpg"),
-                                  fit: BoxFit.fill)),
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-                        SizedBox(
-                          width: 100.w - 60,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              top: 16, left: 16, right: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        '가격',
-                                        style: basicTextTheme,
+                                      Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/example/cloth1.jpg"),
+                                                fit: BoxFit.fill)),
                                       ),
                                       SizedBox(
-                                        width: 16,
+                                        width: 14,
                                       ),
                                       Text(
-                                        '100,000원',
-                                        style: enrollTitleTheme2,
-                                      )
+                                        '임태규',
+                                        style: basicTextTheme2,
+                                      ),
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '핏 ',
-                                        style: basicTextTheme,
-                                      ),
-                                      SizedBox(
-                                        width: 16,
-                                      ),
-                                      Text(
-                                        '레귤러핏',
-                                        style: enrollTitleTheme2,
-                                      )
-                                    ],
-                                  )
+                                  Icon(FlutterRemix.more_2_fill)
                                 ],
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              SizedBox(
+                                height: 14,
+                              ),
+                              Container(
+                                width: 100.w - 32,
+                                height: (100.w - 32) * (6 / 5),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/example/cloth1.png"),
+                                        fit: BoxFit.fill)),
+                              ),
+                              SizedBox(
+                                height: 11,
+                              ),
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '사이즈',
-                                        style: basicTextTheme,
-                                      ),
-                                      SizedBox(
-                                        width: 16,
-                                      ),
-                                      Text(
-                                        'S',
-                                        style: enrollTitleTheme2,
-                                      )
-                                    ],
+                                  Text(
+                                    '편한 옷들',
+                                    style: basicTextTheme2,
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '브랜드',
-                                        style: basicTextTheme,
-                                      ),
-                                      SizedBox(
-                                        width: 16,
-                                      ),
-                                      Text(
-                                        '오뚜기',
-                                        style: enrollTitleTheme2,
-                                      )
-                                    ],
-                                  )
+                                  SizedBox(
+                                    width: 6,
+                                  ),
+                                  Text(
+                                    '#겨울',
+                                    style: basicTextTheme2,
+                                  ),
+                                  SizedBox(
+                                    width: 6,
+                                  ),
+                                  Text(
+                                    '#댄디룩',
+                                    style: basicTextTheme2,
+                                  ),
                                 ],
-                              )
+                              ),
+                              Text(
+                                '2022. 1. 31 화',
+                                style: enrollHintTheme,
+                              ),
+                              SizedBox(
+                                height: 28,
+                              ),
                             ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 38,
+                          )),
+                    ],
                   ),
                   Container(
                     width: 100.w,
@@ -138,33 +114,116 @@ class OutfitInfo extends StatelessWidget {
                     color: Color(0xffF8F8F8),
                   ),
                   SizedBox(
-                    height: 16,
+                    height: 26,
                   ),
-                  SizedBox(
-                    width: 100.w - 32,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '이 옷을 사용한 코디',
-                          style: enrollTitleTheme2,
+                          '코디 정보',
+                          style: enrollTitleTheme,
                         ),
                         SizedBox(
-                          height: 12,
+                          height: 13,
                         ),
                         SizedBox(
-                          height: 120,
+                          height: 60.w,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              itemCount: 30,
+                              itemCount: 5,
                               itemBuilder: ((context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(left: 8, right: 8),
-                                  child: Container(
-                                    height: (30.w)*6/5,
-                                    width: 30.w,
-                                    color: Colors.red,
+                                return SizedBox(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8),
+                                        child: Container(
+                                          height: 30.75.w,
+                                          width: 25.6.w,
+                                          decoration: BoxDecoration(
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 11,
+                                      ),
+                                      Text(
+                                        '상의 > 후디',
+                                        style: enrollTitleTheme2,
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '색상 : 핑크',
+                                            style: enrollHintTheme,
+                                          ),
+                                          Text(
+                                            '사이즈 : M',
+                                            style: enrollHintTheme,
+                                          ),
+                                          Text(
+                                            '핏 : 레귤러핏',
+                                            style: enrollHintTheme,
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                );
+                              })),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 100.w,
+                    height: 8,
+                    color: Color(0xffF8F8F8),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('다른 내 코디 둘러보기', style: enrollTitleTheme2,),
+                        SizedBox(height: 12,),
+                        SizedBox(
+                          height: 30.75.w, // ListView.builder는 기본적으로 요소가 builder 안에 꽉 차도록 됨.
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 5,
+                              itemBuilder: ((context, index) {
+                                return SizedBox(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 8),
+                                        child: Container(
+                                          height: 30.75.w,
+                                          width: 25.6.w,
+                                          decoration: BoxDecoration(
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 );
                               })),
@@ -172,7 +231,7 @@ class OutfitInfo extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 55,)
+                  SizedBox(height: 30,)
                 ],
               ),
             ),
