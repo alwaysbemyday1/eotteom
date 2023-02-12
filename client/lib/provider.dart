@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'package:http/http.dart' as http;
 
@@ -239,10 +240,10 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
-// Date
-  DateTime? date = new DateTime.now();
+  // Date
+  String dateStr = DateFormat('yyyy-MM-dd').format(DateTime.now());
   changeDate(DateTime newDate) {
-    date = newDate;
+    dateStr = DateFormat('yyyy-MM-dd').format(newDate);
     notifyListeners();
   }
 
@@ -288,6 +289,23 @@ class EnrollOutfit extends ChangeNotifier {
     setFirstSeason();
     category = '';
     permission = false;
+  }
+
+  postRequest(String userId, String tokenAccess) async {
+    String url = 'http://127.0.0.1:8000/api/outfits/';
+    var request = http.MultipartRequest('POST', Uri.parse(url));
+    request.headers['authorization'] = 'Bearer ${tokenAccess}';
+    request.files
+        .add(await http.MultipartFile.fromPath('image', resultImage!.path));
+    request.fields.addAll({
+      'user': userId,
+      'category': category,
+      'name': name,
+      'season': season,
+      'date': dateStr
+    });
+
+    http.StreamedResponse response = await request.send();
   }
 }
 
