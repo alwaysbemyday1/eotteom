@@ -39,15 +39,18 @@ class ClothesViewSet(ModelViewSet):
     def random_recommendation(self, request):
         queryset = self.get_queryset().filter(user=request.user.user_id)
         result_queryset = []
+        major_list = ['top', 'bottoms', 'shoes', 'accessory', 'outwear', 'others']
 
-        for i in range(len(['others', 'outerwear', 'accessory', 'shoes', 'bottoms', 'top'])):
-            major_queryset = queryset.filter(major_category=i).order_by('?').first()
+        for i in major_list:
+            major_queryset = queryset.filter(major_category__name_en=i).order_by('?').first()
             if major_queryset != None:
                 result_queryset.append(major_queryset)
 
         serializer = ClothesSerializer(result_queryset, context=self.get_serializer_context(), many=True)
+        results = {major_list[int(i['major_category']) - 1] : i for i in serializer.data}
+
         data = {
-            "results" : serializer.data
+            "results" : results
         }
         return Response(data)
 
