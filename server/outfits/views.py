@@ -15,8 +15,8 @@ class OutfitViewSet(ModelViewSet):
     @action(detail=False, methods=['get'], url_path=r'list/others')
     def others_outfit(self, request):
         queryset = self.get_queryset()
-        user_id = request.user.id
-        result_queryset = queryset.filter(user=user_id).exclude()
+        user = request.user
+        result_queryset = queryset.exclude(user=user)
         count = result_queryset.count()
             
         serializer = OutfitSerializer(result_queryset, context=self.get_serializer_context(), many=True)
