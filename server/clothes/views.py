@@ -47,10 +47,12 @@ class ClothesViewSet(ModelViewSet):
                 result_queryset.append(major_queryset)
 
         serializer = ClothesSerializer(result_queryset, context=self.get_serializer_context(), many=True)
-        results = {major_list[int(i['major_category']) - 1] : i for i in serializer.data}
+        results_dict = {}.fromkeys(major_list)
+        for i in serializer.data:
+            results_dict[major_list[int(i['major_category']) - 1]] = i
 
         data = {
-            "results" : results
+            "results" : results_dict
         }
         return Response(data)
 
