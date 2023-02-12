@@ -23,7 +23,7 @@ class MinorCategory(models.Model):
 
 class Clothes(models.Model):
     SIZE_CHOICES = (('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'))
-    FIT_CHOICES = (('S', '슬림핏'), ('R', '레귤러핏'), ('O', '오버핏'))
+    FIT_CHOICES = (('슬림핏', '슬림핏'), ('레귤러핏', '레귤러핏'), ('오버핏', '오버핏'))
 
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)

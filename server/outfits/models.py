@@ -6,7 +6,7 @@ from core.models import User
 from clothes.models import Clothes
 
 class Outfit(models.Model):
-    SEASON_CHOICES = (('spring', 'spring'), ('summer', 'summer'), ('fall', 'fall'), ('winter', 'winter'))
+    SEASON_CHOICES = (('봄', '봄'), ('여름', '여름'), ('가을', '가을'), ('겨울', '겨울'))
 
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
