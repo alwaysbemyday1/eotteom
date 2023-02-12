@@ -501,40 +501,66 @@ class AnalysisProvider extends ChangeNotifier {
 
   int categoryState = 0;
 
+  Map<String, String> engtokrMap = {
+    "black" : "검정",
+    "darkgrey" : "다크그레이",
+    "grey" : "회색",
+    "white" : "흰색",
+    "ivory" : "아이보리",
+    "beige" : "베이지",
+    "red" : "빨강",
+    "pink" : "핑크",
+    "hotpink" : "핫핑크",
+    "brown" : "갈색",
+    "camel" : "카멜",
+    "orange" : "오렌지",
+    "yellow" : "노란색",
+    "olivegreen" : "올리브그린",
+    "olive" : "올리브",
+    "darkgreen" : "다크그린",
+    "green" : "녹색",
+    "blue" : "파란색",
+    "lightblue" : "라이트블루",
+    "navy" : "네이비",
+    "purple" : "보라색",
+    "skyblue" : "스카이블루"
+  };
+
   Map<String, dynamic> palette = {
-    "블랙": const Color(0xff131313),
-    "다크그레이": const Color(0xff676B71),
-    "그레이": const LinearGradient(
+    "black": const Color(0xff131313),
+    "darkgrey": const Color(0xff676B71),
+    "grey": const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [Color(0xff9F9F9F), Color(0xffE2E2E2)]),
-    "화이트": const Color(0xffFFFFFF),
-    "아이보리": const Color(0xffFCF6EE),
-    "베이지": const Color(0xffF0DBBC),
-    "레드": const LinearGradient(
+    "white": const Color(0xffFFFFFF),
+    "ivory": const Color(0xffFCF6EE),
+    "beige": const Color(0xffF0DBBC),
+    "red": const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [Color(0xffAE1930), Color(0xffE92311)]),
-    "핑크": const Color(0xffF5B4A8),
-    "핫핑크": const Color(0xffE42493),
-    "브라운": const Color(0xff843215),
-    "카멜": const Color(0xffD7A24F),
-    "오렌지": const Color(0xffF86A1B),
-    "옐로우": const Color(0xffF6E431),
-    "올리브그린": const Color(0xffCAC031),
-    "올리브": const Color(0xff6D6C3C),
-    "다크그린": const Color(0xff1B4221),
-    "그린": const Color(0xff5AC13C),
-    "블루" : const Color(0xff2410DC),
-    "라이트블루": const LinearGradient(
+    "pink": const Color(0xffF5B4A8),
+    "hotpink": const Color(0xffE42493),
+    "brown": const Color(0xff843215),
+    "camel": const Color(0xffD7A24F),
+    "orange": const Color(0xffF86A1B),
+    "yellow": const Color(0xffF6E431),
+    "olivegreen": const Color(0xffCAC031),
+    "olive": const Color(0xff6D6C3C),
+    "darkgreen": const Color(0xff1B4221),
+    "green": const Color(0xff5AC13C),
+    "blue" : const Color(0xff2410DC),
+    "lightblue": const LinearGradient(
         colors: [Color(0xffC9DEEF), Color(0xffA0CAF6)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "네이비" : const LinearGradient(
+    "navy" : const LinearGradient(
         colors: [Color(0xff1C2F57), Color(0xff4360BE)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "퍼플" : const Color(0xff861CB2)
+    "purple" : const Color(0xff861CB2),
+    "skyblue" : const Color(0xff58C0E7)
   };
 
   changePressed(int index) {

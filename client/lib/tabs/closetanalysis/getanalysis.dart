@@ -34,11 +34,24 @@ List<int> getCount(List categoryCount) {
   return counts;
 }
 
+List _sortList(List data) {
+    data.sort((b, a) => a['count'].compareTo(b['count']));
+    return data;
+  }
+
+num totalCountColor(List colorCount) {
+  num total = 0;
+  for(Map v in colorCount) {
+    total += v['count']!;
+  }
+  return total;
+}
+
 
 void main() async {
   String userId = "814e69d9-145c-4ffb-8703-771525a011e2";
   String tokenAccess = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3MDUyMzAxLCJpYXQiOjE2NzYxODgzMDEsImp0aSI6IjhkMDRmZmVkMmVhZTQ0Yzg4ZWU0ZWZmM2ZjZDQ0ZTA0IiwidXNlcl9pZCI6IjgxNGU2OWQ5LTE0NWMtNGZmYi04NzAzLTc3MTUyNWEwMTFlMiJ9.-Q6_I2yBUYnd9j9nSBVzNXmTiBHGEt6r-JEpVyDSR2I";
 
   var jb = await requestGetApi(userId, tokenAccess);
-  print(jb['category_count']);
+  print(jb);
 }
