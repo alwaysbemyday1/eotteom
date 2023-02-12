@@ -1,9 +1,12 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/tabs/closetanalysis/piechart.dart';
 import 'package:flutter/material.dart';
 import "package:sizer/sizer.dart";
 import "color_rank.dart";
 
 import "package:provider/provider.dart";
+
+import "package:eotteom/tabs/closetanalysis/getanalysis.dart";
 
 class Analysis extends StatefulWidget {
   Analysis({super.key});
@@ -21,6 +24,15 @@ class _AnalysisState extends State<Analysis> {
     setState(() {
       selected_dropdown = value;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    String userId = context.read<UserProvider>().userId;
+    String tokenAccess = context.read<UserProvider>().tokenAccess;
+    print(requestGetApi(userId, tokenAccess));
   }
 
   @override
@@ -181,85 +193,6 @@ class _AnalysisState extends State<Analysis> {
         },
       ),
     );
-  }
-}
-
-class AnalysisProvider extends ChangeNotifier {
-  List<bool> categoryPressed = [true, false, false, false, false, false, false];
-  List<String> categories = ['옷장전체', '상의', '하의', '아우터', '신발', '악세사리', '원피스'];
-
-  int categoryState = 0;
-
-  Map<String, Color> palette = {
-    "빨강" : const Color(0xffD33030),
-    "주황" : const Color(0xffF38535),
-    "노랑" : const Color(0xffEAEE19),
-    "초록" : const Color(0xff6AE431),
-    "하늘" : const Color(0xff73BCFF),
-    "파랑" : const Color(0xff3372EC),
-    "보라" : const Color(0xff9C33DC),
-    "갈색" : const Color(0xffA16464),
-    "하얀색" : const Color(0xffFFFFFF),
-    "그레이" : const Color(0xff949494),
-    "검정" : const Color(0xff151515),
-    "아이보리" : const Color(0xffFCF6EE)
-  };
-
-  changePressed(int index) {
-    for (int i = 0; i < categoryPressed.length; i++) {
-      if (i == index) {
-        categoryPressed[i] = true;
-        notifyListeners();
-      } else {
-        categoryPressed[i] = false;
-        notifyListeners();
-      }
-    }
-    categoryState = index;
-    notifyListeners();
-  }
-
-  Map<String, double> dataexample = {
-    "상의": 99,
-    "악세사리": 58,
-    "하의": 44,
-    "신발": 24,
-    "아우터": 14
-  };
-
-  List colordataexample = [
-    ["검정", 24],
-    ["빨강", 20],
-    ["파랑", 21],
-    ["그레이", 23],
-    ["아이보리", 22]
-  ];
-
-  Map consumerInformation = {"average": 50000, "mostpick": "레귤러핏"};
-
-  maxCategory(Map data) {
-    String a = data.keys.toList()[0];
-    return a;
-  }
-
-  maxCount(Map data) {
-    return data[maxCategory(data)];
-  }
-
-  totalSum(Map data) {
-    // 옷 개수 총합 구하는 함수
-    num totalSum = 0;
-    data.forEach((_, v) => totalSum += v);
-    return totalSum;
-  }
-
-  percentage(Map data, num totalSum) {
-    // 옷이 가진 비율을 구해줌. 중요한건 List<String> 의 자료구조로 반환됨!!!!
-    // dart의 경우 소수점 고정을 하는 경우 문자열로 나옴.
-    List<String> percent = [];
-    data.forEach(
-        (_, v) => percent.add((v / totalSum * 100).toStringAsFixed(1)));
-    return percent;
   }
 }
 

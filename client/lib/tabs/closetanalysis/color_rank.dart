@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import "package:provider/provider.dart";
-import "package:eotteom/tabs/closetanalysis/analysis.dart";
+import "package:eotteom/provider.dart";
 
 
 class ColorRank extends StatelessWidget {
