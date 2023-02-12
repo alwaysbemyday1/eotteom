@@ -19,8 +19,8 @@ class EnrollButton extends StatelessWidget {
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(color: Colors.grey, blurRadius: 1, spreadRadius: 0)
         ]),
-        child: (context.watch<EnrollClothes>().resultImage != null &&
-                context.watch<EnrollClothes>().smallCategory != '선택해주세요')
+        child: (context.watch<EnrollOutfit>().resultImage != null &&
+                context.watch<EnrollOutfit>().category != '')
             ? Container(
                 width: 100.w - 32,
                 height: 44,
@@ -31,6 +31,10 @@ class EnrollButton extends StatelessWidget {
                     child: Text('등록',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
+                      context.read<EnrollOutfit>().postRequest(
+                          context.read<UserProvider>().userId,
+                          context.read<UserProvider>().tokenAccess);
+
                       Navigator.pop(ctx);
                     }),
               )

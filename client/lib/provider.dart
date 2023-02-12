@@ -234,7 +234,26 @@ class EnrollOutfit extends ChangeNotifier {
   }
 
   // Name
-  String name = '';
+  getWeekday(int? weekday) {
+    if (weekday == 1) {
+      return '월';
+    } else if (weekday == 2) {
+      return '화';
+    } else if (weekday == 3) {
+      return '수';
+    } else if (weekday == 4) {
+      return '목';
+    } else if (weekday == 5) {
+      return '금';
+    } else if (weekday == 6) {
+      return '토';
+    } else if (weekday == 7) {
+      return '일';
+    }
+  }
+
+  DateTime? tmpDate = DateTime.now();
+  String name = '기본';
   changeName(String newName) {
     name = newName;
     notifyListeners();
@@ -248,7 +267,6 @@ class EnrollOutfit extends ChangeNotifier {
   }
 
   // Season
-  DateTime? tmpDate = new DateTime.now();
   String season = '';
   setFirstSeason() {
     if (tmpDate!.month >= 3 && tmpDate!.month <= 5) {
@@ -285,7 +303,7 @@ class EnrollOutfit extends ChangeNotifier {
 
   initEnrollOufit() {
     resultImage = null;
-    name = '';
+    name = '기본';
     setFirstSeason();
     category = '';
     permission = false;
@@ -305,6 +323,11 @@ class EnrollOutfit extends ChangeNotifier {
       'date': dateStr
     });
 
+    print(userId);
+    print(category);
+    print(name);
+    print(userId);
+    print(season);
     http.StreamedResponse response = await request.send();
   }
 }

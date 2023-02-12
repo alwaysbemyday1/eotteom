@@ -1,22 +1,53 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
+
+import '../../provider.dart';
 
 class OtherOutfit extends StatelessWidget {
-  const OtherOutfit({Key? key}) : super(key: key);
+  OtherOutfit({Key? key}) : super(key: key);
+
+  List<Container> otherOutfitPictureList = [];
+
+  Future getMyOutfitList(BuildContext context) async {
+    http.Response response = await http.get(
+        Uri.parse('http://127.0.0.1:8000/api/outfits/list/others/'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${context.read<UserProvider>().tokenAccess}',
+        });
+    var tmpMyOutfitList = jsonDecode(response.body);
+    var myOutfitList = tmpMyOutfitList['results'];
+    for (int i = 0; i < myOutfitList.length; i++) {
+      otherOutfitPictureList.add(Container(
+          width: (100.w - 32 - 40) / 2,
+          height: ((100.w - 32 - 40) / 2) / 5 * 6,
+          child: Image.memory(
+            base64Decode(myOutfitList[i]['image_memory']),
+            fit: BoxFit.fill,
+          )));
+    }
+
+    return otherOutfitPictureList;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 18 * 1.3 + 13 + (((100.w - 24) * 0.4 - 8) * 4 / 3) + 2,
+      height: 12 +
+          18 * 1.3 +
+          ((100.w - 32 - 40) / 2) / 5 * 6, // 사기간격 + lineheight + 사진 크기
       margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: (100.w - 24) - 8,
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+              margin: EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,51 +66,25 @@ class OtherOutfit extends StatelessWidget {
                     )
                   ]),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                child: Row(
-                  children: [
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(16, 0, 8, 0),
-                      child: Image.asset('assets/images/codies/codi1.png',
-                          fit: BoxFit.fill),
-                    ),
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child: Image.asset('assets/images/codies/codi2.png',
-                          fit: BoxFit.fill),
-                    ),
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child: Image.asset('assets/images/codies/codi3.png',
-                          fit: BoxFit.fill),
-                    ),
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child: Image.asset('assets/images/codies/codi4.png',
-                          fit: BoxFit.fill),
-                    ),
-                    Container(
-                      width: (100.w - 24) * 0.4 - 8,
-                      height: ((100.w - 24) * 0.4 - 8) / 3 * 4,
-                      margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                      child: Image.asset('assets/images/codies/codi5.png',
-                          fit: BoxFit.fill),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            SizedBox(
+              height: ((100.w - 32 - 40) / 2) / 5 * 6,
+              child: FutureBuilder(
+                  future: getMyOutfitList(context),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData == false) {
+                      return CupertinoActivityIndicator();
+                    } else {
+                      return GridView(
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: ((100.w - 32 - 40) / 2) / 5 * 6,
+                            childAspectRatio: 6 / 5,
+                            mainAxisSpacing: 8),
+                        children: snapshot.data,
+                      );
+                    }
+                  }),
+            ),
           ]),
     );
   }
