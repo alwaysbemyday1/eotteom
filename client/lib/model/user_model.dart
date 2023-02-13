@@ -19,8 +19,8 @@ class User {
         email: json["user"]['email'],
         password: json["user"]['password'],
         gender: json["user"]['gender'],
-        tokenAccess: json['token']['access'],
-        tokenRefresh: json['token']['refresh'],
+        tokenAccess: json['access_token'],
+        tokenRefresh: json['refresh_token'],
         userId: json["user"]["user_id"]);
   }
 

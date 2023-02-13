@@ -60,7 +60,7 @@ class _ClothesColorState extends State<ClothesColor> {
     [0xff5AC13C],
     [0xff58C0E7],
     [0xff2410DC],
-    [0xffC9DEEF, 0xA0CAF6],
+    [0xffC9DEEF, 0xffA0CAF6],
     [0xff1C2F57, 0xff4360BE],
     [0xff861CB2],
   ];
