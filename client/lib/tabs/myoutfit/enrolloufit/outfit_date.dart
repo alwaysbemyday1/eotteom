@@ -19,67 +19,69 @@ class _CodiDateState extends State<CodiDate> {
 
   pickDate() async {
     DateTime? pickedDate = await showRoundedDatePicker(
-        context: context,
-        height: 330,
-        styleDatePicker: MaterialRoundedDatePickerStyle(
-            paddingMonthHeader: EdgeInsets.all(20),
-            sizeArrow: 30,
-            marginLeftArrowPrevious: 8,
-            marginTopArrowNext: 8,
-            textStyleYearButton: TextStyle(
-                fontSize: 25,
-                fontFamily: "NotoSans",
-                color: Color(0xffffffff),
-                fontWeight: FontWeight.w400,
-                height: 1.3),
-            textStyleDayButton: TextStyle(
-                fontSize: 20,
-                fontFamily: "NotoSans",
-                color: Color(0xffffffff),
-                fontWeight: FontWeight.w400,
-                height: 1.3),
-            textStyleButtonPositive: TextStyle(
-                fontSize: 14,
-                fontFamily: "NotoSans",
-                color: Color(0xff131313),
-                fontWeight: FontWeight.w400,
-                height: 1.3),
-            textStyleButtonNegative: TextStyle(
-                fontSize: 14,
-                fontFamily: "NotoSans",
-                color: Color(0xff131313),
-                fontWeight: FontWeight.w400,
-                height: 1.3),
-            decorationDateSelected: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                border: Border.all(color: Color(0xff131313), width: 1)),
-            textStyleDayOnCalendar: TextStyle(
-                fontSize: 14,
-                fontFamily: "NotoSans",
-                color: Color(0xff131313),
-                fontWeight: FontWeight.w400,
-                height: 1.3),
-            textStyleDayOnCalendarSelected: TextStyle(
-                fontSize: 14,
-                fontFamily: "NotoSans",
-                color: Color(0xff131313),
-                fontWeight: FontWeight.w700,
-                height: 1.3),
-            textStyleCurrentDayOnCalendar: TextStyle(
-                fontSize: 14,
-                fontFamily: "NotoSans",
-                color: Color(0xff131313),
-                fontWeight: FontWeight.w600,
-                height: 1.3)),
-        theme: ThemeData(
-          primaryColor: Color(0xff131313),
-        ),
-        description: '날짜를 선택하세요',
-        initialDate: DateTime.now(), //get today's date
-        firstDate: DateTime(
-            2000), //DateTime.now() - not to allow to choose before today.
-        lastDate: DateTime(2101));
+      context: context,
+      height: 330,
+      theme: ThemeData(
+        primaryColor: Color(0xff131313),
+      ),
+
+      description: '날짜를 선택하세요',
+      initialDate: DateTime.now(), //get today's date
+      firstDate: DateTime(
+          2000), //DateTime.now() - not to allow to choose before today.
+      lastDate: DateTime(2101),
+      styleDatePicker: MaterialRoundedDatePickerStyle(
+          paddingMonthHeader: EdgeInsets.all(20),
+          sizeArrow: 30,
+          marginLeftArrowPrevious: 8,
+          marginTopArrowNext: 8,
+          textStyleYearButton: TextStyle(
+              fontSize: 25,
+              fontFamily: "NotoSans",
+              color: Color(0xffffffff),
+              fontWeight: FontWeight.w400,
+              height: 1.3),
+          textStyleDayButton: TextStyle(
+              fontSize: 20,
+              fontFamily: "NotoSans",
+              color: Color(0xffffffff),
+              fontWeight: FontWeight.w400,
+              height: 1.3),
+          textStyleButtonPositive: TextStyle(
+              fontSize: 14,
+              fontFamily: "NotoSans",
+              color: Color(0xff131313),
+              fontWeight: FontWeight.w400,
+              height: 1.3),
+          textStyleButtonNegative: TextStyle(
+              fontSize: 14,
+              fontFamily: "NotoSans",
+              color: Color(0xff131313),
+              fontWeight: FontWeight.w400,
+              height: 1.3),
+          decorationDateSelected: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              border: Border.all(color: Color(0xff131313), width: 1)),
+          textStyleDayOnCalendar: TextStyle(
+              fontSize: 14,
+              fontFamily: "NotoSans",
+              color: Color(0xff131313),
+              fontWeight: FontWeight.w400,
+              height: 1.3),
+          textStyleDayOnCalendarSelected: TextStyle(
+              fontSize: 14,
+              fontFamily: "NotoSans",
+              color: Color(0xff131313),
+              fontWeight: FontWeight.w700,
+              height: 1.3),
+          textStyleCurrentDayOnCalendar: TextStyle(
+              fontSize: 14,
+              fontFamily: "NotoSans",
+              color: Color(0xff131313),
+              fontWeight: FontWeight.w600,
+              height: 1.3)),
+    );
     setState(() {
       date = pickedDate;
     });
