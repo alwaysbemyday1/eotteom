@@ -22,25 +22,24 @@ class SeasonLabel extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8, right: 8),
                   child: TextButton(
                     style: ButtonStyle(
+                      side: context
+                                  .watch<FilterProvider>()
+                                  .seasonLabelSelect[index] ? MaterialStateProperty.all(BorderSide(color: Color(0xff131313))) : null,
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16)
+                          borderRadius: BorderRadius.circular(4)
                         )
                       ),
-                      backgroundColor: MaterialStateProperty.all(context
-                                  .watch<FilterProvider>()
-                                  .seasonLabelSelect[index] ? Color(0xff151515) : Color(0xffFFFFFF))
+                      backgroundColor: MaterialStateProperty.all(const Color(0xffFFFFFF))
                     ),
                     child: Text(
                       context.watch<FilterProvider>().seasonLabel[index],
                       style: TextStyle(
-                        backgroundColor: context
-                                  .watch<FilterProvider>()
-                                  .seasonLabelSelect[index] ? Color(0xff151515) : Color(0xffFFFFFF),
                           fontSize: 16,
-                          color: context
+                          color: const Color(0xff131313),
+                          fontWeight: context
                                   .watch<FilterProvider>()
-                                  .seasonLabelSelect[index] ? Color(0xffFFFFFF) : Color(0xff151515),
+                                  .seasonLabelSelect[index] ? FontWeight.w700 : FontWeight.w500,
                           fontFamily: "NotoSans",
                           ),
                     ),
