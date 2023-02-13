@@ -1,11 +1,14 @@
-import 'package:eotteom/tabs/add/addoutfit.dart';
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
 
 import '../../provider.dart';
+import '../add/addoutfit.dart';
 
 class RandomOutfit extends StatefulWidget {
   const RandomOutfit({Key? key}) : super(key: key);
@@ -21,6 +24,32 @@ class _RandomOutfitState extends State<RandomOutfit> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<Position>().getRand(100.w);
     });
+  }
+
+  List<Container> myOutfitPictureList = [];
+
+  Future getMyOutfitList(BuildContext context) async {
+    http.Response response = await http.get(
+        Uri.parse(
+            'http://127.0.0.1:8000/api/outfits/list/${context.read<UserProvider>().userId}/'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${context.read<UserProvider>().tokenAccess}',
+        });
+    var tmpMyOutfitList = jsonDecode(response.body);
+    var myOutfitList = tmpMyOutfitList['results'];
+    for (int i = 0; i < myOutfitList.length; i++) {
+      myOutfitPictureList.add(Container(
+          width: (100.w - 32 - 40) / 2,
+          height: ((100.w - 32 - 40) / 2) / 5 * 6,
+          child: Image.memory(
+            base64Decode(myOutfitList[i]['image_memory']),
+            fit: BoxFit.fill,
+          )));
+    }
+
+    return myOutfitPictureList;
   }
 
   @override

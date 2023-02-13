@@ -7,9 +7,14 @@ import 'package:http/http.dart' as http;
 
 import '../../provider.dart';
 
-class OtherOutfit extends StatelessWidget {
+class OtherOutfit extends StatefulWidget {
   OtherOutfit({Key? key}) : super(key: key);
 
+  @override
+  State<OtherOutfit> createState() => _OtherOutfitState();
+}
+
+class _OtherOutfitState extends State<OtherOutfit> {
   List<Container> otherOutfitPictureList = [];
 
   Future getMyOutfitList(BuildContext context) async {

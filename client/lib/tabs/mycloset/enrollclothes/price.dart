@@ -28,35 +28,28 @@ class Price extends StatelessWidget {
                   height: 44,
                   width: 156,
                   margin: EdgeInsets.only(right: 16),
-                  child: Focus(
-                    child: TextField(
-                        textAlign: TextAlign.right,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: '숫자를 입력해주세요',
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff9b9b9b),
-                                fontFamily: "NotoSans",
-                                fontWeight: FontWeight.w400,
-                                height: 1.3),
-                            filled: true,
-                            fillColor: Color(0xffF3F3F3)),
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly,
-                          ThousandsSeparatorInputFormatter(),
-                          // FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                        ],
-                        onChanged: (text) {
-                          inputPrice = text;
-                        }),
-                    onFocusChange: (hasFocus) {
-                      if (hasFocus == false) {
-                        context.read<EnrollClothes>().changePrice(inputPrice);
-                      }
-                    },
-                  )),
+                  child: TextField(
+                      textAlign: TextAlign.right,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '숫자를 입력해주세요',
+                          hintStyle: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff9b9b9b),
+                              fontFamily: "NotoSans",
+                              fontWeight: FontWeight.w400,
+                              height: 1.3),
+                          filled: true,
+                          fillColor: Color(0xffF3F3F3)),
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                        ThousandsSeparatorInputFormatter(),
+                        // FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      onChanged: (text) {
+                        context.read<EnrollClothes>().priceStr = text;
+                      })),
               Text('원',
                   style: TextStyle(
                       fontSize: 16,

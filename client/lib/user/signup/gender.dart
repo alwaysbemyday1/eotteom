@@ -4,6 +4,7 @@ import 'package:eotteom/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eotteom/provider.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
@@ -25,48 +26,45 @@ class _GenderState extends State<Gender> {
 
   @override
   Widget build(BuildContext context) {
-    return Localizations(
-      locale: const Locale('en', 'US'),
-      delegates: const <LocalizationsDelegate<dynamic>>[
-        DefaultWidgetsLocalizations.delegate,
-        DefaultMaterialLocalizations.delegate,
-      ],
-      child: Material(
-          child: CupertinoPageScaffold(
-              resizeToAvoidBottomInset: false,
-              navigationBar: CupertinoNavigationBar(
-                backgroundColor: CupertinoColors.white,
-                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                border: null,
-                leading: Material(
-                  child: IconButton(
-                    icon: Icon(CupertinoIcons.chevron_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      context.read<SignInPage>().pageDown();
-                    },
-                  ),
+    return Material(
+        child: CupertinoPageScaffold(
+            resizeToAvoidBottomInset: false,
+            navigationBar: CupertinoNavigationBar(
+              backgroundColor: CupertinoColors.white,
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              border: null,
+              leading: Material(
+                color: Colors.white,
+                child: IconButton(
+                  icon: Icon(FlutterRemix.arrow_left_s_line, size: 30),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    context.read<SignInPage>().pageDown();
+                  },
                 ),
               ),
-              child: Container(
-                  margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 58,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("옷장을 구성하기 위해",
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontFamily: "NotoSans",
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.3)),
-                              RichText(
+            ),
+            child: Container(
+                margin: EdgeInsets.fromLTRB(16, 35, 16, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("옷장을 구성하기 위해",
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    fontFamily: "NotoSans",
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.3)),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 10),
+                              child: RichText(
                                   text: TextSpan(children: [
                                 TextSpan(text: '성별', style: headLineTextTheme),
                                 TextSpan(
@@ -78,145 +76,144 @@ class _GenderState extends State<Gender> {
                                       fontWeight: FontWeight.w400,
                                       height: 1.3),
                                 )
-                              ]))
-                            ]),
-                      ),
+                              ])),
+                            ),
+                            Container(
+                                height: 20,
+                                margin: EdgeInsets.fromLTRB(8, 0, 0, 14),
+                                child: Text(
+                                  '나중에 설정에서 변경할 수 있어요',
+                                  style: TextStyle(
+                                      fontSize: 15, color: Color(0xff131313)),
+                                )),
+                            Container(
+                                width: 100.w - 32,
+                                height: 196,
+                                child: (Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 0, 4.5, 0),
+                                      child: CupertinoButton(
+                                          padding: EdgeInsets.all(0),
+                                          child: Container(
+                                              width: 50.w - 16 - 4.5,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: gender == 1
+                                                      ? Color(0xff131313)
+                                                      : Colors.white),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: 99,
+                                                    width: 99,
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 23),
+                                                    child: CircleAvatar(
+                                                      backgroundImage: AssetImage(
+                                                          'assets/images/codies/man.png'),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Text('남성',
+                                                        style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontFamily:
+                                                                "NotoSans",
+                                                            color: gender != 1
+                                                                ? Color(
+                                                                    0xff131313)
+                                                                : Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            height: 1.3)),
+                                                  )
+                                                ],
+                                              )),
+                                          onPressed: () {
+                                            setState(() {
+                                              gender = 1;
+                                            });
+                                          }),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(4.5, 0, 0, 0),
+                                      child: CupertinoButton(
+                                          padding: EdgeInsets.all(0),
+                                          child: Container(
+                                              height: 196,
+                                              width: 50.w - 16 - 4.5,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: gender == 0
+                                                      ? Color(0xff131313)
+                                                      : Colors.white),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: 99,
+                                                    width: 99,
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 23),
+                                                    child: CircleAvatar(
+                                                      backgroundImage: AssetImage(
+                                                          'assets/images/codies/woman.png'),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Text('여성',
+                                                        style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontFamily:
+                                                                "NotoSans",
+                                                            color: gender != 0
+                                                                ? Color(
+                                                                    0xff131313)
+                                                                : Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            height: 1.3)),
+                                                  )
+                                                ],
+                                              )),
+                                          onPressed: () {
+                                            setState(() {
+                                              gender = 0;
+                                            });
+                                          }),
+                                    ),
+                                  ],
+                                ))),
+                          ]),
+                    ),
+                    Column(children: [
                       Container(
-                          height: 20,
-                          margin: EdgeInsets.fromLTRB(8, 0, 0, 14),
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                          alignment: Alignment.centerRight,
                           child: Text(
-                            '나중에 설정에서 변경할 수 있어요',
-                            style: TextStyle(
-                                fontSize: 15, color: Color(0xff131313)),
+                            '${context.watch<SignInPage>().page}/4',
+                            style: TextStyle(fontSize: 12),
                           )),
                       Container(
-                          width: 100.w - 32,
-                          height: 196,
-                          child: (Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 4.5, 0),
-                                child: CupertinoButton(
-                                    padding: EdgeInsets.all(0),
-                                    child: Container(
-                                        width: 50.w - 16 - 4.5,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: gender == 1
-                                                ? Color(0xff131313)
-                                                : Colors.white),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              height: 99,
-                                              width: 99,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 26, 0, 23),
-                                              child: CircleAvatar(
-                                                backgroundImage: AssetImage(
-                                                    'assets/images/codies/man.png'),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text('남성',
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontFamily: "NotoSans",
-                                                      color: gender != 1
-                                                          ? Color(0xff131313)
-                                                          : Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      height: 1.3)),
-                                            )
-                                          ],
-                                        )),
-                                    onPressed: () {
-                                      setState(() {
-                                        gender = 1;
-                                      });
-                                    }),
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(4.5, 0, 0, 0),
-                                child: CupertinoButton(
-                                    padding: EdgeInsets.all(0),
-                                    child: Container(
-                                        height: 196,
-                                        width: 50.w - 16 - 4.5,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: gender == 0
-                                                ? Color(0xff131313)
-                                                : Colors.white),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              height: 99,
-                                              width: 99,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 0, 23),
-                                              child: CircleAvatar(
-                                                backgroundImage: AssetImage(
-                                                    'assets/images/codies/woman.png'),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text('여성',
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontFamily: "NotoSans",
-                                                      color: gender != 0
-                                                          ? Color(0xff131313)
-                                                          : Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      height: 1.3)),
-                                            )
-                                          ],
-                                        )),
-                                    onPressed: () {
-                                      setState(() {
-                                        gender = 0;
-                                      });
-                                    }),
-                              ),
-                            ],
-                          ))),
-                      SizedBox(
-                          height: 100.h -
-                              529 -
-                              22 -
-                              MediaQuery.of(context).viewInsets.bottom),
-                      Column(
-                        children: [
-                          Container(
-                              margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                '${context.watch<SignInPage>().page}/4',
-                                style: TextStyle(fontSize: 12),
-                              )),
-                          Container(
-                              margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: CupertinoProgressBar(
-                                    value:
-                                        context.watch<SignInPage>().page / 4),
-                              )),
-                        ],
-                      ),
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: CupertinoProgressBar(
+                                value: context.watch<SignInPage>().page / 4),
+                          )),
                       gender != null
                           ? Container(
                               width: 100.w - 32,
                               height: 54,
+                              margin: EdgeInsets.only(
+                                  bottom: 22 +
+                                      MediaQuery.of(context).viewInsets.bottom),
                               child: CupertinoButton(
                                   padding: EdgeInsets.all(0),
                                   color: Colors.black,
@@ -235,6 +232,9 @@ class _GenderState extends State<Gender> {
                             )
                           : Container(
                               padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
+                              margin: EdgeInsets.only(
+                                  bottom: 22 +
+                                      MediaQuery.of(context).viewInsets.bottom),
                               width: 100.w - 32,
                               height: 54,
                               decoration: BoxDecoration(
@@ -244,9 +244,8 @@ class _GenderState extends State<Gender> {
                               child: Text('다음',
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white))),
-                      SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
-                    ],
-                  )))),
-    );
+                    ])
+                  ],
+                ))));
   }
 }

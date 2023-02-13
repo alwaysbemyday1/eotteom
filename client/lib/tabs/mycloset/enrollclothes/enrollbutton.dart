@@ -31,7 +31,7 @@ class EnrollButton extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(5),
-                    child: Text('등록',
+                    child: Text('저장',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
                     onPressed: () {
                       context.read<EnrollClothes>().postRequest(
@@ -46,7 +46,7 @@ class EnrollButton extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5), color: Colors.grey),
                 alignment: Alignment.center,
-                child: Text('등록',
+                child: Text('저장',
                     style: TextStyle(fontSize: 16, color: Colors.white))));
   }
 }

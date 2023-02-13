@@ -1,6 +1,7 @@
 import 'package:eotteom/tabs/closetanalysis/analysis.dart';
 import 'package:eotteom/tabs/myoutfit/myoutfit.dart';
 import 'package:eotteom/tabs/profile/Profile.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:eotteom/user/signin.dart';
 
@@ -23,10 +24,11 @@ void main() {
       ],
       child: const CupertinoApp(
         localizationsDelegates: [
-          DefaultMaterialLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
           DefaultWidgetsLocalizations.delegate,
         ],
+        supportedLocales: [const Locale('ko', 'KO')],
         home: Eotteom(),
         theme: homeTheme,
       )));
