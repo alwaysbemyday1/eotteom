@@ -1,4 +1,5 @@
 import 'package:eotteom/provider.dart';
+import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/outfit_info.dart';
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
@@ -24,9 +25,9 @@ class _OutfitRenderState extends State<OutfitRender> {
         future: _getImage(userId, tokenAccess),
         builder: ((context, snapshot) {
           if (snapshot.hasData == false) {
-            return Text('나의 코디를 등록해보세요!');
+            return Center(child: Text('나의 코디를 등록해보세요!', style: headLineTextTheme,));
           } else {
-            var jsonBody = snapshot.data as Map<dynamic, dynamic>;
+            var jsonBody = snapshot.data;
             List outfitList = jsonBody['results'];
             return Sizer(builder: ((context, orientation, deviceType) {
               return SizedBox(
@@ -57,7 +58,7 @@ class _OutfitRenderState extends State<OutfitRender> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => OutfitInfo(),
+                                      builder: (context) => OutfitInfo(jsonBody: jsonBody, index: index),
                                     ));
                               },
                             ),
@@ -93,7 +94,7 @@ class _OutfitRenderState extends State<OutfitRender> {
     );
   }
 
-  Future<Map<String, dynamic>> _getImage(String userId, String tokenAccess) async {
+  Future _getImage(String userId, String tokenAccess) async {
     String url = "http://127.0.0.1:8000/api/outfits/list/${userId}/";
     http.Response response = await http.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
@@ -101,7 +102,7 @@ class _OutfitRenderState extends State<OutfitRender> {
       'Authorization': 'Bearer ${tokenAccess}',
     });
 
-    var jsonBody = json.decode(response.body);
+    var jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
 
     return jsonBody;
   }
