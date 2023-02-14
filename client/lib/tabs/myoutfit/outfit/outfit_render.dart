@@ -91,6 +91,7 @@ class _OutfitRenderState extends State<OutfitRender> {
           }
         }),
       ),
+
     );
   }
 

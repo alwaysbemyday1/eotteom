@@ -15,6 +15,7 @@ class EnrollButton extends StatelessWidget {
         height: 90,
         width: 100.w,
         alignment: Alignment.center,
+        //margin: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
         padding: EdgeInsets.fromLTRB(16, 14, 16, 32),
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(color: Colors.grey, blurRadius: 1, spreadRadius: 0)

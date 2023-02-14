@@ -14,6 +14,7 @@ class EnrollButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String userId = context.watch<UserProvider>().userId;
+
     return Container(
         height: 90,
         width: 100.w,
