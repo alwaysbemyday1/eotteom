@@ -67,9 +67,10 @@ class ClothesViewSet(ModelViewSet):
             total_consumption += i['price']
         average_consumption = total_consumption / (len(price_list))
         
+        fit_count = queryset.exclude(fit='').values('fit').annotate(count=Count('fit')).order_by('-count')
         color_count = queryset.values('color').annotate(count=Count('color')).order_by('-count')
         brand_count = queryset.values('brand').annotate(count=Count('brand')).order_by('-count')
-
+        
         category_count = []
         category_value = queryset.values('major_category').annotate(count=Count('major_category'))
         for i in category_value:
@@ -81,6 +82,8 @@ class ClothesViewSet(ModelViewSet):
             "average_consumption" : int(average_consumption),
             "total_count" : total_count,
             "category_count" : category_count,
+            "top_fit": fit_count[0]['fit'],
+            "fit_count" : fit_count,
             "color_count" : color_count,
             "brand_count" : brand_count,
         }
@@ -103,6 +106,7 @@ class ClothesViewSet(ModelViewSet):
                 total_consumption += i['price']            
             average_consumption = total_consumption / len(price_list)
             
+            fit_count = queryset.exclude(fit='').values('fit').annotate(count=Count('fit')).order_by('-count')
             color_count = queryset.values('color').annotate(count=Count('color')).order_by('-count')
             brand_count = queryset.values('brand').annotate(count=Count('brand')).order_by('-count')
 
@@ -117,8 +121,10 @@ class ClothesViewSet(ModelViewSet):
                 "average_consumption" : int(average_consumption),
                 "total_count" : total_count,
                 "category_count" : category_count,
+                "top_fit": fit_count[0]['fit'],
+                "fit_count" : fit_count,
                 "color_count" : color_count,
                 "brand_count" : brand_count,
             }
-            return Response(data)
+            return Response(data)   
 
