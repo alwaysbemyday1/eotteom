@@ -37,9 +37,6 @@ class _PieState extends State<Pie> {
   Widget build(BuildContext context) {
     String userId = context.watch<UserProvider>().userId;
     String tokenAccess = context.watch<UserProvider>().tokenAccess;
-    String maxCategory = context
-        .watch<AnalysisProvider>()
-        .maxCategory(context.read<AnalysisProvider>().dataexample);
     List<String> datakeys =
         context.read<AnalysisProvider>().dataexample.keys.toList();
     List<String> categories = context.read<AnalysisProvider>().categories;

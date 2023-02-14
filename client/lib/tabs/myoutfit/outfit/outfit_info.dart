@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
 import "package:eotteom/style.dart";
 import "package:flutter_remix/flutter_remix.dart";
 
 class OutfitInfo extends StatelessWidget {
-  const OutfitInfo({super.key});
-
+  OutfitInfo({Key? key, this.jsonBody, this.index}) : super(key: key);
+  var jsonBody;
+  final index;
   @override
   Widget build(BuildContext context) {
+    List<Padding> otheroutfitlist = _getotherOutfitlist(jsonBody, index);
     return Sizer(
       builder: (context, orientation, deviceType) {
         return Scaffold(
@@ -68,8 +72,10 @@ class OutfitInfo extends StatelessWidget {
                                 height: (100.w - 32) * (6 / 5),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/example/cloth1.png"),
+                                        image: Image.memory(base64Decode(
+                                                jsonBody['results'][index]
+                                                    ["image_memory"]))
+                                            .image,
                                         fit: BoxFit.fill)),
                               ),
                               SizedBox(
@@ -78,21 +84,21 @@ class OutfitInfo extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    '편한 옷들',
+                                    '${jsonBody['results'][index]["name"]}',
                                     style: basicTextTheme2,
                                   ),
                                   SizedBox(
                                     width: 6,
                                   ),
                                   Text(
-                                    '#겨울',
+                                    '#${jsonBody['results'][index]["season"]}',
                                     style: basicTextTheme2,
                                   ),
                                   SizedBox(
                                     width: 6,
                                   ),
                                   Text(
-                                    '#댄디룩',
+                                    '#${jsonBody['results'][index]["style"]}룩',
                                     style: basicTextTheme2,
                                   ),
                                 ],
@@ -133,7 +139,7 @@ class OutfitInfo extends StatelessWidget {
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: 5,
-                              itemBuilder: ((context, index) {
+                              itemBuilder: ((context, idx) {
                                 return SizedBox(
                                   child: Column(
                                     crossAxisAlignment:
@@ -200,38 +206,28 @@ class OutfitInfo extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('다른 내 코디 둘러보기', style: enrollTitleTheme2,),
-                        SizedBox(height: 12,),
+                        Text(
+                          '다른 내 코디 둘러보기',
+                          style: enrollTitleTheme2,
+                        ),
                         SizedBox(
-                          height: 30.75.w, // ListView.builder는 기본적으로 요소가 builder 안에 꽉 차도록 됨.
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                              itemBuilder: ((context, index) {
-                                return SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 8),
-                                        child: Container(
-                                          height: 30.75.w,
-                                          width: 25.6.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0)),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              })),
+                          height: 12,
+                        ),
+                        SizedBox(
+                          height: 30.75
+                              .w, // ListView.builder는 기본적으로 요소가 builder 안에 꽉 차도록 됨.
+                          child: ListView(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            children: otheroutfitlist,
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30,)
+                  SizedBox(
+                    height: 30,
+                  )
                 ],
               ),
             ),
@@ -239,5 +235,28 @@ class OutfitInfo extends StatelessWidget {
         );
       },
     );
+  }
+
+  _getotherOutfitlist(var jsonBody, var index) {
+    List<Padding> otheroutfitlist = [];
+    for (int i = 0; i < jsonBody["results"].length; i++) {
+      if (i != index) {
+        otheroutfitlist.add(Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: Container(
+            height: 30.75.w,
+            width: 25.6.w,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: Image.memory(base64Decode(
+                            jsonBody["results"][i]["image_memory"]))
+                        .image),
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ));
+      }
+    }
+    return otheroutfitlist;
   }
 }
