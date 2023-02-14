@@ -67,8 +67,8 @@ class ClothesViewSet(ModelViewSet):
             total_consumption += price['price'] if price['price'] != None else 0
         average_consumption = total_consumption / (len(price_list))
         
-        color_count = queryset.values('color').annotate(count=Count('color'))
-        brand_count = queryset.values('brand').annotate(count=Count('brand'))
+        color_count = queryset.values('color').annotate(count=Count('color')).order_by('-count')
+        brand_count = queryset.values('brand').annotate(count=Count('brand')).order_by('-count')
 
         category_count = []
         category_value = queryset.values('major_category').annotate(count=Count('major_category'))
