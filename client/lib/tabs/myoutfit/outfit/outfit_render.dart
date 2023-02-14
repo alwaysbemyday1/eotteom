@@ -24,7 +24,7 @@ class _OutfitRenderState extends State<OutfitRender> {
                   crossAxisCount: 3,
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 8,
-                  childAspectRatio: 5/6),
+                  childAspectRatio: 5 / 6),
               itemCount: 6,
               itemBuilder: ((context, index) {
                 return SizedBox(
@@ -41,9 +41,10 @@ class _OutfitRenderState extends State<OutfitRender> {
                         ),
                         onTap: () {
                           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => OutfitInfo(),)
-                        );
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OutfitInfo(),
+                              ));
                         },
                       ),
                       Padding(

@@ -67,6 +67,7 @@ class _ClothesColorState extends State<ClothesColor> {
 
   List<Widget> getList() {
     List<Widget> childs = [];
+
     for (int i = line * 6; i < 6 + line * 6; i++) {
       childs.add(CupertinoButton(
           padding: EdgeInsets.all(0),

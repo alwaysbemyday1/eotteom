@@ -24,7 +24,6 @@ class _CodiDateState extends State<CodiDate> {
       theme: ThemeData(
         primaryColor: Color(0xff131313),
       ),
-
       description: '날짜를 선택하세요',
       initialDate: DateTime.now(), //get today's date
       firstDate: DateTime(
@@ -36,7 +35,7 @@ class _CodiDateState extends State<CodiDate> {
           marginLeftArrowPrevious: 8,
           marginTopArrowNext: 8,
           textStyleYearButton: TextStyle(
-              fontSize: 25,
+              fontSize: 20,
               fontFamily: "NotoSans",
               color: Color(0xffffffff),
               fontWeight: FontWeight.w400,
@@ -79,7 +78,7 @@ class _CodiDateState extends State<CodiDate> {
               fontSize: 14,
               fontFamily: "NotoSans",
               color: Color(0xff131313),
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
               height: 1.3)),
     );
     setState(() {

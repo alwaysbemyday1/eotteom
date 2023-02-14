@@ -32,6 +32,7 @@ class Codi_Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
