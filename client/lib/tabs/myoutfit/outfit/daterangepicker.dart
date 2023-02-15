@@ -18,24 +18,35 @@ class _MonthRangePickState extends State<MonthRangePick> {
       alwaysIncludeSemantics: true,
       child: AbsorbPointer(
         absorbing: !(context.watch<FilterProvider>().datecheck),
-        child: SfDateRangePicker(
-          headerStyle: DateRangePickerHeaderStyle(
-              textAlign: TextAlign.center,
-              textStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-          onSelectionChanged: _onSelectionChanged,
-          selectionMode: DateRangePickerSelectionMode.multiple,
-          view: DateRangePickerView.year,
-          showNavigationArrow: true,
-          allowViewNavigation: false,
-          startRangeSelectionColor: Colors.black,
+        child: Container(
+          color: Color(0xffFFFFFF),
+          child: SfDateRangePicker(
+            maxDate: DateTime.now(),
+            selectionShape: DateRangePickerSelectionShape.rectangle,
+            headerStyle: DateRangePickerHeaderStyle(
+                textAlign: TextAlign.center,
+                textStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff131313),
+                    fontSize: 16)), // 달력에서 화살표 넘어다니는 부분
+            onSelectionChanged: _onSelectionChanged,
+            selectionMode: DateRangePickerSelectionMode.multiple,
+            view: DateRangePickerView.year,
+            showNavigationArrow: true,
+            allowViewNavigation: false,
+            todayHighlightColor: Colors.black,
+            startRangeSelectionColor: Colors.black,
           endRangeSelectionColor: Colors.black,
-          rangeSelectionColor: Colors.grey,
-          todayHighlightColor: Colors.black,
-          selectionColor: Colors.black,
-          yearCellStyle: DateRangePickerYearCellStyle(
-            textStyle: TextStyle(color: Colors.black),
-            todayTextStyle: TextStyle(color: Colors.black),
+            selectionColor: Color(0xffFFFFFF),
+            yearCellStyle: DateRangePickerYearCellStyle(
+              textStyle: TextStyle(color: Colors.black),
+              todayTextStyle: TextStyle(color: Colors.black),
+            ),
+            selectionTextStyle: TextStyle(
+                fontFamily: "NotoSans",
+                fontSize: 14.0,
+                fontWeight: FontWeight.w700,
+                color: Color(0xff131313)),
           ),
         ),
       ),
@@ -44,7 +55,6 @@ class _MonthRangePickState extends State<MonthRangePick> {
 
   void _onSelectionChanged(
       DateRangePickerSelectionChangedArgs dateRangePickerSelectionChangedArgs) {
-    print(dateRangePickerSelectionChangedArgs.value);
     context
         .read<FilterProvider>()
         .selectDate(dateRangePickerSelectionChangedArgs);
