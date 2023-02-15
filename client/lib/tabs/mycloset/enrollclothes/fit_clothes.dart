@@ -56,18 +56,26 @@ class _FitState extends State<Fit> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 16 * 1.3 + 13 + (100.w - 32 - 45) / 6 + 1,
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
+              height: 16 * 1.3,
+              width: 100.w - 32,
               margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
               child: Text(
                 '핏',
                 style: enrollTitleTheme2,
               )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: getList(),
+          Container(
+            height: (100.w - 32 - 45) / 6,
+            width: 100.w - 32,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: getList(),
+            ),
           )
         ]));
   }

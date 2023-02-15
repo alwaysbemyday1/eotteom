@@ -13,23 +13,36 @@ class Catetory extends StatelessWidget {
     return Container(
         margin: EdgeInsets.fromLTRB(16, 0, 16, 32),
         width: 100.w - 32,
+        height: 18 * 1.3 + 8 + 14 * 1.3 + 8 + 44,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+                height: 18 * 1.3,
+                width: 100.2 - 32,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Text('카테고리', style: enrollTitleTheme)),
             Container(
+              height: 14 * 1.3,
+              width: 100.w - 32,
               margin: EdgeInsets.only(bottom: 8),
               child: Row(children: [
                 Container(
-                    margin:
-                        EdgeInsets.only(right: (100.w - 32 - 41) / 2 + 29 - 26),
+                    height: 14 * 1.3,
+                    width: (100.w - 32 - 40) / 6,
+                    margin: EdgeInsets.only(
+                        right: (100.w - 32 - 40) / 3 +
+                            24 +
+                            (100.w - 32 - 40) / 18),
                     child: Text('대분류', style: basicTextTheme)),
-                Container(child: Text('중분류', style: basicTextTheme))
+                Container(
+                    height: 14 * 1.3,
+                    width: (100.w - 32 - 40) / 6,
+                    child: Text('중분류', style: basicTextTheme))
               ]),
             ),
             Container(
+              height: 44,
               width: 100.w - 32,
               child: Row(children: [
                 Container(
@@ -57,8 +70,8 @@ class Catetory extends StatelessWidget {
                     )),
                 Container(
                     width: (100.w - 32 - 46) / 2,
-                    alignment: Alignment.center,
                     height: 44,
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9), width: 1),
                         borderRadius: BorderRadius.circular(5)),
@@ -97,6 +110,7 @@ class _PopupMenuState extends State<PopupMenu> {
           ? context.read<EnrollClothes>().bigCategory
           : context.read<EnrollClothes>().smallCategory,
       child: Container(
+          height: 44,
           width: (100.w - 32 - 46) / 2,
           alignment: Alignment.centerLeft,
           child: Row(
@@ -123,6 +137,7 @@ class _PopupMenuState extends State<PopupMenu> {
           value: widget.categoryList[i],
           height: 44,
           child: Container(
+              height: 44,
               width: (100.w - 32 - 46) / 2,
               alignment: Alignment.centerLeft,
               child: Text(widget.categoryList[i], style: basicTextTheme)),
@@ -137,6 +152,7 @@ class _PopupMenuState extends State<PopupMenu> {
   Widget build(BuildContext context) {
     return Container(
       width: (100.w - 32 - 41) / 2,
+      height: 20,
       child: PopupMenuButton(
           padding: EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
@@ -146,6 +162,7 @@ class _PopupMenuState extends State<PopupMenu> {
           constraints: BoxConstraints(
               maxWidth: (100.w - 32 - 46) / 2, minWidth: (100.w - 32 - 46) / 2),
           child: Container(
+              height: 20,
               width: (100.w - 32 - 46) / 2,
               padding: EdgeInsets.only(left: 15),
               child: Row(

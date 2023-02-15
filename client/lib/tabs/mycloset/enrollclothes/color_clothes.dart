@@ -69,42 +69,46 @@ class _ClothesColorState extends State<ClothesColor> {
     List<Widget> childs = [];
 
     for (int i = line * 6; i < 6 + line * 6; i++) {
-      childs.add(CupertinoButton(
-          padding: EdgeInsets.all(0),
-          child: hexColorList[i].length != 2
-              ? Container(
-                  margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
-                  height: (100.w - 32 - 45) / 6,
-                  width: (100.w - 32 - 45) / 6,
-                  decoration: BoxDecoration(
-                    color: Color(int.parse(hexColorList[i][0].toString())),
-                    border: Border.all(width: 1, color: Color(0xffCACACA)),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: color == i ? Icon(CupertinoIcons.check_mark) : null)
-              : Container(
-                  margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
-                  height: (100.w - 32 - 45) / 6,
-                  width: (100.w - 32 - 45) / 6,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Color(0xffCACACA)),
-                    borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(int.parse(hexColorList[i][1].toString())),
-                        Color(int.parse(hexColorList[i][0].toString())),
-                      ],
+      childs.add(Container(
+        height: (100.w - 32 - 45) / 6,
+        width: (100.w - 32 - 45) / 6,
+        child: CupertinoButton(
+            padding: EdgeInsets.all(0),
+            child: hexColorList[i].length != 2
+                ? Container(
+                    margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
+                    height: (100.w - 32 - 45) / 6,
+                    width: (100.w - 32 - 45) / 6,
+                    decoration: BoxDecoration(
+                      color: Color(int.parse(hexColorList[i][0].toString())),
+                      border: Border.all(width: 1, color: Color(0xffCACACA)),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                  )),
-          onPressed: () {
-            setState(() {
-              color = i;
-              line = 0;
-              context.read<EnrollClothes>().color = colorList[color];
-            });
-          }));
+                    child: color == i ? Icon(CupertinoIcons.check_mark) : null)
+                : Container(
+                    margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
+                    height: (100.w - 32 - 45) / 6,
+                    width: (100.w - 32 - 45) / 6,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Color(0xffCACACA)),
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(int.parse(hexColorList[i][1].toString())),
+                          Color(int.parse(hexColorList[i][0].toString())),
+                        ],
+                      ),
+                    )),
+            onPressed: () {
+              setState(() {
+                color = i;
+                line = 0;
+                context.read<EnrollClothes>().color = colorList[color];
+              });
+            }),
+      ));
       if (colorList.length == (i + 1)) {
         break;
       }
@@ -121,17 +125,29 @@ class _ClothesColorState extends State<ClothesColor> {
   Widget build(BuildContext context) {
     line = 0;
     return Container(
+        height: ((100.w - 32 - 45) / 6) * 4 +
+            24 +
+            (100.w - 32 - 45) / 6 * 1.2 +
+            16 +
+            14 +
+            16 * 1.3 +
+            1,
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+                height: 16 * 1.3,
+                width: 100.w - 32,
                 margin: EdgeInsets.only(bottom: 14, right: 16),
                 child: Text(
                   '색상',
                   style: enrollTitleTheme2,
                 )),
             Container(
+              height: (100.w - 32 - 45) / 6 * 1.2,
+              width: 100.w - 32,
               margin: EdgeInsets.only(bottom: 16),
               child:
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -149,9 +165,9 @@ class _ClothesColorState extends State<ClothesColor> {
                           color: Color(0xffFFFFFF),
                         ))
                     : Container(
-                        margin: EdgeInsets.only(right: 16),
                         height: (100.w - 32 - 45) / 6 * 1.2,
                         width: (100.w - 32 - 45) / 6 * 1.2,
+                        margin: EdgeInsets.only(right: 16),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             gradient: LinearGradient(
@@ -168,9 +184,9 @@ class _ClothesColorState extends State<ClothesColor> {
                                 ])),
                         child: null),
                 Container(
-                    alignment: Alignment.centerLeft,
                     height: 44,
                     width: 100.w - 48 - (100.w - 32 - 45) / 6 * 1.2,
+                    alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -187,22 +203,29 @@ class _ClothesColorState extends State<ClothesColor> {
               ]),
             ),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
-                margin: EdgeInsets.only(bottom: 8),
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),

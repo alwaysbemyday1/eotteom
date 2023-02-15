@@ -49,7 +49,7 @@ class _EotteomState extends State<Eotteom> {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -101,20 +101,7 @@ class MyApp extends StatelessWidget {
             case 2:
               return CupertinoTabView(
                 builder: (context) {
-                  return CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                        border: Border(
-                            bottom: BorderSide(color: Colors.transparent)),
-                        trailing: SizedBox(
-                          width: 50,
-                          child: CupertinoButton(
-                            padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
-                            child: Icon(Icons.settings),
-                            onPressed: () {},
-                          ),
-                        )),
-                    child: Center(child: Home()),
-                  );
+                  return Home();
                 },
               );
             case 3:

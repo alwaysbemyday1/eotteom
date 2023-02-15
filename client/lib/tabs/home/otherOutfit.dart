@@ -42,55 +42,60 @@ class _OtherOutfitState extends State<OtherOutfit> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 12 +
-          18 * 1.3 +
-          ((100.w - 32 - 40) / 2) / 5 * 6, // 사기간격 + lineheight + 사진 크기
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.fromLTRB(16, 0, 16, 12),
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('다른 사람들의 코디',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w700)),
-                    SizedBox(
-                      height: 14 * 1.3,
-                      child: CupertinoButton(
-                          padding: EdgeInsets.all(0),
-                          child: Text('더보기',
-                              style: TextStyle(
-                                  fontSize: 14, color: CupertinoColors.black)),
-                          onPressed: () {}),
-                    )
-                  ]),
-            ),
-            SizedBox(
-              height: ((100.w - 32 - 40) / 2) / 5 * 6,
-              child: FutureBuilder(
-                  future: getMyOutfitList(context),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData == false) {
-                      return CupertinoActivityIndicator();
-                    } else {
-                      return GridView(
-                        scrollDirection: Axis.horizontal,
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: ((100.w - 32 - 40) / 2) / 5 * 6,
-                            childAspectRatio: 6 / 5,
-                            mainAxisSpacing: 8),
-                        children: snapshot.data,
-                      );
-                    }
-                  }),
-            ),
-          ]),
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return Container(
+        height: 12 +
+            18 * 1.3 +
+            ((100.w - 32 - 40) / 2) / 5 * 6, // 사기간격 + lineheight + 사진 크기
+        margin: EdgeInsets.fromLTRB(0, 0, 0, 26),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(16, 0, 16, 12),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('다른 사람들의 코디',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w700)),
+                      SizedBox(
+                        height: 14 * 1.3,
+                        child: CupertinoButton(
+                            padding: EdgeInsets.all(0),
+                            child: Text('더보기',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: CupertinoColors.black)),
+                            onPressed: () {}),
+                      )
+                    ]),
+              ),
+              SizedBox(
+                height: ((100.w - 32 - 40) / 2) / 5 * 6,
+                child: FutureBuilder(
+                    future: getMyOutfitList(context),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData == false) {
+                        return CupertinoActivityIndicator();
+                      } else {
+                        return GridView(
+                          scrollDirection: Axis.horizontal,
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent:
+                                      ((100.w - 32 - 40) / 2) / 5 * 6,
+                                  childAspectRatio: 6 / 5,
+                                  mainAxisSpacing: 8),
+                          children: snapshot.data,
+                        );
+                      }
+                    }),
+              ),
+            ]),
+      );
+    });
   }
 }

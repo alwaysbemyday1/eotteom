@@ -69,6 +69,18 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  GlobalKey firstKey = GlobalKey();
+
+  getSize(GlobalKey key) {
+    if (key.currentContext != null) {
+      final RenderBox renderBox =
+          key.currentContext!.findRenderObject() as RenderBox;
+      Size size = renderBox.size;
+
+      context.read<EnrollClothes>().setOffset(size.height);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -82,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          key: firstKey,
           elevation: 0,
           backgroundColor: Colors.white,
           leading: IconButton(
@@ -177,6 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                               ? const Color(0xff131313)
                               : Color(0xffCACACA)),
                       onPressed: () async {
+                        getSize(firstKey);
                         if (emailOkay == true) {
                           var user = await login(
                               _emailController.text, _passwordController.text);

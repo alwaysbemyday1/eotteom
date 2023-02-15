@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:provider/provider.dart';
 
-class Size extends StatefulWidget {
-  Size({super.key});
+class ClothesSize extends StatefulWidget {
+  ClothesSize({super.key});
 
   @override
-  State<Size> createState() => _SizeState();
+  State<ClothesSize> createState() => _ClothesSizeState();
 }
 
-class _SizeState extends State<Size> {
+class _ClothesSizeState extends State<ClothesSize> {
   List<Widget> getList() {
     List<Widget> childs = [];
     for (int i = 0; i < 6; i++) {
@@ -56,18 +56,26 @@ class _SizeState extends State<Size> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 16 * 1.3 + 13 + (100.w - 32 - 45) / 6 + 1,
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
+              height: 16 * 1.3,
+              width: 100.w - 32,
               margin: EdgeInsets.fromLTRB(0, 0, 0, 13),
               child: Text(
                 '사이즈',
                 style: enrollTitleTheme2,
               )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: getList(),
+          Container(
+            width: 100.w - 32,
+            height: (100.w - 32 - 45) / 6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: getList(),
+            ),
           )
         ]));
   }
