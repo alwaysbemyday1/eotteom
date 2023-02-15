@@ -32,6 +32,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
     super.initState();
   }
 
+
   var color = -1;
   var colorList = [
     '블랙',
@@ -220,6 +221,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
     return childs;
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
@@ -271,6 +273,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                       child: Text('기본정보',
                                           style: enrollTitleTheme)),
                                   Picture(),
+
                                   Container(
                                       margin:
                                           EdgeInsets.fromLTRB(16, 0, 16, 32),
@@ -378,6 +381,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                           )
                                         ],
                                       )),
+
                                   Container(
                                     height: 8,
                                     width: 100.w,
@@ -388,6 +392,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                       margin: EdgeInsets.fromLTRB(16, 0, 0, 24),
                                       child: Text('세부정보',
                                           style: enrollTitleTheme)),
+
                                   // Color
                                   Container(
                                       height: ((100.w - 32 - 45) / 6) * 4 +
@@ -620,6 +625,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                               ),
                                             )
                                           ])),
+
                                   ClothesName()
                                 ])),
                       ),
@@ -631,6 +637,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
     });
   }
 }
+
 
 class PopupMenu extends StatefulWidget {
   PopupMenu({super.key, this.flag, this.categoryList});
@@ -736,3 +743,4 @@ class _PopupMenuState extends State<PopupMenu> {
     );
   }
 }
+
