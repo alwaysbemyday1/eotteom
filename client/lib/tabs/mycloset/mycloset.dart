@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'closet/closet_appbar.dart';
 import 'closet/closet.dart';
 import "package:eotteom/provider.dart";
-import "package:eotteom/tabs/mycloset/enrollclothes/enroll.dart";
+import 'package:eotteom/tabs/mycloset/enrollclothes/enroll_clothes.dart';
 import 'package:flutter/cupertino.dart';
 
-class MyCloset extends StatelessWidget {
-  const MyCloset({super.key});
+class MyCloset extends StatefulWidget {
+  MyCloset({super.key});
 
+  @override
+  State<MyCloset> createState() => _MyClosetState();
+}
+
+class _MyClosetState extends State<MyCloset> {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {

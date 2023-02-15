@@ -121,17 +121,29 @@ class _ClothesColorState extends State<ClothesColor> {
   Widget build(BuildContext context) {
     line = 0;
     return Container(
+        height: ((100.w - 32 - 45) / 6) * 4 +
+            24 +
+            (100.w - 32 - 45) / 6 * 1.2 +
+            16 +
+            14 +
+            16 * 1.3 +
+            1,
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+                height: 16 * 1.3,
+                width: 100.w - 32,
                 margin: EdgeInsets.only(bottom: 14, right: 16),
                 child: Text(
                   '색상',
                   style: enrollTitleTheme2,
                 )),
             Container(
+              height: (100.w - 32 - 45) / 6 * 1.2,
+              width: 100.w - 32,
               margin: EdgeInsets.only(bottom: 16),
               child:
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -149,9 +161,9 @@ class _ClothesColorState extends State<ClothesColor> {
                           color: Color(0xffFFFFFF),
                         ))
                     : Container(
-                        margin: EdgeInsets.only(right: 16),
                         height: (100.w - 32 - 45) / 6 * 1.2,
                         width: (100.w - 32 - 45) / 6 * 1.2,
+                        margin: EdgeInsets.only(right: 16),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             gradient: LinearGradient(
@@ -168,9 +180,9 @@ class _ClothesColorState extends State<ClothesColor> {
                                 ])),
                         child: null),
                 Container(
-                    alignment: Alignment.centerLeft,
                     height: 44,
                     width: 100.w - 48 - (100.w - 32 - 45) / 6 * 1.2,
+                    alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -187,22 +199,29 @@ class _ClothesColorState extends State<ClothesColor> {
               ]),
             ),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),
             Container(
-                margin: EdgeInsets.only(bottom: 8),
+                width: 100.w - 32,
+                height: (100.w - 32 - 45) / 6,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: getList())),

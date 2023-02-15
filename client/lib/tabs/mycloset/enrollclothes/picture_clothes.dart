@@ -18,6 +18,8 @@ class _PictureState extends State<Picture> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 200 + 13 + 18 * 1.3,
+        width: 100.w - 32,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 32),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(

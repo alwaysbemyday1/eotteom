@@ -53,6 +53,13 @@ class Position extends ChangeNotifier {
 }
 
 class EnrollClothes extends ChangeNotifier {
+  // Layout
+  double start = 0;
+  setOffset(double db) {
+    start = db;
+    notifyListeners();
+  }
+
   // Picture
   File? resultImage;
 
@@ -525,28 +532,28 @@ class AnalysisProvider extends ChangeNotifier {
   int categoryState = 0;
 
   Map<String, String> engtokrMap = {
-    "black" : "검정",
-    "darkgrey" : "다크그레이",
-    "grey" : "회색",
-    "white" : "흰색",
-    "ivory" : "아이보리",
-    "beige" : "베이지",
-    "red" : "빨강",
-    "pink" : "핑크",
-    "hotpink" : "핫핑크",
-    "brown" : "갈색",
-    "camel" : "카멜",
-    "orange" : "오렌지",
-    "yellow" : "노란색",
-    "olivegreen" : "올리브그린",
-    "olive" : "올리브",
-    "darkgreen" : "다크그린",
-    "green" : "녹색",
-    "blue" : "파란색",
-    "lightblue" : "라이트블루",
-    "navy" : "네이비",
-    "purple" : "보라색",
-    "skyblue" : "스카이블루"
+    "black": "검정",
+    "darkgrey": "다크그레이",
+    "grey": "회색",
+    "white": "흰색",
+    "ivory": "아이보리",
+    "beige": "베이지",
+    "red": "빨강",
+    "pink": "핑크",
+    "hotpink": "핫핑크",
+    "brown": "갈색",
+    "camel": "카멜",
+    "orange": "오렌지",
+    "yellow": "노란색",
+    "olivegreen": "올리브그린",
+    "olive": "올리브",
+    "darkgreen": "다크그린",
+    "green": "녹색",
+    "blue": "파란색",
+    "lightblue": "라이트블루",
+    "navy": "네이비",
+    "purple": "보라색",
+    "skyblue": "스카이블루"
   };
 
   Map<String, dynamic> palette = {
@@ -573,17 +580,17 @@ class AnalysisProvider extends ChangeNotifier {
     "olive": const Color(0xff6D6C3C),
     "darkgreen": const Color(0xff1B4221),
     "green": const Color(0xff5AC13C),
-    "blue" : const Color(0xff2410DC),
+    "blue": const Color(0xff2410DC),
     "lightblue": const LinearGradient(
         colors: [Color(0xffC9DEEF), Color(0xffA0CAF6)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "navy" : const LinearGradient(
+    "navy": const LinearGradient(
         colors: [Color(0xff1C2F57), Color(0xff4360BE)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "purple" : const Color(0xff861CB2),
-    "skyblue" : const Color(0xff58C0E7)
+    "purple": const Color(0xff861CB2),
+    "skyblue": const Color(0xff58C0E7)
   };
 
   changePressed(int index) {

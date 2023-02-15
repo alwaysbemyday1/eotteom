@@ -13,6 +13,7 @@ class Price extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 13 + 16 * 1.3 + 44 + 1,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(

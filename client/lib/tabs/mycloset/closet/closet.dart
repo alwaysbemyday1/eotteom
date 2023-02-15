@@ -5,7 +5,6 @@ import "package:eotteom/provider.dart";
 import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
 
-import "package:eotteom/tabs/mycloset/enrollclothes/enroll.dart";
 import 'package:sizer/sizer.dart';
 
 class Closet extends StatefulWidget {
@@ -64,7 +63,7 @@ class _ClosetState extends State<Closet> {
                     }),
               ),
               SelectCategory(),
-              ClothRender(),
+              // ClothRender(),
             ],
           ),
         );
