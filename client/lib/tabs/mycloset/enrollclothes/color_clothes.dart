@@ -69,46 +69,42 @@ class _ClothesColorState extends State<ClothesColor> {
     List<Widget> childs = [];
 
     for (int i = line * 6; i < 6 + line * 6; i++) {
-      childs.add(Container(
-        height: (100.w - 32 - 45) / 6,
-        width: (100.w - 32 - 45) / 6,
-        child: CupertinoButton(
-            padding: EdgeInsets.all(0),
-            child: hexColorList[i].length != 2
-                ? Container(
-                    margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
-                    height: (100.w - 32 - 45) / 6,
-                    width: (100.w - 32 - 45) / 6,
-                    decoration: BoxDecoration(
-                      color: Color(int.parse(hexColorList[i][0].toString())),
-                      border: Border.all(width: 1, color: Color(0xffCACACA)),
-                      borderRadius: BorderRadius.circular(5),
+      childs.add(CupertinoButton(
+          padding: EdgeInsets.all(0),
+          child: hexColorList[i].length != 2
+              ? Container(
+                  margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
+                  height: (100.w - 32 - 45) / 6,
+                  width: (100.w - 32 - 45) / 6,
+                  decoration: BoxDecoration(
+                    color: Color(int.parse(hexColorList[i][0].toString())),
+                    border: Border.all(width: 1, color: Color(0xffCACACA)),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: color == i ? Icon(CupertinoIcons.check_mark) : null)
+              : Container(
+                  margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
+                  height: (100.w - 32 - 45) / 6,
+                  width: (100.w - 32 - 45) / 6,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Color(0xffCACACA)),
+                    borderRadius: BorderRadius.circular(5),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(int.parse(hexColorList[i][1].toString())),
+                        Color(int.parse(hexColorList[i][0].toString())),
+                      ],
                     ),
-                    child: color == i ? Icon(CupertinoIcons.check_mark) : null)
-                : Container(
-                    margin: EdgeInsets.only(right: i % 6 == 5 ? 0 : 8),
-                    height: (100.w - 32 - 45) / 6,
-                    width: (100.w - 32 - 45) / 6,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Color(0xffCACACA)),
-                      borderRadius: BorderRadius.circular(5),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(int.parse(hexColorList[i][1].toString())),
-                          Color(int.parse(hexColorList[i][0].toString())),
-                        ],
-                      ),
-                    )),
-            onPressed: () {
-              setState(() {
-                color = i;
-                line = 0;
-                context.read<EnrollClothes>().color = colorList[color];
-              });
-            }),
-      ));
+                  )),
+          onPressed: () {
+            setState(() {
+              color = i;
+              line = 0;
+              context.read<EnrollClothes>().color = colorList[color];
+            });
+          }));
       if (colorList.length == (i + 1)) {
         break;
       }

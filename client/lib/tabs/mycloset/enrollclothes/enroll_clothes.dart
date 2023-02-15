@@ -55,12 +55,10 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                 middle: Text('옷 등록', style: enrollTitleTheme),
               ),
               child: SafeArea(
-                maintainBottomViewPadding: true,
                 top: false,
                 bottom: false,
                 child: Container(
                   padding: EdgeInsets.zero,
-                  //key: firstKey,
                   width: 100.w,
                   height: 100.h -
                       context.read<EnrollClothes>().start -
@@ -104,7 +102,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                   ClothesName()
                                 ])),
                       ),
-                      EnrollButton(ctx: context)
+                      EnrollButton(ctx: context),
                     ],
                   ),
                 ),
