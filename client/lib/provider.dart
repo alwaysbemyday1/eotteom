@@ -140,7 +140,6 @@ class EnrollClothes extends ChangeNotifier {
 
   // Fit
   String fit = '';
-  List<String> fitList = ['슬림핏', '레귤러핏', '오버핏'];
   changeFit(newFit) {
     fit = newFit;
     notifyListeners();
@@ -148,7 +147,6 @@ class EnrollClothes extends ChangeNotifier {
 
   // Size
   String size = '';
-  var sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   changeSize(newSize) {
     size = newSize;
     notifyListeners();
