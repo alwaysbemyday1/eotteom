@@ -14,14 +14,9 @@ import 'otherOutfit.dart';
 import 'randomOutfit.dart';
 import 'weatherOutfit.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   // var clothesDetail;
   @override
   Widget build(BuildContext context) {
