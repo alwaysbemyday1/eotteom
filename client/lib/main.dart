@@ -49,7 +49,7 @@ class _EotteomState extends State<Eotteom> {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

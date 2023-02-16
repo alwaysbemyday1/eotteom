@@ -2,7 +2,7 @@ class Clothes {
   final String brand;
   final int bigCategory;
   final int smallCategory;
-  final String memo;
+  final String name;
   final String color;
   final String fit;
   final String price;
@@ -13,7 +13,7 @@ class Clothes {
     required this.brand,
     required this.bigCategory,
     required this.smallCategory,
-    required this.memo,
+    required this.name,
     required this.color,
     required this.fit,
     required this.price,
@@ -26,7 +26,7 @@ class Clothes {
       brand: json['brand'],
       bigCategory: json['bigCategory'],
       smallCategory: json['smallCategory'],
-      memo: json['memo'],
+      name: json['name'],
       color: json['color'],
       fit: json['fit'],
       price: json['price'],
@@ -40,7 +40,7 @@ class Clothes {
       "brand": brand,
       "bigCategory": bigCategory,
       "smallCategory": smallCategory,
-      "memo": memo,
+      "name": name,
       "color": color,
       "fit": fit,
       "price": price,

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:eotteom/provider.dart";
 import "package:provider/provider.dart";
-import "package:eotteom/tabs/myoutfit/enrolloufit/enroll.dart";
-
+import 'package:eotteom/tabs/myoutfit/enrolloufit/enroll_outfit.dart';
 
 class Outfit extends StatelessWidget {
   const Outfit({super.key});
@@ -25,7 +24,7 @@ class Outfit extends StatelessWidget {
         home: Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: Padding(
-            padding: const EdgeInsets.only(bottom: 40,right: 16),
+            padding: const EdgeInsets.only(bottom: 40, right: 16),
             child: FloatingActionButton(
                 backgroundColor: Color(0xff151515),
                 child: Icon(Icons.add),

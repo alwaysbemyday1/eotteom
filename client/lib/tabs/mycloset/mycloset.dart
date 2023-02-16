@@ -33,7 +33,8 @@ class _MyClosetState extends State<MyCloset> {
                   backgroundColor: Color(0xff151515),
                   onPressed: () {
                     Navigator.of(context, rootNavigator: true).push(
-                        CupertinoPageRoute(builder: (ctx) => ClothesEnroll()));
+                        CupertinoPageRoute(
+                            builder: (ctx) => ClothesEnroll(flag: 0)));
                   },
                   child: Icon(Icons.add)),
             ),

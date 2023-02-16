@@ -50,9 +50,11 @@ class _LoginPageState extends State<LoginPage> {
 
   login(String email, password) async {
     try {
-      Response response = await post(
-          Uri.parse("http://127.0.0.1:8000/api/dj-rest-auth/login/"),
-          body: {'email': email, 'password': password});
+      Response response =
+          await post(Uri.parse("http://127.0.0.1:8000/api/dj-rest-auth/login/"),
+              //Uri.parse("http://10.0.2.2:8000/api/dj-rest-auth/login/"),
+
+              body: {'email': email, 'password': password});
 
       if (response.statusCode == 200) {
         var data = await jsonDecode(response.body);

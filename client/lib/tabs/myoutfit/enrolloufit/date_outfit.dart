@@ -107,8 +107,8 @@ class _CodiDateState extends State<CodiDate> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: (100.w - 32 - 40) / 3 * 2 + 24,
-        margin: EdgeInsets.only(right: 15),
+        width: (100.w - 32),
+        margin: EdgeInsets.fromLTRB(16, 0, 16, 28),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
               margin: EdgeInsets.only(bottom: 13),
@@ -118,7 +118,7 @@ class _CodiDateState extends State<CodiDate> {
               )),
           Container(
               alignment: Alignment.centerLeft,
-              width: (100.w - 32 - 40) / 3 * 2 + 24,
+              width: (100.w - 32),
               height: 44,
               decoration: BoxDecoration(
                   border: Border.all(color: Color(0xffD9D9D9), width: 1),

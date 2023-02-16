@@ -15,7 +15,7 @@ class OutfitRender extends StatefulWidget {
 }
 
 class _OutfitRenderState extends State<OutfitRender> {
-  List<bool> liked = [false, false, false, false, false, false];
+  List<bool> liked = [false, false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     String userId = context.watch<UserProvider>().userId;
@@ -25,7 +25,11 @@ class _OutfitRenderState extends State<OutfitRender> {
         future: _getImage(userId, tokenAccess),
         builder: ((context, snapshot) {
           if (snapshot.hasData == false) {
-            return Center(child: Text('나의 코디를 등록해보세요!', style: headLineTextTheme,));
+            return Center(
+                child: Text(
+              '나의 코디를 등록해보세요!',
+              style: headLineTextTheme,
+            ));
           } else {
             var jsonBody = snapshot.data;
             List outfitList = jsonBody['results'];
@@ -34,7 +38,7 @@ class _OutfitRenderState extends State<OutfitRender> {
                 width: 100.w - 32,
                 child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
+                    // shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         mainAxisSpacing: 8,
@@ -49,16 +53,20 @@ class _OutfitRenderState extends State<OutfitRender> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: Image.memory(base64Decode(outfitList[index]['image_memory'])).image
-                                  ),
-                                    borderRadius: BorderRadius.circular(5.0),),
+                                      fit: BoxFit.fill,
+                                      image: Image.memory(base64Decode(
+                                              outfitList[index]
+                                                  ['image_memory']))
+                                          .image),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => OutfitInfo(jsonBody: jsonBody, index: index),
+                                      builder: (context) => OutfitInfo(
+                                          jsonBody: jsonBody, index: index),
                                     ));
                               },
                             ),
@@ -91,7 +99,6 @@ class _OutfitRenderState extends State<OutfitRender> {
           }
         }),
       ),
-
     );
   }
 

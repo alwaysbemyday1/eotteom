@@ -185,12 +185,7 @@ class _RandomOutfitState extends State<RandomOutfit> {
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5),
                       child: Text('이 코디 저장하기', style: TextStyle(fontSize: 14)),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => AddOutfit()));
-                      }),
+                      onPressed: () {}),
                 )
               ],
             )),

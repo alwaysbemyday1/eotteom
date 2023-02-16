@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'package:http/http.dart' as http;
 
+import 'model/clothes_model.dart';
 import 'model/user_model.dart';
 
 class SignInPage extends ChangeNotifier {
@@ -91,24 +92,30 @@ class EnrollClothes extends ChangeNotifier {
   }
 
 // Category
+  var bigCategoryNum = -1;
+  var smallCategoryNum = -1;
   var bigCategory = '선택해주세요';
   var smallCategory = '선택해주세요';
 
-  var categoryList = {
-    "상의": ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
-    "하의": ["청바지", "면바지", "체육복", "조거", "레깅스"],
-    "악세서리": ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
-    "신발": ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
-  };
+  var bigCategoryList = ["상의", "하의", "악세서리", "신발"];
+  var smallCategoryList = [
+    ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
+    ["청바지", "면바지", "체육복", "조거", "레깅스"],
+    ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
+    ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
+  ];
 
-  changeNumBigCategory(String newBigCategory) {
-    bigCategory = newBigCategory;
+  changeBigCategory(int newBigCategoryNum) {
+    bigCategoryNum = newBigCategoryNum;
+    bigCategory = bigCategoryList[newBigCategoryNum];
     smallCategory = '선택해주세요';
+    smallCategoryNum = -1;
     notifyListeners();
   }
 
-  changeNumSmallCategory(String newSmallCategory) {
-    smallCategory = newSmallCategory;
+  changeSmallCategory(int newSmallCategoryNum) {
+    smallCategoryNum = newSmallCategoryNum;
+    smallCategory = smallCategoryList[bigCategoryNum][newSmallCategoryNum];
     notifyListeners();
   }
 
@@ -204,6 +211,8 @@ class EnrollClothes extends ChangeNotifier {
     color = '';
     bigCategory = '선택해주세요';
     smallCategory = '선택해주세요';
+    bigCategoryNum = -1;
+    smallCategoryNum = -1;
   }
 }
 
@@ -328,12 +337,14 @@ class EnrollOutfit extends ChangeNotifier {
       'date': dateStr
     });
 
-    print(userId);
-    print(category);
-    print(name);
-    print(userId);
-    print(season);
     http.StreamedResponse response = await request.send();
+  }
+
+  // outfit 등록 할때 clothes
+  List<Clothes> newClothesList = [];
+  addClothes(Clothes newClothes) {
+    newClothesList.add(newClothes);
+    notifyListeners();
   }
 }
 

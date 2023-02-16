@@ -1,4 +1,4 @@
-import 'package:eotteom/tabs/myoutfit/enrolloufit/enroll.dart';
+import 'package:eotteom/tabs/myoutfit/enrolloufit/enroll_outfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
