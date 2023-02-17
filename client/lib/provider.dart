@@ -54,7 +54,7 @@ class Position extends ChangeNotifier {
 }
 
 class EnrollClothes extends ChangeNotifier {
-  // Layout
+  // Layout enroll clothes, enroll outfit
   double start = 0;
   setOffset(double db) {
     start = db;
@@ -315,14 +315,10 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
-  initEnrollOufit() {
-    resultImage = null;
-    name = '기본';
-    setFirstSeason();
-    category = '';
-    permission = false;
-  }
+  // outfit 등록 할때 clothes
+  File? croppedClothesImage;
 
+  // 서버에 코디 등록
   postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/outfits/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -340,11 +336,14 @@ class EnrollOutfit extends ChangeNotifier {
     http.StreamedResponse response = await request.send();
   }
 
-  // outfit 등록 할때 clothes
-  List<Clothes> newClothesList = [];
-  addClothes(Clothes newClothes) {
-    newClothesList.add(newClothes);
-    notifyListeners();
+  // 첫 초기화
+  initEnrollOufit() {
+    resultImage = null;
+    name = '기본';
+    setFirstSeason();
+    category = '';
+    permission = false;
+    croppedClothesImage = null;
   }
 }
 

@@ -20,9 +20,10 @@ import 'size_clothes.dart';
 import 'price_clothes.dart';
 
 class ClothesEnroll extends StatefulWidget {
-  ClothesEnroll({super.key, required this.flag});
+  ClothesEnroll({super.key, required this.flag, this.addClothes});
 
   int flag; // 0이면 그냥 등록, 1이면 코디에서 등록
+  var addClothes;
 
   @override
   State<ClothesEnroll> createState() => _ClothesEnrollState();
@@ -32,6 +33,10 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
   @override
   void initState() {
     context.read<EnrollClothes>().initEnrollClothes();
+    if (widget.flag == 1) {
+      context.read<EnrollClothes>().resultImage =
+          context.read<EnrollOutfit>().croppedClothesImage;
+    }
 
     super.initState();
   }
@@ -171,6 +176,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
           ),
           onPressed: () {
             changeFit(fitList[i]);
+            context.read<EnrollClothes>().changeFit(fitList[i]);
 
             // context.read<EnrollClothes>().changeFit(fitList[i]);
           }));
@@ -625,7 +631,10 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                   ClothesName()
                                 ])),
                       ),
-                      EnrollButton(ctx: context),
+                      EnrollButton(
+                          ctx: context,
+                          flag: widget.flag,
+                          addClothes: widget.addClothes),
                     ],
                   ),
                 ),

@@ -1,13 +1,15 @@
+import 'dart:io';
+
 class Clothes {
   final String brand;
-  final int bigCategory;
-  final int smallCategory;
+  final String bigCategory;
+  final String smallCategory;
   final String name;
   final String color;
   final String fit;
   final String price;
   final String size;
-  // final String picutre;
+  final File? picture;
 
   Clothes({
     required this.brand,
@@ -18,7 +20,7 @@ class Clothes {
     required this.fit,
     required this.price,
     required this.size,
-    // required this.picutre, //base64 인코드해서
+    this.picture,
   });
 
   factory Clothes.fromJson(Map<String, dynamic> json) {
@@ -45,7 +47,7 @@ class Clothes {
       "fit": fit,
       "price": price,
       "size": size,
-      // "picutre": picutre,
+      "picutre": picture,
     };
   }
 }

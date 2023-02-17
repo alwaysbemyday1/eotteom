@@ -1,3 +1,4 @@
+import 'package:eotteom/model/clothes_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,10 @@ import 'package:provider/provider.dart';
 import 'package:eotteom/provider.dart';
 
 class EnrollButton extends StatelessWidget {
-  EnrollButton({super.key, this.ctx});
+  EnrollButton({super.key, this.ctx, this.flag, this.addClothes});
   var ctx;
-
+  var flag;
+  var addClothes;
   @override
   Widget build(BuildContext context) {
     String userId = context.watch<UserProvider>().userId;
@@ -37,6 +39,18 @@ class EnrollButton extends StatelessWidget {
                       context.read<EnrollClothes>().postRequest(
                           context.read<UserProvider>().userId,
                           context.read<UserProvider>().tokenAccess);
+                      addClothes(Clothes(
+                          brand: context.read<EnrollClothes>().brand,
+                          bigCategory:
+                              context.read<EnrollClothes>().bigCategory,
+                          smallCategory:
+                              context.read<EnrollClothes>().smallCategory,
+                          name: context.read<EnrollClothes>().name,
+                          color: context.read<EnrollClothes>().color,
+                          fit: context.read<EnrollClothes>().fit,
+                          price: context.read<EnrollClothes>().priceStr,
+                          size: context.read<EnrollClothes>().size,
+                          picture: context.read<EnrollClothes>().resultImage));
                       Navigator.pop(ctx);
                     }),
               )
