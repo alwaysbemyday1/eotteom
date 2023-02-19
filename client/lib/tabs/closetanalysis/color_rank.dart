@@ -35,6 +35,7 @@ class _ColorRankState extends State<ColorRank> {
           List top = (colorCount.length > 2)
               ? colorCount.sublist(0, 3)
               : colorCount.sublist(0);
+          print(top);
           List other = (colorCount.length > 3) ? colorCount.sublist(3) : [];
           num total = totalCountColor(top);
           return Sizer(

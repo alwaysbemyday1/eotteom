@@ -5,10 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import "package:syncfusion_flutter_sliders/sliders.dart";
 import 'package:http/http.dart' as http;
+import "dart:convert";
 
 import 'model/user_model.dart';
+import "model/outfit_model.dart";
 
 class SignInPage extends ChangeNotifier {
   var page = 0;
@@ -367,12 +368,41 @@ class FilterProvider extends ChangeNotifier {
   bool labelcheck = true;
   int nowyear = DateTime.now().year.toInt();
   var select_date;
-  // var hightemperature;
-  // var lowtemperature;
-  var temperatures = SfRangeValues(0.0, 15.0);
 
-  List<String> outfitLabel = ["댄디룩", "스트릿룩", "캐쥬얼룩"];
-  List<bool> outfitLabelSelect = [true, true, true];
+  List<String> outfitLabel = [
+    "캐주얼",
+    "빈티지",
+    "페미닌",
+    "미니멀",
+    "레이어드",
+    "클래식",
+    "논코어",
+    "스트릿",
+    "모던",
+    "댄디",
+    "맥시멀",
+    "스포티",
+    "에스닉",
+    "아메리칸캐쥬얼",
+    "아방가르드"
+  ];
+  List<bool> outfitLabelSelect = [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ];
 
   List<String> seasonLabel = ["봄", "여름", "가을", "겨울"];
   List<bool> seasonLabelSelect = [true, true, true, true];
@@ -414,23 +444,43 @@ class FilterProvider extends ChangeNotifier {
 
   selectDate(value) {
     select_date = value;
+    print(select_date);
     notifyListeners();
   }
 
-  // setTemperature(value) {
-  //   temperatures = value;
-  //   hightemperature = value.end.toInt();
-  //   lowtemperature = value.start.toInt();
-  //   notifyListeners();
-  // }
-
   resetFilter() {
-    select_date.clear();
-    temperatures = SfRangeValues(0.0, 15.0);
-    // hightemperature = temperatures.end.toInt();
-    // lowtemperature = temperatures.start.toInt();
-    outfitLabelSelect = [true, true, true];
+    // select_date.clear();
+    outfitLabelSelect = [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ];
     notifyListeners();
+  }
+
+  List<String> getSelectOutfitLabelList() {
+    List<String> selectedOutfitlabellist = [];
+    for (int i = 0; i < outfitLabelSelect.length; i++) {
+      if (outfitLabelSelect[i] == true) {
+        selectedOutfitlabellist.add(outfitLabel[i]);
+      }
+    }
+    // print(selectedOutfitlabellist);
+    notifyListeners();
+    return selectedOutfitlabellist;
+    
   }
 
   changeSelectedDropdown(value) {
@@ -497,7 +547,6 @@ class ClothProvider extends ChangeNotifier {
   selectSecondIndex(int index) {
     setTrue(boolCallback(categories[firstindex]), index);
     secondindex = index;
-    print(whichCategory(firstindex, secondindex));
     notifyListeners();
   }
 
@@ -525,28 +574,28 @@ class AnalysisProvider extends ChangeNotifier {
   int categoryState = 0;
 
   Map<String, String> engtokrMap = {
-    "black" : "검정",
-    "darkgrey" : "다크그레이",
-    "grey" : "회색",
-    "white" : "흰색",
-    "ivory" : "아이보리",
-    "beige" : "베이지",
-    "red" : "빨강",
-    "pink" : "핑크",
-    "hotpink" : "핫핑크",
-    "brown" : "갈색",
-    "camel" : "카멜",
-    "orange" : "오렌지",
-    "yellow" : "노란색",
-    "olivegreen" : "올리브그린",
-    "olive" : "올리브",
-    "darkgreen" : "다크그린",
-    "green" : "녹색",
-    "blue" : "파란색",
-    "lightblue" : "라이트블루",
-    "navy" : "네이비",
-    "purple" : "보라색",
-    "skyblue" : "스카이블루"
+    "black": "검정",
+    "darkgrey": "다크그레이",
+    "grey": "회색",
+    "white": "흰색",
+    "ivory": "아이보리",
+    "beige": "베이지",
+    "red": "빨강",
+    "pink": "핑크",
+    "hotpink": "핫핑크",
+    "brown": "갈색",
+    "camel": "카멜",
+    "orange": "오렌지",
+    "yellow": "노란색",
+    "olivegreen": "올리브그린",
+    "olive": "올리브",
+    "darkgreen": "다크그린",
+    "green": "녹색",
+    "blue": "파란색",
+    "lightblue": "라이트블루",
+    "navy": "네이비",
+    "purple": "보라색",
+    "skyblue": "스카이블루"
   };
 
   Map<String, dynamic> palette = {
@@ -573,17 +622,17 @@ class AnalysisProvider extends ChangeNotifier {
     "olive": const Color(0xff6D6C3C),
     "darkgreen": const Color(0xff1B4221),
     "green": const Color(0xff5AC13C),
-    "blue" : const Color(0xff2410DC),
+    "blue": const Color(0xff2410DC),
     "lightblue": const LinearGradient(
         colors: [Color(0xffC9DEEF), Color(0xffA0CAF6)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "navy" : const LinearGradient(
+    "navy": const LinearGradient(
         colors: [Color(0xff1C2F57), Color(0xff4360BE)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter),
-    "purple" : const Color(0xff861CB2),
-    "skyblue" : const Color(0xff58C0E7)
+    "purple": const Color(0xff861CB2),
+    "skyblue": const Color(0xff58C0E7)
   };
 
   changePressed(int index) {
@@ -642,5 +691,37 @@ class AnalysisProvider extends ChangeNotifier {
       percent.add((d['count'] / totalSum * 100).toStringAsFixed(1));
     }
     return percent;
+  }
+}
+
+class OutfitModelProvider extends ChangeNotifier {
+  int count = 0;
+  List<dynamic> results = [];
+
+  setOutfitModelValueFromJson(OutfitModel outfitmodel) async {
+    count = outfitmodel.count;
+    results = outfitmodel.results;
+    notifyListeners();
+  }
+
+  Future<void> getOutfitModel(String userId, String tokenAccess) async {
+    // String userId = context.read<UserProvider>().userId;
+    // String tokenAccess = context.read<UserProvider>().tokenAccess;
+    String url = "http://127.0.0.1:8000/api/outfits/list/${userId}/";
+    http.Response response = await http.get(Uri.parse(url), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $tokenAccess',
+    });
+
+    if (response.statusCode == 200) {
+      var jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
+      OutfitModel outfitModel = OutfitModel.fromJson(jsonBody);
+      count = outfitModel.count;
+      results = outfitModel.results;
+      notifyListeners();
+    } else {
+      throw Exception("앨범 로딩 실패");
+    }
   }
 }

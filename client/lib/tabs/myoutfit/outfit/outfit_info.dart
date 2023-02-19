@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:eotteom/provider.dart';
 import "package:flutter/material.dart";
 import "package:sizer/sizer.dart";
 import "package:eotteom/style.dart";
 import "package:flutter_remix/flutter_remix.dart";
+import "package:provider/provider.dart";
+import "package:http/http.dart" as http;
 
 class OutfitInfo extends StatelessWidget {
   OutfitInfo({Key? key, this.jsonBody, this.index}) : super(key: key);
@@ -11,6 +14,31 @@ class OutfitInfo extends StatelessWidget {
   final index;
   @override
   Widget build(BuildContext context) {
+    Map<String, String> engtokrMap = {
+    "black" : "검정",
+    "darkgrey" : "다크그레이",
+    "grey" : "회색",
+    "white" : "흰색",
+    "ivory" : "아이보리",
+    "beige" : "베이지",
+    "red" : "빨강",
+    "pink" : "핑크",
+    "hotpink" : "핫핑크",
+    "brown" : "갈색",
+    "camel" : "카멜",
+    "orange" : "오렌지",
+    "yellow" : "노란색",
+    "olivegreen" : "올리브그린",
+    "olive" : "올리브",
+    "darkgreen" : "다크그린",
+    "green" : "녹색",
+    "blue" : "파란색",
+    "lightblue" : "라이트블루",
+    "navy" : "네이비",
+    "purple" : "보라색",
+    "skyblue" : "스카이블루"
+  };
+    String tokenAccess = context.watch<UserProvider>().tokenAccess;
     List<Padding> otheroutfitlist = _getotherOutfitlist(jsonBody, index);
     return Sizer(
       builder: (context, orientation, deviceType) {
@@ -134,61 +162,73 @@ class OutfitInfo extends StatelessWidget {
                         SizedBox(
                           height: 13,
                         ),
-                        SizedBox(
-                          height: 60.w,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                              itemBuilder: ((context, idx) {
-                                return SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8),
-                                        child: Container(
-                                          height: 30.75.w,
-                                          width: 25.6.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0)),
+                        FutureBuilder(
+                          future: _getoutfitClothes(tokenAccess, index),
+                          builder: ((context, snapshot) {
+                            if (snapshot.hasData == false) {
+                              return Text('운영진 문의 해주세요');
+                            } else {
+                              List outfitclothesjson = snapshot.data["results"] as List;
+                              return SizedBox(
+                            height: 60.w,
+                            child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: outfitclothesjson.length,
+                                itemBuilder: ((context, idx) {
+                                  return SizedBox(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 8),
+                                          child: Container(
+                                            height: 30.75.w,
+                                            width: 25.6.w,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: Image.memory(base64Decode(outfitclothesjson[idx]["image_memory"])).image
+                                              ),
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0)),
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 11,
-                                      ),
-                                      Text(
-                                        '상의 > 후디',
-                                        style: enrollTitleTheme2,
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '색상 : 핑크',
-                                            style: enrollHintTheme,
-                                          ),
-                                          Text(
-                                            '사이즈 : M',
-                                            style: enrollHintTheme,
-                                          ),
-                                          Text(
-                                            '핏 : 레귤러핏',
-                                            style: enrollHintTheme,
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                );
-                              })),
+                                        SizedBox(
+                                          height: 11,
+                                        ),
+                                        Text(
+                                          '${outfitclothesjson[idx]["major_category"]["name_ko"]} > ${outfitclothesjson[idx]["minor_category"]["name_ko"]}',
+                                          style: enrollTitleTheme2,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '색상 : ${engtokrMap[outfitclothesjson[idx]["color"]]}',
+                                              style: enrollHintTheme,
+                                            ),
+                                            Text(
+                                              '사이즈 : M',
+                                              style: enrollHintTheme,
+                                            ),
+                                            Text(
+                                              '핏 : 레귤러핏',
+                                              style: enrollHintTheme,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                })),
+                          );
+                            }
+                          })
                         )
                       ],
                     ),
@@ -258,5 +298,17 @@ class OutfitInfo extends StatelessWidget {
       }
     }
     return otheroutfitlist;
+  }
+
+  Future _getoutfitClothes(String tokenAccess, int index) async {
+    String url = "http://127.0.0.1:8000/api/outfits/${index+1}/clothes"; // id는 jsonBody index에 +1 더해줘야됨.
+    http.Response response = await http.get(Uri.parse(url), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${tokenAccess}',
+    });
+
+    var outfitjson = jsonDecode(utf8.decode(response.bodyBytes));    
+    return outfitjson;
   }
 }
