@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
 class MonthRangePick extends StatefulWidget {
-  const MonthRangePick({super.key});
+  MonthRangePick({Key? key}) : super(key: key);
 
   @override
   State<MonthRangePick> createState() => _MonthRangePickState();
@@ -19,11 +19,11 @@ class _MonthRangePickState extends State<MonthRangePick> {
       child: AbsorbPointer(
         absorbing: !(context.watch<FilterProvider>().datecheck),
         child: Container(
-          color: Color(0xffFFFFFF),
+          color: const Color(0xffFFFFFF),
           child: SfDateRangePicker(
             maxDate: DateTime.now(),
             selectionShape: DateRangePickerSelectionShape.rectangle,
-            headerStyle: DateRangePickerHeaderStyle(
+            headerStyle: const DateRangePickerHeaderStyle(
                 textAlign: TextAlign.center,
                 textStyle: TextStyle(
                     fontWeight: FontWeight.w700,
@@ -36,17 +36,17 @@ class _MonthRangePickState extends State<MonthRangePick> {
             allowViewNavigation: false,
             todayHighlightColor: Colors.black,
             startRangeSelectionColor: Colors.black,
-          endRangeSelectionColor: Colors.black,
-            selectionColor: Color(0xffFFFFFF),
-            yearCellStyle: DateRangePickerYearCellStyle(
+            endRangeSelectionColor: Colors.black,
+            selectionColor: const Color(0xff131313),
+            yearCellStyle: const DateRangePickerYearCellStyle(
               textStyle: TextStyle(color: Colors.black),
               todayTextStyle: TextStyle(color: Colors.black),
             ),
-            selectionTextStyle: TextStyle(
+            selectionTextStyle: const TextStyle(
                 fontFamily: "NotoSans",
                 fontSize: 14.0,
                 fontWeight: FontWeight.w700,
-                color: Color(0xff131313)),
+                color: Color(0xffFFFFFF)),
           ),
         ),
       ),
@@ -57,7 +57,7 @@ class _MonthRangePickState extends State<MonthRangePick> {
       DateRangePickerSelectionChangedArgs dateRangePickerSelectionChangedArgs) {
     context
         .read<FilterProvider>()
-        .selectDate(dateRangePickerSelectionChangedArgs);
+        .selectDate(dateRangePickerSelectionChangedArgs.value);
   }
 }
 

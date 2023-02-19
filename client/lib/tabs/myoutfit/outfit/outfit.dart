@@ -1,3 +1,4 @@
+import 'package:eotteom/provider.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/dropdown.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/filterbutton.dart';
 import 'package:eotteom/tabs/myoutfit/outfit/outfit_render.dart';
@@ -12,8 +13,8 @@ class Cody extends StatefulWidget {
 }
 
 class _CodyState extends State<Cody> {
+  List<String> labelSelect = [];
   @override
-  var dropdownlist = ['전체', "날짜", '계절', '날씨'];
   String selected_dropdown = "전체"; // 전체가 default
   // Default는 '전체'
   changeDropdown(String? newValue) {
@@ -24,6 +25,12 @@ class _CodyState extends State<Cody> {
 
   @override
   Widget build(BuildContext context) {
+    changeFilter(List<String> labelSelectChanged) {
+      setState(() {
+        labelSelect = labelSelectChanged;
+      });
+    }
+
     var buttonStyle = ButtonStyle(
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
@@ -70,7 +77,7 @@ class _CodyState extends State<Cody> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(right: 16),
-                        child: FilterButton())
+                        child: FilterButton(changeFilter: changeFilter))
                   ],
                 ),
               ],

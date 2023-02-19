@@ -12,7 +12,7 @@ Future<Map<String, dynamic>> requestGetApi(
   });
 
   // Parse response body
-  var jsonBody = json.decode(response.body);
+  var jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
 
   // Return json body
   return jsonBody;
