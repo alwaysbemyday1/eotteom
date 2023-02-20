@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
@@ -42,18 +44,50 @@ class _ClothesOufitState extends State<ClothesOufit> {
     '네이비',
     '퍼플',
   ];
-
-  List<Clothes> myClothesList = [];
-  List<Clothes> newClothesList = [];
-  addClothes(Clothes newClothes) {
+  List<String> bigCategoryList = ['상의', '하의', '아우터', '신발', '악세사리'];
+  Map<String, List<String>> smallCategoryList1 = {
+    '상의': ['니트', '맨투맨'],
+    '하의': ['청바지', '치마'],
+    '아우터': ['코트', '패딩'],
+    '신발': ['슬리퍼', '운동화'],
+    '악세사리': ['장갑', '가방']
+  };
+  List<String> smallCategoryList2 = [
+    '맨투맨',
+    '니트',
+    '청바지',
+    '치마',
+    '코트',
+    '패딩',
+    '운동화',
+    '슬리퍼',
+    '장갑',
+    '가방'
+  ];
+  List newClothesList = [];
+  addNewClothes(newClothes) {
     setState(() {
       newClothesList.add(newClothes);
     });
   }
 
-  getClothesList(List<Clothes> clothesList) {
+  List myClothesList = [];
+  addMyClothes(myClothes) {
+    setState(() {
+      myClothesList.add(myClothes);
+    });
+  }
+
+  removeMyClothes(index) {
+    setState(() {
+      myClothesList.removeAt(index);
+    });
+  }
+
+  getClothesList(List clothesList) {
     List<Container> childs = [];
     for (int i = 0; i < clothesList.length; i++) {
+      print(clothesList[i]['color']);
       childs.add(Container(
           width: 100.w - 32,
           height: 100,
@@ -64,8 +98,12 @@ class _ClothesOufitState extends State<ClothesOufit> {
                   height: 100,
                   width: 100,
                   margin: EdgeInsets.only(right: 14),
-                  child: Image.file(clothesList[i].picture!,
-                      height: 100, width: 100, fit: BoxFit.fill)),
+                  child: Image.memory(
+                    base64Decode(clothesList[i]['image_memory']),
+                    fit: BoxFit.fill,
+                    height: 100,
+                    width: 100,
+                  )),
               SizedBox(
                 width: 100.w - 32 - 100 - 14,
                 height: 100,
@@ -81,10 +119,14 @@ class _ClothesOufitState extends State<ClothesOufit> {
                           RichText(
                             text: TextSpan(children: [
                               TextSpan(
-                                  text: clothesList[i].smallCategory,
+                                  text: smallCategoryList2[clothesList[i]
+                                      ['minor_category']],
                                   style: enrollTitleTheme2),
                               TextSpan(
-                                  text: '(' + clothesList[i].bigCategory + ')',
+                                  text: '(' +
+                                      bigCategoryList[clothesList[i]
+                                          ['major_category']] +
+                                      ')',
                                   style: basicTextTheme)
                             ]),
                           ),
@@ -112,16 +154,16 @@ class _ClothesOufitState extends State<ClothesOufit> {
                         ],
                       ),
                     ),
-                    clothesList[i].color != ''
-                        ? Text('색상: ' + clothesList[i].color,
+                    clothesList[i]['color'] != ''
+                        ? Text('색상: ' + clothesList[i]['color'],
                             style: enrollHintTheme)
                         : Text('색상: -', style: enrollHintTheme),
-                    clothesList[i].size != ''
-                        ? Text('사이즈: ' + clothesList[i].size,
+                    clothesList[i]['size'] != ''
+                        ? Text('사이즈: ' + clothesList[i]['size'],
                             style: enrollHintTheme)
                         : Text('사이즈: -', style: enrollHintTheme),
-                    clothesList[i].fit != ''
-                        ? Text('핏: ' + clothesList[i].fit,
+                    clothesList[i]['fit'] != ''
+                        ? Text('핏: ' + clothesList[i]['fit'],
                             style: enrollHintTheme)
                         : Text('핏: -', style: enrollHintTheme),
                   ],
@@ -156,7 +198,10 @@ class _ClothesOufitState extends State<ClothesOufit> {
                             EdgeInsets.fromLTRB(0, 0, 0, 0))),
                     onPressed: () {
                       Navigator.of(context, rootNavigator: true).push(
-                          MaterialPageRoute(builder: (ctx) => SelectClothes()));
+                          MaterialPageRoute(
+                              builder: (ctx) => SelectClothes(
+                                  addMyClothes: addMyClothes,
+                                  removeMyClothes: removeMyClothes)));
                     },
                     child: Container(
                       width: (100.w - 32 - 40) / 6 * 3.5 + 24,
@@ -201,10 +246,12 @@ class _ClothesOufitState extends State<ClothesOufit> {
                   context.read<EnrollOutfit>().croppedClothesImage =
                       await context.read<EnrollOutfit>().cropImage(
                           imageFile: context.read<EnrollOutfit>().resultImage!);
-                  Navigator.of(context, rootNavigator: true).push(
-                      CupertinoPageRoute(
-                          builder: (ctx) =>
-                              ClothesEnroll(flag: 1, addClothes: addClothes)));
+                  Navigator.of(context, rootNavigator: true)
+                      .push(CupertinoPageRoute(
+                          builder: (ctx) => ClothesEnroll(
+                                flag: 1,
+                                addNewClothes: addNewClothes,
+                              )));
                 },
                 child: Container(
                   width: (100.w - 32),
@@ -261,6 +308,11 @@ class _ClothesOufitState extends State<ClothesOufit> {
               style: enrollTitleTheme2,
             ),
           ),
+          myClothesList.length != 0
+              ? Column(
+                  children: getClothesList(myClothesList),
+                )
+              : SizedBox(height: 0, width: 0),
         ]));
   }
 }

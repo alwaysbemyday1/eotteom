@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -166,6 +167,7 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  var postedClothes;
   postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -199,6 +201,9 @@ class EnrollClothes extends ChangeNotifier {
     }
 
     http.StreamedResponse response = await request.send();
+
+    var tmp = await http.Response.fromStream(response);
+    postedClothes = jsonDecode(tmp.body);
   }
 
   initEnrollClothes() {

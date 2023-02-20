@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:eotteom/model/clothes_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,22 +37,12 @@ class EnrollButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     child: Text('저장',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
-                    onPressed: () {
-                      context.read<EnrollClothes>().postRequest(
+                    onPressed: () async {
+                      await context.read<EnrollClothes>().postRequest(
                           context.read<UserProvider>().userId,
                           context.read<UserProvider>().tokenAccess);
-                      addClothes(Clothes(
-                          brand: context.read<EnrollClothes>().brand,
-                          bigCategory:
-                              context.read<EnrollClothes>().bigCategory,
-                          smallCategory:
-                              context.read<EnrollClothes>().smallCategory,
-                          name: context.read<EnrollClothes>().name,
-                          color: context.read<EnrollClothes>().color,
-                          fit: context.read<EnrollClothes>().fit,
-                          price: context.read<EnrollClothes>().priceStr,
-                          size: context.read<EnrollClothes>().size,
-                          picture: context.read<EnrollClothes>().resultImage));
+
+                      addClothes(context.read<EnrollClothes>().postedClothes);
                       Navigator.pop(ctx);
                     }),
               )
