@@ -167,7 +167,7 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
-  var postedClothes;
+  var postedClothes = null;
   postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -207,6 +207,7 @@ class EnrollClothes extends ChangeNotifier {
   }
 
   initEnrollClothes() {
+    postedClothes = null;
     resultImage = null;
     name = '';
     size = '';

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
@@ -10,16 +10,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:eotteom/model/clothes_model.dart';
 
 class ClothesOufit extends StatefulWidget {
-  ClothesOufit({super.key});
+  const ClothesOufit({super.key});
 
   @override
   State<ClothesOufit> createState() => _ClothesOufitState();
 }
 
 class _ClothesOufitState extends State<ClothesOufit> {
+  var clothesList = [];
+
+  Future getMyClothesList() async {
+    http.Response response = await http.get(
+        Uri.parse(
+            'http://127.0.0.1:8000/api/clothes/list/${context.read<UserProvider>().userId}/'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${context.read<UserProvider>().tokenAccess}',
+        });
+
+    var tmpClothesList = jsonDecode(response.body);
+    clothesList = tmpClothesList['results'];
+
+    return clothesList;
+  }
+
   var colorList = [
     '블랙',
     '다크그레이',
@@ -64,30 +81,14 @@ class _ClothesOufitState extends State<ClothesOufit> {
     '장갑',
     '가방'
   ];
+
   List newClothesList = [];
-  addNewClothes(newClothes) {
-    setState(() {
-      newClothesList.add(newClothes);
-    });
-  }
 
   List myClothesList = [];
-  addMyClothes(myClothes) {
-    setState(() {
-      myClothesList.add(myClothes);
-    });
-  }
-
-  removeMyClothes(index) {
-    setState(() {
-      myClothesList.removeAt(index);
-    });
-  }
 
   getClothesList(List clothesList) {
     List<Container> childs = [];
     for (int i = 0; i < clothesList.length; i++) {
-      print(clothesList[i]['color']);
       childs.add(Container(
           width: 100.w - 32,
           height: 100,
@@ -176,6 +177,12 @@ class _ClothesOufitState extends State<ClothesOufit> {
   }
 
   @override
+  void initState() {
+    getMyClothesList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
         width: 100.w - 32,
@@ -196,12 +203,22 @@ class _ClothesOufitState extends State<ClothesOufit> {
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all<EdgeInsets>(
                             EdgeInsets.fromLTRB(0, 0, 0, 0))),
-                    onPressed: () {
-                      Navigator.of(context, rootNavigator: true).push(
-                          MaterialPageRoute(
-                              builder: (ctx) => SelectClothes(
-                                  addMyClothes: addMyClothes,
-                                  removeMyClothes: removeMyClothes)));
+                    onPressed: () async {
+                      print('hi');
+                      print(clothesList);
+                      var result =
+                          await Navigator.of(context, rootNavigator: true)
+                              .push(MaterialPageRoute(
+                                  builder: (ctx) => SelectClothes(
+                                        myClothesList: myClothesList,
+                                        clothesList: clothesList,
+                                      )));
+
+                      if (result != null) {
+                        setState(() {
+                          myClothesList = result;
+                        });
+                      }
                     },
                     child: Container(
                       width: (100.w - 32 - 40) / 6 * 3.5 + 24,
@@ -246,12 +263,17 @@ class _ClothesOufitState extends State<ClothesOufit> {
                   context.read<EnrollOutfit>().croppedClothesImage =
                       await context.read<EnrollOutfit>().cropImage(
                           imageFile: context.read<EnrollOutfit>().resultImage!);
-                  Navigator.of(context, rootNavigator: true)
+                  var result = await Navigator.of(context, rootNavigator: true)
                       .push(CupertinoPageRoute(
                           builder: (ctx) => ClothesEnroll(
                                 flag: 1,
-                                addNewClothes: addNewClothes,
                               )));
+
+                  if (result != null) {
+                    setState(() {
+                      newClothesList.add(result);
+                    });
+                  }
                 },
                 child: Container(
                   width: (100.w - 32),

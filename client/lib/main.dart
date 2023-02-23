@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
             case 2:
               return CupertinoTabView(
                 builder: (context) {
-                  return Home();
+                  return const Home();
                 },
               );
             case 3:

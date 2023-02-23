@@ -20,10 +20,9 @@ import 'size_clothes.dart';
 import 'price_clothes.dart';
 
 class ClothesEnroll extends StatefulWidget {
-  ClothesEnroll({super.key, required this.flag, this.addNewClothes});
+  ClothesEnroll({super.key, required this.flag});
 
   int flag; // 0이면 그냥 등록, 1이면 코디에서 등록
-  var addNewClothes;
 
   @override
   State<ClothesEnroll> createState() => _ClothesEnrollState();
@@ -636,7 +635,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                       EnrollButton(
                           ctx: context,
                           flag: widget.flag,
-                          addClothes: widget.addNewClothes),
+                          ),
                     ],
                   ),
                 ),

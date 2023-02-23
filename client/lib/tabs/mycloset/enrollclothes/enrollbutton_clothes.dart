@@ -10,10 +10,10 @@ import 'package:provider/provider.dart';
 import 'package:eotteom/provider.dart';
 
 class EnrollButton extends StatelessWidget {
-  EnrollButton({super.key, this.ctx, this.flag, this.addClothes});
+  EnrollButton({super.key, this.ctx, this.flag});
   var ctx;
   var flag;
-  var addClothes;
+
   @override
   Widget build(BuildContext context) {
     String userId = context.watch<UserProvider>().userId;
@@ -42,8 +42,8 @@ class EnrollButton extends StatelessWidget {
                           context.read<UserProvider>().userId,
                           context.read<UserProvider>().tokenAccess);
 
-                      addClothes(context.read<EnrollClothes>().postedClothes);
-                      Navigator.pop(ctx);
+                      Navigator.pop(
+                          ctx, context.read<EnrollClothes>().postedClothes);
                     }),
               )
             : Container(

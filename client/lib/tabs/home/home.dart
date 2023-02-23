@@ -14,12 +14,22 @@ import 'otherOutfit.dart';
 import 'randomOutfit.dart';
 import 'weatherOutfit.dart';
 
-class Home extends StatelessWidget {
-  Home({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   // var clothesDetail;
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+    print('home');
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
           border: Border(bottom: BorderSide(color: Colors.transparent)),
