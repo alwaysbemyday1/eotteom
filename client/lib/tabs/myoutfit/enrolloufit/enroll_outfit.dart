@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 
@@ -17,16 +19,32 @@ import 'permission_outfit.dart';
 import 'picture_outfit.dart';
 
 class OutfitEnroll extends StatefulWidget {
-  const OutfitEnroll({super.key});
-
+  OutfitEnroll({super.key, this.clothesList, this.myClothesList});
+  var clothesList;
+  var myClothesList;
   @override
   State<OutfitEnroll> createState() => _OutfitEnrollState();
 }
 
 class _OutfitEnrollState extends State<OutfitEnroll> {
+  int flag = -1; // 0: 사진으로 코디 등록, 1: 옷으로 코디 등록
+  List myClothesList = [];
+
+  setMyClothesList(result) {
+    setState(() {
+      myClothesList = result;
+    });
+  }
+
   @override
   void initState() {
     context.read<EnrollOutfit>().initEnrollOufit();
+    flag = context.read<EnrollOutfit>().resultImage == null ? 1 : 0;
+
+    if (widget.myClothesList != null) {
+      setMyClothesList(widget.myClothesList);
+      print(widget.myClothesList);
+    }
     super.initState();
   }
 
@@ -75,7 +93,8 @@ class _OutfitEnrollState extends State<OutfitEnroll> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Picture(),
+                                  Picture(
+                                      flag: flag, myClothesList: myClothesList),
                                   Codi_Name(),
                                   // Category
                                   Container(
@@ -117,7 +136,11 @@ class _OutfitEnrollState extends State<OutfitEnroll> {
                                       thickness: 8,
                                     ),
                                   ),
-                                  ClothesOufit()
+                                  ClothesOufit(
+                                    setMyClothesList: setMyClothesList,
+                                    clothesList: widget.clothesList,
+                                    myClothesList: myClothesList,
+                                  )
                                 ])),
                       ),
                       EnrollButton(ctx: context)

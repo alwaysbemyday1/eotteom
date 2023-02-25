@@ -57,9 +57,6 @@ class _ClothesListViewState extends State<ClothesListView> {
 
   @override
   void initState() {
-    print('clothesList' + widget.clothesList);
-    getFilteredList(widget.bigCategory, widget.smallCategory);
-    print('filteredList' + filteredList.toString());
     super.initState();
   }
 

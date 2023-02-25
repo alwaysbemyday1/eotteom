@@ -10,16 +10,18 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-class SelectClothes extends StatefulWidget {
-  SelectClothes({super.key, required this.myClothesList, this.clothesList});
+import 'enroll_outfit.dart';
+
+class SelectClothes2 extends StatefulWidget {
+  SelectClothes2({super.key, required this.myClothesList, this.clothesList});
   var myClothesList;
   var clothesList;
 
   @override
-  State<SelectClothes> createState() => _SelectClothesState();
+  State<SelectClothes2> createState() => _SelectClothes2State();
 }
 
-class _SelectClothesState extends State<SelectClothes> {
+class _SelectClothes2State extends State<SelectClothes2> {
   List<String> bigCategoryList = ['상의', '하의', '아우터', '신발', '악세사리'];
   Map<String, List<String>> smallCategoryList1 = {
     '상의': ['니트', '맨투맨'],
@@ -387,8 +389,16 @@ class _SelectClothesState extends State<SelectClothes> {
                                               fontSize: 16,
                                               color: Colors.white)),
                                       onPressed: () {
-                                        Navigator.pop(
-                                            context, widget.myClothesList);
+                                        Navigator.of(context,
+                                                rootNavigator: true)
+                                            .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    OutfitEnroll(
+                                                      clothesList:
+                                                          widget.clothesList,
+                                                      myClothesList:
+                                                          widget.myClothesList,
+                                                    )));
                                       }),
                                 )
                               : Container(

@@ -344,7 +344,6 @@ class EnrollOutfit extends ChangeNotifier {
 
   // 첫 초기화
   initEnrollOufit() {
-    resultImage = null;
     name = '기본';
     setFirstSeason();
     category = '';

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
@@ -12,31 +12,17 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ClothesOufit extends StatefulWidget {
-  const ClothesOufit({super.key});
+  ClothesOufit(
+      {super.key, this.setMyClothesList, this.clothesList, this.myClothesList});
+  var setMyClothesList;
+  var clothesList;
+  var myClothesList;
 
   @override
   State<ClothesOufit> createState() => _ClothesOufitState();
 }
 
 class _ClothesOufitState extends State<ClothesOufit> {
-  var clothesList = [];
-
-  Future getMyClothesList() async {
-    http.Response response = await http.get(
-        Uri.parse(
-            'http://127.0.0.1:8000/api/clothes/list/${context.read<UserProvider>().userId}/'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ${context.read<UserProvider>().tokenAccess}',
-        });
-
-    var tmpClothesList = jsonDecode(response.body);
-    clothesList = tmpClothesList['results'];
-
-    return clothesList;
-  }
-
   var colorList = [
     '블랙',
     '다크그레이',
@@ -178,7 +164,9 @@ class _ClothesOufitState extends State<ClothesOufit> {
 
   @override
   void initState() {
-    getMyClothesList();
+    setState(() {
+      myClothesList = widget.myClothesList;
+    });
     super.initState();
   }
 
@@ -204,20 +192,19 @@ class _ClothesOufitState extends State<ClothesOufit> {
                         padding: MaterialStateProperty.all<EdgeInsets>(
                             EdgeInsets.fromLTRB(0, 0, 0, 0))),
                     onPressed: () async {
-                      print('hi');
-                      print(clothesList);
                       var result =
                           await Navigator.of(context, rootNavigator: true)
                               .push(MaterialPageRoute(
                                   builder: (ctx) => SelectClothes(
                                         myClothesList: myClothesList,
-                                        clothesList: clothesList,
+                                        clothesList: widget.clothesList,
                                       )));
 
                       if (result != null) {
                         setState(() {
                           myClothesList = result;
                         });
+                        widget.setMyClothesList(result);
                       }
                     },
                     child: Container(
