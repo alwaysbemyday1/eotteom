@@ -4,7 +4,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('api/clothes', views.ClothesViewSet)
-router.register('api/clothes/bulk/', views.ClothesBulkView.as_view())
+# router.register('api/clothes/bulk/', views.ClothesBulkView.as_view(), basename='bulk_read_delete')
 
 urlpatterns = [
     path('', include(router.urls)),
