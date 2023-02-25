@@ -1,8 +1,10 @@
 from django.db.models import Count
+from django.shortcuts import get_object_or_404
 
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Clothes, MajorCategory, MinorCategory
@@ -157,3 +159,18 @@ class ClothesViewSet(ModelViewSet):
             'count': count
         }
         return Response(data)
+
+
+class ClothesBulkView(APIView):
+    def get(self, request, pk_ids):
+        print(pk_ids)
+        ids = [int(pk) for pk in pk_ids.split(',')]
+        contactObject = Clothes.objects.filter(id__in=ids)
+        serializeContactObject = ClothesSerializer(contactObject, many=True)
+        return Response(serializeContactObject.data)
+
+    def delete(self, request, pk_ids):
+        ids = [int(pk) for pk in pk_ids.split(',')]
+        for i in ids:
+            get_object_or_404(Clothes, pk=i).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
