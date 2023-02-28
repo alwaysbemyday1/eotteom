@@ -50,11 +50,7 @@ CORS_ORIGIN_WHITELIST = [
 
 SITE_ID = 1
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','10.0.2.2']
-=======
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.2.2']
->>>>>>> b9ec73bacc9ec15760b167e8ba0507a70c1db493
 
 
 # Application definition
