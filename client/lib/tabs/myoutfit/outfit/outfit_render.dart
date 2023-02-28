@@ -15,7 +15,7 @@ class OutfitRender extends StatefulWidget {
 }
 
 class _OutfitRenderState extends State<OutfitRender> {
-  List<bool> liked = [false, false, false, false, false, false];
+  List<bool> liked = [false, false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     print("outfit render widget 만들어짐");
@@ -44,7 +44,8 @@ class _OutfitRenderState extends State<OutfitRender> {
                 width: 100.w - 32,
                 child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
+
+                    // shrinkWrap: true,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
@@ -73,7 +74,9 @@ class _OutfitRenderState extends State<OutfitRender> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => OutfitInfo(
-                                          jsonBody: jsonBody, index: filteredOutfitlist[index]["id"]),
+                                          jsonBody: jsonBody,
+                                          index: filteredOutfitlist[index]
+                                              ["id"]),
                                     ));
                               },
                             ),
@@ -128,7 +131,8 @@ class _OutfitRenderState extends State<OutfitRender> {
     List<String> selectedOutfitlabellist =
         Provider.of<FilterProvider>(context, listen: false)
             .getSelectOutfitLabelList();
-    if ((selectedOutfitlabellist.isEmpty == true) | (selectedOutfitlabellist.length == 15)) {
+    if ((selectedOutfitlabellist.isEmpty == true) |
+        (selectedOutfitlabellist.length == 15)) {
       return outfitList; // 그대로 반환
     } else {
       for (var outfit in outfitList) {

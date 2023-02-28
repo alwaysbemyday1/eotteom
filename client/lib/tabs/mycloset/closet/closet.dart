@@ -63,7 +63,7 @@ class _ClosetState extends State<Closet> {
                     }),
               ),
               SelectCategory(),
-              // ClothRender(),
+              ClothRender(),
             ],
           ),
         );

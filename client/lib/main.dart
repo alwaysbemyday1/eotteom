@@ -21,6 +21,8 @@ void main() {
         ChangeNotifierProvider(create: (c) => EnrollClothes()),
         ChangeNotifierProvider(create: (c) => EnrollOutfit()),
         ChangeNotifierProvider(create: (c) => UserProvider()),
+        ChangeNotifierProvider(create: (c) => ClothProvider()),
+        ChangeNotifierProvider(create: (c) => FilterProvider()),
         ChangeNotifierProvider(create: (c) => OutfitModelProvider())
       ],
       child: const CupertinoApp(
@@ -50,7 +52,7 @@ class _EotteomState extends State<Eotteom> {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,7 @@ class MyApp extends StatelessWidget {
             case 2:
               return CupertinoTabView(
                 builder: (context) {
-                  return Home();
+                  return const Home();
                 },
               );
             case 3:

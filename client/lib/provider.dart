@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import "dart:convert";
 
+import 'model/clothes_model.dart';
 import 'model/user_model.dart';
 import "model/outfit_model.dart";
 
@@ -54,7 +56,7 @@ class Position extends ChangeNotifier {
 }
 
 class EnrollClothes extends ChangeNotifier {
-  // Layout
+  // Layout enroll clothes, enroll outfit
   double start = 0;
   setOffset(double db) {
     start = db;
@@ -92,24 +94,30 @@ class EnrollClothes extends ChangeNotifier {
   }
 
 // Category
+  var bigCategoryNum = -1;
+  var smallCategoryNum = -1;
   var bigCategory = '선택해주세요';
   var smallCategory = '선택해주세요';
 
-  var categoryList = {
-    "상의": ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
-    "하의": ["청바지", "면바지", "체육복", "조거", "레깅스"],
-    "악세서리": ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
-    "신발": ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
-  };
+  var bigCategoryList = ["상의", "하의", "악세서리", "신발"];
+  var smallCategoryList = [
+    ["니트", "맨투맨", "후디", "셔츠", "티셔츠"],
+    ["청바지", "면바지", "체육복", "조거", "레깅스"],
+    ["목도리", "귀걸이", "목걸이", "장갑", "몽둥이"],
+    ["운동화", "구두", "슬리퍼", "스니커즈", "맨발"]
+  ];
 
-  changeNumBigCategory(String newBigCategory) {
-    bigCategory = newBigCategory;
+  changeBigCategory(int newBigCategoryNum) {
+    bigCategoryNum = newBigCategoryNum;
+    bigCategory = bigCategoryList[newBigCategoryNum];
     smallCategory = '선택해주세요';
+    smallCategoryNum = -1;
     notifyListeners();
   }
 
-  changeNumSmallCategory(String newSmallCategory) {
-    smallCategory = newSmallCategory;
+  changeSmallCategory(int newSmallCategoryNum) {
+    smallCategoryNum = newSmallCategoryNum;
+    smallCategory = smallCategoryList[bigCategoryNum][newSmallCategoryNum];
     notifyListeners();
   }
 
@@ -160,6 +168,7 @@ class EnrollClothes extends ChangeNotifier {
     notifyListeners();
   }
 
+  var postedClothes = null;
   postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/clothes/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -193,9 +202,13 @@ class EnrollClothes extends ChangeNotifier {
     }
 
     http.StreamedResponse response = await request.send();
+
+    var tmp = await http.Response.fromStream(response);
+    postedClothes = jsonDecode(tmp.body);
   }
 
   initEnrollClothes() {
+    postedClothes = null;
     resultImage = null;
     name = '';
     size = '';
@@ -205,6 +218,8 @@ class EnrollClothes extends ChangeNotifier {
     color = '';
     bigCategory = '선택해주세요';
     smallCategory = '선택해주세요';
+    bigCategoryNum = -1;
+    smallCategoryNum = -1;
   }
 }
 
@@ -307,14 +322,10 @@ class EnrollOutfit extends ChangeNotifier {
     notifyListeners();
   }
 
-  initEnrollOufit() {
-    resultImage = null;
-    name = '기본';
-    setFirstSeason();
-    category = '';
-    permission = false;
-  }
+  // outfit 등록 할때 clothes
+  File? croppedClothesImage;
 
+  // 서버에 코디 등록
   postRequest(String userId, String tokenAccess) async {
     String url = 'http://127.0.0.1:8000/api/outfits/';
     var request = http.MultipartRequest('POST', Uri.parse(url));
@@ -329,12 +340,16 @@ class EnrollOutfit extends ChangeNotifier {
       'date': dateStr
     });
 
-    print(userId);
-    print(category);
-    print(name);
-    print(userId);
-    print(season);
     http.StreamedResponse response = await request.send();
+  }
+
+  // 첫 초기화
+  initEnrollOufit() {
+    name = '기본';
+    setFirstSeason();
+    category = '';
+    permission = false;
+    croppedClothesImage = null;
   }
 }
 

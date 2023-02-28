@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:eotteom/provider.dart';
 import 'package:eotteom/style.dart';
 import 'package:eotteom/tabs/mycloset/enrollclothes/name_clothes.dart';
@@ -18,7 +20,9 @@ import 'size_clothes.dart';
 import 'price_clothes.dart';
 
 class ClothesEnroll extends StatefulWidget {
-  ClothesEnroll({super.key});
+  ClothesEnroll({super.key, required this.flag});
+
+  int flag; // 0이면 그냥 등록, 1이면 코디에서 등록
 
   @override
   State<ClothesEnroll> createState() => _ClothesEnrollState();
@@ -28,6 +32,10 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
   @override
   void initState() {
     context.read<EnrollClothes>().initEnrollClothes();
+    if (widget.flag == 1) {
+      context.read<EnrollClothes>().resultImage =
+          context.read<EnrollOutfit>().croppedClothesImage;
+    }
 
     super.initState();
   }
@@ -168,6 +176,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
           ),
           onPressed: () {
             changeFit(fitList[i]);
+            context.read<EnrollClothes>().changeFit(fitList[i]);
 
             // context.read<EnrollClothes>().changeFit(fitList[i]);
           }));
@@ -245,6 +254,8 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                 middle: Text('옷 등록', style: enrollTitleTheme),
               ),
               child: SafeArea(
+                left: false,
+                right: false,
                 top: false,
                 bottom: false,
                 child: Container(
@@ -335,9 +346,7 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                                     flag: true,
                                                     categoryList: context
                                                         .watch<EnrollClothes>()
-                                                        .categoryList
-                                                        .keys
-                                                        .toList(),
+                                                        .bigCategoryList,
                                                   )),
                                               Container(
                                                   alignment: Alignment.center,
@@ -370,11 +379,11 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                                         ? context
                                                                 .watch<
                                                                     EnrollClothes>()
-                                                                .categoryList[
+                                                                .smallCategoryList[
                                                             context
                                                                 .watch<
                                                                     EnrollClothes>()
-                                                                .bigCategory]
+                                                                .bigCategoryNum]
                                                         : ['대분류를 먼저 선택해주세요'],
                                                   ))
                                             ]),
@@ -629,7 +638,10 @@ class _ClothesEnrollState extends State<ClothesEnroll> {
                                   ClothesName()
                                 ])),
                       ),
-                      EnrollButton(ctx: context),
+                      EnrollButton(
+                          ctx: context,
+                          flag: widget.flag,
+                          ),
                     ],
                   ),
                 ),
@@ -683,7 +695,7 @@ class _PopupMenuState extends State<PopupMenu> {
               : context.read<EnrollClothes>().smallCategory) !=
           widget.categoryList[i]) {
         childs.add(PopupMenuItem<String>(
-          value: widget.categoryList[i],
+          value: i.toString(),
           height: 44,
           child: Container(
               height: 44,
@@ -728,14 +740,20 @@ class _PopupMenuState extends State<PopupMenu> {
                   )
                 ],
               )),
-          onSelected: (String category) {
+          onSelected: (String categoryNum) {
             if (widget.flag == true) {
-              if (category != context.read<EnrollClothes>().bigCategory) {
-                context.read<EnrollClothes>().changeNumBigCategory(category);
+              if (widget.categoryList[int.parse(categoryNum)] !=
+                  context.read<EnrollClothes>().bigCategory) {
+                context
+                    .read<EnrollClothes>()
+                    .changeBigCategory(int.parse(categoryNum));
               }
             } else {
-              if (category != context.read<EnrollClothes>().smallCategory) {
-                context.read<EnrollClothes>().changeNumSmallCategory(category);
+              if (widget.categoryList[int.parse(categoryNum)] !=
+                  context.read<EnrollClothes>().smallCategory) {
+                context
+                    .read<EnrollClothes>()
+                    .changeSmallCategory(int.parse(categoryNum));
               }
             }
           },

@@ -1,15 +1,18 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
+import 'package:eotteom/model/clothes_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sizer/sizer.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:provider/provider.dart';
 import 'package:eotteom/provider.dart';
 
 class EnrollButton extends StatelessWidget {
-  EnrollButton({super.key, this.ctx});
+  EnrollButton({super.key, this.ctx, this.flag});
   var ctx;
+  var flag;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +37,13 @@ class EnrollButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     child: Text('저장',
                         style: TextStyle(fontSize: 16, color: Colors.white)),
-                    onPressed: () {
-                      context.read<EnrollClothes>().postRequest(
+                    onPressed: () async {
+                      await context.read<EnrollClothes>().postRequest(
                           context.read<UserProvider>().userId,
                           context.read<UserProvider>().tokenAccess);
-                      Navigator.pop(ctx);
+
+                      Navigator.pop(
+                          ctx, context.read<EnrollClothes>().postedClothes);
                     }),
               )
             : Container(

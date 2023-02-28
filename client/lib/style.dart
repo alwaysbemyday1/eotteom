@@ -22,7 +22,7 @@ var basicTextTheme = TextStyle(
 var basicTextTheme2 = TextStyle(
     fontSize: 16,
     fontFamily: "NotoSans",
-    color: Colors.black,
+    color: Color(0xff131313),
     fontWeight: FontWeight.w400,
     height: 1.3);
 
