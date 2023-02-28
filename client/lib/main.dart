@@ -22,7 +22,8 @@ void main() {
         ChangeNotifierProvider(create: (c) => EnrollOutfit()),
         ChangeNotifierProvider(create: (c) => UserProvider()),
         ChangeNotifierProvider(create: (c) => ClothProvider()),
-        ChangeNotifierProvider(create: (c) => FilterProvider())
+        ChangeNotifierProvider(create: (c) => FilterProvider()),
+        ChangeNotifierProvider(create: (c) => OutfitModelProvider())
       ],
       child: const CupertinoApp(
         localizationsDelegates: [

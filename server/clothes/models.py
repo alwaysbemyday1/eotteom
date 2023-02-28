@@ -1,8 +1,5 @@
 from django.db import models
 from django.utils import timezone
-import uuid
-
-from core.models import User
 
 class MajorCategory(models.Model):
     id = models.AutoField(primary_key=True)
@@ -26,16 +23,16 @@ class Clothes(models.Model):
     FIT_CHOICES = (('슬림핏', '슬림핏'), ('레귤러핏', '레귤러핏'), ('오버핏', '오버핏'))
 
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, db_column="user_id", on_delete=models.CASCADE)
+    user = models.ForeignKey('core.User', db_column="user_id", on_delete=models.CASCADE, related_name='clothes')
     name = models.CharField(max_length=255)
     image = models.ImageField(null=True)
-    major_category = models.ForeignKey(MajorCategory, on_delete=models.PROTECT)
-    minor_category = models.ForeignKey(MinorCategory, on_delete=models.PROTECT)
+    major_category = models.ForeignKey('clothes.MajorCategory', on_delete=models.PROTECT, related_name='clothes')
+    minor_category = models.ForeignKey('clothes.MinorCategory', on_delete=models.PROTECT, related_name='clothes')
     brand = models.CharField(max_length=255, blank=True)
     color = models.CharField(max_length=255, blank=True)
     fit = models.CharField(max_length=255, choices=FIT_CHOICES, blank=True)
     size = models.CharField(max_length=255, choices=SIZE_CHOICES, blank=True)
-    likes = models.IntegerField(default=0)
+    likes = models.ManyToManyField('core.User', blank=True, related_name='liked_clothes')
     price = models.DecimalField(max_digits=10,decimal_places=2, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     is_public = models.BooleanField(default=True)

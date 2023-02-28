@@ -1,24 +1,26 @@
+import 'package:eotteom/provider.dart';
+import "package:provider/provider.dart";
+import 'package:eotteom/tabs/myoutfit/outfit/outfitlabel.dart';
 import "package:flutter/material.dart";
 import "package:eotteom/tabs/myoutfit/outfit/checkbox.dart";
-import 'package:eotteom/tabs/myoutfit/outfit/seasonlabel.dart';
 import 'package:sizer/sizer.dart';
 import "daterangepicker.dart";
 import "package:flutter_remix/flutter_remix.dart";
 
-var buttonStyle = ButtonStyle(
+ButtonStyle buttonStyle = ButtonStyle(
     shape: MaterialStateProperty.all(RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18.0),
         side: BorderSide(color: Colors.black))));
 
-var searchbuttonStyle = ButtonStyle(
+ButtonStyle searchbuttonStyle = ButtonStyle(
     shape: MaterialStateProperty.all(RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18.0),
         side: BorderSide(color: Colors.black))),
     backgroundColor: MaterialStateProperty.all(Colors.black));
 
 class FilterButton extends StatefulWidget {
-  const FilterButton({super.key});
-
+  FilterButton({Key? key, this.changeFilter}) : super(key: key);
+  final changeFilter;
   @override
   State<FilterButton> createState() => _FilterButtonState();
 }
@@ -55,9 +57,9 @@ class _FilterButtonState extends State<FilterButton> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 30, top: 27),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 30, top: 27),
                                         child: Text(
                                           '필터',
                                           style: TextStyle(
@@ -69,7 +71,8 @@ class _FilterButtonState extends State<FilterButton> {
                                         padding: const EdgeInsets.only(
                                             right: 32, top: 32),
                                         child: IconButton(
-                                          icon: Icon(FlutterRemix.close_fill,
+                                          icon: const Icon(
+                                              FlutterRemix.close_fill,
                                               size: 24),
                                           onPressed: () {
                                             Navigator.pop(context);
@@ -78,10 +81,10 @@ class _FilterButtonState extends State<FilterButton> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 23,
                                   ),
-                                  Divider(
+                                  const Divider(
                                     thickness: 1,
                                     color: Color(0xffCACACA),
                                   ),
@@ -93,6 +96,17 @@ class _FilterButtonState extends State<FilterButton> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         CheckboxWeather(),
+                                        IconButton(
+                                          icon: const Icon(
+                                              FlutterRemix.refresh_line),
+                                          onPressed: () {
+                                            setState(() {
+                                              context
+                                                  .read<FilterProvider>()
+                                                  .resetFilter();
+                                            });
+                                          },
+                                        )
                                       ],
                                     ),
                                   ),
@@ -111,18 +125,12 @@ class _FilterButtonState extends State<FilterButton> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 20),
-                                    child: CheckboxTemperature(),
+                                    child: CheckboxLabel(),
                                   ),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.only(
-                                  //       left: 20, right: 20),
-                                  //   child: TemperaturePicker(),
-                                  // ),
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 24, right: 24),
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Align(
-                                      child: SeasonLabel(),
+                                      child: OutfitLabel(),
                                       alignment: Alignment.center,
                                     ),
                                   ),
@@ -138,9 +146,11 @@ class _FilterButtonState extends State<FilterButton> {
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(22))),
-                                        onPressed: () {},
-
-                                        /// django 서버로 조건에 맞게 데이터 전송하는 비동기함수 구현 예정
+                                        onPressed: () {
+                                          List<String> changeSelectedFilter = Provider.of<FilterProvider>(context, listen: false).getSelectOutfitLabelList();
+                                          widget.changeFilter(changeSelectedFilter);
+                                          Navigator.of(context).pop();
+                                        },
                                         child: Text(
                                           '검색',
                                           style: TextStyle(
@@ -150,6 +160,9 @@ class _FilterButtonState extends State<FilterButton> {
                                         ),
                                       ),
                                     ),
+                                  ),
+                                  SizedBox(
+                                    height: 75,
                                   )
                                 ],
                               ),

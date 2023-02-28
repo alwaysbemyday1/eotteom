@@ -1,13 +1,15 @@
 from django.db.models import Count
+from django.shortcuts import get_object_or_404
 
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Clothes, MajorCategory, MinorCategory
 from .serializers import ClothesSerializer, ClothesRetrieveSerializer
+from outfits.serializers import OutfitSerializer
 
 # Create your views here.
 class ClothesViewSet(ModelViewSet):
@@ -18,6 +20,18 @@ class ClothesViewSet(ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return ClothesRetrieveSerializer
         return ClothesSerializer
+
+    @action(detail=True, methods=['get'], url_path=r'outfits')
+    def outfit_of_clothes(self, request, pk):
+        clothes_object = self.get_object()
+        queryset = clothes_object.in_outfit.all()
+        count = queryset.count()
+        serializer = OutfitSerializer(queryset, context=self.get_serializer_context(), many=True)
+        data = {
+            "count": count,
+            "results": serializer.data
+        }
+        return Response(data)
 
     @action(detail=False, methods=['get'], url_path=r'list/(?P<user_id>[^/.]+)')
     def user_clothes(self, request, user_id):
@@ -127,4 +141,36 @@ class ClothesViewSet(ModelViewSet):
                 "brand_count" : brand_count,
             }
             return Response(data)   
+    
+    @action(detail=True, methods=['get'], url_path=r'likes')
+    def clothes_likes(self, request, pk):
+        user = request.user
+        instance = self.get_object()
+        likes = instance.likes
+        
+        if user in likes.all():
+            likes.remove(user)
+        else:
+            likes.add(user)
 
+        instance.save()
+        count = instance.likes.count()
+        data = {
+            'count': count
+        }
+        return Response(data)
+
+
+class ClothesBulkView(APIView):
+    def get(self, request, pk_ids):
+        print(pk_ids)
+        ids = [int(pk) for pk in pk_ids.split(',')]
+        contactObject = Clothes.objects.filter(id__in=ids)
+        serializeContactObject = ClothesSerializer(contactObject, many=True)
+        return Response(serializeContactObject.data)
+
+    def delete(self, request, pk_ids):
+        ids = [int(pk) for pk in pk_ids.split(',')]
+        for i in ids:
+            get_object_or_404(Clothes, pk=i).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

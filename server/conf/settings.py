@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import os
+import os, json
 from pathlib import Path
 from datetime import timedelta
 
@@ -20,21 +20,41 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+from django.core.exceptions import ImproperlyConfigured
+
+# SECRET_KEY 파일 위치
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+# secrets.json 파일에서 SECRET_KEY 가져오기    
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5f4noj#qe0qgodhe(5xgclmqf2)byxds5$2e84)83a1s-i66=a'
+SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
     'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://10.0.2.2:8000',
 ]
 
 SITE_ID = 1
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','10.0.2.2']
+=======
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.2.2']
+>>>>>>> b9ec73bacc9ec15760b167e8ba0507a70c1db493
 
 
 # Application definition
@@ -99,12 +119,7 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = get_secret('DATABASES')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

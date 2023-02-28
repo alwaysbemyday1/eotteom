@@ -51,3 +51,21 @@ class OutfitViewSet(ModelViewSet):
             "results" : serializer.data
         }
         return Response(data)
+
+    @action(detail=True, methods=['get'], url_path=r'likes')
+    def outfit_likes(self, request, pk):
+        user = request.user
+        instance = self.get_object()
+        likes = instance.likes
+        
+        if user in likes.all():
+            likes.remove(user)
+        else:
+            likes.add(user)
+
+        instance.save()
+        count = instance.likes.count()
+        data = {
+            'count': count
+        }
+        return Response(data)
