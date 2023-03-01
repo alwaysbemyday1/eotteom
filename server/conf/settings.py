@@ -40,17 +40,15 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://10.0.2.2:8000',
+    'http://eotteom-env.eba-chyvzmm7.ap-northeast-1.elasticbeanstalk.com/',
 ]
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.2.2']
+ALLOWED_HOSTS = ['http://eotteom-env.eba-chyvzmm7.ap-northeast-1.elasticbeanstalk.com/']
 
 
 # Application definition
