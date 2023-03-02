@@ -42,7 +42,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-CORS_ORIGIN_WHITELIST = ['eotteomserver-env.eba-xbyaqmpb.ap-northeast-2.elasticbeanstalk.com']
+CORS_ORIGIN_WHITELIST = ['https://eotteomserver-env.eba-xbyaqmpb.ap-northeast-2.elasticbeanstalk.com']
 
 SITE_ID = 1
 
@@ -201,9 +201,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
         # 'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
