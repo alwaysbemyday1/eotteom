@@ -141,7 +141,18 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = get_secret('DATABASES')
+def get_db():
+    try:
+        return get_secret('DATABASES')
+    except:
+        return {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': 'db.sqlite3',
+            }
+        }
+
+DATABASES = get_db()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
