@@ -42,13 +42,11 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-CORS_ORIGIN_WHITELIST = [
-    'http://eotteom-env.eba-chyvzmm7.ap-northeast-1.elasticbeanstalk.com/',
-]
+CORS_ORIGIN_WHITELIST = ['eotteomserver-env.eba-xbyaqmpb.ap-northeast-2.elasticbeanstalk.com']
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['http://eotteom-env.eba-chyvzmm7.ap-northeast-1.elasticbeanstalk.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'eotteomserver-env.eba-xbyaqmpb.ap-northeast-2.elasticbeanstalk.com']
 
 
 # Application definition
