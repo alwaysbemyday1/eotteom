@@ -8,8 +8,17 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Clothes, MajorCategory, MinorCategory
-from .serializers import ClothesSerializer, ClothesRetrieveSerializer
+from .serializers import ClothesSerializer, ClothesRetrieveSerializer, MajorCategorySerializer, MinorCategorySerializer
 from outfits.serializers import OutfitSerializer
+
+class CategoryViewSet(ModelViewSet):
+    majorcategory_queryset = MajorCategory.objects.all()
+    minorcategory_queryset = MinorCategory.objects.all()
+    majorcategory_serializer = MajorCategorySerializer
+    minorcategory_serializer = MinorCategorySerializer
+
+    
+    
 
 # Create your views here.
 class ClothesViewSet(ModelViewSet):
