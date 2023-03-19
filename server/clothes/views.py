@@ -12,13 +12,17 @@ from .serializers import ClothesSerializer, ClothesRetrieveSerializer, MajorCate
 from outfits.serializers import OutfitSerializer
 
 class CategoryViewSet(ModelViewSet):
-    majorcategory_queryset = MajorCategory.objects.all()
+    queryset = MajorCategory.objects.all()
+    serializer = MajorCategorySerializer
     minorcategory_queryset = MinorCategory.objects.all()
-    majorcategory_serializer = MajorCategorySerializer
     minorcategory_serializer = MinorCategorySerializer
-
+    lookup_field = 'name_en'
     
-    
+    def retrieve(self, request, *args, **kwargs):
+        major_object = self.get_object()
+        minor_instance = self.minorcategory_queryset.filter(major_category=major_object)
+        result = self.minorcategory_serializer(minor_instance, many=True)
+        return Response(result.data)
 
 # Create your views here.
 class ClothesViewSet(ModelViewSet):
