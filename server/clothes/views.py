@@ -13,7 +13,7 @@ from outfits.serializers import OutfitSerializer
 
 class CategoryViewSet(ModelViewSet):
     queryset = MajorCategory.objects.all()
-    serializer = MajorCategorySerializer
+    serializer_class = MajorCategorySerializer
     minorcategory_queryset = MinorCategory.objects.all()
     minorcategory_serializer = MinorCategorySerializer
     lookup_field = 'name_en'
