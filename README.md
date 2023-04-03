@@ -40,4 +40,4 @@ REST Protocol과 URL 네이밍 규칙을 준수하기 위해 노력했습니다.
 
 ## 실행 화면
 
-<figure><img alt="옷 등록 화면" src="https://user-images.githubusercontent.com/80505979/229418910-8a0ce7a2-a5b2-4eea-9033-6d58fe11aced.png" width = "250"><figcaption>옷 등록 화면</figcaption></figure><figure><img alt="코디 등록 화면" src="https://user-images.githubusercontent.com/80505979/229426182-de7b7bac-fc32-4218-a025-cebbbc8f75ac.png" width = "250"><figcaption>코디 등록 화면</figcaption></figure><figure><img alt="옷장 분석 화면" src="https://user-images.githubusercontent.com/80505979/229419447-c9ba8a35-7b96-46ee-b851-d25992ad56e6.png" width = "250"><figcaption>옷장 분석 화면</figcaption></figure>
+<img alt="옷 등록 화면" src="https://user-images.githubusercontent.com/80505979/229418910-8a0ce7a2-a5b2-4eea-9033-6d58fe11aced.png" width = "250"> <img alt="코디 등록 화면" src="https://user-images.githubusercontent.com/80505979/229426182-de7b7bac-fc32-4218-a025-cebbbc8f75ac.png" width = "250"> <img alt="옷장 분석 화면" src="https://user-images.githubusercontent.com/80505979/229419447-c9ba8a35-7b96-46ee-b851-d25992ad56e6.png" width = "250">
